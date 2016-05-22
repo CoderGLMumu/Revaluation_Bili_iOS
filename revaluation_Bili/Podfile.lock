@@ -35,7 +35,7 @@ PODS:
   - YYModel (1.0.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
+  - AFNetworking (~> 3.1.0)
   - Masonry
   - MJRefresh
   - ReactiveCocoa (~> 4.1.0)
@@ -53,6 +53,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: 08cb3d784416008a74e31da838f004793fba97f6
+PODFILE CHECKSUM: ca0464e42292b2e68f4ed73193cbca7a11c8c52b
 
 COCOAPODS: 1.0.0
