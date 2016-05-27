@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="563" id="NDP-KQ-DyH" customClass="LBLatestUpdateCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NDP-KQ-DyH" id="oOa-Qc-qoe">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="562.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evv-oW-A8X" userLabel="topView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pz7-Jx-2Wb">
+                                <rect key="frame" x="313" y="0.0" width="52" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BwG-Qh-wtP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="今日更新">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BwG-Qh-wtP"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9O-Uh-V2t">
+                                <rect key="frame" x="10" y="0.0" width="100" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="tV3-Hj-o8t"/>
+                                    <constraint firstAttribute="width" constant="100" id="zkg-lV-nXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
+                                <state key="normal" title="新番连载" image="download">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tV3-Hj-o8t"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="FI8-8g-H5i"/>
+                            <constraint firstAttribute="bottom" secondItem="G9O-Uh-V2t" secondAttribute="bottom" id="Ilb-6f-acy"/>
+                            <constraint firstItem="G9O-Uh-V2t" firstAttribute="top" secondItem="Evv-oW-A8X" secondAttribute="top" id="YlN-gg-kuF"/>
+                            <constraint firstAttribute="bottom" secondItem="Pz7-Jx-2Wb" secondAttribute="bottom" id="hHh-dp-coZ"/>
+                            <constraint firstItem="Pz7-Jx-2Wb" firstAttribute="top" secondItem="Evv-oW-A8X" secondAttribute="top" id="vqc-bt-Bel"/>
+                            <constraint firstAttribute="trailing" secondItem="Pz7-Jx-2Wb" secondAttribute="trailing" constant="10" id="xac-Z7-GfH"/>
+                            <constraint firstItem="G9O-Uh-V2t" firstAttribute="leading" secondItem="Evv-oW-A8X" secondAttribute="leading" constant="10" id="zeN-X0-zkl"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9j-ub-Veg">
+                        <rect key="frame" x="10" y="40" width="355" height="514.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Evv-oW-A8X" firstAttribute="leading" secondItem="oOa-Qc-qoe" secondAttribute="leading" id="Dbz-Ku-cd4"/>
+                    <constraint firstItem="t9j-ub-Veg" firstAttribute="leading" secondItem="oOa-Qc-qoe" secondAttribute="leading" constant="10" id="Dxg-Je-FJs"/>
+                    <constraint firstItem="Evv-oW-A8X" firstAttribute="top" secondItem="oOa-Qc-qoe" secondAttribute="top" id="Ytm-tD-uwk"/>
+                    <constraint firstAttribute="trailing" secondItem="Evv-oW-A8X" secondAttribute="trailing" id="fkh-dV-G02"/>
+                    <constraint firstItem="t9j-ub-Veg" firstAttribute="top" secondItem="Evv-oW-A8X" secondAttribute="bottom" id="kLL-2I-agJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="t9j-ub-Veg" secondAttribute="bottom" id="qRo-n8-ptm"/>
+                    <constraint firstAttribute="trailing" secondItem="t9j-ub-Veg" secondAttribute="trailing" constant="10" id="xGh-ab-U3Z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="middleView" destination="t9j-ub-Veg" id="msb-FE-iBt"/>
+            </connections>
+            <point key="canvasLocation" x="281.5" y="-5.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="download" width="28" height="28"/>
+    </resources>
+</document>

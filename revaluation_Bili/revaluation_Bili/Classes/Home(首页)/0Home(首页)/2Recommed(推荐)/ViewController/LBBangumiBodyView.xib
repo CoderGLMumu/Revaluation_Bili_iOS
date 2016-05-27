@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="suy-9o-00p" customClass="LBBangumiBodyView">
+            <rect key="frame" x="0.0" y="0.0" width="234" height="186.5"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jdp-fB-68w">
+                    <rect key="frame" x="0.0" y="0.0" width="234" height="126.5"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ydawabdjabdhawbjawjdbjsavdjwhdjwahdbjawdbjaw" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNZ-0H-5nh">
+                    <rect key="frame" x="5" y="131" width="221" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.071964345080000006" green="0.071964345080000006" blue="0.071964345080000006" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新到第几话" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81M-UO-W6X">
+                    <rect key="frame" x="5" y="170.5" width="221" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="81M-UO-W6X" firstAttribute="leading" secondItem="KNZ-0H-5nh" secondAttribute="leading" id="3M8-LR-BzJ"/>
+                <constraint firstItem="Jdp-fB-68w" firstAttribute="leading" secondItem="suy-9o-00p" secondAttribute="leading" id="B7J-aZ-jwG"/>
+                <constraint firstItem="Jdp-fB-68w" firstAttribute="top" secondItem="suy-9o-00p" secondAttribute="top" id="EcT-3q-HBn"/>
+                <constraint firstAttribute="bottom" secondItem="81M-UO-W6X" secondAttribute="bottom" id="Pce-Fb-qRP"/>
+                <constraint firstAttribute="trailing" secondItem="Jdp-fB-68w" secondAttribute="trailing" id="Zgu-8y-1hb"/>
+                <constraint firstAttribute="bottom" secondItem="Jdp-fB-68w" secondAttribute="bottom" constant="60" id="pg4-8a-p6J"/>
+                <constraint firstItem="81M-UO-W6X" firstAttribute="trailing" secondItem="KNZ-0H-5nh" secondAttribute="trailing" id="qa9-X8-zIP"/>
+                <constraint firstItem="KNZ-0H-5nh" firstAttribute="leading" secondItem="suy-9o-00p" secondAttribute="leading" constant="5" id="qlr-JP-mpT"/>
+                <constraint firstAttribute="trailing" secondItem="KNZ-0H-5nh" secondAttribute="trailing" constant="8" id="rZv-2u-yHs"/>
+                <constraint firstItem="KNZ-0H-5nh" firstAttribute="top" secondItem="Jdp-fB-68w" secondAttribute="bottom" constant="5" id="w4h-kr-fjH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="coverImageV" destination="Jdp-fB-68w" id="Q4k-w9-qYj"/>
+                <outlet property="desc1" destination="81M-UO-W6X" id="58V-iB-NXp"/>
+                <outlet property="title" destination="KNZ-0H-5nh" id="s5M-fb-gh7"/>
+            </connections>
+            <point key="canvasLocation" x="173" y="237.25"/>
+        </view>
+    </objects>
+</document>

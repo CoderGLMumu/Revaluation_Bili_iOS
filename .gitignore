@@ -102,3 +102,5 @@ revaluation_Bili/Pods/Masonry/LICENSE
 *.lock
 
 revaluation_Bili/revaluation_Bili.xcodeproj/project.pbxproj
+
+revaluation_Bili/revaluation_Bili/Other/Framework/IJKMediaFramework.framework/IJKMediaFramework
