@@ -51,56 +51,14 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
-*.h
 
-*.m
+#Code Injection
+#
+# After new code Injection tools there's a generated folder /iOSInjectionProject
+# https://github.com/johnno1962/injectionforxcode
 
-*.xcworkspacedata
+iOSInjectionProject/
 
-*.pbxproj
+revaluation_Bili/IJKMediaFramework.framework
 
-*.pbxproj
-
-*.pbxproj
-
-*.md
-
-revaluation_Bili/Pods/YYModel/LICENSE
-
-*.xcconfig
-
-*.png
-
-*.d
-
-*.swift
-
-*.pch
-
-revaluation_Bili/Pods/AFNetworking/LICENSE
-
-*.pbxproj
-
-*.modulemap
-
-*.plist
-
-*.sh
-
-*.markdown
-
-*.txt
-
-revaluation_Bili/Pods/SDWebImage/LICENSE
-
-revaluation_Bili/Pods/Result/LICENSE
-
-revaluation_Bili/Pods/MJRefresh/LICENSE
-
-revaluation_Bili/Pods/Masonry/LICENSE
-
-*.lock
-
-revaluation_Bili/revaluation_Bili.xcodeproj/project.pbxproj
-
-revaluation_Bili/revaluation_Bili/Other/Framework/IJKMediaFramework.framework/IJKMediaFramework
+revaluation_Bili/Pods/
