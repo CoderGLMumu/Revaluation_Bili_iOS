@@ -12,12 +12,14 @@
 #import "LBEntranceButtonItem.h"
 #import "LBLiveViewCell.h"
 #import "LBLiveItem.h"
+#import "LBRoomItem.h"
 
 #import "LBLiveBannerItem.h"
 #import "LBHeaderView.h"
 #import "GLDIYHeader.h"
 
 #import "GLLiveListViewController.h" //more 直播列表
+#import "GLLiveRoomViewController.h"
 
 @interface LBLiveViewController ()<LBHeaderViewDelegate>
 
@@ -72,12 +74,11 @@ static NSString * const ID = @"LBLiveViewCell";
         
         LBHeaderView *headView = [LBHeaderView headerViewFromNib];
         
-        self.tableView.tableHeaderView = headView;
         headView.entranceButtomItems = self.lbviewModel.entranceButtomItems;
         headView.headerBannerArr = self.lbviewModel.headerBannerArr;
         // 设置headerView的代理
         headView.delegate = self;
-        
+        self.tableView.tableHeaderView = headView;
         self.tableView.tableFooterView = buttonView;
     }];
 }
@@ -128,6 +129,16 @@ static NSString * const ID = @"LBLiveViewCell";
 {
     LBLiveViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     cell.cellItem = self.lbviewModel.cellItemArr[indexPath.row];
+    
+    cell.didSelectLiveRoom = ^(LBRoomItem *roomItem){
+        GLLiveRoomViewController *liveRoomVC = [GLLiveRoomViewController new];
+        liveRoomVC.room_id = roomItem.room_id.stringValue;
+        liveRoomVC.online = roomItem.online.stringValue;
+        liveRoomVC.face = roomItem.owner[@"face"];
+        
+        [self.navigationController pushViewController:liveRoomVC animated:YES];
+        
+    };
     
     return cell;
 }

@@ -8,24 +8,26 @@
 
 #import "IJKMoviePlayerViewController.h"
 #import "IJKHistoryItem.h"
+
 #import "GLVideoPlayView.h"
+#import "GLonlineVideoPlayView.h"
+
 #import "Masonry/Masonry.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "ZFBrightnessView.h"
 
 @interface IJKMoviePlayerViewController ()
 
-/** isLiveVideo */
+/** 需要播放的是否在网络视频/本地视频 */
 @property (nonatomic, assign) BOOL isLiveVideo;
-/** isFullScreen */
+/** 是否是弹出全屏播放 */
 @property (nonatomic, assign) BOOL isFullScreen;
+/** 是否是直播视频 */
+@property (nonatomic, assign) BOOL isOnlineVideo;
 
-/** isHideTool */
-@property (nonatomic, assign) BOOL isHideTool;
-
-/** 占位旋转view */
+/** 包装player的旋转view */
 @property (nonatomic, weak) UIView *rotationView;
-
-
 
 @end
 
@@ -36,27 +38,55 @@
 - (void)dealloc
 {
     NSLog(@"IJKMoviePlayerViewController- -播放器销毁了");
-    
 }
 
-+ (void)presentFromViewController:(UIViewController *)viewController withTitle:(NSString *)title URL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isFullScreen:(BOOL)isFullScreen completion:(void (^)())completion {
+
+#pragma mark - 初始化-返回播放器控制器
++ (instancetype)InitVideoViewFromViewController:(UIViewController *)viewController withTitle:(NSString *)title URL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isOnlineVideo:(BOOL)isOnlineVideo isFullScreen:(BOOL)isFullScreen completion:(void (^)())completion {
     IJKHistoryItem *historyItem = [[IJKHistoryItem alloc] init];
     
     historyItem.title = title;
     historyItem.url = url;
     historyItem.isLiveVideo = isLiveVideo;
     historyItem.isFullScreen = isFullScreen;
+    historyItem.isOnlineVideo = isOnlineVideo;
     [[IJKHistory instance] add:historyItem];
     
-    [viewController presentViewController:[[IJKMoviePlayerViewController alloc] initWithURL:url isLiveVideo:isLiveVideo isFullScreen:isFullScreen] animated:isLiveVideo completion:completion];
+    /** 创建播放器控制器 */
+    IJKMoviePlayerViewController *PlayerVC = [[IJKMoviePlayerViewController alloc] initWithURL:url isLiveVideo:isLiveVideo isOnlineVideo:isOnlineVideo isFullScreen:isFullScreen];
+    
+    /** 对播放器控制器进行操作 */
+    
+    return PlayerVC;
 }
 
-- (instancetype)initWithURL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isFullScreen:(BOOL)isFullScreen {
+#pragma mark - 初始化-弹出播放器控制器
++ (instancetype)presentFromViewController:(UIViewController *)viewController withTitle:(NSString *)title URL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isOnlineVideo:(BOOL)isOnlineVideo isFullScreen:(BOOL)isFullScreen completion:(void (^)())completion {
+    IJKHistoryItem *historyItem = [[IJKHistoryItem alloc] init];
+    
+    historyItem.title = title;
+    historyItem.url = url;
+    historyItem.isLiveVideo = isLiveVideo;
+    historyItem.isFullScreen = isFullScreen;
+    historyItem.isOnlineVideo = isOnlineVideo;
+    [[IJKHistory instance] add:historyItem];
+    
+    /** 创建播放器控制器 */
+    IJKMoviePlayerViewController *PlayerVC = [[IJKMoviePlayerViewController alloc] initWithURL:url isLiveVideo:isLiveVideo isOnlineVideo:isOnlineVideo isFullScreen:isFullScreen];
+
+    /** 对播放器控制器进行操作 */
+    [viewController presentViewController:PlayerVC animated:isFullScreen completion:completion];
+
+    return PlayerVC;
+}
+
+- (instancetype)initWithURL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isOnlineVideo:(BOOL)isOnlineVideo isFullScreen:(BOOL)isFullScreen {
     self = [self initWithNibName:@"IJKMoviePlayerViewController" bundle:nil];
     if (self) {
         self.url = url;
         self.isLiveVideo = isLiveVideo;
         self.isFullScreen = isFullScreen;
+        self.isOnlineVideo = isOnlineVideo;
     }
     return self;
 }
@@ -89,9 +119,11 @@
     
 //    [self.player setScalingMode:IJKMPMovieScalingModeAspectFill];
     
+    /** 用于包装player.view 旋转的视图 */
     UIView *rotationView = [[UIView alloc]init];
-   
+    
     [self.view addSubview:rotationView];
+    [self.view sendSubviewToBack:rotationView];
     self.rotationView = rotationView;
     
     [self.rotationView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -100,11 +132,11 @@
     
     [rotationView addSubview:self.player.view];
     
-//    self.player.playbackRate = 0.5;
-    self.playView.delegatePlayer = self.player;
-    
     UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
     [self.playView.mediaProgressSlider addGestureRecognizer:sliderTap];
+    [self.playViewFullScreen.mediaProgressSlider addGestureRecognizer:sliderTap];
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -118,32 +150,43 @@
         [self.player prepareToPlay];
         
         [self.playView hide];
+        [self.playViewFullScreen hide];
     }
     
-    if (self.isFullScreen) {
-        self.playView.mediaProgressSlider.hidden = YES;
-        self.playView.totalDurationLabel.hidden = YES;
-        self.playView.fullSreenBtn.hidden = YES;
+    /** 是直播视频,-需要加载GLOnlineVideoPV */
+    if (self.isOnlineVideo) {
+         self.onlinePlayView.delegatePlayer = self.player;
     }else{
-        
+         self.playView.delegatePlayer = self.player;
+         self.playViewFullScreen.delegatePlayer = self.player;
     }
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+    /** 不是全屏的话,视频按照16:9的比例显示 */
     if (self.isFullScreen) {
         
     }else{
         self.view.frame = UIScreen16_9;
     }
     
-    [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.right.left.equalTo(self.view);
-    }];
-    self.playView.overlayPanel.frame = self.view.frame;
-
+    /** 设置子控件约束 */
+    if (self.isOnlineVideo) {
+        [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.left.equalTo(self.view);
+        }];
+        self.onlinePlayView.overlayPanel.frame = self.view.frame;
+    }else{
+        [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.left.equalTo(self.view);
+        }];
+        self.playView.overlayPanel.frame = self.view.frame;
+        self.playViewFullScreen.overlayPanel.frame = self.view.frame;
+    }
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -155,6 +198,7 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
+    /** 全屏的话,直接强制全屏 */
     if (self.isFullScreen) {
 //        NSLog(@"isll");
         return UIInterfaceOrientationMaskLandscape;
@@ -167,6 +211,7 @@
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
+    /** 全屏的话,直接强制全屏 */
     if (self.isFullScreen) {
 //        NSLog(@"isll");
         return UIInterfaceOrientationLandscapeLeft;
@@ -203,21 +248,40 @@
     }
 }
 
-#pragma mark IBAction- -播放器视图控制相关
+#pragma mark IBAction- -播放器视图控制相关【工具条/工具条显示隐藏】
 - (IBAction)onClickOverlay:(id)sender
 {
-    if (self.isHideTool) {
-        [self.playView showAndFade];
-        self.isHideTool = NO;
+    if (self.isOnlineVideo) {
+        if (self.onlinePlayView.isHideTool) {
+            [self.onlinePlayView showAndFade];
+            self.onlinePlayView.isHideTool = NO;
+        }else{
+            [self.onlinePlayView hide];
+            self.onlinePlayView.isHideTool = YES;
+        }
     }else{
-        [self.playView hide];
-        self.isHideTool = YES;
+        if (self.playView.isHideTool) {
+            [self.playView showAndFade];
+            [self.playViewFullScreen showAndFade];
+            self.playView.isHideTool = NO;
+        }else{
+            [self.playView hide];
+            [self.playViewFullScreen hide];
+            self.playView.isHideTool = YES;
+        }
     }
+    
 }
 
-- (IBAction)Back:(UIButton *)sender {
+/** 返回直播界面present页面 */
+- (IBAction)presentBack:(UIButton *)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+/** 视频播放后的pop控制器返回 */
+- (IBAction)popBack:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - 强制屏幕旋转
 - (IBAction)fullScreenAndScale:(UIButton *)btn {
@@ -226,6 +290,7 @@
         self.isFullScreen = NO;
         btn.selected = NO;
         
+        /** 16 : 9 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
             SEL selector             = NSSelectorFromString(@"setOrientation:");
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
@@ -241,6 +306,7 @@
         self.isFullScreen = YES;
         btn.selected = YES;
         
+         /** 全屏 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
             SEL selector             = NSSelectorFromString(@"setOrientation:");
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
@@ -257,6 +323,8 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
+    [self toolsShowOrHidden];
+    
     if (size.width > size.height) {
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@0);
@@ -264,7 +332,7 @@
             make.width.equalTo(@(size.width));
             make.height.equalTo(@(size.height));
         }];
-        self.player.playbackRate = 2;
+//        self.player.playbackRate = 2;
     }else {
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@0);
@@ -272,46 +340,108 @@
             make.width.equalTo(@(size.width));
             make.height.equalTo(@(size.width *(9.0 / 16.0)));
         }];
-        self.player.playbackRate = 0.4;
+//        self.player.playbackRate = 0.4;
     }
 }
 
-- (IBAction)onClickPlay:(id)sender
-{
-    [self.player play];
-    [self.playView refreshMediaControl];
+/** 占位视图 功能视图 */
+- (IBAction)popBackBtn:(UIButton *)btnClick {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)onClickPause:(id)sender
+- (void)GoBack
 {
-    [self.player pause];
-    [self.playView refreshMediaControl];
+     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+/** 视频播放时功能视图 */
+//- (IBAction)onClickPlay:(id)sender
+//{
+//    [self.player play];
+//    if (self.isOnlineVideo) {
+//        
+//    }else{
+//        [self.playView refreshMediaControl];
+//        [self.playViewFullScreen refreshMediaControl];
+//    }
+//}
+//
+//- (IBAction)onClickPause:(id)sender
+//{
+//    [self.player pause];
+//    [self.playView refreshMediaControl];
+//    [self.playViewFullScreen refreshMediaControl];
+//}
 
 - (IBAction)didSliderTouchDown
 {
     [self.playView beginDragMediaSlider];
+    [self.playViewFullScreen beginDragMediaSlider];
 }
 
 - (IBAction)didSliderTouchCancel
 {
     [self.playView endDragMediaSlider];
+    [self.playViewFullScreen endDragMediaSlider];
 }
 
 - (IBAction)didSliderTouchUpOutside
 {
     [self.playView endDragMediaSlider];
+    [self.playViewFullScreen endDragMediaSlider];
 }
 
 - (IBAction)didSliderTouchUpInside
 {
     self.player.currentPlaybackTime = self.playView.mediaProgressSlider.value;
+    self.player.currentPlaybackTime = self.playViewFullScreen.mediaProgressSlider.value;
     [self.playView endDragMediaSlider];
+    [self.playViewFullScreen endDragMediaSlider];
 }
 
 - (IBAction)didSliderValueChanged
 {
     [self.playView continueDragMediaSlider];
+    [self.playViewFullScreen continueDragMediaSlider];
+}
+
+#pragma mark - OnlineVideoPlayView工具条事件处理
+- (IBAction)onClickPlayOrPause:(UIButton *)sender {
+    if (!sender.isSelected) {
+        sender.selected = YES;
+        [self.player play];
+    }else{
+        sender.selected = NO;
+        [self.player pause];
+    }
+}
+- (IBAction)onClickLock:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频lock");
+}
+- (IBAction)onClickVolume:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频volume");
+}
+- (IBAction)onClickAddDanMu:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频AddDanMu");
+}
+- (IBAction)onClickshowDanMu:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频showDanMu");
+}
+- (IBAction)onClicksetting:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频setting");
+}
+- (IBAction)onClickshare:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频share");
+}
+- (IBAction)onClickVideoScale:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频VideoScale");
+}
+- (IBAction)onClickVideoQuality:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频VideoQuality");
+}
+- (IBAction)onClickBGPlay:(UIButton *)sender {
+    NSLog(@"self.onlinePlayView 处理视频BGPlay");
 }
 
 #pragma Selector func- -代理监听相关
@@ -349,24 +479,65 @@
 //            break;
 //    }
 }
+
 #pragma mark - 视频准备好播放了
 - (void)mediaIsPreparedToPlayDidChange:(NSNotification*)notification {
     NSLog(@"mediaIsPreparedToPlayDidChange");
-    [self.rotationView addSubview:self.playView];
-    [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.right.left.equalTo(self.view);
-    }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    
+    if (self.isOnlineVideo) {
+        [self.rotationView addSubview:self.onlinePlayView];
+        [self.onlinePlayView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.left.equalTo(self.view);
+        }];
+    }else{
+        /** 网络视频 全屏播放时的控制tool 添加*/
+        [self.rotationView addSubview:self.playViewFullScreen];
+        [self.playViewFullScreen mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.left.equalTo(self.view);
+        }];
+        [self.playViewFullScreen setupSubviewsConstraint];
+        /** 网络视频 16:9播放时的控制tool 添加*/
+        [self.rotationView addSubview:self.playView];
+        [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.left.equalTo(self.view);
+        }];
+        [self.playView setupSubviewsConstraint];
+    }
+    
+    [self toolsShowOrHidden];
+    
+    [self.view bringSubviewToFront:self.rotationView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.playView showAndFade];
     });
-    [self onClickPlay:nil];
     
-    [self.playView setupSubviewsConstraint];
+//    [self onClickPlay:nil];
+    
+    [self onClickPlayOrPause:nil];
+    
+    RAC(self.playView.playOrPause,selected) = RACObserve(self.player, isPlaying);
+    RAC(self.playView.smallPlayOrPause,selected) = RACObserve(self.playView.playOrPause,selected);
+    RAC(self.playViewFullScreen.playOrPause,selected) = RACObserve(self.player, isPlaying);
+    RAC(self.playView.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
+    RAC(self.playViewFullScreen.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
     
     // 亮度view加到window最上层
     ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
     [self.view addSubview:brightnessView];
 }
+
+- (void)toolsShowOrHidden
+{
+    if(self.isFullScreen){
+        self.playViewFullScreen.hidden = NO;
+        self.playView.hidden = YES;
+    }else{
+        self.playViewFullScreen.hidden = YES;
+        self.playView.hidden = NO;
+    }
+}
+
 
 - (void)moviePlayBackStateDidChange:(NSNotification*)notification {
     NSLog(@"moviePlayBackStateDidChange");
@@ -441,7 +612,5 @@
                                                   object:_player];
     
 }
-
-
 
 @end

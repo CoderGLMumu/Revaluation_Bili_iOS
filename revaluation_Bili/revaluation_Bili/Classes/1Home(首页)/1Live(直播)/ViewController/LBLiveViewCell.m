@@ -151,13 +151,17 @@ static CGFloat const margin = 10;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.didSelectLiveRoom();
+    
+    // 跳转到GLLiveRoomViewController并传递模型数据
+    LBRoomItem *roomItem = self.roomItemArr[indexPath.row];
+    
+    self.didSelectLiveRoom(roomItem);
     // 跳转控制器
     
-//    GLLiveRoomViewController *liveRoomVC = [[GLLiveRoomViewController alloc]init];
-//    self.nav
+    //    GLLiveRoomViewController *liveRoomVC = [[GLLiveRoomViewController alloc]init];
+    //    self.nav
     
-//    NSLog(@"%@",indexPath);
+    //    NSLog(@"%@",indexPath);
 }
 
 - (IBAction)refresh {

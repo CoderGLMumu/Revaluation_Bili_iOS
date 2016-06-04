@@ -271,7 +271,7 @@
         //弹出视频播放控制器
 //        NSLog(@"弹出视频播放控制器URL---self.glLiveRoomViewModel.liveRoomDataModel- %@",self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE);
         
-        [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isFullScreen:NO completion:nil];
+        [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isOnlineVideo:YES isFullScreen:YES completion:nil];
     }];
     
     /** 毛玻璃 */

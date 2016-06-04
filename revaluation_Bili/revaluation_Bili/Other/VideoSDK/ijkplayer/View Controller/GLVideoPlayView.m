@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, strong) UILabel *horizontalLabel;
 
 /** 定义一个实例变量，保存枚举值 */
-@property (nonatomic, assign) PanDirection        panDirection;
+@property (nonatomic, assign) PanDirection panDirection;
 
 @end
 
@@ -72,19 +72,22 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 加载完成后，再添加平移手势
     // 添加平移手势，用来控制音量、亮度、快进快退
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDirection:)];
-    
+
     pan.delegate = self;
     
     [self addGestureRecognizer:pan];
     
+    /** 获取/设置系统音量 */
     [self configureVolume];
     
+    /** 每秒更新视频进度 */
     self.progress_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(time_second_listen) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:self.progress_timer forMode:NSRunLoopCommonModes];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     NSLog(@"awakeFromNib%@",self);
+
 }
 
 - (void)setupSubviewsConstraint
@@ -104,11 +107,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.ProgressValueView.progress = self.delegatePlayer.playableDuration / self.delegatePlayer.duration;
 }
 
+#pragma mark - 淡入淡出工具条
 - (void)showNoFade
 {
-         _panel_bottomCpmstraont.constant = 0;
-         _panel_topCpmstraont.constant = 0;
+     self.panel_bottomCpmstraont.constant = 0;
+     self.panel_topCpmstraont.constant = 0;
     [UIView animateWithDuration:0.5 animations:^{
+        self.playOrPause.alpha = 1;
         self.bottomPanel.alpha = 1;
         self.topPanel.alpha = 1;
        [self layoutIfNeeded];
@@ -125,16 +130,17 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (void)hide
 {
-    
     _panel_bottomCpmstraont.constant = -45;
     _panel_topCpmstraont.constant = -45;
     
     [UIView animateWithDuration:0.5 animations:^{
+        self.playOrPause.alpha = 0;
         self.bottomPanel.alpha = 0;
         self.topPanel.alpha = 0;
         [self layoutIfNeeded];
     }];
     
+    self.isHideTool = YES;
     [self cancelDelayedHide];
 }
 
@@ -143,6 +149,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hide) object:nil];
 }
 
+#pragma mark - 拖拽进度条
 - (void)beginDragMediaSlider
 {
     _isMediaSliderBeingDragged = YES;
@@ -158,6 +165,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [self refreshMediaControl];
 }
 
+#pragma mark - 刷新工具条
 - (void)refreshMediaControl
 {
     // duration
@@ -189,9 +197,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     
     // status
-    BOOL isPlaying = [self.delegatePlayer isPlaying];
-    self.playButton.hidden = isPlaying;
-    self.pauseButton.hidden = !isPlaying;
+//    BOOL isPlaying = [self.delegatePlayer isPlaying];
+//    self.playButton.hidden = isPlaying;
+//    self.pauseButton.hidden = !isPlaying;
     
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshMediaControl) object:nil];
@@ -224,9 +232,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
             // 使用绝对值来判断移动的方向
             CGFloat x = fabs(veloctyPoint.x);
             CGFloat y = fabs(veloctyPoint.y);
+            NSLog(@"%f,-%f",x,y);
             if (x > y) { // 水平移动
                 // 取消隐藏
-                self.horizontalLabel.hidden = NO;
+                if (self.isOnlineVideo) break;
+                    self.horizontalLabel.hidden = NO;
                 self.panDirection = PanDirectionHorizontalMoved;
                 // 给sumTime初值
                 NSTimeInterval time = self.delegatePlayer.currentPlaybackTime;
@@ -251,7 +261,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         case UIGestureRecognizerStateChanged:{ // 正在移动
             switch (self.panDirection) {
                 case PanDirectionHorizontalMoved:{
-                    
+                    if (self.isOnlineVideo) break;
                     [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值
                     break;
                 }
@@ -269,7 +279,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
             // 比如水平移动结束时，要快进到指定位置，如果这里没有判断，当我们调节音量完之后，会出现屏幕跳动的bug
             switch (self.panDirection) {
                 case PanDirectionHorizontalMoved:{
-                    
+                    if (self.isOnlineVideo) break;
                     // 继续播放
                     [self.delegatePlayer play];
                     [self.progress_timer setFireDate:[NSDate date]];
@@ -322,7 +332,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)horizontalMoved:(CGFloat)value
 {
     
-    NSLog(@"GLtestMoved***%f",value);
+//    NSLog(@"GLtestMoved***%f",value);
     
     // 快进快退的方法
     NSString *style = @"";
@@ -402,12 +412,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 #pragma mark - UIGestureRecognizerDelegate
-
+/** 控制pan手势的响应 */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     CGPoint point = [touch locationInView:self];
-    // （屏幕下方slider区域） || (播放完了) =====>  不响应pan手势
-    if ((point.y > self.bounds.size.height-40) || self.delegatePlayer.currentPlaybackTime >=self.delegatePlayer.duration) { return NO; }
+    // （屏幕下方slider区域） || (播放完了) =====>  不响应pan手势【如果是直播也要响应】 !isOnlineVideo 是在线视频返回YES
+    if (((point.y > self.bounds.size.height-40) || self.delegatePlayer.currentPlaybackTime >=self.delegatePlayer.duration) && !self.isOnlineVideo) { return NO; }
     return YES;
 }
 

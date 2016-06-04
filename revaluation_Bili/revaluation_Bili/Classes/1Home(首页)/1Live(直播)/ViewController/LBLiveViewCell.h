@@ -14,6 +14,6 @@
 @property(nonatomic , strong)LBLiveItem *cellItem;
 
 /** 首页点击了直播房间 */
-@property (nonatomic, strong) void(^didSelectLiveRoom)();
+@property (nonatomic, strong) void(^didSelectLiveRoom)(LBRoomItem *roomItem);
 
 @end
