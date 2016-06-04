@@ -1,0 +1,33 @@
+//
+//  LBHeaderView.h
+//  Bili
+//
+//  Created by 林彬 on 16/4/14.
+//  Copyright © 2016年 gl. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@class LBEntranceButtonItem;
+
+@protocol LBHeaderViewDelegate <NSObject>
+
+- (void)middleButtonsDidClick:(UIButton *)button ClickBtnID:(int)clickBtnID ButtonItem:(LBEntranceButtonItem *)buttonItem;
+
+@end
+
+@interface LBHeaderView : UIView
+
+// headerView中N个按钮的模型数组
+@property (nonatomic , strong)NSArray <LBEntranceButtonItem *>*entranceButtomItems;
+
+// headerView的banner模型数组
+@property(nonatomic ,strong)NSArray *headerBannerArr;
+
+@property(nonatomic,strong) void(^block)(CGFloat);
+
+
+@property (nonatomic ,weak)id <LBHeaderViewDelegate> delegate;
+
++(instancetype)headerViewFromNib;
+
+@end

@@ -1,0 +1,62 @@
+//
+//  Bili.pch
+//  revaluation_Bili
+//
+//  Created by mac on 16/5/17.
+//  Copyright © 2016年 mac. All rights reserved.
+//
+
+#ifndef GLBili_pch
+#define GLBili_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Bili_pch */
+
+/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+
+#import <AFNetworking/AFNetworking.h>
+#import <YYModel/YYModel.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <Masonry/Masonry.h>
+#import <Foundation/Foundation.h>
+#import "UIView+GLExtension.h"
+#import "UIImage+LBImage.h"
+#import <SDWebImage/UIButton+WebCache.h>
+
+
+#import "HttpToolSDK.h"   //网络请求工具
+
+
+/***  获取屏幕大小  ***/
+#define GLScreenH [UIScreen mainScreen].bounds.size.height
+#define GLScreenW [UIScreen mainScreen].bounds.size.width
+
+/*** 日志 | ...:宏里面可变参数 ***/
+#ifdef DEBUG  // 调试
+#define Log(...) NSLog(__VA_ARGS__)
+#else   // 发布
+#define Log(...) /* */
+#endif
+
+#define GLFunc GLLog(@"%s",__func__)
+/*** 日志结束  ***/
+
+/*** 颜色 ***/
+#define GLColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define GLColor(r, g, b) GLColorA((r), (g), (b), 255)
+#define GLRandomColor GLColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+#define GLrayColor(v) GLColor((v), (v), (v))
+#define GLCommonBgColor GLrayColor(206)
+
+#define LBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define LBGlobeColor LBColor(215, 215, 215)
+
+#endif
+/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/
