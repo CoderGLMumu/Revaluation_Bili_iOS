@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)showAndFade
 {
     [self showNoFade];
-    [self performSelector:@selector(hide) withObject:nil afterDelay:10];
+    [self performSelector:@selector(hide) withObject:nil afterDelay:6];
 }
 
 - (void)hide
@@ -78,6 +78,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [self layoutIfNeeded];
     }];
     
+    self.isHideTool = YES;
     [self cancelDelayedHide];
 }
 
@@ -150,8 +151,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
         case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
         {
             // 耳机拔掉
-            // 拔掉耳机继续播放
-            [self.delegatePlayer play];
+            // 拔掉耳机暂停播放
+            [self.delegatePlayer pause];
+            [self showNoFade];
 //            NSLog(@"耳机拔掉ok");
         }
             break;

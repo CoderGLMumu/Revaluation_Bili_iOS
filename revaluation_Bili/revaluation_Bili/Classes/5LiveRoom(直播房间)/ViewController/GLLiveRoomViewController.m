@@ -45,6 +45,7 @@
 
     self.title = @"直播房间";
     self.view.backgroundColor = GLColor(233, 233, 233);
+    self.navigationController.navigationBarHidden = NO;
     
     UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [rightBarButton setTitleColor:GLColor(205, 110, 140) forState:UIControlStateNormal];
