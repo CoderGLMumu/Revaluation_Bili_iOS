@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GLRecommedViewModel;
 
-@interface GLRecommedViewController : UIViewController
+@interface GLRecommedViewController : UITableViewController
 
 @end

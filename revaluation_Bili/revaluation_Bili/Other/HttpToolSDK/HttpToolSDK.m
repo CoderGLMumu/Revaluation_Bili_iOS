@@ -61,8 +61,8 @@
     /** 必须在serializer后面 请求超时10s */
     self.manager.requestSerializer.timeoutInterval = 10;
     
-//    申明请求的数据是json类型
-
+    //    申明请求的数据是json类型
+    
     //申明返回的结果是json类型
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -115,7 +115,7 @@
     self.http_manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     self.http_manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
-
+    
     // 2.发送请求
     [self.http_manager GET:URL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject) {

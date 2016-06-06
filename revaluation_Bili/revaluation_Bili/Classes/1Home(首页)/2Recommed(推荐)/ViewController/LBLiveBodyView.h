@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class LBBodyModel;
-@interface LBLiveBodyView : UIView
+@interface LBLiveBodyView : UIControl
 @property(nonatomic , strong)LBBodyModel *bodyItem;
 +(instancetype)LBLiveBodyViewFromNib;
 @end

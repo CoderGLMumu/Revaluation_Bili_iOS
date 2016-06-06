@@ -199,7 +199,9 @@ static CGFloat margin = 20;
     
     [self.view addSubview:floatRightBtn];
     
+    @weakify(self);
     [floatRightBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.right.equalTo(self.view);
 //        make.top.bottom.equalTo(self.scrollView);
         make.top.equalTo(@64);
@@ -215,7 +217,9 @@ static CGFloat margin = 20;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]init];
     
     /** 下拉右边按钮监听 */
+
     [[floatRightBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *clickBtn) {
+        @strongify(self);
         floatRightBtn.selected = !floatRightBtn.selected;
         
         if (floatRightBtn.selected) {
@@ -488,13 +492,16 @@ static CGFloat margin = 20;
             btn.tag = i;
             
             // scrollView的 按钮监听的点击
+            @weakify(self);
             [[btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *clickBtn) {
+                 @strongify(self);
                 // 执行被点击的操作
                 [self.TitleBtncommand execute:clickBtn];
                 
             }];
             
             self.TitleBtncommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(UIButton *clickBtn) {
+                @strongify(self);
                 // 发送网络请求 更新 页面;
     //            NSLog(@"发送网络请求 更新 页面%@",clickBtn);
     #warning 问题············
@@ -566,7 +573,6 @@ static CGFloat margin = 20;
  
  }
  */
-
 #pragma mark -把子控制器的view添加
 - (void)setupOneChildViewController:(UIButton *)clickBtn
 {

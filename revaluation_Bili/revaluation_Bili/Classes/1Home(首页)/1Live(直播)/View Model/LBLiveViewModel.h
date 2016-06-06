@@ -25,4 +25,6 @@
 
 + (instancetype)viewModel;
 
++ (void)cancelloadLiveViewDataAtComplete:(void(^)())complete;
+
 @end

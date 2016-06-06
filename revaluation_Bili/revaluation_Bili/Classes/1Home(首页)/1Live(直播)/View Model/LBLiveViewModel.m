@@ -92,10 +92,7 @@
     complete(buttonView);
 }
 
-
-static LBLiveViewModel *_instance;
-
-//类方法，返回一个单例对象
+//类方法，viewModel
 + (instancetype)viewModel
 {
     //注意：这里建议使用self
@@ -103,17 +100,10 @@ static LBLiveViewModel *_instance;
     return [[self alloc]init];
 }
 
-//保证永远只分配一次存储空间
-+(instancetype)allocWithZone:(struct _NSZone *)zone
++ (void)cancelloadLiveViewDataAtComplete:(void(^)())complete
 {
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-    });
-    
-    return _instance;
+    [HttpToolSDK cancelAllRequest];
+    complete();
 }
-
 
 @end

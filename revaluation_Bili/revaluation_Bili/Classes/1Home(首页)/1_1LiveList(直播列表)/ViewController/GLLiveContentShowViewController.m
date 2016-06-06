@@ -43,7 +43,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return vc;
 }
-
 #warning 需要实现每次点击 没有选中的 按钮都刷新界面,需要实现最新,最热排序
 - (void)viewDidLoad
 {
@@ -52,7 +51,9 @@ static NSString * const reuseIdentifier = @"Cell";
     GLPlaceholderView *placeholderView = [GLPlaceholderView sharePlaceholderView];
    
     [self.view addSubview:placeholderView];
+    @weakify(self);
     [placeholderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.left.bottom.right.equalTo(self.view);
     }];
     
@@ -83,6 +84,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 先结束刷新,取消上一次的请求
     if ([self.collectionView.mj_header isRefreshing]) {
+         @strongify(self);
         [GLLiveContentShowViewModel cancelloadLiveViewDataAtComplete:^{
             [self.collectionView.mj_header beginRefreshing];
         }];
@@ -98,7 +100,9 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - 加载最新数据 （留给子类去实现）
 - (void)loadData
 {
-    [[GLLiveContentShowViewModel viewModel]handleLiveViewDataWithTag:self.tag Sort:self.sort Area_id:(int)self.area_id Success:^{
+    @weakify(self);
+    [self.glLiveContentShowViewModel handleLiveViewDataWithTag:self.tag Sort:self.sort Area_id:(int)self.area_id Success:^{
+        @strongify(self);
         /** 成功后处理占位视图并刷新collectionView */
         [[GLPlaceholderView sharePlaceholderView] removeFromSuperview];
         [self.collectionView reloadData];

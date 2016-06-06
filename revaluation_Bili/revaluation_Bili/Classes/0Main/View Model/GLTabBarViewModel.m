@@ -93,11 +93,6 @@
     }
 }
 
-
-
-//提供一个static修饰的全局变量，强引用着已经实例化的单例对象实例
-static GLTabBarViewModel *_instance;
-
 //类方法，返回一个单例对象
 +(instancetype)ViewModel
 {
@@ -106,17 +101,7 @@ static GLTabBarViewModel *_instance;
     return [[self alloc]init];
 }
 
-//保证永远只分配一次存储空间
-+(instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    //使用GCD中的一次性代码
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            _instance = [super allocWithZone:zone];
-        });
-    
-    return _instance;
-}
+
 
 
 @end

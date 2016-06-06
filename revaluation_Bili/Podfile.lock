@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Masonry (1.0.0)
+  - Masonry (1.0.1)
   - MJRefresh (3.1.0)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
@@ -35,17 +35,17 @@ PODS:
   - YYModel (1.0.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
+  - AFNetworking
   - Masonry
   - MJRefresh
-  - ReactiveCocoa (~> 4.1.0)
-  - SDWebImage (~> 3.7)
+  - ReactiveCocoa
+  - SDWebImage
   - SVProgressHUD
   - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
@@ -53,6 +53,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: ca0464e42292b2e68f4ed73193cbca7a11c8c52b
+PODFILE CHECKSUM: bdc0c2de10985bb21b3abdaf553c21b145dc8bbb
 
 COCOAPODS: 1.0.0

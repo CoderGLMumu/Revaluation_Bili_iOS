@@ -1,14 +1,15 @@
 //
-//  LBRecommedModel.h
-//  Bili
+//  GLRecommedModel.h
+//  revaluation_Bili
 //
-//  Created by 林彬 on 16/5/7.
-//  Copyright © 2016年 gl. All rights reserved.
+//  Created by mac on 16/6/5.
+//  Copyright © 2016年 mac. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-@class LBBodyModel;
-@interface LBRecommedModel : NSObject
+@class GLBodyModel;
+
+@interface GLRecommedModel : NSObject
 
 /** title【头部标题】 */
 @property(nonatomic , strong)NSDictionary *head;
@@ -24,6 +25,6 @@
 @property(nonatomic , assign) CGFloat cellHeight;
 
 /** 里面的数据 */
-@property(nonatomic , strong)LBBodyModel *bodyItem;
+@property(nonatomic , strong)GLBodyModel *bodyItem;
 
 @end

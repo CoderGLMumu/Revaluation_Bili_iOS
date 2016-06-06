@@ -13,7 +13,7 @@
 // 保存cell的模型数组
 @property (nonatomic ,strong)NSArray *cellArr;
 // 保存cell中每个body的模型数组
-@property (nonatomic ,strong)NSArray *bodyArr;
+//@property (nonatomic ,strong)NSArray *bodyArr;
 
 + (instancetype)viewModel;
 

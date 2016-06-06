@@ -79,6 +79,7 @@ static NSString * const RecommedID = @"LBRecommedCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row == 3 || indexPath.row == 8) {
         LBRecommedCell *cell = [[LBRecommedCell alloc] init];
         cell.cellItem = self.lbRecommedViewModel.cellArr[indexPath.row];

@@ -1,14 +1,15 @@
 //
-//  LBBodyModel.h
-//  Bili
+//  GLBodyModel.h
+//  revaluation_Bili
 //
-//  Created by 林彬 on 16/5/7.
-//  Copyright © 2016年 gl. All rights reserved.
+//  Created by mac on 16/6/6.
+//  Copyright © 2016年 mac. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface LBBodyModel : NSObject
+@interface GLBodyModel : NSObject
+
 /* 图片URL **/
 @property(nonatomic , strong)NSString *cover;
 

@@ -24,13 +24,18 @@
 @interface LBLiveViewController ()<LBHeaderViewDelegate>
 
 /** lbviewModel */
-@property (nonatomic, weak) LBLiveViewModel *lbviewModel;
+@property (nonatomic, strong) LBLiveViewModel *lbviewModel;
 
 @end
 
 @implementation LBLiveViewController
 
 static NSString * const ID = @"LBLiveViewCell";
+
+- (void)dealloc
+{
+    NSLog(@"livelive");
+}
 
 - (LBLiveViewModel *)lbviewModel
 {
@@ -67,13 +72,21 @@ static NSString * const ID = @"LBLiveViewCell";
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [LBLiveViewModel cancelloadLiveViewDataAtComplete:^{
+        
+    }];
+}
+
 -(void)setUpHeaderView
 {
-    
+    @weakify(self);
     [LBLiveViewModel setUpHeaderViewComplete:^(UIView *buttonView) {
-        
+        @strongify(self);
         LBHeaderView *headView = [LBHeaderView headerViewFromNib];
         
+        headView.viewModel = self.lbviewModel;
         headView.entranceButtomItems = self.lbviewModel.entranceButtomItems;
         headView.headerBannerArr = self.lbviewModel.headerBannerArr;
         // 设置headerView的代理
@@ -94,9 +107,9 @@ static NSString * const ID = @"LBLiveViewCell";
     __weak typeof(self)weakSelf = self;
     // 发送网络请求
     [weakSelf.lbviewModel handleLiveViewDataSuccess:^{
-        [weakSelf.tableView reloadData];
         [weakSelf setUpHeaderView];
         [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView reloadData];
     } Failure:^{
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -130,7 +143,9 @@ static NSString * const ID = @"LBLiveViewCell";
     LBLiveViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     cell.cellItem = self.lbviewModel.cellItemArr[indexPath.row];
     
+    @weakify(self);
     cell.didSelectLiveRoom = ^(LBRoomItem *roomItem){
+        @strongify(self);
         GLLiveRoomViewController *liveRoomVC = [GLLiveRoomViewController new];
         liveRoomVC.room_id = roomItem.room_id.stringValue;
         liveRoomVC.online = roomItem.online.stringValue;

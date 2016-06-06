@@ -28,11 +28,11 @@
 #pragma mark - 网络请求数据
 - (void)loadLiveViewDataWithTag:(NSString *)tag Sort:(NSString *)sort Area_id:(int)area_id Success:(void (^)(id json))success Failure:(void (^)(NSError *error))failure
 {
-    
+    @weakify(self);
     [self netWorkReachabilityWithcomolete:^(BOOL netState) {
         if (netState) {
             // 使用请求参数 发送网络请求
-            
+            @strongify(self);
             /** 以下步骤 因为 没有密钥 无法请求网络数据,在手机上抓取的请求路径 解析 */
             
             __block NSString *url = @"";
@@ -83,8 +83,9 @@
 #pragma mark - 处理网络请求数据
 - (void)handleLiveViewDataWithTag:(NSString *)tag Sort:(NSString *)sort Area_id:(int)area_id Success:(void (^)())success Failure:(void (^)())failure
 {
+    @weakify(self);
     [self loadLiveViewDataWithTag:tag Sort:sort Area_id:area_id Success:^(id json) {
-        
+        @strongify(self);
         self.itemArray = (NSMutableArray *)[NSArray yy_modelArrayWithClass:[BiLiTwoLevelAllPlayingItem class] json:json[@"data"]];
         
         if (self.itemArray.count == 0) {
@@ -92,6 +93,7 @@
         }
         success();
     } Failure:^(NSError *error) {
+        @strongify(self);
         if (error.code == -1001) {
             self.notReachable(YES);
         }
@@ -109,7 +111,7 @@
     __block BOOL netState = NO;
     
     //1.通过网络监测管理者监听状态的改变
-    
+    @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -120,8 +122,9 @@
              AFNetworkReachabilityStatusReachableViaWWAN = 1,   3G|4G
              AFNetworkReachabilityStatusReachableViaWiFi = 2,   WIFI
              */
-            
+            @strongify(self);
             switch (status) {
+                    
                 case AFNetworkReachabilityStatusReachableViaWiFi:
 //                    NSLog(@"WIFI");
                     netState = YES;
@@ -160,26 +163,11 @@
     complete();
 }
 
-static GLLiveContentShowViewModel *_instance;
-
-//类方法，返回一个单例对象
+//类方法，返回一个viewModel
 + (instancetype)viewModel
 {
     //注意：这里建议使用self
-    
     return [[self alloc]init];
-}
-
-//保证永远只分配一次存储空间
-+(instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-    });
-    
-    return _instance;
 }
 
 @end

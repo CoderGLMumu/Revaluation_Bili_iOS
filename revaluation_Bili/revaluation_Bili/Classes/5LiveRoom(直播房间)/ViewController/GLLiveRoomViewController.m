@@ -272,8 +272,11 @@
         //弹出视频播放控制器
 //        NSLog(@"弹出视频播放控制器URL---self.glLiveRoomViewModel.liveRoomDataModel- %@",self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE);
         
-        [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isOnlineVideo:YES isFullScreen:YES completion:nil];
+        IJKMoviePlayerViewController *test = [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isOnlineVideo:YES isFullScreen:YES completion:nil];
+        test.view.frame = CGRectMake(0, 0, 100, 100);
     }];
+    
+    
     
     /** 毛玻璃 */
     UIToolbar *maoboli = [UIToolbar new];

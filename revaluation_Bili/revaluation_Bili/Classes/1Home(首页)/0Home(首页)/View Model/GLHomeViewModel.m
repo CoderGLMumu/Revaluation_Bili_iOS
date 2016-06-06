@@ -13,6 +13,8 @@
 #import "LBLiveViewController.h"
 #import "LBRecommedViewController.h"
 
+#import "GLRecommedViewController.h"
+
 #define titleH 45
 
 @implementation GLHomeViewModel
@@ -34,9 +36,10 @@
     
     
     // 添加推荐子控制器
-    LBRecommedViewController *recommedVC = [[LBRecommedViewController alloc] init];
+    
+    GLRecommedViewController *recommedVC = [[UIStoryboard storyboardWithName:NSStringFromClass([GLRecommedViewController class]) bundle:nil]instantiateInitialViewController];
     recommedVC.title = @"推荐";
-    recommedVC.view.backgroundColor = [UIColor redColor];
+//    recommedVC.view.backgroundColor = [UIColor redColor];
     complete(recommedVC);
     
     // 添加番剧子控制器
@@ -88,7 +91,6 @@
 {
 //    // 根据角标获得对应的子控制器
 //    UIViewController *vc = self.childViewControllers[index];
-    
     // 判断下有没有父控件,防止重复调用这个方法.
     if (vc.view.superview) return;
     

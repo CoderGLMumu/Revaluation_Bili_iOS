@@ -54,6 +54,10 @@
     return _btnArr;
 }
 
+- (void)dealloc
+{
+    NSLog(@"11111");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

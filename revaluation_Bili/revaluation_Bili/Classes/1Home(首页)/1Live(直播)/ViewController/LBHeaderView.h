@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class LBEntranceButtonItem;
+@class LBLiveViewModel;
 
 @protocol LBHeaderViewDelegate <NSObject>
 
@@ -19,6 +20,9 @@
 
 // headerView中N个按钮的模型数组
 @property (nonatomic , strong)NSArray <LBEntranceButtonItem *>*entranceButtomItems;
+
+/** liveViewModel */
+@property (nonatomic, strong) LBLiveViewModel *viewModel;
 
 // headerView的banner模型数组
 @property(nonatomic ,strong)NSArray *headerBannerArr;

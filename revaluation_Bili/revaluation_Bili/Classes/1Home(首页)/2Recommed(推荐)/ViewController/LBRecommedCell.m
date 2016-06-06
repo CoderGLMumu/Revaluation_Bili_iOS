@@ -100,7 +100,6 @@
             
             self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
             
-            
             CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
             CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
             bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);

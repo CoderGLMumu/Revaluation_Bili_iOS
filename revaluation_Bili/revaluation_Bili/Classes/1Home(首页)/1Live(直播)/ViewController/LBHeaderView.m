@@ -45,7 +45,7 @@
 {
     if (_buttonArr == nil) {
         NSMutableArray *buttonArr = [[NSMutableArray alloc] init];
-        NSInteger count = [LBLiveViewModel viewModel].entranceButtomItems.count;
+        NSInteger count = self.viewModel.entranceButtomItems.count;
         for (int i = 0; i < count; i ++) {
             LBEntranceButton *enbutton = [[LBEntranceButton alloc] init];
             enbutton.buttonItem = _entranceButtomItems[i];
