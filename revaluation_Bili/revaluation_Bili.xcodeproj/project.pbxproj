@@ -113,6 +113,8 @@
 		042C3A441CF084B30026D9EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C3A431CF084B30026D9EA /* Launch Screen.storyboard */; };
 		04422A741CEF7F0C0033FD99 /* LBColorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 04422A731CEF7F0C0033FD99 /* LBColorScale.m */; };
 		044A30541D05C778007E45B0 /* GLRecommedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */; };
+		044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */; };
+		044A305D1D05F055007E45B0 /* GLRecommedCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */; };
 		0451B52D1CF4578F004E5AB3 /* IJKHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451B5221CF4578F004E5AB3 /* IJKHistoryItem.m */; };
 		0451B52E1CF4578F004E5AB3 /* Management_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0451B5241CF4578F004E5AB3 /* Management_Mask@2x.png */; };
 		0451B5311CF4578F004E5AB3 /* scale_while.png in Resources */ = {isa = PBXBuildFile; fileRef = 0451B5271CF4578F004E5AB3 /* scale_while.png */; };
@@ -370,6 +372,10 @@
 		04422A721CEF7F0C0033FD99 /* LBColorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBColorScale.h; sourceTree = "<group>"; };
 		04422A731CEF7F0C0033FD99 /* LBColorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBColorScale.m; sourceTree = "<group>"; };
 		044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRecommedViewController.storyboard; sourceTree = "<group>"; };
+		044A30581D05ED7E007E45B0 /* GLRecommedCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCellModel.h; sourceTree = "<group>"; };
+		044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedCellModel.m; sourceTree = "<group>"; };
+		044A305B1D05F055007E45B0 /* GLRecommedCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCellViewModel.h; sourceTree = "<group>"; };
+		044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedCellViewModel.m; sourceTree = "<group>"; };
 		0451B5211CF4578F004E5AB3 /* IJKHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKHistoryItem.h; sourceTree = "<group>"; };
 		0451B5221CF4578F004E5AB3 /* IJKHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKHistoryItem.m; sourceTree = "<group>"; };
 		0451B5241CF4578F004E5AB3 /* Management_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Management_Mask@2x.png"; sourceTree = "<group>"; };
@@ -1061,6 +1067,8 @@
 				04276B8C1D056D3400605FD9 /* GLBodyModel.m */,
 				04F7631C1D0423390047C7BD /* GLRecommedModel.h */,
 				04F7631D1D0423390047C7BD /* GLRecommedModel.m */,
+				044A30581D05ED7E007E45B0 /* GLRecommedCellModel.h */,
+				044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1068,12 +1076,14 @@
 		0429A7D81CFB16D200D28AB2 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				0429A7D91CFB16D200D28AB2 /* LBRecommedViewModel.h */,
-				0429A7DA1CFB16D200D28AB2 /* LBRecommedViewModel.m */,
+				044A305B1D05F055007E45B0 /* GLRecommedCellViewModel.h */,
+				044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */,
 				04F763191D0423240047C7BD /* GLRecommedViewModel.h */,
 				04F7631A1D0423240047C7BD /* GLRecommedViewModel.m */,
 				04F7631F1D04307F0047C7BD /* GLRecommedItemViewModel.h */,
 				04F763201D04307F0047C7BD /* GLRecommedItemViewModel.m */,
+				0429A7D91CFB16D200D28AB2 /* LBRecommedViewModel.h */,
+				0429A7DA1CFB16D200D28AB2 /* LBRecommedViewModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1662,11 +1672,13 @@
 				0429A83E1CFB16D300D28AB2 /* LBRecommedViewController.m in Sources */,
 				0429A77D1CFB10F500D28AB2 /* WYLPlaySettingViewController.m in Sources */,
 				0429A78B1CFB132300D28AB2 /* GLLiveRoomModel.m in Sources */,
+				044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */,
 				0429A77B1CFB10F500D28AB2 /* WYLSettingSwitchItem.m in Sources */,
 				0429A8291CFB16D300D28AB2 /* LBLiveButton.m in Sources */,
 				0460EECE1D0357D70078FCB2 /* IJKMoviePlayerViewController.m in Sources */,
 				04FECD2C1CF1F34900A4F71D /* HttpToolSDK.m in Sources */,
 				0429A81F1CFB16D300D28AB2 /* GLLiveListTitleViewController.m in Sources */,
+				044A305D1D05F055007E45B0 /* GLRecommedCellViewModel.m in Sources */,
 				04F7D38F1CFBE9F0002CB487 /* GLLiveRoomCell.m in Sources */,
 				0429A7881CFB130300D28AB2 /* GLLiveRoomViewModel.m in Sources */,
 				0429A82D1CFB16D300D28AB2 /* LBRoomCollectionCell.m in Sources */,

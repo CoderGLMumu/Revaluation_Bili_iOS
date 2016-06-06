@@ -9,6 +9,8 @@
 #import "GLRecommedViewController.h"
 #import "GLRecommedViewModel.h"
 #import "GLRecommedItemViewModel.h"
+#import "GLRecommedCellViewModel.h"
+
 
 #import "LBRecommedCell.h"
 
@@ -88,10 +90,14 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     // 传递VM
     // 设置 Cell...
 
-    GLRecommedItemViewModel *vm=self.viewModel.cellItemViewModels[indexPath.row];
-
+    GLRecommedItemViewModel *vm = self.viewModel.cellItemViewModels[indexPath.row];
+    GLRecommedCellViewModel *cellVM = [[GLRecommedCellViewModel alloc]init];
+    cellVM.body = vm.body;
+    
     if ([vm.type isEqualToString:@"recommend"]) {
-        return [tableView dequeueReusableCellWithIdentifier:regionCellID];
+        LBRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:recommendCellID];
+        cell.viewModel = cellVM;
+        return cell;
     } else if([vm.type isEqualToString:@"live"]){
         return [tableView dequeueReusableCellWithIdentifier:liveCellID];
     } else if([vm.type isEqualToString:@"bangumi_2"]) {
@@ -114,7 +120,7 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLRecommedItemViewModel *vm=self.viewModel.cellItemViewModels[indexPath.row];
-    NSLog(@"tettt%f",vm.cellHeight);
+//    NSLog(@"tettt%f",vm.cellHeight);
     return [self.viewModel.cellItemViewModels[indexPath.row] cellHeight];
 
 }

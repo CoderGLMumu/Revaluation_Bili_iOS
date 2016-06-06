@@ -15,13 +15,10 @@
 @property(nonatomic , strong)NSString *title;
 /** 用于判断cell类型 */
 @property(nonatomic , strong)NSString *type;
-
-
 /** title【头部标题】 */
 //@property(nonatomic , strong)NSDictionary *head;
 /** 4个collectionView的cell或者是其他数据 */
 @property(nonatomic , strong)NSArray *body;
-
 
 /** 当前多少人在直播 */
 @property(nonatomic , assign) NSString *count;

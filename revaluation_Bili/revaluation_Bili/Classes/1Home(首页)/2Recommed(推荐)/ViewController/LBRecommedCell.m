@@ -13,6 +13,8 @@
 #import "LBLiveBodyView.h"
 #import "LBBangumiBodyView.h"
 
+#import "GLRecommedCellViewModel.h"
+
 @interface LBRecommedCell()
 
 
@@ -34,6 +36,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)setViewModel:(GLRecommedCellViewModel *)viewModel
+{
+    _viewModel = viewModel;
 }
 
 - (void)setCellItem:(LBRecommedModel *)cellItem

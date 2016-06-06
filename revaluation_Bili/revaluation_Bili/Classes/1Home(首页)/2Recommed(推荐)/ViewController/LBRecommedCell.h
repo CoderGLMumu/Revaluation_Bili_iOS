@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 @class LBRecommedModel;
+
+@class GLRecommedCellViewModel;
+
 @interface LBRecommedCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (nonatomic , strong) LBRecommedModel *cellItem;
+
+@property (strong, nonatomic) GLRecommedCellViewModel * viewModel;
+
 @end
