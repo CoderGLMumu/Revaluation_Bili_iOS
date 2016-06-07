@@ -8,13 +8,21 @@ libbz2.tbd
 AudioToolBox.framework
 
 AVFoundation.framework
+
 CoreGraphics.framework
+
 CoreVideo.framework
+
 MediaPlayer.framework
+
 MobileCoreServices.framework
+
 OpenGLES.framework
+
 QuartzCore.framework
+
 UIKit.framework
+
 VideoToolBox.framework
 
 # Revaluation_Bili_iOS
