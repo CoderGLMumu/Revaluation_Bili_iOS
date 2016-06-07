@@ -196,6 +196,10 @@
     
 }
 
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     /** 全屏的话,直接强制全屏 */
