@@ -1,5 +1,7 @@
 【感谢BiliBili开源的视频直播框架.】https://github.com/Bilibili/ijkplayer
 
+【目前已经实现直播界面】
+
 需要在项目导入的依赖库
 
 libz.tbd
