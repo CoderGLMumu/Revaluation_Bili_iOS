@@ -1,3 +1,15 @@
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili1.png)
+ 
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili2.png)
+ 
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili3.png)
+ 
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili4.png)
+ 
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili5.png)
+ 
+ ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/raw/master/screenshots/bili6.png)
+ 
 【感谢BiliBili开源的视频直播框架.】https://github.com/Bilibili/ijkplayer
 
 【目前已经实现直播界面】
