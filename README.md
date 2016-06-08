@@ -1,7 +1,5 @@
  ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/blob/master/revaluation_Bili/revaluation_Bili/Resource/screenshots/bili1.png)
  
- ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/blob/master/revaluation_Bili/revaluation_Bili/Resource/screenshots/bili2.png)
- 
  ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/blob/master/revaluation_Bili/revaluation_Bili/Resource/screenshots/bili3.png)
  
  ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/blob/master/revaluation_Bili/revaluation_Bili/Resource/screenshots/bili4.png)
