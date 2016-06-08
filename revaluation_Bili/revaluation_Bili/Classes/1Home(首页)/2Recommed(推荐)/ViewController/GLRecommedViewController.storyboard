@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -15,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recommendCell" rowHeight="327" id="wpP-LU-Aiu" userLabel="热门推荐-recommend" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recommendCell" rowHeight="327" id="wpP-LU-Aiu" userLabel="热门推荐-recommend" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wpP-LU-Aiu" id="V04-Wa-rPu">
@@ -149,14 +150,11 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.49572417120000001" green="0.98788561919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="bottomView" destination="vDd-e2-dMS" id="0u0-4B-TlV"/>
-                                    <outlet property="enterButton" destination="h4y-ax-RaQ" id="FkO-oY-yuh"/>
-                                    <outlet property="middleView" destination="gXO-23-oNO" id="akz-Qd-m3U"/>
-                                    <outlet property="moreButton" destination="NRQ-bh-VOE" id="vaQ-KY-83E"/>
-                                    <outlet property="titleButton" destination="68l-tR-UOo" id="chl-zU-i5n"/>
+                                    <outlet property="bottomView" destination="vDd-e2-dMS" id="Mm1-oq-mJK"/>
+                                    <outlet property="middleView" destination="gXO-23-oNO" id="sON-Pf-lIy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weblinkCell" rowHeight="327" id="qVy-03-DPZ" userLabel="weblink" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weblinkCell" rowHeight="327" id="qVy-03-DPZ" userLabel="weblink" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="355" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qVy-03-DPZ" id="oYW-p3-XAr">
@@ -184,11 +182,8 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.1062390649" blue="0.17727495700000001" alpha="0.77737145389999995" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="middleView" destination="Had-8A-4fx" id="XL9-tC-W1G"/>
-                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="liveCell" rowHeight="327" id="jVA-oa-bVu" userLabel="正在直播-live" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="liveCell" rowHeight="327" id="jVA-oa-bVu" userLabel="正在直播-live" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="682" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jVA-oa-bVu" id="Ocj-5F-aOW">
@@ -321,12 +316,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.36385640819999998" blue="0.91703048600000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="bottomView" destination="MtU-Ct-GnX" id="ab9-wa-kJ4"/>
-                                    <outlet property="enterButton" destination="5Rp-xC-VBJ" id="9Uf-SA-fGV"/>
-                                    <outlet property="middleView" destination="Q5j-Bf-IMb" id="kha-ux-JVt"/>
-                                    <outlet property="moreButton" destination="sIY-FS-B0Y" id="vQG-gU-5EY"/>
-                                    <outlet property="refreshButton" destination="Fby-a3-cfi" id="hXi-b8-HUI"/>
-                                    <outlet property="titleButton" destination="RMW-5x-Fwr" id="8n6-sC-ZgR"/>
+                                    <outlet property="bottomView" destination="MtU-Ct-GnX" id="l7M-AM-Exl"/>
+                                    <outlet property="middleView" destination="Q5j-Bf-IMb" id="RHw-XO-aLf"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="regionCell" rowHeight="327" id="EKg-0O-RBU" userLabel="分区-region" customClass="GLRecommedCell">
@@ -466,8 +457,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.08235294118" green="0.62352941179999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="bottomView" destination="oyQ-Ct-b1u" id="LJa-Pp-rRl"/>
+                                    <outlet property="middleView" destination="MiD-0o-sYL" id="uMo-l4-HQc"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_2Cell" rowHeight="327" id="U8q-lo-HL1" userLabel="番剧推荐-bangumi_2" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_2Cell" rowHeight="327" id="U8q-lo-HL1" userLabel="番剧推荐-bangumi_2" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="1336" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U8q-lo-HL1" id="kcr-PR-NBz">
@@ -628,12 +623,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.09641611253" green="1" blue="0.082390135160000003" alpha="0.65378435280000002" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="bottomView" destination="Q2S-RU-jV5" id="xQD-5c-IIl"/>
-                                    <outlet property="enterButton" destination="6OD-Vt-ys3" id="HNg-Rf-Qsy"/>
-                                    <outlet property="middleView" destination="XSq-Vc-OHa" id="Grq-Vl-hmS"/>
-                                    <outlet property="moreButton" destination="LUI-zh-FEk" id="oYv-xk-0OB"/>
-                                    <outlet property="refreshButton" destination="xnm-q9-XFm" id="Ct9-wJ-urX"/>
-                                    <outlet property="titleButton" destination="aMw-MK-lPd" id="MtG-Yb-p8i"/>
+                                    <outlet property="bottomView" destination="Q2S-RU-jV5" id="kbg-ik-75o"/>
+                                    <outlet property="middleView" destination="XSq-Vc-OHa" id="qFW-BB-8oB"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zhoukanCell" rowHeight="327" id="pXF-Is-E7i" userLabel="周刊-nil" customClass="LBRecommedCell">
@@ -664,11 +655,8 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="middleView" destination="aGj-5Y-8eB" id="EIF-xl-88e"/>
-                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_3Cell" rowHeight="327" id="5JQ-hs-UO6" userLabel="电视剧更新-bangumi_3" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_3Cell" rowHeight="327" id="5JQ-hs-UO6" userLabel="电视剧更新-bangumi_3" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="1990" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5JQ-hs-UO6" id="hEy-cj-uXH">
@@ -694,34 +682,29 @@
                                                         </mask>
                                                     </variation>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOM-dP-v4Q">
-                                                    <rect key="frame" x="10" y="0.0" width="100" height="40"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="download" translatesAutoresizingMaskIntoConstraints="NO" id="c2N-DN-MUZ">
+                                                    <rect key="frame" x="10" y="5" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="Roh-dI-Xse"/>
-                                                        <constraint firstAttribute="width" constant="100" id="zL1-8f-5es"/>
+                                                        <constraint firstAttribute="width" secondItem="c2N-DN-MUZ" secondAttribute="height" multiplier="1:1" id="GuM-39-9GH"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                                    <state key="normal" title="萌宅推荐" image="download">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Roh-dI-Xse"/>
-                                                        </mask>
-                                                    </variation>
-                                                </button>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电视剧更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-5m-Zca">
+                                                    <rect key="frame" x="45" y="11" width="75" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="0ZH-5m-Zca" firstAttribute="leading" secondItem="c2N-DN-MUZ" secondAttribute="trailing" constant="5" id="Dxs-VK-Pgg"/>
                                                 <constraint firstAttribute="bottom" secondItem="gpi-VC-QrP" secondAttribute="bottom" id="MPX-Ud-qzW"/>
-                                                <constraint firstItem="JOM-dP-v4Q" firstAttribute="top" secondItem="Psw-dU-kxh" secondAttribute="top" id="Oqo-lT-Xld"/>
-                                                <constraint firstAttribute="bottom" secondItem="JOM-dP-v4Q" secondAttribute="bottom" id="aqO-xP-WD0"/>
+                                                <constraint firstAttribute="bottom" secondItem="c2N-DN-MUZ" secondAttribute="bottom" constant="5" id="N3a-Cg-rcr"/>
+                                                <constraint firstItem="c2N-DN-MUZ" firstAttribute="leading" secondItem="Psw-dU-kxh" secondAttribute="leading" constant="10" id="TPW-uS-Pfy"/>
                                                 <constraint firstAttribute="height" constant="40" id="ch9-Ip-o4Y"/>
+                                                <constraint firstItem="c2N-DN-MUZ" firstAttribute="top" secondItem="Psw-dU-kxh" secondAttribute="top" constant="5" id="iwX-Xh-8o4"/>
+                                                <constraint firstItem="0ZH-5m-Zca" firstAttribute="centerY" secondItem="c2N-DN-MUZ" secondAttribute="centerY" id="p0f-pH-Oo6"/>
                                                 <constraint firstItem="gpi-VC-QrP" firstAttribute="top" secondItem="Psw-dU-kxh" secondAttribute="top" id="spX-N8-cuh"/>
-                                                <constraint firstItem="JOM-dP-v4Q" firstAttribute="leading" secondItem="Psw-dU-kxh" secondAttribute="leading" constant="10" id="xvS-Bz-vTt"/>
                                                 <constraint firstAttribute="trailing" secondItem="gpi-VC-QrP" secondAttribute="trailing" constant="10" id="y5C-1O-C2D"/>
                                             </constraints>
                                         </view>
@@ -751,11 +734,7 @@
                                         <constraint firstAttribute="trailing" secondItem="Psw-dU-kxh" secondAttribute="trailing" id="yNO-ry-xwM"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="enterButton" destination="gpi-VC-QrP" id="saW-T8-czc"/>
-                                    <outlet property="middleView" destination="1sz-kO-Zda" id="Fn6-QE-zK7"/>
-                                    <outlet property="titleButton" destination="JOM-dP-v4Q" id="qbR-MS-Mef"/>
-                                </connections>
+                                <color key="backgroundColor" red="0.49572417120000001" green="0.98788561919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -767,7 +746,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cA8-Iw-yNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-15" y="86"/>
+            <point key="canvasLocation" x="-3" y="25"/>
         </scene>
     </scenes>
     <resources>

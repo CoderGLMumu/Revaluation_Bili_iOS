@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="k98-sB-x83" customClass="GLRecBodyView">
+            <rect key="frame" x="0.0" y="0.0" width="234" height="184.5"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5fx-SV-HeV">
+                    <rect key="frame" x="0.0" y="0.0" width="234" height="126.5"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ydawabdjabdhawbjawjdbjsavdjwhdjwahdbjawdbjaw" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TE9-DX-VaY">
+                    <rect key="frame" x="5" y="131" width="221" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.071964345080000006" green="0.071964345080000006" blue="0.071964345080000006" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-Wp-Uy6">
+                    <rect key="frame" x="5" y="162.5" width="33" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjG-me-6Ao">
+                    <rect key="frame" x="121" y="162" width="33" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TE9-DX-VaY" firstAttribute="top" secondItem="5fx-SV-HeV" secondAttribute="bottom" constant="5" id="A17-vu-3Qj"/>
+                <constraint firstItem="TE9-DX-VaY" firstAttribute="leading" secondItem="k98-sB-x83" secondAttribute="leading" constant="5" id="MkI-l0-PZo"/>
+                <constraint firstItem="wjG-me-6Ao" firstAttribute="leading" secondItem="k98-sB-x83" secondAttribute="leading" constant="121" id="PKc-4y-DTw"/>
+                <constraint firstAttribute="trailing" secondItem="5fx-SV-HeV" secondAttribute="trailing" id="Z92-xb-Vnv"/>
+                <constraint firstAttribute="trailing" secondItem="TE9-DX-VaY" secondAttribute="trailing" constant="8" id="a5i-gm-PYC"/>
+                <constraint firstItem="5fx-SV-HeV" firstAttribute="top" secondItem="k98-sB-x83" secondAttribute="top" id="aOW-0v-OOl"/>
+                <constraint firstItem="5fx-SV-HeV" firstAttribute="leading" secondItem="k98-sB-x83" secondAttribute="leading" id="bbB-fL-Fi3"/>
+                <constraint firstAttribute="bottom" secondItem="wjG-me-6Ao" secondAttribute="bottom" id="dmg-Fu-1v0"/>
+                <constraint firstItem="kMd-Wp-Uy6" firstAttribute="leading" secondItem="k98-sB-x83" secondAttribute="leading" constant="5" id="gse-Jr-eN1"/>
+                <constraint firstAttribute="bottom" secondItem="kMd-Wp-Uy6" secondAttribute="bottom" id="psj-B5-gSb"/>
+                <constraint firstAttribute="bottom" secondItem="5fx-SV-HeV" secondAttribute="bottom" constant="60" id="rjc-3w-WRb"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="176" y="282.25"/>
+        </view>
+    </objects>
+</document>

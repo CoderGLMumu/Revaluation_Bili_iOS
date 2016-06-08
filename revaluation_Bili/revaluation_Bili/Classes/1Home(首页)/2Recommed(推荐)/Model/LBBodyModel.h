@@ -15,8 +15,8 @@
 /* 评论 **/
 @property(nonatomic , strong)NSString *danmaku;
 
-///* 未知 **/
-//@property(nonatomic , strong)NSString *param;
+/* 未知 **/
+@property(nonatomic , strong)NSString *param;
 
 /* 播放量 **/
 @property(nonatomic , strong)NSString *play;

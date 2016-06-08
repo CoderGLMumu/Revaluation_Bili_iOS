@@ -38,25 +38,6 @@
 /**
  *  和数据模型无关的初始化设置,放到独立的方法中.
  */
-- (void)setup
-{
-    // 初始化网络请求相关的信息.
-     NSMutableArray * articls = [NSMutableArray array];
-    [articls addObjectsFromArray: self.cellItemViewModels];
-    // 调用网络请求工具类
-    NSString *url = @"http://app.bilibili.com/bangumi/operation_module?_device=android&_hwid=130a7709aeac1793&_ulv=10000&access_key=b938b895c8a7a0af574a6ae76f5631c8&appkey=c1b107428d337928&build=402003&module=index&platform=android&screen=xxhdpi&test=0&ts=1450884356000";
-    
-//    [HttpToolSDK getWithURL:url parameters:nil success:^(id json) {
-//        if (success) {
-//            success(json);
-//        }
-//    } failure:^(NSError *error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
-    
-}
 
 #pragma mark - 网络请求数据
 - (void)loadLiveViewDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure

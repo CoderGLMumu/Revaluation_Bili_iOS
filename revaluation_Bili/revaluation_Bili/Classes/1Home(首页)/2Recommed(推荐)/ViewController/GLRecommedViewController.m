@@ -10,9 +10,9 @@
 #import "GLRecommedViewModel.h"
 #import "GLRecommedItemViewModel.h"
 #import "GLRecommedCellViewModel.h"
+#import "GLRecommedCellModel.h"
 
-
-#import "LBRecommedCell.h"
+#import "GLRecommedCell.h"
 
 #import "GLDIYHeader.h"
 
@@ -89,40 +89,53 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 
     // 传递VM
     // 设置 Cell...
-
+    
     GLRecommedItemViewModel *vm = self.viewModel.cellItemViewModels[indexPath.row];
+    
     GLRecommedCellViewModel *cellVM = [[GLRecommedCellViewModel alloc]init];
+    
+    cellVM.title = vm.title;
+    
     cellVM.body = vm.body;
+    cellVM.type = vm.type;
     
     if ([vm.type isEqualToString:@"recommend"]) {
-        LBRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:recommendCellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:recommendCellID];
         cell.viewModel = cellVM;
+        
         return cell;
     } else if([vm.type isEqualToString:@"live"]){
-        return [tableView dequeueReusableCellWithIdentifier:liveCellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:liveCellID];
+        cell.viewModel = cellVM;
+        return cell;
     } else if([vm.type isEqualToString:@"bangumi_2"]) {
-        return [tableView dequeueReusableCellWithIdentifier:bangumi_2CellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:bangumi_2CellID];
+        cell.viewModel = cellVM;
+        return cell;
     } else if([vm.type isEqualToString:@"weblink"]) {
-        return [tableView dequeueReusableCellWithIdentifier:weblinkCellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:weblinkCellID];
+        cell.viewModel = cellVM;
+        return cell;
     } else if(vm.type == nil) {
         return [tableView dequeueReusableCellWithIdentifier:zhoukanCellID];
     } else if([vm.type isEqualToString:@"region"]) {
-         return [tableView dequeueReusableCellWithIdentifier:regionCellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:regionCellID];
+        cell.viewModel = cellVM;
+         return cell;
     } else if([vm.type isEqualToString:@"bangumi_3"]) {
          return [tableView dequeueReusableCellWithIdentifier:bangumi_3CellID];
     }
     
-    UITableViewCell *cell = [UITableViewCell new];
+    GLRecommedCell *cell = [GLRecommedCell new];
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    GLRecommedItemViewModel *vm=self.viewModel.cellItemViewModels[indexPath.row];
+//    GLRecommedItemViewModel *vm=self.viewModel.cellItemViewModels[indexPath.row];
 //    NSLog(@"tettt%f",vm.cellHeight);
     return [self.viewModel.cellItemViewModels[indexPath.row] cellHeight];
-
 }
 
 

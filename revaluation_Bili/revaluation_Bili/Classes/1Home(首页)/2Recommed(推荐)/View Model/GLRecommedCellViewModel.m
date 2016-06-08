@@ -10,6 +10,22 @@
 
 #import "GLRecommedCellModel.h"
 
+#import "GLBodyModel.h"
+
+#import "GLRecommedCellItemViewModel.h"
+
+//#import "LBRecBodyView.h"
+//#import "LBLiveBodyView.h"
+//#import "LBBangumiBodyView.h"
+
+@interface GLRecommedCellViewModel ()
+
+@property (nonatomic , strong)NSArray *bodyArr;
+
+@property(nonatomic , assign) CGFloat bodyHeight;
+
+@end
+
 @implementation GLRecommedCellViewModel
 
 - (instancetype)init
@@ -23,16 +39,45 @@
 {
     self = [super init];
     
-//    if (nil != self) {
-//        // 设置self.blogId与model.id的相互关系.
-//        [RACObserve(model, id) subscribeNext:^(id x) {
-//            self.blogId = x;
-//        }];
-//        
+    if (nil != self) {
+        
+        
 //        [self setup];
-//    }
+    }
     
     return self;
+}
+
+- (void)setData:(GLRecommedCellModel *)model
+{
+
+}
+
+- (void)setBody:(NSArray *)body
+{
+    _body = body;
+    NSArray *cellModel = [NSArray yy_modelArrayWithClass:[GLRecommedCellModel class] json:body];
+    
+    NSMutableArray * cellbodyItemViewModels = [NSMutableArray array];
+    
+    RACSequence * cellItemViewModel = [cellModel.rac_sequence
+                                       map:^(GLRecommedCellModel * model) {
+                                           GLRecommedCellItemViewModel * vm = [[GLRecommedCellItemViewModel alloc] initWithModel: model];
+                                           
+                                           return vm;
+                                       }];
+    
+    
+    [cellbodyItemViewModels addObjectsFromArray: cellItemViewModel.array];
+    
+    self.cellbodyItemViewModels = cellbodyItemViewModels;
+    
+//    [self setData: cellModel];
+}
+
+- (void)gaolintest
+{
+    
 }
 
 @end

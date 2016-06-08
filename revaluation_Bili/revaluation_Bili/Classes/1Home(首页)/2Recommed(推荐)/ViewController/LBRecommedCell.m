@@ -9,9 +9,9 @@
 #import "LBRecommedCell.h"
 #import "LBRecommedModel.h"
 #import "LBBodyModel.h"
-#import "LBRecBodyView.h"
-#import "LBLiveBodyView.h"
-#import "LBBangumiBodyView.h"
+//#import "LBRecBodyView.h"
+//#import "LBLiveBodyView.h"
+//#import "LBBangumiBodyView.h"
 
 #import "GLRecommedCellViewModel.h"
 
@@ -30,17 +30,52 @@
 
 @property (nonatomic , strong)NSArray *bodyArr;
 
+/** cell的高度 */
+@property(nonatomic , assign)CGFloat middleVH;
+
 @end
 
 @implementation LBRecommedCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
 }
+
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        [self setup];
+//    }
+//    return self;
+//}
 
 - (void)setViewModel:(GLRecommedCellViewModel *)viewModel
 {
     _viewModel = viewModel;
+    [RACObserve(self.viewModel, middleVH) subscribeNext:^(NSNumber *middleVH) {
+        self.middleVH = middleVH.floatValue;
+    }];
+    
+    [RACObserve(self.viewModel, bodyView) subscribeNext:^(NSArray *body) {
+        
+        [self updateView];
+    }];
+    [self.viewModel gaolintest];
+}
+
+- (void)updateView
+{
+    
+    
+    if ([self.viewModel.type isEqualToString:@"recommend"]) {
+        self.middleView.frame = CGRectMake(0, 40, GLScreenW, self.middleVH);
+
+        self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
+        /** MVVM中VM不应该有视图,但是先这样写着吧 */
+        [self.middleView addSubview:self.viewModel.bodyView];
+    }
+//    NSLog(@"gaolintest%@",self.viewModel.bodyView);
 }
 
 - (void)setCellItem:(LBRecommedModel *)cellItem
@@ -64,25 +99,25 @@
         // 行间距
         NSInteger rowSpace = 10;
         
-        for (int i = 0; i < 4; i ++) {
-            LBLiveBodyView *bodyView = [LBLiveBodyView LBLiveBodyViewFromNib];
-            bodyView.bodyItem = self.bodyArr[i];
-            
-            CGFloat bodyW = (GLScreenW - 30) * 0.5;
-            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
-            
-            // 动态计算中间view的高度
-            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
-            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
-            
-            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
-            
-            
-            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
-            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
-            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
-            [self.middleView addSubview:bodyView];
-        }
+//        for (int i = 0; i < 4; i ++) {
+//            LBLiveBodyView *bodyView = [LBLiveBodyView LBLiveBodyViewFromNib];
+//            bodyView.bodyItem = self.bodyArr[i];
+//            
+//            CGFloat bodyW = (GLScreenW - 30) * 0.5;
+//            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
+//            
+//            // 动态计算中间view的高度
+//            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
+//            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
+//            
+//            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
+//            
+//            
+//            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
+//            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
+//            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
+//            [self.middleView addSubview:bodyView];
+//        }
         
         
     }else if ([type  isEqual: @"bangumi_2"] || [type  isEqual: @"bangumi_3"]) {
@@ -94,24 +129,24 @@
         // 行间距
         NSInteger rowSpace = 10;
         
-        for (int i = 0; i < 4; i ++) {
-            LBBangumiBodyView *bodyView = [LBBangumiBodyView LBBangumiBodyViewFromNib];
-            bodyView.bodyItem = _bodyArr[i];
-            
-            CGFloat bodyW = (GLScreenW - 30) * 0.5;
-            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
-            
-            // 动态计算中间view的高度
-            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
-            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
-            
-            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
-            
-            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
-            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
-            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
-            [self.middleView addSubview:bodyView];
-        }
+//        for (int i = 0; i < 4; i ++) {
+//            LBBangumiBodyView *bodyView = [LBBangumiBodyView LBBangumiBodyViewFromNib];
+//            bodyView.bodyItem = _bodyArr[i];
+//            
+//            CGFloat bodyW = (GLScreenW - 30) * 0.5;
+//            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
+//            
+//            // 动态计算中间view的高度
+//            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
+//            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
+//            
+//            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
+//            
+//            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
+//            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
+//            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
+//            [self.middleView addSubview:bodyView];
+//        }
         
     }else if (type == nil || [type isEqualToString:@"weblink"]) {
         // 设置广告的cell
@@ -134,26 +169,26 @@
         // 行间距
         NSInteger rowSpace = 10;
         
-        for (int i = 0; i < 4; i ++) {
-            LBRecBodyView *bodyView = [LBRecBodyView LBRecBodyViewFromNib];
-            bodyView.bodyItem = _bodyArr[i];
-            
-            CGFloat bodyW = (GLScreenW - 30) * 0.5;
-            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
-            
-            // 动态计算中间view的高度
-            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
-            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
-            
-            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
-            
-            
-            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
-            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
-            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
-            [self.middleView addSubview:bodyView];
-            
-        }
+//        for (int i = 0; i < 4; i ++) {
+//            LBRecBodyView *bodyView = [LBRecBodyView LBRecBodyViewFromNib];
+//            bodyView.bodyItem = _bodyArr[i];
+//            
+//            CGFloat bodyW = (GLScreenW - 30) * 0.5;
+//            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
+//            
+//            // 动态计算中间view的高度
+//            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
+//            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
+//            
+//            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
+//            
+//            
+//            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
+//            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
+//            bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
+//            [self.middleView addSubview:bodyView];
+//            
+//        }
         
     }
     
