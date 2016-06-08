@@ -98,18 +98,20 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     
     cellVM.body = vm.body;
     cellVM.type = vm.type;
-    
+    cellVM.style = vm.style;
     if ([vm.type isEqualToString:@"recommend"]) {
         GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:recommendCellID];
         cell.viewModel = cellVM;
-        
+        [self pushVideoVC:cell];
         return cell;
     } else if([vm.type isEqualToString:@"live"]){
         GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:liveCellID];
+        [self pushVideoVC:cell];
         cell.viewModel = cellVM;
         return cell;
     } else if([vm.type isEqualToString:@"bangumi_2"]) {
         GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:bangumi_2CellID];
+        [self pushVideoVC:cell];
         cell.viewModel = cellVM;
         return cell;
     } else if([vm.type isEqualToString:@"weblink"]) {
@@ -117,9 +119,13 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
         cell.viewModel = cellVM;
         return cell;
     } else if(vm.type == nil) {
-        return [tableView dequeueReusableCellWithIdentifier:zhoukanCellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:zhoukanCellID];
+        cellVM.type = @"zhoukan";
+        cell.viewModel = cellVM;
+        return cell;
     } else if([vm.type isEqualToString:@"region"]) {
         GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:regionCellID];
+        [self pushVideoVC:cell];
         cell.viewModel = cellVM;
          return cell;
     } else if([vm.type isEqualToString:@"bangumi_3"]) {
@@ -129,6 +135,15 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     GLRecommedCell *cell = [GLRecommedCell new];
     
     return cell;
+}
+
+- (void)pushVideoVC:(GLRecommedCell *)cell
+{
+    cell.Videodata = ^(NSString *aid){
+        UIViewController *vc = [UIViewController new];
+        vc.view.backgroundColor = [UIColor redColor];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -143,6 +158,13 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 {
     // 跳转控制器
 
+//    cell.Videodata = ^{
+//        UIViewController *vc = [UIViewController new];
+//        vc.view.backgroundColor = [UIColor redColor];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    
+//    };
+    
 }
 
 @end

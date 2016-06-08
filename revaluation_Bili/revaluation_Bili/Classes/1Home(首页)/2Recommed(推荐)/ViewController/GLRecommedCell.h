@@ -14,4 +14,7 @@
 
 @property (strong, nonatomic) GLRecommedCellViewModel * viewModel;
 
+/** 传递给控制器视频播放需要的数据 */
+@property (nonatomic, strong) void((^Videodata)(NSString *aid));
+
 @end

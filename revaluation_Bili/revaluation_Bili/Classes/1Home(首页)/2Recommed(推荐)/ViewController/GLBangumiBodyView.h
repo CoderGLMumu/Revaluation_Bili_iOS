@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLBangumiBodyView : UIView
+@interface GLBangumiBodyView : UIControl
 
 + (instancetype)GLBangumiBodyViewFromNib;
+
+/** body */
+@property (nonatomic, strong) NSDictionary *body;
 
 @end

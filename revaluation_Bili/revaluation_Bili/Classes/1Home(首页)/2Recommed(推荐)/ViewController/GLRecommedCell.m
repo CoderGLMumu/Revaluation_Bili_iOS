@@ -8,6 +8,8 @@
 
 #import "GLRecommedCell.h"
 #import "LBRecommedModel.h"
+#import "GLRecommedCellModel.h"
+
 #import "GLRecommedCellViewModel.h"
 
 #import "GLRecBodyView.h"
@@ -23,7 +25,7 @@
 
 @property (nonatomic, weak) IBOutlet UIView *bottomView;
 
-@property (nonatomic, weak) UIView *bodyView;
+@property (nonatomic, weak) UIControl *bodyView;
 
 /** cell的高度 */
 @property(nonatomic , assign)CGFloat middleVH;
@@ -42,8 +44,7 @@
     [RACObserve(self.viewModel, middleVH) subscribeNext:^(NSNumber *middleVH) {
         self.middleVH = middleVH.floatValue;
     }];
-    
-    [RACObserve(self.viewModel, title) subscribeNext:^(NSString *title) {
+    [RACObserve(self.viewModel, style) subscribeNext:^(NSString *style) {
         // 创建/布局子视图
         [self setupView];
     }];
@@ -55,6 +56,14 @@
 
 - (void)setupView
 {
+    
+    if (self.middleView.subviews) {
+        for (UIView *view in self.middleView.subviews) {
+            [view removeFromSuperview];
+        }
+    }
+//    NSLog(@"%@---",self.viewModel.type);
+//    NSLog(@"%@-2--",self.viewModel.style);
     if ([self.viewModel.type isEqual: @"recommend"] || [self.viewModel.type isEqual: @"live"] || [self.viewModel.type isEqual: @"bangumi_2"] || [self.viewModel.type isEqual: @"region"]) {
     // 设置热门推荐的middleView和bottomView
     // 列
@@ -63,25 +72,27 @@
     NSInteger colSpace = 10;
     // 行间距
     NSInteger rowSpace = 10;
-    
-    if (self.middleView.subviews) {
-        for (UIView *view in self.middleView.subviews) {
-            [view removeFromSuperview];
-        }
-    }
-    
-    for (int i = 0; i < 4; i ++) {
+        
+    for (int i = 0; i < self.viewModel.body.count; i ++) {
         if ([self.viewModel.type isEqualToString:@"recommend"]) {
-            self.bodyView = [GLRecBodyView GLRecBodyViewFromNib];
+            GLRecBodyView *bodyview = [GLRecBodyView GLRecBodyViewFromNib];
+            bodyview.body = self.viewModel.body[i];
+            self.bodyView = bodyview;
         }else if ([self.viewModel.type isEqualToString:@"live"])
         {
-        self.bodyView = [GLLiveBodyView GLLiveBodyViewFromNib];
+        GLLiveBodyView *bodyview = [GLLiveBodyView GLLiveBodyViewFromNib];
+            bodyview.body = self.viewModel.body[i];
+            self.bodyView = bodyview;
         }else if ([self.viewModel.type isEqualToString:@"bangumi_2"])
         {
-            self.bodyView = [GLBangumiBodyView GLBangumiBodyViewFromNib];
+            GLBangumiBodyView *bodyview = [GLBangumiBodyView GLBangumiBodyViewFromNib];
+            bodyview.body = self.viewModel.body[i];
+            self.bodyView = bodyview;
         }else if ([self.viewModel.type isEqualToString:@"region"])
         {
-            self.bodyView = [GLRecBodyView GLRecBodyViewFromNib];
+            GLRecBodyView *bodyview = [GLRecBodyView GLRecBodyViewFromNib];
+            bodyview.body = self.viewModel.body[i];
+            self.bodyView = bodyview;
         }
         
 //        GLLiveBodyView
@@ -99,10 +110,36 @@
         CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
         CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
         self.bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
-        
         [self.middleView addSubview:self.bodyView];
+        
+        [[self.bodyView rac_signalForControlEvents:UIControlEventTouchUpInside ]subscribeNext:^(id x) {
+            // 传到控制器push视频播放页面
+            
+            if (self.Videodata) {
+                GLRecommedCellModel *cellM = self.viewModel.cellbodyItemViewModels[i];
+                self.Videodata(cellM.param);
+            }
+        }];
+        
+        }
+    }else if ([self.viewModel.style isEqual: @"gl_pic"] || [self.viewModel.type isEqual: @"weblink"]){
+
+        UIImageView *bodyView = [[UIImageView alloc]init];
+        [bodyView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.body[0][@"cover"]] placeholderImage:[UIImage imageNamed:@"placeholderImage1"]];
+        NSNumber *height =  self.viewModel.body.firstObject[@"height"];
+        NSNumber *width = self.viewModel.body.firstObject[@"width"];
+        bodyView.frame = CGRectMake(0, 0, GLScreenW - 20, height.floatValue / width.floatValue * (GLScreenW - 20));
+
+        [self.middleView addSubview:bodyView];
+
+    }else if ([self.viewModel.type isEqual: @"bangumi_3"]){
+        for (int i = 0; i < self.viewModel.body.count; ++i) {
+            
         }
     }
+    
+    
+
 }
 
 - (void)layoutSubviews

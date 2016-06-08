@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLLiveBodyView : UIView
+@interface GLLiveBodyView : UIControl
 
 + (instancetype)GLLiveBodyViewFromNib;
+
+/** body */
+@property (nonatomic, strong) NSDictionary *body;
 
 @end

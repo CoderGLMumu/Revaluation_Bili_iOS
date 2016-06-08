@@ -182,6 +182,9 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.1062390649" blue="0.17727495700000001" alpha="0.77737145389999995" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="middleView" destination="Had-8A-4fx" id="64d-rY-wIS"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="liveCell" rowHeight="327" id="jVA-oa-bVu" userLabel="正在直播-live" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="682" width="600" height="327"/>
@@ -627,7 +630,7 @@
                                     <outlet property="middleView" destination="XSq-Vc-OHa" id="qFW-BB-8oB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zhoukanCell" rowHeight="327" id="pXF-Is-E7i" userLabel="周刊-nil" customClass="LBRecommedCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zhoukanCell" rowHeight="327" id="pXF-Is-E7i" userLabel="周刊-nil" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="1663" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pXF-Is-E7i" id="G62-zp-UAN">
@@ -655,6 +658,9 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="middleView" destination="aGj-5Y-8eB" id="8d7-QR-rcB"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_3Cell" rowHeight="327" id="5JQ-hs-UO6" userLabel="电视剧更新-bangumi_3" customClass="GLRecommedCell">
                                 <rect key="frame" x="0.0" y="1990" width="600" height="327"/>
@@ -735,6 +741,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.49572417120000001" green="0.98788561919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="middleView" destination="1sz-kO-Zda" id="nAk-Rw-bGs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

@@ -14,13 +14,16 @@
 
 - (instancetype)initWithModel:(GLRecommedCellModel *)model;
 
+/* 类型 **/
+@property(nonatomic , strong)NSString *style;
+
 /* 图片URL **/
-@property(nonatomic , strong)NSString *cover;
+@property(nonatomic , strong)NSString *cover; 
 
 /* 评论 **/
 @property(nonatomic , strong)NSString *danmaku;
 
-/* 未知 **/
+/* 视频详情界面请求需要用到的aid **/
 @property(nonatomic , strong)NSString *param;
 
 /* 播放量 **/
@@ -28,9 +31,6 @@
 
 /* 番剧更新日期 **/
 @property(nonatomic , strong)NSString *desc1;
-
-/* 类型 **/
-@property(nonatomic , strong)NSString *style;
 
 /* 标题 **/
 @property(nonatomic , strong)NSString *title;

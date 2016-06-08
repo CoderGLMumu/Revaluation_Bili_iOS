@@ -13,6 +13,8 @@
 
 /** 头部标题 */
 @property(nonatomic , strong)NSString *title;
+/** 头部标题 */
+@property(nonatomic , strong)NSString *style;
 /** 用于判断cell类型 */
 @property(nonatomic , strong)NSString *type;
 /** title【头部标题】 */

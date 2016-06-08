@@ -61,7 +61,6 @@
         
         [self updateView];
     }];
-    [self.viewModel gaolintest];
 }
 
 - (void)updateView

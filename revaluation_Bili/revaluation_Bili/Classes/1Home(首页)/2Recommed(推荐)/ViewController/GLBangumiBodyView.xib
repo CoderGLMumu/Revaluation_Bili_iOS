@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLRecommedCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="MOR-xa-v9N" customClass="GLBangumiBodyView">
             <rect key="frame" x="0.0" y="0.0" width="234" height="186.5"/>
@@ -42,6 +42,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="coverImageView" destination="UCd-jf-1Ok" id="P5v-cw-XYw"/>
+                <outlet property="desc1Label" destination="kkG-3P-bhb" id="6ax-e7-ZjZ"/>
+                <outlet property="titleLabel" destination="5ng-hd-AZz" id="HfW-TM-xwJ"/>
+            </connections>
             <point key="canvasLocation" x="173" y="237.25"/>
         </view>
     </objects>

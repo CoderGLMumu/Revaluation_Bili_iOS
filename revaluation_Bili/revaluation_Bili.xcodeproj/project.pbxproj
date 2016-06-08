@@ -1114,11 +1114,11 @@
 			children = (
 				0429A7EA1CFB16D300D28AB2 /* LBRecommedViewController.h */,
 				0429A7EB1CFB16D300D28AB2 /* LBRecommedViewController.m */,
+				0429A7E71CFB16D300D28AB2 /* LBRecommedCell.h */,
+				0429A7E81CFB16D300D28AB2 /* LBRecommedCell.m */,
 				0429A7DC1CFB16D200D28AB2 /* GLRecommedViewController.h */,
 				0429A7DD1CFB16D200D28AB2 /* GLRecommedViewController.m */,
 				044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */,
-				0429A7E71CFB16D300D28AB2 /* LBRecommedCell.h */,
-				0429A7E81CFB16D300D28AB2 /* LBRecommedCell.m */,
 				04F750671D06BED100527C8F /* GLRecommedCell.h */,
 				04F750681D06BED100527C8F /* GLRecommedCell.m */,
 				04F7506C1D06C3FD00527C8F /* GLRecBodyView.h */,

@@ -13,6 +13,10 @@
 #import "GLBangumiBodyView.h"
 #import "GLLiveBodyView.h"
 
+@interface GLRecommedCellItemViewModel ()
+
+@end
+
 @implementation GLRecommedCellItemViewModel
 
 - (instancetype)initWithModel:(GLRecommedCellModel *)model

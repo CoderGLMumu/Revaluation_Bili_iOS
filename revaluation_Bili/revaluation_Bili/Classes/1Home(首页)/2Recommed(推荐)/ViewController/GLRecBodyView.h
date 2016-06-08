@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLRecBodyView : UIView
+@interface GLRecBodyView : UIControl
 
 + (instancetype)GLRecBodyViewFromNib;
+
+/** body */
+@property (nonatomic, strong) NSDictionary *body;
 
 @end

@@ -31,6 +31,7 @@
     self = [super init];
     if (self) {
         [self handleLiveViewData];
+        
     }
     return self;
 }

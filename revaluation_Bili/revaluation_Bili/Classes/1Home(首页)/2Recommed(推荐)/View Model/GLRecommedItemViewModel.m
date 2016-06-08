@@ -21,10 +21,12 @@
         // 设置vm与model的相互关系.
         [RACObserve(model, head) subscribeNext:^(NSDictionary *head) {
             self.title = head[@"title"];
+            self.style = head[@"style"];
         }];
         
         [RACObserve(model, type) subscribeNext:^(NSString *type) {
             self.type = type;
+//            NSLog(@"glglglglg%@",type);
         }];
         
         [RACObserve(model, body) subscribeNext:^(NSArray *body) {
@@ -41,6 +43,7 @@
     if (_cellHeight) return _cellHeight;
     
     if (_type == nil || [_type isEqualToString:@"weblink"]) return (GLScreenW - 20) * 211 / 714 + 30;
+    if ([_type isEqualToString:@"bangumi_3"]) return (GLScreenW - 20) * 320 / 422 + 30;
     
     //    GLBodyModel *item = [NSArray yy_modelArrayWithClass:[GLBodyModel class] json:self.body][0];
     

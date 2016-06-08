@@ -75,9 +75,4 @@
 //    [self setData: cellModel];
 }
 
-- (void)gaolintest
-{
-    
-}
-
 @end

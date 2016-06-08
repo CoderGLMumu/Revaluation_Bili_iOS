@@ -17,9 +17,11 @@
 @interface GLRecommedCellViewModel : NSObject
 
 /** 存储/传递cell_body的viewModel数组 */
-@property (nonatomic, strong) NSArray *cellbodyItemViewModels;
+@property (nonatomic, strong)NSArray *cellbodyItemViewModels;
 /* 标题 **/
 @property(nonatomic , strong)NSString *title;
+
+@property(nonatomic , strong)NSString *style;
 
 @property(nonatomic , strong)NSArray *body;
 
@@ -29,8 +31,6 @@
 @property(nonatomic , assign)CGFloat middleVH;
 
 @property(nonatomic , strong)LBRecBodyView *bodyView;
-
-- (void)gaolintest;
 
 /** cell的高度 */
 @property(nonatomic , assign)CGFloat cellHeight;
