@@ -34,6 +34,12 @@ static NSString * const reuseIdentifier = @"Cell";
     return _glLiveContentShowViewModel;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 + (instancetype)viewController
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];

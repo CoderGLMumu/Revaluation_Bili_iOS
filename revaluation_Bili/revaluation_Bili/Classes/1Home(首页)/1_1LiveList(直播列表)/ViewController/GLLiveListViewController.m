@@ -74,8 +74,12 @@
         weakSelf.liveListTitleViewController.btn_Titles = btn_titles;
         [weakSelf.liveListTitleViewController setupListView];
     }];
-   
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 

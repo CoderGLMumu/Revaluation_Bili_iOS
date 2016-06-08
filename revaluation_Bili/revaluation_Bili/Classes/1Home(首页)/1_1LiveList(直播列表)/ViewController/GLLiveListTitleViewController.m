@@ -92,6 +92,12 @@ static CGFloat margin = 20;
     return _dropDownListbtndisposable;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 #pragma mark - 懒加载buttonsArray
 - (NSMutableArray *)buttonsArray
 {
@@ -119,12 +125,12 @@ static CGFloat margin = 20;
 
 #warning 不执行viewWillAppear 是为什么
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    
+//    
+//}
 
 - (void)viewDidAppear:(BOOL)animated
 {

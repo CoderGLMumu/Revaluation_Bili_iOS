@@ -173,6 +173,8 @@
 		04E354D61D07E7D100EAA424 /* bili4.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354D01D07E7D100EAA424 /* bili4.png */; };
 		04E354D71D07E7D100EAA424 /* bili5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354D11D07E7D100EAA424 /* bili5.png */; };
 		04E354D81D07E7D100EAA424 /* bili6.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354D21D07E7D100EAA424 /* bili6.png */; };
+		04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */; };
+		04E354E11D08568C00EAA424 /* GLVideoRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */; };
 		04ECAB6D1CFDD6B1000F4BFC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */; };
 		04F750691D06BED100527C8F /* GLRecommedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F750681D06BED100527C8F /* GLRecommedCell.m */; };
 		04F7506E1D06C3FD00527C8F /* GLRecBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7506D1D06C3FD00527C8F /* GLRecBodyView.m */; };
@@ -449,6 +451,9 @@
 		04E354D01D07E7D100EAA424 /* bili4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili4.png; sourceTree = "<group>"; };
 		04E354D11D07E7D100EAA424 /* bili5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili5.png; sourceTree = "<group>"; };
 		04E354D21D07E7D100EAA424 /* bili6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili6.png; sourceTree = "<group>"; };
+		04E354DD1D08567800EAA424 /* GLVideoRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoRoomViewController.h; sourceTree = "<group>"; };
+		04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomViewController.m; sourceTree = "<group>"; };
+		04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLVideoRoomViewController.storyboard; sourceTree = "<group>"; };
 		04ECAB641CFDD559000F4BFC /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = revaluation_Bili/Other/VideoSDK/ijkplayer/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04ECAB6E1CFDD73E000F4BFC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -1236,6 +1241,7 @@
 				0429A6E41CFB10F500D28AB2 /* 3Discover(发现) */,
 				0429A6E91CFB10F500D28AB2 /* 4Mine(我的) */,
 				0429A70E1CFB10F500D28AB2 /* 5LiveRoom(直播房间) */,
+				04E354D91D08563E00EAA424 /* 6VideoRoom(AV9999999) */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1367,6 +1373,40 @@
 				04E354D21D07E7D100EAA424 /* bili6.png */,
 			);
 			path = screenshots;
+			sourceTree = "<group>";
+		};
+		04E354D91D08563E00EAA424 /* 6VideoRoom(AV9999999) */ = {
+			isa = PBXGroup;
+			children = (
+				04E354DA1D08563E00EAA424 /* Model */,
+				04E354DB1D08563E00EAA424 /* View Model */,
+				04E354DC1D08563E00EAA424 /* ViewController */,
+			);
+			path = "6VideoRoom(AV9999999)";
+			sourceTree = "<group>";
+		};
+		04E354DA1D08563E00EAA424 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04E354DB1D08563E00EAA424 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		04E354DC1D08563E00EAA424 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04E354DD1D08567800EAA424 /* GLVideoRoomViewController.h */,
+				04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */,
+				04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		04F9CB501CEA063000D59FD1 = {
@@ -1566,6 +1606,7 @@
 				0451B52E1CF4578F004E5AB3 /* Management_Mask@2x.png in Resources */,
 				0460EE3F1D0351D00078FCB2 /* ani_loading_3@2x.png in Resources */,
 				04E354D41D07E7D100EAA424 /* bili2.png in Resources */,
+				04E354E11D08568C00EAA424 /* GLVideoRoomViewController.storyboard in Resources */,
 				0460EE4E1D0351DE0078FCB2 /* player_window_black@2x.png in Resources */,
 				04298CB71CFEA30E00A2DB48 /* empty_list_no_network_2.jpg in Resources */,
 				0460EE801D03520C0078FCB2 /* playgesture_BrightnessSun6@2x.png in Resources */,
@@ -1658,6 +1699,7 @@
 				0429A70F1CFB10F500D28AB2 /* GLNavigationViewModel.m in Sources */,
 				0429A7121CFB10F500D28AB2 /* GLTabBarController.m in Sources */,
 				04F7631E1D0423390047C7BD /* GLRecommedModel.m in Sources */,
+				04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */,
 				0429A81B1CFB16D300D28AB2 /* GLLiveListViewModel.m in Sources */,
 				0429A8321CFB16D300D28AB2 /* LBBodyModel.m in Sources */,
 				0429A8471CFB16D300D28AB2 /* LBDarmaViewController.m in Sources */,

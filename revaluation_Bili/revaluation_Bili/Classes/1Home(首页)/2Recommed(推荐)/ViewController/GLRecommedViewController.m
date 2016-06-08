@@ -7,6 +7,8 @@
 //
 
 #import "GLRecommedViewController.h"
+#import "GLVideoRoomViewController.h"
+
 #import "GLRecommedViewModel.h"
 #import "GLRecommedItemViewModel.h"
 #import "GLRecommedCellViewModel.h"
@@ -140,9 +142,10 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 - (void)pushVideoVC:(GLRecommedCell *)cell
 {
     cell.Videodata = ^(NSString *aid){
-        UIViewController *vc = [UIViewController new];
-        vc.view.backgroundColor = [UIColor redColor];
-        [self.navigationController pushViewController:vc animated:YES];
+        GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
+        
+        
+        [self.navigationController pushViewController:videoVC animated:YES];
     };
 }
 
