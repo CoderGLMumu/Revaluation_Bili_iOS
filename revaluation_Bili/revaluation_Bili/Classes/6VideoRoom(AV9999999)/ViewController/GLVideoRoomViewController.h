@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GLVideoRoomViewModel;
 @interface GLVideoRoomViewController : UIViewController
+
+@property (strong, nonatomic) GLVideoRoomViewModel * viewModel;
 
 @end

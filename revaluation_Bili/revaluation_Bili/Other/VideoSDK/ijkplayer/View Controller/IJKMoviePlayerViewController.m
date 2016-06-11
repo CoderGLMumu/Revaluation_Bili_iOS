@@ -209,6 +209,8 @@
     }
 }
 
+- (BOOL)shouldAutorotate{ return NO; }
+
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     /** 全屏的话,直接强制全屏 */

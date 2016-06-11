@@ -105,6 +105,9 @@
 		0429A8531CFB19F600D28AB2 /* GLLiveContentShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8521CFB19F600D28AB2 /* GLLiveContentShowViewController.m */; };
 		0429F9B41CEF46DC005D3D3C /* UIImage+LBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429F9B31CEF46DC005D3D3C /* UIImage+LBImage.m */; };
 		042C3A441CF084B30026D9EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C3A431CF084B30026D9EA /* Launch Screen.storyboard */; };
+		043D6BC31D0A95EC007EC932 /* GLVideoRoomViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D6BC21D0A95EC007EC932 /* GLVideoRoomViewModel.m */; };
+		043D6BC61D0A9624007EC932 /* GLVideoRoomItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D6BC51D0A9624007EC932 /* GLVideoRoomItemViewModel.m */; };
+		043D6BC91D0A9649007EC932 /* GLVideoRoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */; };
 		04422A741CEF7F0C0033FD99 /* LBColorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 04422A731CEF7F0C0033FD99 /* LBColorScale.m */; };
 		044A30541D05C778007E45B0 /* GLRecommedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */; };
 		044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */; };
@@ -370,6 +373,12 @@
 		0429F9B21CEF46DC005D3D3C /* UIImage+LBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBImage.h"; sourceTree = "<group>"; };
 		0429F9B31CEF46DC005D3D3C /* UIImage+LBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBImage.m"; sourceTree = "<group>"; };
 		042C3A431CF084B30026D9EA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		043D6BC11D0A95EC007EC932 /* GLVideoRoomViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoRoomViewModel.h; sourceTree = "<group>"; };
+		043D6BC21D0A95EC007EC932 /* GLVideoRoomViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomViewModel.m; sourceTree = "<group>"; };
+		043D6BC41D0A9624007EC932 /* GLVideoRoomItemViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoRoomItemViewModel.h; sourceTree = "<group>"; };
+		043D6BC51D0A9624007EC932 /* GLVideoRoomItemViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomItemViewModel.m; sourceTree = "<group>"; };
+		043D6BC71D0A9649007EC932 /* GLVideoRoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoRoomModel.h; sourceTree = "<group>"; };
+		043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomModel.m; sourceTree = "<group>"; };
 		04422A721CEF7F0C0033FD99 /* LBColorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBColorScale.h; sourceTree = "<group>"; };
 		04422A731CEF7F0C0033FD99 /* LBColorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBColorScale.m; sourceTree = "<group>"; };
 		044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRecommedViewController.storyboard; sourceTree = "<group>"; };
@@ -1388,6 +1397,8 @@
 		04E354DA1D08563E00EAA424 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				043D6BC71D0A9649007EC932 /* GLVideoRoomModel.h */,
+				043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1395,6 +1406,10 @@
 		04E354DB1D08563E00EAA424 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				043D6BC11D0A95EC007EC932 /* GLVideoRoomViewModel.h */,
+				043D6BC21D0A95EC007EC932 /* GLVideoRoomViewModel.m */,
+				043D6BC41D0A9624007EC932 /* GLVideoRoomItemViewModel.h */,
+				043D6BC51D0A9624007EC932 /* GLVideoRoomItemViewModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1714,6 +1729,7 @@
 				0429A82F1CFB16D300D28AB2 /* LBRoomCollectionView.m in Sources */,
 				0429A8231CFB16D300D28AB2 /* LBLiveItem.m in Sources */,
 				0429F9B41CEF46DC005D3D3C /* UIImage+LBImage.m in Sources */,
+				043D6BC31D0A95EC007EC932 /* GLVideoRoomViewModel.m in Sources */,
 				0429A8431CFB16D300D28AB2 /* LBDarmaViewModel.m in Sources */,
 				0429A7761CFB10F500D28AB2 /* WYLPrivateViewController.m in Sources */,
 				04F7631B1D0423240047C7BD /* GLRecommedViewModel.m in Sources */,
@@ -1758,6 +1774,7 @@
 				0429A8241CFB16D300D28AB2 /* LBRoomItem.m in Sources */,
 				0429A83E1CFB16D300D28AB2 /* LBRecommedViewController.m in Sources */,
 				0429A77D1CFB10F500D28AB2 /* WYLPlaySettingViewController.m in Sources */,
+				043D6BC91D0A9649007EC932 /* GLVideoRoomModel.m in Sources */,
 				0429A78B1CFB132300D28AB2 /* GLLiveRoomModel.m in Sources */,
 				044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */,
 				0429A77B1CFB10F500D28AB2 /* WYLSettingSwitchItem.m in Sources */,
@@ -1787,6 +1804,7 @@
 				0429A8481CFB16D300D28AB2 /* LBEndsCell.m in Sources */,
 				0429A8261CFB16D300D28AB2 /* LBEntranceButton.m in Sources */,
 				0429A7751CFB10F500D28AB2 /* WYLMineCell.m in Sources */,
+				043D6BC61D0A9624007EC932 /* GLVideoRoomItemViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
