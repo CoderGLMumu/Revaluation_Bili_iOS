@@ -624,4 +624,9 @@ static CGFloat margin = 20;
     [self.scrollView setContentOffset:CGPointMake(btn.glx_x - margin, 0) animated:YES];
 }
 
+- (void)dealloc
+{
+    NSLog(@"2222222222");
+}
+
 @end

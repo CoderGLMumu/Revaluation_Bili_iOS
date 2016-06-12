@@ -13,6 +13,8 @@
 /**** 页面数据 ****/
 /** 当前视频页面请求id */
 @property (nonatomic, strong) NSNumber *aid;
+/** 视频标题 */
+@property (nonatomic, strong) NSString *title;
 /** 下拉描述 */
 @property (nonatomic, strong) NSString *desc;
 /** 充电相关 count 、list、show、total*/
@@ -25,6 +27,8 @@
 @property (nonatomic, strong) NSString *pic;
 /** 视频一些要展示使用的信息coin投硬币、danmaku发送的弹幕数量、favorite收藏、reply评论数量、share分享数量、view观看次数46294	显示4万*/
 @property (nonatomic, strong) NSDictionary *stat;
+/** 发布的时间-距离1970年 */
+@property (nonatomic, strong) NSNumber *pubdate;
 /** 视频相关-标签 */
 @property (nonatomic, strong) NSArray *tags;
 @end

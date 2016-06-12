@@ -11,6 +11,8 @@
 #import "GLVideoRoomItemViewModel.h"
 
 @interface GLVideoRoomViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *VideoAidLabel;// AV号
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;//视频标题
 @property (weak, nonatomic) IBOutlet UILabel *viewLabel;//观看次数
 @property (weak, nonatomic) IBOutlet UILabel *danmakuLabel;//发送的弹幕
@@ -48,7 +50,21 @@
 - (void)updateView
 {
 //    [self.viewModel hand]
-    
+    self.VideoAidLabel.text = self.viewModel.aid_str;
+    self.titleLabel.text = self.viewModel.title;
+    self.viewLabel.text = self.viewModel.view;
+//    NSLog(@"%@-%@",self.viewModel.view,[self.viewModel.view class]);
+    self.danmakuLabel.text = self.viewModel.danmaku;
+    self.descLabel.text = self.viewModel.desc;
+    self.shareLabel.text = self.viewModel.share;
+    self.coinLabel.text = self.viewModel.coin;
+    self.favoriteLabel.text = self.viewModel.favorite;
+    self.replyLabel.text = self.viewModel.reply;
+    [self.faceImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.face_str] placeholderImage:[UIImage imageNamed:@"placeholderImageX"]];
+    self.nameLabel.text = self.viewModel.name;
+    self.pubdateLabel.text = self.viewModel.pubdate;
+    self.totalLabel.text = self.viewModel.total;
+    self.countLabel.text = self.viewModel.count;
     
 }
 

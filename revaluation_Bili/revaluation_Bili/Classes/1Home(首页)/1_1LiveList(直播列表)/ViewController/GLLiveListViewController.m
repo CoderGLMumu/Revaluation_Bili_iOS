@@ -82,5 +82,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)dealloc
+{
+    NSLog(@"111111111");
+}
+
+
 
 @end

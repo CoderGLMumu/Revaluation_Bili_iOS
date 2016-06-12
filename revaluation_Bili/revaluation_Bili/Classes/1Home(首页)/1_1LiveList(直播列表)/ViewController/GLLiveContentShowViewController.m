@@ -34,6 +34,12 @@ static NSString * const reuseIdentifier = @"Cell";
     return _glLiveContentShowViewModel;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+   
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -55,7 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     GLPlaceholderView *placeholderView = [GLPlaceholderView sharePlaceholderView];
-   
+
     [self.view addSubview:placeholderView];
     @weakify(self);
     [placeholderView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,6 +75,7 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     };
     
+
     self.glLiveContentShowViewModel.notReachable = ^(BOOL isTimeOut){
         [placeholderView netWorkNotReachableisTimeOut:isTimeOut];
     };
@@ -76,11 +83,11 @@ static NSString * const reuseIdentifier = @"Cell";
     self.glLiveContentShowViewModel.notData = ^{
         [placeholderView netWorkNotData];
     };
-    
+
     self.page = 1;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //    注册cell
@@ -95,12 +102,12 @@ static NSString * const reuseIdentifier = @"Cell";
             [self.collectionView.mj_header beginRefreshing];
         }];
     }
-    
+//
 //    设置上拉刷新
     self.collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [self loadMoreData];
     }];
-
+//
 }
 //sort  area_id
 #pragma mark - 加载最新数据 （留给子类去实现）
@@ -185,6 +192,17 @@ static NSString * const reuseIdentifier = @"Cell";
     LiveRoomVC.online = [NSString stringWithFormat:@"%ld",(long)LiveRoomItem.online];
     
     [self.navigationController pushViewController:LiveRoomVC animated:YES];
+}
+
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"44444444");
+//    [[SDImageCache sharedImageCache] clearMemory];
+//}
+
+-(void)dealloc
+{
+    NSLog(@"333333333333");
 }
 
 

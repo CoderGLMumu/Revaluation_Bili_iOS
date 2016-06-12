@@ -696,6 +696,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="VideoAidLabel" destination="qC4-Tg-FGt" id="oUg-kO-3GC"/>
                         <outlet property="coinLabel" destination="z3g-2P-y2H" id="Xl2-1T-YxK"/>
                         <outlet property="countLabel" destination="R38-CY-IP6" id="W5u-xm-o6m"/>
                         <outlet property="danmakuLabel" destination="Ig3-SW-zqo" id="oNs-nk-Wdc"/>

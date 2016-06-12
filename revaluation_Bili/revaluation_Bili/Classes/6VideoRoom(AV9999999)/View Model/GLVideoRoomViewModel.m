@@ -20,6 +20,9 @@
 // 保存cell的模型数组
 @property (nonatomic ,strong)NSArray *cellArr;
 
+/** 用于请求页面数据的唯一id */
+@property (nonatomic, strong) NSString *aid;
+
 @end
 
 @implementation GLVideoRoomViewModel
@@ -65,12 +68,26 @@
 //        pages 的cid	Number	4,554,594 用于请求 视频链接
         
         GLVideoRoomModel *RM = [GLVideoRoomModel yy_modelWithJSON:json[@"data"]];
-        NSString *strurl = RM.pages[0][@"cid"];
+//        NSString *strurl = RM.pages[0][@"cid"];
         
+        self.aid_str = [NSString stringWithFormat:@"AV%@",self.aid];
+        self.title = RM.title;
+//        NSLog(@"%@``%@",self.view,[self.view class]);
+        self.view = ((NSNumber *)RM.stat[@"view"]).stringValue;
         
-        
+        self.danmaku = ((NSNumber *)RM.stat[@"danmaku"]).stringValue;
         self.desc = RM.desc;
-        self.pic = RM.pic;
+        self.share = ((NSNumber *)RM.stat[@"share"]).stringValue;
+        self.coin = ((NSNumber *)RM.stat[@"coin"]).stringValue;
+        self.favorite = ((NSNumber *)RM.stat[@"favorite"]).stringValue;
+        self.reply = ((NSNumber *)RM.stat[@"reply"]).stringValue;
+        self.face_str = RM.owner[@"face"];
+        self.name = RM.owner[@"name"];
+        self.pubdate = RM.pubdate.stringValue;
+        self.total = ((NSNumber *)RM.elec[@"total"]).stringValue;
+        self.count = ((NSNumber *)RM.elec[@"count"]).stringValue;
+        
+//        self.pic = RM.pic;
         
         NSMutableArray * cellItemViewModels = [NSMutableArray array];
         self.cellArr = [NSArray yy_modelArrayWithClass:[GLVideoRoomModel class] json:json[@"data"][@"relates"]];

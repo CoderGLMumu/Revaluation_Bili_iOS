@@ -128,17 +128,23 @@
                 case AFNetworkReachabilityStatusReachableViaWiFi:
 //                    NSLog(@"WIFI");
                     netState = YES;
-                    self.Reachable();
+                    if (self.Reachable) {
+                        self.Reachable();
+                    }
                     break;
                 case AFNetworkReachabilityStatusReachableViaWWAN:
                     NSLog(@"3G&4G");
                     netState = YES;
-                    self.Reachable();
+                    if (self.Reachable) {
+                        self.Reachable();
+                    }
                     break;
                 case AFNetworkReachabilityStatusNotReachable:
                     NSLog(@"没有网络");
                     netState = NO;
-                    self.notReachable(NO);
+                    if (self.notReachable) {
+                        self.notReachable(NO);
+                    }
                     break;
                 case AFNetworkReachabilityStatusUnknown:
                     NSLog(@"未知");

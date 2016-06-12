@@ -11,11 +11,37 @@
 @interface GLVideoRoomViewModel : NSObject
 
 /**** 传递模型数据 ****/
-/** 用于请求页面数据的唯一id */
-@property (nonatomic, strong) NSString *aid;
-
+/** 显示AV号 */
+@property (nonatomic, strong) NSString *aid_str;
+/** 视频标题 */
+@property (nonatomic, strong) NSString *title;
+/** 观看次数 */
+@property (nonatomic, strong) NSString *view;
+/**发送的弹幕 */
+@property (nonatomic, strong) NSString *danmaku;
 /** 下拉描述 */
 @property (nonatomic, strong) NSString *desc;
+/** 分享数量 */
+@property (nonatomic, strong) NSString *share;
+/** 投硬币量 */
+@property (nonatomic, strong) NSString *coin;
+/** 收藏量 */
+@property (nonatomic, strong) NSString *favorite;
+/** 评论量 */
+@property (nonatomic, strong) NSString *reply;
+/** up头像 */
+@property (nonatomic, strong) NSString *face_str;
+/** up名称 */
+@property (nonatomic, strong) NSString *name;
+/** 视频发布时间戳 */
+@property (nonatomic, strong) NSString *pubdate;
+/** 总充电 */
+@property (nonatomic, strong) NSString *total;
+/** 本月充电 */
+@property (nonatomic, strong) NSString *count;
+
+
+
 /** 充电相关 count 、list、show、total*/
 @property (nonatomic, strong) NSDictionary *elec;
 /** up信息 face、mid、name、pendant*/
