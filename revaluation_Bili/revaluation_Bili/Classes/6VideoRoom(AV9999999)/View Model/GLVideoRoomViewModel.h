@@ -11,6 +11,10 @@
 @interface GLVideoRoomViewModel : NSObject
 
 /**** 传递模型数据 ****/
+/** 视频链接 */
+@property (nonatomic, strong) NSString *videoLink;
+/** 显示page号 */
+@property (nonatomic, strong) NSString *page;
 /** 显示AV号 */
 @property (nonatomic, strong) NSString *aid_str;
 /** 视频标题 */

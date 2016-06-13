@@ -334,6 +334,9 @@
             make.width.equalTo(@(size.width));
             make.height.equalTo(@(size.height));
         }];
+        if (self.tabBarController.tabBar) {
+            [self.tabBarController.tabBar setHidden:YES];
+        }
 //        self.player.playbackRate = 2;
     }else {
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -343,13 +346,17 @@
             make.height.equalTo(@(size.width *(9.0 / 16.0)));
         }];
 //        self.player.playbackRate = 0.4;
+        if (self.tabBarController.tabBar) {
+            [self.tabBarController.tabBar setHidden:NO];
+        }
     }
 }
 
 /** 占位视图 功能视图 */
 - (IBAction)popBackBtn:(UIButton *)btnClick {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.isFullScreen ? [self dismissViewControllerAnimated:YES completion:nil] : [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)GoBack

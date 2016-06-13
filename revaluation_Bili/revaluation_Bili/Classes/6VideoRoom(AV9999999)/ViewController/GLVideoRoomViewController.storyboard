@@ -97,7 +97,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3V9-By-Ro5" userLabel="评论量">
                                                 <rect key="frame" x="187" y="7" width="25" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -371,7 +371,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分集" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9t-NQ-t8v">
                                             <rect key="frame" x="10" y="172" width="30" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyB-Ub-eEA" userLabel="up信息">
@@ -709,6 +709,7 @@
                         <outlet property="shareLabel" destination="GmE-ab-RsH" id="PaV-BH-vty"/>
                         <outlet property="titleLabel" destination="bb8-PQ-v5z" id="1kv-Y1-DsG"/>
                         <outlet property="totalLabel" destination="czU-Fd-wlW" id="R7W-cN-IYH"/>
+                        <outlet property="videoView" destination="Xlr-Gq-AS4" id="9SX-y7-dWX"/>
                         <outlet property="viewLabel" destination="wiF-5x-MkL" id="9EM-jF-WEu"/>
                     </connections>
                 </viewController>

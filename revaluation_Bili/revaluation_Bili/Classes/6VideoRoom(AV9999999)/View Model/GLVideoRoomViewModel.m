@@ -22,6 +22,8 @@
 
 /** 用于请求页面数据的唯一id */
 @property (nonatomic, strong) NSString *aid;
+/** 用于请求视频播放id */
+@property (nonatomic, strong) NSString *cid;
 
 @end
 
@@ -43,7 +45,7 @@
  */
 
 #pragma mark - 网络请求数据
-- (void)loadLiveViewDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure
+- (void)loadVideoRoomDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure
 {
     
     // 使用请求参数 发送网络请求
@@ -61,15 +63,33 @@
     }];
 }
 
+- (void)loadVideoLinkDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure
+{
+    
+    // 使用请求参数 发送网络请求
+    NSString *url = [NSString stringWithFormat:@"http://interface.bilibili.com/playurl?platform=android&_device=android&_hwid=831fc7511fa9aff5&_tid=0&_p=1&_down=0&quality=2&otype=json&appkey=86385cdc024c0f6c&type=mp4&sign=7fed8a9b7b446de4369936b6c1c40c3f&cid=%@",self.cid];
+    
+    // 调用网络请求工具类
+    [HttpToolSDK getWithURL:url parameters:nil success:^(id json) {
+        if (success) {
+            success(json);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 #pragma mark - 处理网络请求数据
 - (void)handleLiveViewData
 {
-    [self loadLiveViewDataSuccess:^(id json) {
+    [self loadVideoRoomDataSuccess:^(id json) {
 //        pages 的cid	Number	4,554,594 用于请求 视频链接
         
         GLVideoRoomModel *RM = [GLVideoRoomModel yy_modelWithJSON:json[@"data"]];
 //        NSString *strurl = RM.pages[0][@"cid"];
-        
+        self.cid = ((NSNumber *)RM.pages[0][@"cid"]).stringValue;
         self.aid_str = [NSString stringWithFormat:@"AV%@",self.aid];
         self.title = RM.title;
 //        NSLog(@"%@``%@",self.view,[self.view class]);
@@ -104,6 +124,14 @@
         
         self.cellItemViewModels = cellItemViewModels;
         
+        
+        /** 请求成功后拿到cid 去请求视频链接 */
+        [self loadVideoLinkDataSuccess:^(id json) {
+            
+            self.videoLink = json[@"durl"][0][@"url"];
+        } failure:^(NSError *error) {
+            
+        }];
     } failure:^(NSError *error) {
         
     }];

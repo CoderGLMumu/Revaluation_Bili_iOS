@@ -9,6 +9,7 @@
 #import "GLVideoRoomViewController.h"
 #import "GLVideoRoomViewModel.h"
 #import "GLVideoRoomItemViewModel.h"
+#import "IJKMoviePlayerViewController.h"
 
 @interface GLVideoRoomViewController ()
 
@@ -28,6 +29,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;//本月充电
 /** tags按钮 数组 */
 @property (nonatomic, strong) NSArray *tags_Btn;
+
+@property (weak, nonatomic) IBOutlet UIControl *videoView;
+
 
 @end
 
@@ -81,10 +85,13 @@
 #pragma mark - 加载视频
 - (IBAction)playVideoView:(UIControl *)sender {
     NSLog(@"播放视频");
+    IJKMoviePlayerViewController *PVC = [IJKMoviePlayerViewController InitVideoViewFromViewController:self withTitle:@"testttttt" URL:[NSURL URLWithString:self.viewModel.videoLink] isLiveVideo:YES isOnlineVideo:NO isFullScreen:NO completion:nil];
+    [self addChildViewController:PVC];
+    [self.view addSubview:PVC.view];
+    
+    
+//    [self.tabBarController.tabBar setHidden:YES];
 }
-
-
-
 
 /*
 #pragma mark - Navigation
