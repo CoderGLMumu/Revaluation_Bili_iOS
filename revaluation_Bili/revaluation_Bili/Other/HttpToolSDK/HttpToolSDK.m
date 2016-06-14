@@ -10,11 +10,15 @@
 
 @interface HttpToolSDK ()
 
-/** 为了懒加载AFN对象 */
+/** 懒加载AFN对象 */
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
 
-/** 为了懒加载AFN对象 */
+/** 懒加载AFN对象 */
 @property (nonatomic, strong) AFHTTPSessionManager *http_manager;
+
+/** 懒加载AFN对象 */
+@property (nonatomic, strong) AFHTTPSessionManager *manager_xml;
+
 
 @end
 
@@ -36,6 +40,15 @@
         _http_manager.requestSerializer.timeoutInterval = 10;
     }
     return _manager;
+}
+
+- (AFHTTPSessionManager *)manager_xml
+{
+    if (_manager_xml == nil) {
+        _manager_xml = [AFHTTPSessionManager manager];
+        _manager_xml.requestSerializer.timeoutInterval = 10;
+    }
+    return _manager_xml;
 }
 
 + (void)getWithURL:(NSString *)URL parameters:(NSDictionary *)parameters  success:(void (^)(id json))success failure: (void (^)(NSError *error))failure
@@ -81,6 +94,51 @@
                 success(responseObject);
             }
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)getXMLWithURL:(NSString *)URL parameters:(NSDictionary *)parameters  success:(void (^)(id json))success failure: (void (^)(NSError *error))failure
+{
+    [[self shareHttpTool] getXMLWithURL:URL parameters:parameters success:^(id responseObject) {
+        if (responseObject) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (error) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)getXMLWithURL:(NSString *)URL parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    // 1.创建请求管理对象
+    
+    
+//    self.manager_xml.requestSerializer = [AFXMLParserResponseSerializer serializer];
+    
+    /** 必须在serializer后面 请求超时10s */
+    self.manager_xml.requestSerializer.timeoutInterval = 10;
+    
+    //    申明请求的数据是json类型
+    
+    //申明返回的结果是json类型
+    self.manager_xml.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    
+    self.manager_xml.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/xml", @"text/javascript", @"text/html",@"text/plain", nil];
+    
+    // 2.发送请求
+    [self.manager_xml GET:URL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 类型转换下,好设置代理
+        NSXMLParser *parser = (NSXMLParser *)responseObject;
+        
+      
+        success(parser);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {
             failure(error);
@@ -214,8 +272,6 @@
     self.manager.requestSerializer.timeoutInterval = 10;
     
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    
     
     // 2.发送请求
     [self.manager POST:URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

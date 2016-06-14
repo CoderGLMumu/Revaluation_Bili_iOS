@@ -12,7 +12,9 @@
 
 #import "GLVideoRoomModel.h"
 
-@interface GLVideoRoomViewModel ()
+#import "GLDanmuModel.h"
+
+@interface GLVideoRoomViewModel () <NSXMLParserDelegate>
 
 /** 用于判断cell类型 */
 //@property (nonatomic, strong) NSString *head;
@@ -24,6 +26,13 @@
 @property (nonatomic, strong) NSString *aid;
 /** 用于请求视频播放id */
 @property (nonatomic, strong) NSString *cid;
+
+/** 用于请求视频播放id */
+@property (nonatomic, assign) BOOL isDanMu;
+
+/** 弹幕数据 */
+@property (nonatomic, strong) NSMutableDictionary *dict_danmu;
+
 
 @end
 
@@ -38,6 +47,22 @@
         
     }
     return self;
+}
+
+- (NSMutableDictionary *)dict_danmu
+{
+    if (_dict_danmu == nil) {
+        _dict_danmu = [NSMutableDictionary dictionary];
+    }
+    return _dict_danmu;
+}
+
+- (NSMutableArray *)arr_danmus
+{
+    if (_arr_danmus == nil) {
+        _arr_danmus = [NSMutableArray array];
+    }
+    return _arr_danmus;
 }
 
 /**
@@ -81,6 +106,24 @@
     }];
 }
 
+- (void)loadVideoDanmuDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure
+{
+    
+    // 使用请求参数 发送网络请求
+    NSString *url = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",self.cid];
+    
+    // 调用网络请求工具类
+    [HttpToolSDK getXMLWithURL:url parameters:nil success:^(id json) {
+        if (success) {
+            success(json);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 #pragma mark - 处理网络请求数据
 - (void)handleLiveViewData
 {
@@ -107,7 +150,7 @@
         self.total = ((NSNumber *)RM.elec[@"total"]).stringValue;
         self.count = ((NSNumber *)RM.elec[@"count"]).stringValue;
         
-//        self.pic = RM.pic;
+        self.pic = RM.pic;
         
         NSMutableArray * cellItemViewModels = [NSMutableArray array];
         self.cellArr = [NSArray yy_modelArrayWithClass:[GLVideoRoomModel class] json:json[@"data"][@"relates"]];
@@ -124,7 +167,18 @@
         
         self.cellItemViewModels = cellItemViewModels;
         
-        
+        /** 请求成功后拿到cid 去请求弹幕数据 */
+        [self loadVideoDanmuDataSuccess:^(NSXMLParser *parser) {
+            parser.delegate = self;
+            // 开始解析
+            [parser parse];
+            
+            // 转模型
+            self.arr_danmus = (NSMutableArray *)[NSArray yy_modelArrayWithClass:[GLDanmuModel class] json:self.arr_danmus];
+            
+        } failure:^(NSError *error) {
+            
+        }];
         /** 请求成功后拿到cid 去请求视频链接 */
         [self loadVideoLinkDataSuccess:^(id json) {
             
@@ -135,6 +189,38 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
+#pragma mark - 代理方法
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict
+{
+    if (![elementName isEqualToString:@"d"]) {
+        //过滤根元素
+        self.isDanMu = NO;
+        return;
+    }
+    self.isDanMu = YES;
+    if (self.isDanMu) {
+        NSString *str = attributeDict[@"p"];
+        NSArray *arr_s = [str componentsSeparatedByString:@","];
+        self.dict_danmu = [NSMutableDictionary dictionaryWithDictionary:@{
+                                                                                     @"time":arr_s[0],
+                                                                                     @"dire":arr_s[1],
+                                                                                     @"color":arr_s[3],
+                                                                                     
+                                                                                     }];
+        
+        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    //记录所取得的文字列
+    if (self.isDanMu && ![string isEqualToString:@"\n"]) {
+        [self.dict_danmu setObject:string forKey:@"content"];
+        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
+        [self.arr_danmus addObject:self.dict_danmu];
+    }
 }
 
 

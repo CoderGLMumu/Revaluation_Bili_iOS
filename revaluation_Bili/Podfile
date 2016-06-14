@@ -22,3 +22,5 @@ pod 'YYModel'
 pod 'SVProgressHUD'
 
 pod 'ReactiveCocoa'
+
+pod 'BarrageRenderer'

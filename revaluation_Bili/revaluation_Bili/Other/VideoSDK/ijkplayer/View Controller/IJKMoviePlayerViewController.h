@@ -36,5 +36,9 @@
 
 - (void)GoBack;
 
+- (void)toolsShowOrHidden;
+
+- (void)SendBarrage:(NSString *)Bar_str Direction:(NSString *)direction color:(NSString *)color_str;
+
 @end
 

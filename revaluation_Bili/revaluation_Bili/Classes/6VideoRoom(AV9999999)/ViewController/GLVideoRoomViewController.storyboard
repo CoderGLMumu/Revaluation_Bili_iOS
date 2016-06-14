@@ -22,17 +22,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xlr-Gq-AS4" userLabel="视频播放view" customClass="UIControl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="73G-Yy-0xD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                     </imageView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9h-ZJ-xrH">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                         <items/>
                                     </toolbar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OV0-EI-Sj0" userLabel="播放按钮">
-                                        <rect key="frame" x="305" y="130" width="60" height="60"/>
+                                        <rect key="frame" x="301.5" y="137.5" width="63.5" height="63.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OV0-EI-Sj0" secondAttribute="height" multiplier="1:1" id="6ry-2K-dDt"/>
                                         </constraints>
@@ -48,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YG-pi-VJl" userLabel="返回按钮">
-                                        <rect key="frame" x="10" y="25" width="30" height="30"/>
+                                        <rect key="frame" x="10" y="25" width="31.5" height="31.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3YG-pi-VJl" secondAttribute="height" multiplier="1:1" id="2se-4m-sGK"/>
                                         </constraints>
@@ -61,6 +61,7 @@
                                 <color key="backgroundColor" red="0.09641611253" green="1" blue="0.082390135160000003" alpha="0.40375664890000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="OV0-EI-Sj0" secondAttribute="bottom" constant="10" id="269-xh-GOw"/>
+                                    <constraint firstAttribute="width" secondItem="Xlr-Gq-AS4" secondAttribute="height" multiplier="16:9" id="283-0f-vPD"/>
                                     <constraint firstItem="qC4-Tg-FGt" firstAttribute="centerX" secondItem="Xlr-Gq-AS4" secondAttribute="centerX" id="3aS-hM-3xg"/>
                                     <constraint firstItem="3YG-pi-VJl" firstAttribute="height" secondItem="73G-Yy-0xD" secondAttribute="height" multiplier="0.15" id="6Da-uK-vQH"/>
                                     <constraint firstAttribute="trailing" secondItem="OV0-EI-Sj0" secondAttribute="trailing" constant="10" id="74s-dn-FqV"/>
@@ -72,7 +73,6 @@
                                     <constraint firstItem="f9h-ZJ-xrH" firstAttribute="top" secondItem="73G-Yy-0xD" secondAttribute="top" id="VD1-vz-ZC6"/>
                                     <constraint firstItem="f9h-ZJ-xrH" firstAttribute="trailing" secondItem="73G-Yy-0xD" secondAttribute="trailing" id="YLu-0f-F0F"/>
                                     <constraint firstItem="73G-Yy-0xD" firstAttribute="top" secondItem="Xlr-Gq-AS4" secondAttribute="top" id="hOe-sd-Aji"/>
-                                    <constraint firstAttribute="height" constant="200" id="jE8-c3-pPG"/>
                                     <constraint firstItem="f9h-ZJ-xrH" firstAttribute="leading" secondItem="73G-Yy-0xD" secondAttribute="leading" id="mok-w1-ElQ"/>
                                     <constraint firstItem="f9h-ZJ-xrH" firstAttribute="bottom" secondItem="73G-Yy-0xD" secondAttribute="bottom" id="qKr-Kg-95k"/>
                                 </constraints>
@@ -81,21 +81,21 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omd-rO-DQP" userLabel="简介/评论" customClass="UIControl">
-                                <rect key="frame" x="0.0" y="200" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="211" width="375" height="31.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-yo-Zun">
-                                        <rect key="frame" x="75" y="0.0" width="225" height="30"/>
+                                        <rect key="frame" x="75" y="0.0" width="225" height="31.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70I-0L-97S">
-                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="31.5"/>
                                                 <state key="normal" title="简介"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-jU-uNh">
-                                                <rect key="frame" x="113" y="0.0" width="112.5" height="30"/>
+                                                <rect key="frame" x="113" y="0.0" width="112.5" height="31.5"/>
                                                 <state key="normal" title="评论"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3V9-By-Ro5" userLabel="评论量">
-                                                <rect key="frame" x="187" y="7" width="25" height="16"/>
+                                                <rect key="frame" x="187" y="8" width="25" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEl-Ar-XiT">
-                                <rect key="frame" x="0.0" y="230" width="375" height="437"/>
+                                <rect key="frame" x="0.0" y="242.5" width="375" height="424.5"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="m4M-XP-ZLV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
@@ -697,6 +697,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="VideoAidLabel" destination="qC4-Tg-FGt" id="oUg-kO-3GC"/>
+                        <outlet property="VideoPicView" destination="73G-Yy-0xD" id="wMz-zH-0j2"/>
                         <outlet property="coinLabel" destination="z3g-2P-y2H" id="Xl2-1T-YxK"/>
                         <outlet property="countLabel" destination="R38-CY-IP6" id="W5u-xm-o6m"/>
                         <outlet property="danmakuLabel" destination="Ig3-SW-zqo" id="oNs-nk-Wdc"/>

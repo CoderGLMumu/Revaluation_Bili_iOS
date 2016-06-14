@@ -11,6 +11,7 @@
 		041DE34A1CEAFB51000210E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DE3461CEAFB51000210E4 /* AppDelegate.m */; };
 		041DE34C1CEAFB51000210E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DE3481CEAFB51000210E4 /* main.m */; };
 		041DE3A11CEB4C71000210E4 /* UIView+GLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DE3A01CEB4C71000210E4 /* UIView+GLExtension.m */; };
+		0423B0711D1021D9004A056A /* GLDanmuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B0701D1021D9004A056A /* GLDanmuModel.m */; };
 		04276B8D1D056D3400605FD9 /* GLBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04276B8C1D056D3400605FD9 /* GLBodyModel.m */; };
 		04298CB61CFEA30E00A2DB48 /* empty_list_no_network_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04298CA61CFEA30E00A2DB48 /* empty_list_no_network_1.jpg */; };
 		04298CB71CFEA30E00A2DB48 /* empty_list_no_network_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04298CA71CFEA30E00A2DB48 /* empty_list_no_network_2.jpg */; };
@@ -213,6 +214,8 @@
 		041DE39E1CEB317C000210E4 /* GLBili.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBili.pch; sourceTree = "<group>"; };
 		041DE39F1CEB4C71000210E4 /* UIView+GLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GLExtension.h"; sourceTree = "<group>"; };
 		041DE3A01CEB4C71000210E4 /* UIView+GLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLExtension.m"; sourceTree = "<group>"; };
+		0423B06F1D1021D9004A056A /* GLDanmuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDanmuModel.h; sourceTree = "<group>"; };
+		0423B0701D1021D9004A056A /* GLDanmuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDanmuModel.m; sourceTree = "<group>"; };
 		04276B8B1D056D3400605FD9 /* GLBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBodyModel.h; sourceTree = "<group>"; };
 		04276B8C1D056D3400605FD9 /* GLBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBodyModel.m; sourceTree = "<group>"; };
 		04298CA61CFEA30E00A2DB48 /* empty_list_no_network_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = empty_list_no_network_1.jpg; sourceTree = "<group>"; };
@@ -1399,6 +1402,8 @@
 			children = (
 				043D6BC71D0A9649007EC932 /* GLVideoRoomModel.h */,
 				043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */,
+				0423B06F1D1021D9004A056A /* GLDanmuModel.h */,
+				0423B0701D1021D9004A056A /* GLDanmuModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1712,6 +1717,7 @@
 			files = (
 				0429A8221CFB16D300D28AB2 /* LBLiveBannerItem.m in Sources */,
 				0429A70F1CFB10F500D28AB2 /* GLNavigationViewModel.m in Sources */,
+				0423B0711D1021D9004A056A /* GLDanmuModel.m in Sources */,
 				0429A7121CFB10F500D28AB2 /* GLTabBarController.m in Sources */,
 				04F7631E1D0423390047C7BD /* GLRecommedModel.m in Sources */,
 				04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */,

@@ -140,7 +140,7 @@
                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="fullScreenAndScale:" destination="-1" eventType="touchUpInside" id="dYf-GJ-2SV"/>
+                                        <action selector="fullScreenAndScale:" destination="-1" eventType="touchUpInside" id="4LV-xZ-efk"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -430,7 +430,7 @@
                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="fullScreenAndScale:" destination="-1" eventType="touchUpInside" id="uxP-2j-QTh"/>
+                                        <action selector="fullScreenAndScale:" destination="-1" eventType="touchUpInside" id="rpK-xB-bUe"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pm-gr-Dmd">

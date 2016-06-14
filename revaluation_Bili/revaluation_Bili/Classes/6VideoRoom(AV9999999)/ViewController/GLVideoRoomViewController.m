@@ -13,6 +13,7 @@
 
 @interface GLVideoRoomViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *VideoPicView;
 @property (weak, nonatomic) IBOutlet UILabel *VideoAidLabel;// AV号
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;//视频标题
 @property (weak, nonatomic) IBOutlet UILabel *viewLabel;//观看次数
@@ -32,6 +33,8 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *videoView;
 
+/** isFullScreen */
+@property (nonatomic, assign) BOOL isFullScreen;
 
 @end
 
@@ -47,13 +50,13 @@
     }];
     
 }
-
 /**
  * 更新视图.
  */
 - (void)updateView
 {
 //    [self.viewModel hand]
+    [self.VideoPicView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.pic] placeholderImage:[UIImage imageNamed:@"placeholderImageX"]];
     self.VideoAidLabel.text = self.viewModel.aid_str;
     self.titleLabel.text = self.viewModel.title;
     self.viewLabel.text = self.viewModel.view;
@@ -90,8 +93,11 @@
     [self.view addSubview:PVC.view];
     
     
+    [PVC SendBarrage:@"danmu" Direction:@"fangx" color:@"10jingzi"];
+    
 //    [self.tabBarController.tabBar setHidden:YES];
 }
+
 
 /*
 #pragma mark - Navigation

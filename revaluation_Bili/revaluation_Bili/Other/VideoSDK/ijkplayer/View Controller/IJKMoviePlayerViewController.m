@@ -14,6 +14,7 @@
 
 #import "Masonry/Masonry.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <BarrageRenderer/BarrageRenderer.h>
 
 #import "ZFBrightnessView.h"
 
@@ -28,6 +29,8 @@
 
 /** 包装player的旋转view */
 @property (nonatomic, weak) UIView *rotationView;
+
+@property (nonatomic, strong) BarrageRenderer *renderer;
 
 @end
 
@@ -103,6 +106,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initBarrageRenderer];
+    
     if (self.isLiveVideo) {
         //直播视频
 //        self.url = [NSURL URLWithString:@"http://163.177.171.33/live-play.acgvideo.com/live/331/live_9617619_6384511.flv?3235&wshc_tag=0&wsts_tag=573bdfb0&wsid_tag=1b2f832a&wsiphost=ipdbm"];
@@ -139,9 +144,20 @@
     
 }
 
+- (void)initBarrageRenderer
+{
+    _renderer = [[BarrageRenderer alloc]init];
+    [self.view addSubview:_renderer.view];
+    _renderer.canvasMargin = UIEdgeInsetsMake(10, 10, 10, 10);
+    // 若想为弹幕增加点击功能, 请添加此句话, 并在Descriptor中注入行为
+//    _renderer.view.userInteractionEnabled = YES;
+    [self.view sendSubviewToBack:_renderer.view];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
     
     if (![self.player isPlaying]) {
         
@@ -196,27 +212,29 @@
     
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    /** 全屏的话,直接强制全屏 */
-    if (self.isFullScreen) {
-//        NSLog(@"isll");
-        return UIInterfaceOrientationMaskLandscape;
-        
-    }else{
-//        NSLog(@"isnn");
-        return UIInterfaceOrientationMaskPortrait;
-    }
-}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+//{
+//    /** 全屏的话,直接强制全屏 */
+//    if (self.isFullScreen) {
+////        NSLog(@"isll");
+//        return UIInterfaceOrientationMaskLandscape;
+//        
+//    }else{
+////        NSLog(@"isnn");
+//        return UIInterfaceOrientationMaskPortrait;
+//    }
+//}
 
-- (BOOL)shouldAutorotate{ return NO; }
+- (BOOL)shouldAutorotate{
+    return NO;
+}
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     /** 全屏的话,直接强制全屏 */
     if (self.isFullScreen) {
-//        NSLog(@"isll");
-        return UIInterfaceOrientationLandscapeLeft;
+//        NSLog(@"isll");  //默认转向右边
+        return UIInterfaceOrientationLandscapeRight;
         
     }else{
 //        NSLog(@"isnn");
@@ -289,11 +307,13 @@
 - (IBAction)fullScreenAndScale:(UIButton *)btn {
     
     if (btn.selected) {
+        
         self.isFullScreen = NO;
         btn.selected = NO;
         
         /** 16 : 9 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            
             SEL selector             = NSSelectorFromString(@"setOrientation:");
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
             [invocation setSelector:selector];
@@ -305,6 +325,7 @@
             //项目必须支持 UIInterfaceOrientationPortrait
         }
     }else{
+        
         self.isFullScreen = YES;
         btn.selected = YES;
         
@@ -625,5 +646,60 @@
                                                   object:_player];
     
 }
+
+- (void)SendBarrage:(NSString *)Bar_str Direction:(NSString *)direction color:(NSString *)color_str
+{
+    if ([direction isEqualToString:@"1"]) {
+        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionR2L]];
+    }else if ([direction isEqualToString:@"4"]){
+        /** 方向下 */
+        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B]];
+    }else if ([direction isEqualToString:@"5"]){
+        /** 方向上 */
+        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionB2T]];
+    }
+    
+    
+//    NSInteger spriteNumber = [_renderer spritesNumberWithName:nil];
+//    
+//    if (spriteNumber <= 50) { // 用来演示如何限制屏幕上的弹幕量
+//        
+//    }
+
+}
+
+#pragma mark - 弹幕描述符生产方法
+
+/// 生成精灵描述 - 过场文字弹幕
+- (BarrageDescriptor *)walkTextSpriteDescriptorWithDirection:(NSInteger)direction
+{
+    
+    BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
+    descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
+//    descriptor.params[@"text"] = [NSString stringWithFormat:@"过场文字弹幕:%ld",(long)_index++];
+    descriptor.params[@"textColor"] = [UIColor blueColor];
+    descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+    descriptor.params[@"direction"] = @(direction);
+//    descriptor.params[@"clickAction"] = ^{
+//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"弹幕被点击" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+//        [alertView show];
+//    };
+    return descriptor;
+}
+
+/// 生成精灵描述 - 浮动文字弹幕
+- (BarrageDescriptor *)floatTextSpriteDescriptorWithDirection:(NSInteger)direction
+{
+    BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
+    descriptor.spriteName = NSStringFromClass([BarrageFloatTextSprite class]);
+//    descriptor.params[@"text"] = [NSString stringWithFormat:@"悬浮文字弹幕:%ld",(long)_index++];
+    descriptor.params[@"textColor"] = [UIColor purpleColor];
+    descriptor.params[@"duration"] = @(3);
+    descriptor.params[@"fadeInTime"] = @(1);
+    descriptor.params[@"fadeOutTime"] = @(1);
+    descriptor.params[@"direction"] = @(direction);
+    return descriptor;
+}
+
 
 @end

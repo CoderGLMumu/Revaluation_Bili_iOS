@@ -43,7 +43,11 @@
 @property (nonatomic, strong) NSString *total;
 /** 本月充电 */
 @property (nonatomic, strong) NSString *count;
+/** 播放占位图片 */
+@property (nonatomic, strong) NSString *pic;
 
+/** 用弹幕数据转模型 */
+@property (nonatomic, strong) NSMutableArray *arr_danmus;
 
 
 /** 充电相关 count 、list、show、total*/
@@ -52,8 +56,7 @@
 @property (nonatomic, strong) NSDictionary *owner;
 /** cid、page*/
 @property (nonatomic, strong) NSArray *pages;
-/** 播放占位图片 */
-@property (nonatomic, strong) NSString *pic;
+
 /** 视频一些要展示使用的信息coin投硬币、danmaku发送的弹幕数量、favorite收藏、reply评论数量、share分享数量、view观看次数46294	显示4万*/
 @property (nonatomic, strong) NSDictionary *stat;
 /** 视频相关-标签 */

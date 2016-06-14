@@ -10,6 +10,10 @@
 
 #import "GLTabBarViewModel.h"
 
+#import "GLVideoRoomViewController.h"
+#import "GLNavigationController.h"
+#import "IJKMoviePlayerViewController.h"
+
 @interface GLTabBarController ()
 
 /** tabBarViewModel */
@@ -70,8 +74,27 @@
     
 }
 
-
-
+- (BOOL)shouldAutorotate{
+    BOOL __block isPlayerView = NO;
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    NSArray *navVCs = self.childViewControllers;
+    [navVCs.rac_sequence.signal subscribeNext:^(UINavigationController *navVC) {
+        if ([navVC.topViewController.childViewControllers.firstObject isKindOfClass:[IJKMoviePlayerViewController class]]) {
+            isPlayerView = YES;
+        }
+        //发出已完成的信号
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    //等待执行，不会占用资源
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return isPlayerView;
+    
+//    NSLog(@"%d",[self.childViewControllers isKindOfClass:[IJKMoviePlayerViewController class]]);
+}
 
 
 @end
