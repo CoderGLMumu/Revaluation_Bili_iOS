@@ -17,6 +17,7 @@
 #import <BarrageRenderer/BarrageRenderer.h>
 
 #import "ZFBrightnessView.h"
+#import "GLDanmuModel.h"
 
 @interface IJKMoviePlayerViewController ()
 
@@ -31,6 +32,8 @@
 @property (nonatomic, weak) UIView *rotationView;
 
 @property (nonatomic, strong) BarrageRenderer *renderer;
+
+@property (nonatomic, strong) NSArray *arr_danmus;
 
 @end
 
@@ -76,10 +79,12 @@
     
     /** 创建播放器控制器 */
     IJKMoviePlayerViewController *PlayerVC = [[IJKMoviePlayerViewController alloc] initWithURL:url isLiveVideo:isLiveVideo isOnlineVideo:isOnlineVideo isFullScreen:isFullScreen];
-
+    
+    /** 弹出的控制器的导航条是透明的 */
+    
     /** 对播放器控制器进行操作 */
     [viewController presentViewController:PlayerVC animated:isFullScreen completion:completion];
-
+    
     return PlayerVC;
 }
 
@@ -226,11 +231,13 @@
 //}
 
 - (BOOL)shouldAutorotate{
+    self.navigationController.navigationBar.alpha = 0;
     return NO;
+    
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
+{self.navigationController.navigationBar.alpha = 0;
     /** 全屏的话,直接强制全屏 */
     if (self.isFullScreen) {
 //        NSLog(@"isll");  //默认转向右边
@@ -305,7 +312,7 @@
 
 #pragma mark - 强制屏幕旋转
 - (IBAction)fullScreenAndScale:(UIButton *)btn {
-    
+    self.navigationController.navigationBar.alpha = 0;
     if (btn.selected) {
         
         self.isFullScreen = NO;
@@ -342,12 +349,12 @@
             //项目必须支持 UIInterfaceOrientationLandscapeRight
         }
     }
+    self.navigationController.navigationBar.alpha = 0;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [self toolsShowOrHidden];
-    
     if (size.width > size.height) {
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@0);
@@ -647,22 +654,58 @@
     
 }
 
-- (void)SendBarrage:(NSString *)Bar_str Direction:(NSString *)direction color:(NSString *)color_str
+- (void)SendBarrage:(NSArray *)arr_danmus
 {
-    if ([direction isEqualToString:@"1"]) {
-        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionR2L]];
-    }else if ([direction isEqualToString:@"4"]){
-        /** 方向下 */
-        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B]];
-    }else if ([direction isEqualToString:@"5"]){
-        /** 方向上 */
-        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionB2T]];
-    }
+    self.arr_danmus = arr_danmus;
+#warning 没加载数据点击发送弹幕会报错
+    if (arr_danmus == nil) return;
+    // 将 Model 转换为 JSON 对象:
+//    NSArray *json = (NSArray *)[arr_danmus yy_modelToJSONObject];
+//    NSLog(@"%@",json[0]);
+    // 使用CADisplayLink不需要考虑时间间隔.
+    self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateBarrage:)];
+    self.link.frameInterval = 2;
+    // 要让它工作, 必须得要把定时器添加到主运行循环
+    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+    [self.link addToRunLoop:runloop forMode:NSDefaultRunLoopMode];
+//    [self.playView SendBarrage:arr_danmus];
+    
+//    if ([direction isEqualToString:@"1"]) {
+//        [_renderer receive:[self walkTextSpriteDescriptorWithDirection:BarrageWalkDirectionR2L]];
+//    }else if ([direction isEqualToString:@"4"]){
+//        /** 方向下 */
+//        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionT2B]];
+//    }else if ([direction isEqualToString:@"5"]){
+//        /** 方向上 */
+//        [_renderer receive:[self floatTextSpriteDescriptorWithDirection:BarrageFloatDirectionB2T]];
+//    }
     
     
 //    NSInteger spriteNumber = [_renderer spritesNumberWithName:nil];
 //    
 //    if (spriteNumber <= 50) { // 用来演示如何限制屏幕上的弹幕量
+//        
+//    }
+
+}
+
+- (void)updateBarrage:(CADisplayLink *)link
+{
+    if (link == nil) return;
+        dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+        [self.arr_danmus.rac_sequence.signal subscribeNext:^(GLDanmuModel *model) {
+//             NSLog(@"%@11111",[NSThread currentThread]);
+            if (self.player.currentPlaybackTime ==  model.time.floatValue) {
+               
+            }
+        }];
+    });
+    
+//    NSLog(@"%f--,,%f",self.player.currentPlaybackTime,model.time.floatValue);
+    
+//    NSLog(@"%@222222",[NSThread currentThread]);
+    // 判断
+//    if (arr_danmus) {
 //        
 //    }
 

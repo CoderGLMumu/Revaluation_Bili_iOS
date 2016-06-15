@@ -45,6 +45,7 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 
 - (void)viewDidLoad {
     
+    
     [super viewDidLoad];
     
     [self viewModel];
@@ -143,6 +144,8 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 - (void)pushVideoVC:(GLRecommedCell *)cell
 {
     cell.Videodata = ^(NSString *aid){
+        NSLog(@"%d",self.navigationController.navigationBarHidden);
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
         GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
         GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:aid];
         videoVC.viewModel = VM;

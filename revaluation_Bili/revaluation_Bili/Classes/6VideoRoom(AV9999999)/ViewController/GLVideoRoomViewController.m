@@ -13,6 +13,9 @@
 
 @interface GLVideoRoomViewController ()
 
+/** PVC */
+@property (nonatomic, strong) IJKMoviePlayerViewController *PVC;
+
 @property (weak, nonatomic) IBOutlet UIImageView *VideoPicView;
 @property (weak, nonatomic) IBOutlet UILabel *VideoAidLabel;// AV号
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;//视频标题
@@ -42,7 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.alpha = 0;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [RACObserve(self.viewModel, cellItemViewModels) subscribeNext:^(id x) {
@@ -78,22 +81,40 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"touming"] forBarMetrics:UIBarMetricsCompact];
+//    self.navigationController.navigationBar.alpha = 0;
+//    self.navigationController.navigationBarHidden = YES;
 }
 
 - (IBAction)popBackBtnClick:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBar.alpha = 0.0;
+    
+    [self.PVC.link invalidate];
+    self.PVC.link = nil;
+    NSLog(@"00009392342332498");
+}
+
 #pragma mark - 加载视频
 - (IBAction)playVideoView:(UIControl *)sender {
     NSLog(@"播放视频");
-    IJKMoviePlayerViewController *PVC = [IJKMoviePlayerViewController InitVideoViewFromViewController:self withTitle:@"testttttt" URL:[NSURL URLWithString:self.viewModel.videoLink] isLiveVideo:YES isOnlineVideo:NO isFullScreen:NO completion:nil];
-    [self addChildViewController:PVC];
-    [self.view addSubview:PVC.view];
+    self.PVC = [IJKMoviePlayerViewController InitVideoViewFromViewController:self withTitle:@"testttttt" URL:[NSURL URLWithString:self.viewModel.videoLink] isLiveVideo:YES isOnlineVideo:NO isFullScreen:NO completion:nil];
+    [self addChildViewController:self.PVC];
+    [self.view addSubview:self.PVC.view];
     
     
-    [PVC SendBarrage:@"danmu" Direction:@"fangx" color:@"10jingzi"];
+    [self.PVC SendBarrage:self.viewModel.arr_danmus];
     
 //    [self.tabBarController.tabBar setHidden:YES];
 }

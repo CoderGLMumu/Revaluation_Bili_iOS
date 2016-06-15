@@ -453,4 +453,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 #pragma mark IBAction
 
+
+- (void)SendBarrage:(NSArray *)arr_danmus
+{
+    
+
+}
+
 @end

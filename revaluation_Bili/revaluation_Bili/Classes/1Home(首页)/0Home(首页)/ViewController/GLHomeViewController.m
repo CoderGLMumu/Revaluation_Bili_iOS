@@ -66,7 +66,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 隐藏导航栏
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     self.view.backgroundColor = [UIColor whiteColor];
     

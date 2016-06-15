@@ -210,7 +210,7 @@
                                                                                      
                                                                                      }];
         
-        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
+//        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
     }
 }
 
@@ -218,7 +218,7 @@
     //记录所取得的文字列
     if (self.isDanMu && ![string isEqualToString:@"\n"]) {
         [self.dict_danmu setObject:string forKey:@"content"];
-        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
+//        NSLog(@"%@--%lu",self.dict_danmu,parser.lineNumber);
         [self.arr_danmus addObject:self.dict_danmu];
     }
 }

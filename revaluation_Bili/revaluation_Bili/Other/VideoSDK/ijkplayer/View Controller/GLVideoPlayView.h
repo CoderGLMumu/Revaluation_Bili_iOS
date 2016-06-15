@@ -23,6 +23,8 @@
 
 - (void)setupSubviewsConstraint;
 
+- (void)SendBarrage:(NSArray *)arr_danmus;
+
 //- (void)setupBaseViewConstraint;
 
 - (void)tapSliderAction:(CGFloat)value;

@@ -55,7 +55,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return vc;
 }
-#warning 需要实现每次点击 没有选中的 按钮都刷新界面,需要实现最新,最热排序
+//#warning 需要实现每次点击 没有选中的 按钮都刷新界面,需要实现最新,最热排序
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,6 +63,7 @@ static NSString * const reuseIdentifier = @"Cell";
     GLPlaceholderView *placeholderView = [GLPlaceholderView sharePlaceholderView];
 
     [self.view addSubview:placeholderView];
+ 
     @weakify(self);
     [placeholderView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
