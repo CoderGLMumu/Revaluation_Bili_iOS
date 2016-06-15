@@ -100,10 +100,6 @@
 {
     [super viewDidDisappear:animated];
     self.navigationController.navigationBar.alpha = 0.0;
-    
-    [self.PVC.link invalidate];
-    self.PVC.link = nil;
-    NSLog(@"00009392342332498");
 }
 
 #pragma mark - 加载视频
@@ -113,8 +109,9 @@
     [self addChildViewController:self.PVC];
     [self.view addSubview:self.PVC.view];
     
-    
-    [self.PVC SendBarrage:self.viewModel.arr_danmus];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self.PVC SendBarrage:self.viewModel.arr_danmus];
+    });
     
 //    [self.tabBarController.tabBar setHidden:YES];
 }

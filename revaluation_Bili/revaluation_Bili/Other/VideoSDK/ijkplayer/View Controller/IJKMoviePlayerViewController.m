@@ -19,7 +19,7 @@
 #import "ZFBrightnessView.h"
 #import "GLDanmuModel.h"
 
-@interface IJKMoviePlayerViewController ()
+@interface IJKMoviePlayerViewController ()<BarrageRendererDelegate>
 
 /** 需要播放的是否在网络视频/本地视频 */
 @property (nonatomic, assign) BOOL isLiveVideo;
@@ -32,6 +32,8 @@
 @property (nonatomic, weak) UIView *rotationView;
 
 @property (nonatomic, strong) BarrageRenderer *renderer;
+
+@property (nonatomic, strong) NSDate *startTime;
 
 @property (nonatomic, strong) NSArray *arr_danmus;
 
@@ -111,8 +113,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initBarrageRenderer];
-    
     if (self.isLiveVideo) {
         //直播视频
 //        self.url = [NSURL URLWithString:@"http://163.177.171.33/live-play.acgvideo.com/live/331/live_9617619_6384511.flv?3235&wshc_tag=0&wsts_tag=573bdfb0&wsid_tag=1b2f832a&wsiphost=ipdbm"];
@@ -151,12 +151,17 @@
 
 - (void)initBarrageRenderer
 {
+    
     _renderer = [[BarrageRenderer alloc]init];
-    [self.view addSubview:_renderer.view];
-    _renderer.canvasMargin = UIEdgeInsetsMake(10, 10, 10, 10);
+    _startTime = [NSDate date];
+    [_renderer start];
+
+    _renderer.delegate = self;
+    _renderer.redisplay = YES;
+    [self.rotationView addSubview:_renderer.view];
     // 若想为弹幕增加点击功能, 请添加此句话, 并在Descriptor中注入行为
 //    _renderer.view.userInteractionEnabled = YES;
-    [self.view sendSubviewToBack:_renderer.view];
+//    [self.view sendSubviewToBack:_renderer.view];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -445,6 +450,8 @@
 
 #pragma mark - OnlineVideoPlayView工具条事件处理
 - (IBAction)onClickPlayOrPause:(UIButton *)sender {
+    NSInteger spriteNumber = [_renderer spritesNumberWithName:nil];
+    NSLog(@"%lu++++++++++++++++--00",spriteNumber);
     if (!sender.isSelected) {
         sender.selected = YES;
         [self.player play];
@@ -453,6 +460,7 @@
         [self.player pause];
     }
 }
+
 - (IBAction)onClickLock:(UIButton *)sender {
     NSLog(@"self.onlinePlayView 处理视频lock");
 }
@@ -654,20 +662,39 @@
     
 }
 
+#pragma mark - 发送弹幕
 - (void)SendBarrage:(NSArray *)arr_danmus
 {
+    
     self.arr_danmus = arr_danmus;
 #warning 没加载数据点击发送弹幕会报错
     if (arr_danmus == nil) return;
+    [self initBarrageRenderer];
     // 将 Model 转换为 JSON 对象:
 //    NSArray *json = (NSArray *)[arr_danmus yy_modelToJSONObject];
 //    NSLog(@"%@",json[0]);
-    // 使用CADisplayLink不需要考虑时间间隔.
-    self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateBarrage:)];
-    self.link.frameInterval = 2;
-    // 要让它工作, 必须得要把定时器添加到主运行循环
-    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-    [self.link addToRunLoop:runloop forMode:NSDefaultRunLoopMode];
+
+    
+//    NSInteger const number = self.arr_danmus.count;
+    
+//    NSInteger const number = 10;
+    NSMutableArray * descriptors = [[NSMutableArray alloc]init];
+//    for (NSInteger i = 0; i < 111; i++) {
+//        [descriptors addObject:[self walkTextSpriteDescriptorWithDelay:i*2+1]];
+//    }
+   dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    [self.arr_danmus.rac_sequence.signal subscribeNext:^(GLDanmuModel *model) {
+        [descriptors addObject:[self walkTextSpriteDescriptorWithDelay:model.time.integerValue]];
+        //发出已完成的信号
+        if (self.arr_danmus.count == descriptors.count) {
+            dispatch_semaphore_signal(semaphore);
+        }
+    }];
+    //等待执行，不会占用资源
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+     [_renderer load:descriptors];
+    
 //    [self.playView SendBarrage:arr_danmus];
     
 //    if ([direction isEqualToString:@"1"]) {
@@ -689,46 +716,22 @@
 
 }
 
-- (void)updateBarrage:(CADisplayLink *)link
+/// 生成精灵描述 - 延时文字弹幕
+- (BarrageDescriptor *)walkTextSpriteDescriptorWithDelay:(NSTimeInterval)delay
 {
-    if (link == nil) return;
-        dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-        [self.arr_danmus.rac_sequence.signal subscribeNext:^(GLDanmuModel *model) {
-//             NSLog(@"%@11111",[NSThread currentThread]);
-            if (self.player.currentPlaybackTime ==  model.time.floatValue) {
-               
-            }
-        }];
-    });
-    
-//    NSLog(@"%f--,,%f",self.player.currentPlaybackTime,model.time.floatValue);
-    
-//    NSLog(@"%@222222",[NSThread currentThread]);
-    // 判断
-//    if (arr_danmus) {
-//        
-//    }
-
-}
-
-#pragma mark - 弹幕描述符生产方法
-
-/// 生成精灵描述 - 过场文字弹幕
-- (BarrageDescriptor *)walkTextSpriteDescriptorWithDirection:(NSInteger)direction
-{
-    
     BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
     descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
-//    descriptor.params[@"text"] = [NSString stringWithFormat:@"过场文字弹幕:%ld",(long)_index++];
+    descriptor.params[@"text"] = [NSString stringWithFormat:@"延时弹幕(延时%.0f秒)",delay];
     descriptor.params[@"textColor"] = [UIColor blueColor];
     descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
-    descriptor.params[@"direction"] = @(direction);
-//    descriptor.params[@"clickAction"] = ^{
-//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"弹幕被点击" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-//        [alertView show];
-//    };
+    descriptor.params[@"direction"] = @(1);
+    descriptor.params[@"delay"] = @(delay);
     return descriptor;
 }
+
+
+
+#pragma mark - 弹幕描述符生产方法
 
 /// 生成精灵描述 - 浮动文字弹幕
 - (BarrageDescriptor *)floatTextSpriteDescriptorWithDirection:(NSInteger)direction
@@ -742,6 +745,15 @@
     descriptor.params[@"fadeOutTime"] = @(1);
     descriptor.params[@"direction"] = @(direction);
     return descriptor;
+}
+
+#pragma mark - BarrageRendererDelegate
+
+- (NSTimeInterval)timeForBarrageRenderer:(BarrageRenderer *)renderer
+{
+    NSTimeInterval interval = [[NSDate date]timeIntervalSinceDate:_startTime];
+//    interval += _predictedTime;
+    return interval;
 }
 
 

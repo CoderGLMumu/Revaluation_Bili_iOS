@@ -32,8 +32,6 @@
 
 @property (strong, nonatomic) IBOutlet UIView *placeholderView;
 
-@property (nonatomic, strong) CADisplayLink *link;
-
 - (IBAction)popBackBtn:(UIButton *)btnClick;
 
 - (void)GoBack;
