@@ -19,6 +19,20 @@
 #import "ZFBrightnessView.h"
 #import "GLDanmuModel.h"
 
+#import "UIColor+Hex.h"
+
+typedef NS_OPTIONS(NSUInteger, GLDirectionType) {
+    GLDirectionTypeTop = 5,//5 -- 3
+    GLDirectionTypeBottom = 4,//4 -- 4
+    GLDirectionTypeLeft = 1,//1 -- 1
+    GLDirectionTypeRight = 0,//0 -- 2
+};
+
+typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
+    GLBarrageFloatDirectionT2B = 1,     // 上往下
+    GLBarrageFloatDirectionB2T = 2      // 下往上
+};
+
 @interface IJKMoviePlayerViewController ()<BarrageRendererDelegate>
 
 /** 需要播放的是否在网络视频/本地视频 */
@@ -33,9 +47,20 @@
 
 @property (nonatomic, strong) BarrageRenderer *renderer;
 
+/** 弹幕发射器 */
+@property (nonatomic, strong) BarrageDescriptor * descriptor;
+
 @property (nonatomic, strong) NSDate *startTime;
 
+@property (nonatomic, assign) NSTimeInterval predictedTime;
+
 @property (nonatomic, strong) NSArray *arr_danmus;
+
+/** 装载弹幕发射器 */
+@property (nonatomic, strong) NSMutableArray * descriptors;
+
+/** CGD信号 */
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 @end
 
@@ -547,6 +572,12 @@
             make.top.bottom.right.left.equalTo(self.view);
         }];
         [self.playView setupSubviewsConstraint];
+        
+        //等待执行，不会占用资源
+        if (self.semaphore) {
+            dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+            [_renderer load:self.descriptors];
+        }
     }
     
     [self toolsShowOrHidden];
@@ -670,30 +701,23 @@
 #warning 没加载数据点击发送弹幕会报错
     if (arr_danmus == nil) return;
     [self initBarrageRenderer];
-    // 将 Model 转换为 JSON 对象:
-//    NSArray *json = (NSArray *)[arr_danmus yy_modelToJSONObject];
-//    NSLog(@"%@",json[0]);
 
+     _predictedTime = self.player.currentPlaybackTime;
     
-//    NSInteger const number = self.arr_danmus.count;
-    
-//    NSInteger const number = 10;
     NSMutableArray * descriptors = [[NSMutableArray alloc]init];
-//    for (NSInteger i = 0; i < 111; i++) {
-//        [descriptors addObject:[self walkTextSpriteDescriptorWithDelay:i*2+1]];
-//    }
+    self.descriptors = descriptors;
+    
    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-
+    self.semaphore = semaphore;
+    
     [self.arr_danmus.rac_sequence.signal subscribeNext:^(GLDanmuModel *model) {
-        [descriptors addObject:[self walkTextSpriteDescriptorWithDelay:model.time.integerValue]];
+        [descriptors addObject:[self walkTextSpriteDescriptorWithDelay:model.time.integerValue content:model.content color:model.color direction:model.dire]];
         //发出已完成的信号
         if (self.arr_danmus.count == descriptors.count) {
             dispatch_semaphore_signal(semaphore);
         }
     }];
-    //等待执行，不会占用资源
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-     [_renderer load:descriptors];
+    
     
 //    [self.playView SendBarrage:arr_danmus];
     
@@ -717,16 +741,30 @@
 }
 
 /// 生成精灵描述 - 延时文字弹幕
-- (BarrageDescriptor *)walkTextSpriteDescriptorWithDelay:(NSTimeInterval)delay
+- (BarrageDescriptor *)walkTextSpriteDescriptorWithDelay:(NSTimeInterval)delay content:(NSString *)content color:(NSString *)color direction:(NSString *)direction
 {
+    
     BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
-    descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
-    descriptor.params[@"text"] = [NSString stringWithFormat:@"延时弹幕(延时%.0f秒)",delay];
-    descriptor.params[@"textColor"] = [UIColor blueColor];
-    descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
-    descriptor.params[@"direction"] = @(1);
-    descriptor.params[@"delay"] = @(delay);
-    return descriptor;
+    self.descriptor = descriptor;
+    if (direction.integerValue == GLDirectionTypeLeft) {
+        self.descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
+        self.descriptor.params[@"direction"] = @(1);
+    }else if (direction.integerValue == GLDirectionTypeTop){
+        self.descriptor.spriteName = NSStringFromClass([BarrageFloatTextSprite class]);
+        self.descriptor.params[@"direction"] = @(GLBarrageFloatDirectionT2B);
+        descriptor.params[@"duration"] = @(3);
+    }else if (direction.integerValue == GLDirectionTypeBottom){
+        self.descriptor.spriteName = NSStringFromClass([BarrageFloatTextSprite class]);
+        self.descriptor.params[@"direction"] = @(GLBarrageFloatDirectionB2T);
+        descriptor.params[@"duration"] = @(3);
+    }
+    self.descriptor.params[@"text"] = content;
+    self.descriptor.params[@"textColor"] = [UIColor colorWithRGBHex:color.intValue];
+    self.descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+    
+    self.descriptor.params[@"delay"] = @(delay);
+    
+    return self.descriptor;
 }
 
 
@@ -752,7 +790,8 @@
 - (NSTimeInterval)timeForBarrageRenderer:(BarrageRenderer *)renderer
 {
     NSTimeInterval interval = [[NSDate date]timeIntervalSinceDate:_startTime];
-//    interval += _predictedTime;
+    // 快进 快退的时间
+    interval += _predictedTime;
     return interval;
 }
 

@@ -171,6 +171,7 @@
 		0460EECA1D0355540078FCB2 /* GLPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460EEC91D0355540078FCB2 /* GLPlaceholderView.m */; };
 		0460EECE1D0357D70078FCB2 /* IJKMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460EECC1D0357D70078FCB2 /* IJKMoviePlayerViewController.m */; };
 		0460EECF1D0357D70078FCB2 /* IJKMoviePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460EECD1D0357D70078FCB2 /* IJKMoviePlayerViewController.xib */; };
+		04DF52AD1D1263650096B577 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF52AC1D1263650096B577 /* UIColor+Hex.m */; };
 		04E354D31D07E7D100EAA424 /* bili1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354CD1D07E7D100EAA424 /* bili1.png */; };
 		04E354D41D07E7D100EAA424 /* bili2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354CE1D07E7D100EAA424 /* bili2.png */; };
 		04E354D51D07E7D100EAA424 /* bili3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354CF1D07E7D100EAA424 /* bili3.png */; };
@@ -457,6 +458,8 @@
 		0460EECB1D0357D70078FCB2 /* IJKMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKMoviePlayerViewController.h; sourceTree = "<group>"; };
 		0460EECC1D0357D70078FCB2 /* IJKMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKMoviePlayerViewController.m; sourceTree = "<group>"; };
 		0460EECD1D0357D70078FCB2 /* IJKMoviePlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IJKMoviePlayerViewController.xib; sourceTree = "<group>"; };
+		04DF52AB1D1263650096B577 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		04DF52AC1D1263650096B577 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		04E354CD1D07E7D100EAA424 /* bili1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili1.png; sourceTree = "<group>"; };
 		04E354CE1D07E7D100EAA424 /* bili2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili2.png; sourceTree = "<group>"; };
 		04E354CF1D07E7D100EAA424 /* bili3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bili3.png; sourceTree = "<group>"; };
@@ -559,6 +562,8 @@
 		041DE3421CEAFB51000210E4 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				04DF52AB1D1263650096B577 /* UIColor+Hex.h */,
+				04DF52AC1D1263650096B577 /* UIColor+Hex.m */,
 				041DE39F1CEB4C71000210E4 /* UIView+GLExtension.h */,
 				041DE3A01CEB4C71000210E4 /* UIView+GLExtension.m */,
 				0429F9B21CEF46DC005D3D3C /* UIImage+LBImage.h */,
@@ -1727,6 +1732,7 @@
 				0429A77A1CFB10F500D28AB2 /* WYLSettingRowItem.m in Sources */,
 				0429A7721CFB10F500D28AB2 /* GLMineItem.m in Sources */,
 				0429A8531CFB19F600D28AB2 /* GLLiveContentShowViewController.m in Sources */,
+				04DF52AD1D1263650096B577 /* UIColor+Hex.m in Sources */,
 				0429A8271CFB16D300D28AB2 /* LBHeaderView.m in Sources */,
 				0429A8161CFB16D300D28AB2 /* BiLiTwoLevelCoverItem.m in Sources */,
 				0460EEC31D03531A0078FCB2 /* GLVideoPlayView.m in Sources */,

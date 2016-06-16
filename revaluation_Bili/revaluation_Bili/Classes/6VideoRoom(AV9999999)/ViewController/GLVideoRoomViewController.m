@@ -109,9 +109,8 @@
     [self addChildViewController:self.PVC];
     [self.view addSubview:self.PVC.view];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self.PVC SendBarrage:self.viewModel.arr_danmus];
-    });
+    
+    [self.PVC SendBarrage:self.viewModel.arr_danmus];
     
 //    [self.tabBarController.tabBar setHidden:YES];
 }
