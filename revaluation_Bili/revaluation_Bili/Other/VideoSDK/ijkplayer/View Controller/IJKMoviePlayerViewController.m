@@ -168,8 +168,9 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     [rotationView addSubview:self.player.view];
     
     UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
+    UITapGestureRecognizer *sliderTap_FullScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
     [self.playView.mediaProgressSlider addGestureRecognizer:sliderTap];
-    [self.playViewFullScreen.mediaProgressSlider addGestureRecognizer:sliderTap];
+    [self.playViewFullScreen.mediaProgressSlider addGestureRecognizer:sliderTap_FullScreen];
     
     
 }
@@ -179,7 +180,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
     _renderer = [[BarrageRenderer alloc]init];
     _startTime = [NSDate date];
-    [_renderer start];
 
     _renderer.delegate = self;
     _renderer.redisplay = YES;
@@ -298,8 +298,8 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
         CGFloat total = self.player.duration;
         //计算出拖动的当前秒数
         NSInteger dragedSeconds = floorf(total * tapValue);
+//        NSInteger skipSecondes =  dragedSeconds - self.player.currentPlaybackTime;
         self.player.currentPlaybackTime = dragedSeconds;
-        
         // 只要点击进度条就跳转播放
         [self.player play];
     }
@@ -413,7 +413,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 /** 占位视图 功能视图 */
 - (IBAction)popBackBtn:(UIButton *)btnClick {
     
-    
     self.isFullScreen ? [self dismissViewControllerAnimated:YES completion:nil] : [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -475,8 +474,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 #pragma mark - OnlineVideoPlayView工具条事件处理
 - (IBAction)onClickPlayOrPause:(UIButton *)sender {
-    NSInteger spriteNumber = [_renderer spritesNumberWithName:nil];
-    NSLog(@"%lu++++++++++++++++--00",spriteNumber);
     if (!sender.isSelected) {
         sender.selected = YES;
         [self.player play];
@@ -620,35 +617,42 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 
 - (void)moviePlayBackStateDidChange:(NSNotification*)notification {
-    NSLog(@"moviePlayBackStateDidChange");
-//    switch (_player.playbackState) {
-//        case IJKMPMoviePlaybackStateStopped:
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
-//            break;
-//            
-//        case IJKMPMoviePlaybackStatePlaying:
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
-//            break;
-//            
-//        case IJKMPMoviePlaybackStatePaused:
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
-//            break;
-//            
-//        case IJKMPMoviePlaybackStateInterrupted:
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: interrupted", (int)_player.playbackState);
-//            break;
-//            
-//        case IJKMPMoviePlaybackStateSeekingForward:
-//        case IJKMPMoviePlaybackStateSeekingBackward: {
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: seeking", (int)_player.playbackState);
-//            break;
-//        }
-//            
-//        default: {
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: unknown", (int)_player.playbackState);
-//            break;
-//        }
-//    }
+//    NSLog(@"moviePlayBackStateDidChange");
+    NSLog(@"111111===%f",self.renderer.time);
+    NSLog(@"222222===%f",_predictedTime);
+    NSLog(@"333333===%f==%f==%ld",self.player.currentPlaybackTime,self.player.playableDuration,(long)self.player.bufferingProgress);
+    switch (_player.playbackState) {
+        case IJKMPMoviePlaybackStateStopped:
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
+            break;
+            
+        case IJKMPMoviePlaybackStatePlaying:
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
+
+            self.predictedTime = self.player.currentPlaybackTime - self.renderer.time;
+            [self.renderer start];
+            break;
+            
+        case IJKMPMoviePlaybackStatePaused:
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
+            [self.renderer pause];
+            break;
+            
+        case IJKMPMoviePlaybackStateInterrupted:
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: interrupted", (int)_player.playbackState);
+            break;
+            
+        case IJKMPMoviePlaybackStateSeekingForward:
+        case IJKMPMoviePlaybackStateSeekingBackward: {
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: seeking", (int)_player.playbackState);
+            break;
+        }
+            
+        default: {
+            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: unknown", (int)_player.playbackState);
+            break;
+        }
+    }
 }
 
 #pragma Install Notifiacation- -播放器依赖的相关监听
@@ -702,7 +706,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     if (arr_danmus == nil) return;
     [self initBarrageRenderer];
 
-     _predictedTime = self.player.currentPlaybackTime;
+     self.predictedTime = -1;
     
     NSMutableArray * descriptors = [[NSMutableArray alloc]init];
     self.descriptors = descriptors;
@@ -767,8 +771,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     return self.descriptor;
 }
 
-
-
 #pragma mark - 弹幕描述符生产方法
 
 /// 生成精灵描述 - 浮动文字弹幕
@@ -791,7 +793,8 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 {
     NSTimeInterval interval = [[NSDate date]timeIntervalSinceDate:_startTime];
     // 快进 快退的时间
-    interval += _predictedTime;
+    interval += self.predictedTime;
+    
     return interval;
 }
 

@@ -927,10 +927,10 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="ykH-4m-Of8"/>
-                                                    <exclude reference="zcd-ng-TT6"/>
+                                                    <exclude reference="3Xu-a1-eWT"/>
                                                     <exclude reference="jvd-bF-qmt"/>
                                                     <exclude reference="uzW-OI-UFB"/>
-                                                    <exclude reference="3Xu-a1-eWT"/>
+                                                    <exclude reference="zcd-ng-TT6"/>
                                                     <exclude reference="xNk-SA-OWA"/>
                                                 </mask>
                                             </variation>
@@ -1117,8 +1117,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="eNc-jo-b1F"/>
                                                     <exclude reference="WiZ-n2-wxt"/>
+                                                    <exclude reference="eNc-jo-b1F"/>
                                                 </mask>
                                             </variation>
                                         </view>
