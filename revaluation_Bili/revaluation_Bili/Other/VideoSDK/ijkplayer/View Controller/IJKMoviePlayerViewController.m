@@ -20,6 +20,7 @@
 #import "GLDanmuModel.h"
 
 #import "UIColor+Hex.h"
+#import "GLConvertNSStringToInt.h"
 
 typedef NS_OPTIONS(NSUInteger, GLDirectionType) {
     GLDirectionTypeTop = 5,//5 -- 3
@@ -180,7 +181,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
     _renderer = [[BarrageRenderer alloc]init];
     _startTime = [NSDate date];
-
+    
     _renderer.delegate = self;
     _renderer.redisplay = YES;
     [self.rotationView addSubview:_renderer.view];
@@ -631,11 +632,13 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
             self.predictedTime = self.player.currentPlaybackTime - self.renderer.time;
             [self.renderer start];
+            [self.renderer.view setHidden:NO];
             break;
             
         case IJKMPMoviePlaybackStatePaused:
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
             [self.renderer pause];
+            [self.renderer.view setHidden:YES];
             break;
             
         case IJKMPMoviePlaybackStateInterrupted:
@@ -750,6 +753,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
     BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
     self.descriptor = descriptor;
+    
     if (direction.integerValue == GLDirectionTypeLeft) {
         self.descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
         self.descriptor.params[@"direction"] = @(1);
@@ -764,8 +768,14 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     }
     self.descriptor.params[@"text"] = content;
     self.descriptor.params[@"textColor"] = [UIColor colorWithRGBHex:color.intValue];
-    self.descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
-    
+    self.descriptor.params[@"fontSize"] = @(18);
+    self.descriptor.params[@"shadowColor"] = [UIColor blackColor];
+    self.descriptor.params[@"shadowOffset"] = @(1);
+//    self.descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+//    50 * [GLConvertNSStringToInt convertToInt:content]
+    /** 根据文本长度计算弹幕速度 */
+    self.descriptor.params[@"speed"] = @(50 + 15 * [GLConvertNSStringToInt convertToInt:content] / 3);
+//    NSLog(@"%f===%@",[GLConvertNSStringToInt convertToInt:content] / 2.5,content);
     self.descriptor.params[@"delay"] = @(delay);
     
     return self.descriptor;
