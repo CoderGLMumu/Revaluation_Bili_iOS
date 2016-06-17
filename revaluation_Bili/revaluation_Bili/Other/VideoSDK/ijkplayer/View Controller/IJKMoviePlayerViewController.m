@@ -38,8 +38,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 /** 需要播放的是否在网络视频/本地视频 */
 @property (nonatomic, assign) BOOL isLiveVideo;
-/** 是否是弹出全屏播放 */
-@property (nonatomic, assign) BOOL isFullScreen;
+
 /** 是否是直播视频 */
 @property (nonatomic, assign) BOOL isOnlineVideo;
 
@@ -248,6 +247,11 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.alpha = 0.0;
+}
+
 //- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 //{
 //    /** 全屏的话,直接强制全屏 */
@@ -343,10 +347,9 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 #pragma mark - 强制屏幕旋转
 - (IBAction)fullScreenAndScale:(UIButton *)btn {
+    
     self.navigationController.navigationBar.alpha = 0;
     if (btn.selected) {
-        
-        self.isFullScreen = NO;
         btn.selected = NO;
         
         /** 16 : 9 */
@@ -363,10 +366,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
             //项目必须支持 UIInterfaceOrientationPortrait
         }
     }else{
-        
-        self.isFullScreen = YES;
         btn.selected = YES;
-        
          /** 全屏 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
             SEL selector             = NSSelectorFromString(@"setOrientation:");
@@ -385,8 +385,12 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
+    
     [self toolsShowOrHidden];
     if (size.width > size.height) {
+        self.isFullScreen = YES;
+        
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@0);
             make.top.equalTo(@0);
@@ -398,6 +402,9 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
         }
 //        self.player.playbackRate = 2;
     }else {
+        self.isFullScreen = NO;
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
         [self.view mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@0);
             make.top.equalTo(@0);
@@ -619,9 +626,9 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 - (void)moviePlayBackStateDidChange:(NSNotification*)notification {
 //    NSLog(@"moviePlayBackStateDidChange");
-    NSLog(@"111111===%f",self.renderer.time);
-    NSLog(@"222222===%f",_predictedTime);
-    NSLog(@"333333===%f==%f==%ld",self.player.currentPlaybackTime,self.player.playableDuration,(long)self.player.bufferingProgress);
+//    NSLog(@"111111===%f",self.renderer.time);
+//    NSLog(@"222222===%f",_predictedTime);
+//    NSLog(@"333333===%f==%f==%ld",self.player.currentPlaybackTime,self.player.playableDuration,(long)self.player.bufferingProgress);
     switch (_player.playbackState) {
         case IJKMPMoviePlaybackStateStopped:
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);

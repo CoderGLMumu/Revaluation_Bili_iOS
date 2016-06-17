@@ -32,6 +32,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *placeholderView;
 
+/** 是否是弹出全屏播放 */
+@property (nonatomic, assign) BOOL isFullScreen;
+
 - (IBAction)popBackBtn:(UIButton *)btnClick;
 
 - (void)GoBack;

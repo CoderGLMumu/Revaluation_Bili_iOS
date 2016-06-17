@@ -11,7 +11,7 @@
 #import "GLVideoRoomItemViewModel.h"
 #import "IJKMoviePlayerViewController.h"
 
-@interface GLVideoRoomViewController ()
+@interface GLVideoRoomViewController () <UIGestureRecognizerDelegate>
 
 /** PVC */
 @property (nonatomic, strong) IJKMoviePlayerViewController *PVC;
@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.alpha = 0;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [RACObserve(self.viewModel, cellItemViewModels) subscribeNext:^(id x) {
@@ -81,9 +82,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"touming"] forBarMetrics:UIBarMetricsCompact];
-//    self.navigationController.navigationBar.alpha = 0;
-//    self.navigationController.navigationBarHidden = YES;
 }
 
 - (IBAction)popBackBtnClick:(UIButton *)sender {
@@ -93,26 +91,30 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
+    self.navigationController.navigationBar.alpha = 0.0;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.navigationController.navigationBar.alpha = 0.0;
 }
 
 #pragma mark - 加载视频
 - (IBAction)playVideoView:(UIControl *)sender {
     NSLog(@"播放视频");
-    self.PVC = [IJKMoviePlayerViewController InitVideoViewFromViewController:self withTitle:@"testttttt" URL:[NSURL URLWithString:self.viewModel.videoLink] isLiveVideo:YES isOnlineVideo:NO isFullScreen:NO completion:nil];
+    self.PVC = [IJKMoviePlayerViewController InitVideoViewFromViewController:self withTitle:self.viewModel.title URL:[NSURL URLWithString:self.viewModel.videoLink] isLiveVideo:YES isOnlineVideo:NO isFullScreen:NO completion:nil];
     [self addChildViewController:self.PVC];
     [self.view addSubview:self.PVC.view];
     
-    
     [self.PVC SendBarrage:self.viewModel.arr_danmus];
     
-//    [self.tabBarController.tabBar setHidden:YES];
+    [RACObserve(self.PVC, isFullScreen) subscribeNext:^(NSNumber *isFullScreen) {
+        !isFullScreen.boolValue ? self.navigationController.interactivePopGestureRecognizer.delegate = nil : nil;
+    }];
+    
+    [RACObserve(self.navigationController.navigationBar, alpha) subscribeNext:^(NSNumber *alpha) {
+        [self.navigationController.navigationBar setHidden:YES];
+    }];
 }
 
 
