@@ -171,8 +171,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     UITapGestureRecognizer *sliderTap_FullScreen = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
     [self.playView.mediaProgressSlider addGestureRecognizer:sliderTap];
     [self.playViewFullScreen.mediaProgressSlider addGestureRecognizer:sliderTap_FullScreen];
-    
-    
 }
 
 - (void)initBarrageRenderer
@@ -351,7 +349,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     self.navigationController.navigationBar.alpha = 0;
     if (btn.selected) {
         btn.selected = NO;
-        
+//        self.isFullScreen = YES;
         /** 16 : 9 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
             
@@ -367,6 +365,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
         }
     }else{
         btn.selected = YES;
+//        self.isFullScreen = NO;
          /** 全屏 */
         if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
             SEL selector             = NSSelectorFromString(@"setOrientation:");
@@ -385,8 +384,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    
-    [self toolsShowOrHidden];
     if (size.width > size.height) {
         self.isFullScreen = YES;
         
@@ -411,11 +408,12 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
             make.width.equalTo(@(size.width));
             make.height.equalTo(@(size.width *(9.0 / 16.0)));
         }];
-//        self.player.playbackRate = 0.4;
         if (self.tabBarController.tabBar) {
             [self.tabBarController.tabBar setHidden:NO];
         }
+//        self.player.playbackRate = 0.4;
     }
+    [self toolsShowOrHidden];
 }
 
 /** 占位视图 功能视图 */
@@ -491,6 +489,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     }
 }
 
+#pragma mark - PlayViewFull【视频全屏】工具条事件处理
 - (IBAction)onClickLock:(UIButton *)sender {
     NSLog(@"self.onlinePlayView 处理视频lock");
 }
@@ -501,7 +500,10 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     NSLog(@"self.onlinePlayView 处理视频AddDanMu");
 }
 - (IBAction)onClickshowDanMu:(UIButton *)sender {
-    NSLog(@"self.onlinePlayView 处理视频showDanMu");
+    sender.selected = !sender.selected;
+    
+    self.renderer.view.hidden = sender.selected;
+    NSLog(@"%d===%d",self.renderer.view.hidden,self.playViewFullScreen.showDanmu.selected);
 }
 - (IBAction)onClicksetting:(UIButton *)sender {
     NSLog(@"self.onlinePlayView 处理视频setting");
@@ -601,11 +603,17 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
     [self onClickPlayOrPause:nil];
     
+    /** 视频暂停监听 */
     RAC(self.playView.playOrPause,selected) = RACObserve(self.player, isPlaying);
     RAC(self.playView.smallPlayOrPause,selected) = RACObserve(self.playView.playOrPause,selected);
     RAC(self.playViewFullScreen.playOrPause,selected) = RACObserve(self.player, isPlaying);
+    
+    /** 视频缩放监听 */
     RAC(self.playView.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
     RAC(self.playViewFullScreen.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
+    RAC(self.playView,selected) = RACObserve(self, isFullScreen);
+
+    self.playView.isHideTool = YES;
     
     // 亮度view加到window最上层
     ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
@@ -639,13 +647,12 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
             self.predictedTime = self.player.currentPlaybackTime - self.renderer.time;
             [self.renderer start];
-            [self.renderer.view setHidden:NO];
+//            [self.renderer.view setHidden:NO];
             break;
             
         case IJKMPMoviePlaybackStatePaused:
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
             [self.renderer pause];
-            [self.renderer.view setHidden:YES];
             break;
             
         case IJKMPMoviePlaybackStateInterrupted:

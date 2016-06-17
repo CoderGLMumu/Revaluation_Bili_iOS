@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G1-n4-YwF" userLabel="返回按钮">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G1-n4-YwF" userLabel="返回按钮">
                     <rect key="frame" x="10" y="10" width="20" height="22"/>
                     <state key="normal" image="icnav_back_dark.png"/>
                     <connections>
@@ -320,6 +320,7 @@
                 <outlet property="panel_bottomCpmstraont" destination="qoi-4P-WzR" id="9fX-z3-Dfo"/>
                 <outlet property="panel_topCpmstraont" destination="R2s-85-lIj" id="A83-0R-JXH"/>
                 <outlet property="playOrPause" destination="8nb-jV-VAd" id="5ge-aV-ZN8"/>
+                <outlet property="showDanmu" destination="iYj-jZ-qKH" id="cui-o6-cSy"/>
                 <outlet property="smallPlayOrPause" destination="R8U-Mj-hnE" id="Dzy-wf-emv"/>
                 <outlet property="topPanel" destination="ZRY-GE-b83" id="JSp-lu-ZcG"/>
                 <outlet property="totalDurationLabel" destination="Vg0-uu-zfs" id="tcp-UB-4lk"/>
