@@ -35,6 +35,9 @@
                             <rect key="frame" x="10" y="0.0" width="111.5" height="40"/>
                             <color key="backgroundColor" red="0.32861947573041905" green="0.90957355564092635" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="关注主播"/>
+                            <connections>
+                                <action selector="RegardUp:" destination="dU2-nz-kpm" eventType="touchUpInside" id="6hD-l6-2HQ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

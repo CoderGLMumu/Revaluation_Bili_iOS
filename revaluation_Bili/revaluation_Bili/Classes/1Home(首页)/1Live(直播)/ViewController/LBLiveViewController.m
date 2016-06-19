@@ -20,6 +20,7 @@
 
 #import "GLLiveListViewController.h" //more 直播列表
 #import "GLLiveRoomViewController.h"
+#import "GLRegardUpViewController.h"
 
 @interface LBLiveViewController ()<LBHeaderViewDelegate>
 
@@ -60,7 +61,6 @@ static NSString * const ID = @"LBLiveViewCell";
     
     [self.tableView.mj_header beginRefreshing];
     
-    
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"LBLiveViewCell" bundle:nil] forCellReuseIdentifier:ID];
    
@@ -79,6 +79,7 @@ static NSString * const ID = @"LBLiveViewCell";
     }];
 }
 
+
 -(void)setUpHeaderView
 {
     @weakify(self);
@@ -93,6 +94,10 @@ static NSString * const ID = @"LBLiveViewCell";
         headView.delegate = self;
         self.tableView.tableHeaderView = headView;
         self.tableView.tableFooterView = buttonView;
+        
+        headView.ClickRegardUpButton = ^{
+            [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"GLRegardUpViewController" bundle:nil]instantiateInitialViewController] animated:YES];
+        };
     }];
 }
 

@@ -75,7 +75,6 @@
 -(void)awakeFromNib
 {
    
-    
 }
 
 #pragma mark -  两个模型数组的set方法
@@ -89,7 +88,6 @@
     _headerBannerArr = headerBannerArr;
     [self setUpScrollView];
 }
-
 
 #pragma mark -  设置topView的图片滚动
 -(void)setUpScrollView
@@ -148,13 +146,16 @@
         button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
     }
     
-    
     CGFloat headerViewHeight =  GLScreenW * 200 / 640 + self.middleViewH.constant + 75;
-    
     
     self.frame = CGRectMake(0, 0, GLScreenW, headerViewHeight);
 }
 
+- (IBAction)RegardUp:(UIButton *)sender {
+    if (self.ClickRegardUpButton) {
+        self.ClickRegardUpButton();
+    }
+}
 
 
 

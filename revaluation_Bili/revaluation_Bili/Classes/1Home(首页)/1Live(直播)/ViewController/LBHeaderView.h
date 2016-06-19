@@ -27,11 +27,12 @@
 // headerView的banner模型数组
 @property(nonatomic ,strong)NSArray *headerBannerArr;
 
-@property(nonatomic,strong) void(^block)(CGFloat);
-
+@property(nonatomic, strong) void(^ClickRegardUpButton)();
 
 @property (nonatomic ,weak)id <LBHeaderViewDelegate> delegate;
 
 +(instancetype)headerViewFromNib;
+
+//@property(nonatomic,strong) void(^block)(CGFloat);
 
 @end
