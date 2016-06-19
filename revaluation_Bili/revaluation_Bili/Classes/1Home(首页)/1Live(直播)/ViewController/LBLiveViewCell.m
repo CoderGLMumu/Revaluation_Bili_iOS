@@ -149,6 +149,7 @@ static CGFloat const margin = 10;
     return cell;
 }
 
+#pragma mark - 点击cell跳转LiveRoom
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     

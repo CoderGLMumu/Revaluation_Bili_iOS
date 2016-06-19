@@ -46,6 +46,9 @@
         [RACObserve(model, up) subscribeNext:^(NSString *up) {
             self.up = up;
         }];
+        [RACObserve(model, up_face) subscribeNext:^(NSString *up_face) {
+            self.up_face = up_face;
+        }];
         [RACObserve(model, online) subscribeNext:^(NSString *online) {
             self.online = online;
         }];

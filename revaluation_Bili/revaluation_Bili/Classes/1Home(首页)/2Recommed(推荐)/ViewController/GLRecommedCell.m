@@ -19,20 +19,28 @@
 
 @interface GLRecommedCell ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ScrollContentWidth;
+
 @property (nonatomic , strong)NSArray *bodyArr;
 
 @property (nonatomic, weak) IBOutlet UIView *middleView;
 
 @property (nonatomic, weak) IBOutlet UIView *bottomView;
 
+@property (weak, nonatomic) IBOutlet UIView *contentSizeView;
+
+
 @property (nonatomic, weak) UIControl *bodyView;
 
 /** cell的高度 */
 @property(nonatomic , assign)CGFloat middleVH;
 
+
 @end
 
 @implementation GLRecommedCell
+
+static int margin = 10;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -44,7 +52,7 @@
     [RACObserve(self.viewModel, middleVH) subscribeNext:^(NSNumber *middleVH) {
         self.middleVH = middleVH.floatValue;
     }];
-    [RACObserve(self.viewModel, style) subscribeNext:^(NSString *style) {
+    [RACObserve(self.viewModel, type) subscribeNext:^(NSString *type) {
         // 创建/布局子视图
         [self setupView];
     }];
@@ -56,12 +64,20 @@
 
 - (void)setupView
 {
-    
-    if (self.middleView.subviews) {
-        for (UIView *view in self.middleView.subviews) {
-            [view removeFromSuperview];
+    if (![self.viewModel.type isEqual: @"bangumi_3"]){
+        if (self.middleView.subviews) {
+            for (UIView *view in self.middleView.subviews) {
+                [view removeFromSuperview];
+            }
+        }
+    }else{
+        if (self.middleView.subviews) {
+            for (UIView *view in self.contentSizeView.subviews) {
+                [view removeFromSuperview];
+            }
         }
     }
+    
 //    NSLog(@"%@---",self.viewModel.type);
 //    NSLog(@"%@-2--",self.viewModel.style);
     if ([self.viewModel.type isEqual: @"recommend"] || [self.viewModel.type isEqual: @"live"] || [self.viewModel.type isEqual: @"bangumi_2"] || [self.viewModel.type isEqual: @"region"]) {
@@ -117,7 +133,7 @@
             
             if (self.Videodata) {
                 GLRecommedCellModel *cellM = self.viewModel.cellbodyItemViewModels[i];
-                self.Videodata(cellM.param);
+                self.Videodata(cellM);
             }
         }];
         
@@ -134,12 +150,41 @@
 
     }else if ([self.viewModel.type isEqual: @"bangumi_3"]){
         for (int i = 0; i < self.viewModel.body.count; ++i) {
+            // 电视剧
+            GLBangumiBodyView *bodyview = [GLBangumiBodyView GLBangumiBodyViewFromNib];
+            bodyview.body = self.viewModel.body[i];
+            self.bodyView = bodyview;
+            
+            NSString *width_str = bodyview.body[@"width"];
+            NSString *height_str = bodyview.body[@"height"];
+            
+            CGFloat width = width_str.doubleValue / height_str.doubleValue * (bodyview.glh_height - bodyview.titleLabel.glh_height - bodyview.desc1Label.glh_height);
+            CGFloat left = i * width;
+            
+             // 设置scrollView的contentSize
+            if (i == 0) {
+                self.ScrollContentWidth.constant = self.viewModel.body.count * width + margin * (self.viewModel.body.count - 1);
+            }
+            [self layoutIfNeeded];
+            ((UIScrollView *)self.contentSizeView.superview).showsHorizontalScrollIndicator = NO;
+            [self.contentSizeView addSubview:bodyview];
+            
+            [bodyview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.bottom.equalTo(bodyview.superview);
+                make.width.equalTo(@(width));
+                make.left.equalTo(@(left + margin * i));
+            }];
+            
+            [[self.bodyView rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+                GLRecommedCellModel *cellM = self.viewModel.cellbodyItemViewModels[i];
+                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"点击了%@\n跳转%@",cellM.title,cellM.param]];
+            }];
+            
+//            NSLog(@"~~~~~~%f===%f",width,left);
+//            NSLog(@"????%f",width);
             
         }
     }
-    
-    
-
 }
 
 - (void)layoutSubviews

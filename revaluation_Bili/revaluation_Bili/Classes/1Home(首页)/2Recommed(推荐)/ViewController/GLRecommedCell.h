@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GLRecommedCellModel;
 @class GLRecommedCellViewModel;
 
 @interface GLRecommedCell : UITableViewCell
@@ -15,6 +15,6 @@
 @property (strong, nonatomic) GLRecommedCellViewModel * viewModel;
 
 /** 传递给控制器视频播放需要的数据 */
-@property (nonatomic, strong) void((^Videodata)(NSString *aid));
+@property (nonatomic, strong) void((^Videodata)(GLRecommedCellModel *CellModel));
 
 @end

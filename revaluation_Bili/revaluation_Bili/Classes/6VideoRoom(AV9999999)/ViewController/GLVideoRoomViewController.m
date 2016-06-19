@@ -112,11 +112,9 @@
         !isFullScreen.boolValue ? self.navigationController.interactivePopGestureRecognizer.delegate = nil : nil;
     }];
     
-    [self.navigationController.navigationBar setHidden:YES];
-//    
-//    [RACObserve(self.navigationController.navigationBar, alpha) subscribeNext:^(NSNumber *alpha) {
-//        
-//    }];
+    [RACObserve(self.navigationController.navigationBar, alpha) subscribeNext:^(NSNumber *alpha) {
+        [self.navigationController.navigationBar setHidden:YES];
+    }];
 }
 
 

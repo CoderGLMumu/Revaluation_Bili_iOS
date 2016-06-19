@@ -715,10 +715,32 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-kO-Zda">
-                                            <rect key="frame" x="10" y="40" width="580" height="276.5"/>
+                                            <rect key="frame" x="10" y="40" width="580" height="277"/>
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4H-td-Fda">
-                                                    <rect key="frame" x="0.0" y="0.0" width="580" height="276.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="580" height="277"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYH-QI-kpd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="277"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="200" id="HcV-cr-z2x"/>
+                                                                <constraint firstAttribute="height" id="SGa-XG-9v9"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="SGa-XG-9v9"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="UYH-QI-kpd" secondAttribute="bottom" id="LM7-H5-tUx"/>
+                                                        <constraint firstItem="UYH-QI-kpd" firstAttribute="leading" secondItem="D4H-td-Fda" secondAttribute="leading" id="RhB-NT-bFI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UYH-QI-kpd" secondAttribute="trailing" id="cdC-of-Obf"/>
+                                                        <constraint firstItem="UYH-QI-kpd" firstAttribute="top" secondItem="D4H-td-Fda" secondAttribute="top" id="gdh-wa-pdY"/>
+                                                        <constraint firstItem="UYH-QI-kpd" firstAttribute="height" secondItem="D4H-td-Fda" secondAttribute="height" id="hzK-De-A1h"/>
+                                                    </constraints>
                                                 </scrollView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -742,6 +764,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.49572417120000001" green="0.98788561919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="ScrollContentWidth" destination="HcV-cr-z2x" id="Kt1-uT-uYu"/>
+                                    <outlet property="contentSizeView" destination="UYH-QI-kpd" id="XZZ-mk-ApG"/>
                                     <outlet property="middleView" destination="1sz-kO-Zda" id="nAk-Rw-bGs"/>
                                 </connections>
                             </tableViewCell>

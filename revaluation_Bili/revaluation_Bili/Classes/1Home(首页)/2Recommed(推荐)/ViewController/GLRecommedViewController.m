@@ -9,11 +9,14 @@
 #import "GLRecommedViewController.h"
 #import "GLVideoRoomViewController.h"
 #import "GLVideoRoomViewModel.h"
+#import "GLLiveRoomViewController.h"
+#import "GLLiveRoomViewModel.h"
 
 #import "GLRecommedViewModel.h"
 #import "GLRecommedItemViewModel.h"
 #import "GLRecommedCellViewModel.h"
 #import "GLRecommedCellModel.h"
+#import "GLRecommedCellItemViewModel.h"
 
 #import "GLRecommedCell.h"
 
@@ -133,7 +136,10 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
         cell.viewModel = cellVM;
          return cell;
     } else if([vm.type isEqualToString:@"bangumi_3"]) {
-         return [tableView dequeueReusableCellWithIdentifier:bangumi_3CellID];
+        GLRecommedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:bangumi_3CellID];
+        [self pushVideoVC:cell];
+        cell.viewModel = cellVM;
+        return cell;
     }
     
     GLRecommedCell *cell = [GLRecommedCell new];
@@ -143,16 +149,28 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 
 - (void)pushVideoVC:(GLRecommedCell *)cell
 {
-    
-    cell.Videodata = ^(NSString *aid){
+    @weakify(cell);
+    cell.Videodata = ^(GLRecommedCellModel *CellModel){
+        @strongify(cell);
         if ([cell.viewModel.type isEqualToString:@"recommend"] || [cell.viewModel.type isEqualToString:@"region"] || [cell.viewModel.type isEqualToString:@"bangumi_2"]) {
-            [self.navigationController setNavigationBarHidden:YES animated:YES];
+//            [self.navigationController setNavigationBarHidden:YES animated:YES];
             GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
-            GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:aid];
+            GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:CellModel.param];
             videoVC.viewModel = VM;
             
             [self.navigationController pushViewController:videoVC animated:YES];
+        }else if ([cell.viewModel.type isEqualToString:@"live"]) {
+            GLLiveRoomViewController *liveRoomVC = [[GLLiveRoomViewController alloc]init];
+
+            liveRoomVC.room_id = CellModel.param;
+            liveRoomVC.online = CellModel.online;
+            liveRoomVC.face = CellModel.up_face;
+            
+            [self.navigationController pushViewController:liveRoomVC animated:YES];
+        }else if ([cell.viewModel.type isEqualToString:@"weblink"]) {
+            NSLog(@"%@",CellModel);
         }
+//        weblink
     };
 }
 
@@ -166,6 +184,32 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    GLRecommedCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+/** 这里官方是自定义的WKWebView */
+    if ([cell.viewModel.type isEqualToString:@"weblink"]){
+        UIApplication *app = [UIApplication sharedApplication];
+        NSURL *url =[NSURL URLWithString:cell.viewModel.body[0][@"param"]];
+        if([app canOpenURL:url]){
+            [app openURL:url];
+        }
+    }else if([cell.viewModel.type isEqualToString:@"zhoukan"]){
+        GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
+        GLRecommedCellItemViewModel *viewModel = (GLRecommedCellItemViewModel *)cell.viewModel.cellbodyItemViewModels[0];
+        GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:viewModel.param];
+        videoVC.viewModel = VM;
+        
+        [self.navigationController pushViewController:videoVC animated:YES];
+    }
+//    NSLog(@"%@",cell.viewModel);
+    
+//    @weakify(cell);
+//    cell.Videodata = ^(GLRecommedCellModel *CellModel){
+//        @strongify(cell);
+//        if ([cell.viewModel.type isEqualToString:@"weblink"]) {
+//            NSLog(@"%@",CellModel);
+//        }
+//        //        weblink
+//    };
     // 跳转控制器
 
 //    cell.Videodata = ^{

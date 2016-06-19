@@ -138,6 +138,8 @@ static NSString * const ID = @"LBLiveViewCell";
 {
     return self.lbviewModel.cellItemArr.count;
 }
+
+#pragma mark - 跳转LiveRoom的实现在cell中,数据从那里传出来
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LBLiveViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];

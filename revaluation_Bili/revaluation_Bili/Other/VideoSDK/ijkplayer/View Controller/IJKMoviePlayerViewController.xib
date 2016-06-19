@@ -313,6 +313,7 @@
                 <action selector="onClickMediaControl:" destination="-1" eventType="touchUpInside" id="F7Y-7a-OfE"/>
                 <outlet property="ProgressValueView" destination="zuI-OK-e66" id="JPB-bX-5Hh"/>
                 <outlet property="bottomPanel" destination="wBu-6d-ZgO" id="QH5-FY-6H6"/>
+                <outlet property="cancelFullScreenButton" destination="eQG-Gp-huS" id="1uR-yz-TYs"/>
                 <outlet property="currentTimeLabel" destination="otA-vI-HE9" id="Fba-FK-U8u"/>
                 <outlet property="fullSreenBtn" destination="Vp2-TV-gXl" id="uAN-S0-NlV"/>
                 <outlet property="mediaProgressSlider" destination="LYM-hh-Bae" id="g4x-Qd-fTW"/>
@@ -341,7 +342,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="29"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-jZ-qKH" userLabel="iSshowDanmu">
-                                    <rect key="frame" x="39" y="0.0" width="28.5" height="29"/>
+                                    <rect key="frame" x="39" y="0.0" width="28" height="29"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="iYj-jZ-qKH" secondAttribute="height" multiplier="1:1" id="Cmv-pK-PcI"/>
@@ -386,12 +387,12 @@
                                         </mask>
                                     </variation>
                                 </button>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-1J-YTL">
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-1J-YTL">
                                     <rect key="frame" x="121" y="14" width="159.5" height="2"/>
                                     <color key="progressTintColor" red="1" green="0.52624524510000004" blue="0.93377775900000004" alpha="0.65126329790000004" colorSpace="calibratedRGB"/>
                                     <color key="trackTintColor" white="0.66666666669999997" alpha="0.6479111259" colorSpace="calibratedWhite"/>
                                 </progressView>
-                                <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uk1-zr-s1N" userLabel="Slider: Video Progress">
+                                <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uk1-zr-s1N" userLabel="Slider: Video Progress">
                                     <rect key="frame" x="119" y="0.0" width="163.5" height="30"/>
                                     <color key="minimumTrackTintColor" red="1" green="0.36385640819999998" blue="0.91703048600000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -410,7 +411,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOB-Ec-KeY" userLabel="Label: Current Time">
-                                    <rect key="frame" x="77.5" y="0.0" width="39" height="29"/>
+                                    <rect key="frame" x="77" y="0.0" width="39" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -444,7 +445,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWH-mB-egD" userLabel="lockBtn">
-                                    <rect key="frame" x="418" y="0.0" width="28.5" height="29"/>
+                                    <rect key="frame" x="418" y="0.0" width="28" height="29"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lWH-mB-egD" secondAttribute="height" multiplier="1:1" id="Fku-Ys-5yw"/>
@@ -530,8 +531,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2P-uM-ldw" userLabel="topTool">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="48"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pq-2k-ibq" userLabel="iSshowDanmu">
-                                    <rect key="frame" x="393.5" y="18.5" width="38.5" height="29"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pq-2k-ibq" userLabel="iSshowDanmu">
+                                    <rect key="frame" x="393" y="18" width="38.5" height="29"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="ExB-U2-kac"/>
@@ -565,15 +566,15 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-Gp-huS">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-Gp-huS" userLabel="取消全屏">
                                     <rect key="frame" x="10" y="19" width="20" height="28.5"/>
                                     <state key="normal" image="icnav_back_light.png"/>
                                     <connections>
                                         <action selector="fullScreenAndScale:" destination="-1" eventType="touchUpInside" id="ZMv-lm-VnC"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4J-uK-jq1" userLabel="iSshowDanmu">
-                                    <rect key="frame" x="437" y="18.5" width="37.5" height="29"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4J-uK-jq1" userLabel="iSshowDanmu">
+                                    <rect key="frame" x="437" y="18" width="37.5" height="29"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="Phb-Ux-FiH"/>
@@ -602,8 +603,8 @@
                                         <action selector="onClickshowDanMu:" destination="-1" eventType="touchUpInside" id="5ag-GL-7iU"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-bU-ANG" userLabel="iSshowDanmu">
-                                    <rect key="frame" x="350.5" y="18.5" width="38.5" height="29.5"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-bU-ANG" userLabel="iSshowDanmu">
+                                    <rect key="frame" x="350" y="18" width="38.5" height="29.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="45" id="0zw-Ah-YsL"/>
@@ -632,7 +633,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaJ-7y-Bzk" userLabel="iSshowDanmu">
-                                    <rect key="frame" x="340" y="12" width="31" height="23"/>
+                                    <rect key="frame" x="308" y="19" width="37.5" height="29"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="1IY-dK-Y39"/>

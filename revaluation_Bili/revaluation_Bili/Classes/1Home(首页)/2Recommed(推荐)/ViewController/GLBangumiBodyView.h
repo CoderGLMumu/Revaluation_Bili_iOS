@@ -10,6 +10,9 @@
 
 @interface GLBangumiBodyView : UIControl
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *desc1Label;
+
 + (instancetype)GLBangumiBodyViewFromNib;
 
 /** body */

@@ -45,6 +45,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *playOrPause;
 @property (weak, nonatomic) IBOutlet UIButton *smallPlayOrPause;
 @property (weak, nonatomic) IBOutlet UIButton *showDanmu;
+@property (weak, nonatomic) IBOutlet UIButton *cancelFullScreenButton;
+
 
 @property(nonatomic,strong) IBOutlet UILabel *currentTimeLabel;
 @property(nonatomic,strong) IBOutlet UILabel *totalDurationLabel;

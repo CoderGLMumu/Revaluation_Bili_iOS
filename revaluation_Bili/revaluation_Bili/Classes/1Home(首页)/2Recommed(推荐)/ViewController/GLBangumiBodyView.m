@@ -11,8 +11,7 @@
 @interface GLBangumiBodyView ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *desc1Label;
+
 
 @end
 

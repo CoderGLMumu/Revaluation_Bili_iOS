@@ -346,7 +346,8 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 #pragma mark - 强制屏幕旋转
 - (IBAction)fullScreenAndScale:(UIButton *)btn {
     
-    self.navigationController.navigationBar.alpha = 0;
+    NSLog(@"btn%d",btn.selected);
+    
     if (btn.selected) {
         btn.selected = NO;
 //        self.isFullScreen = YES;
@@ -612,8 +613,14 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     RAC(self.playView.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
     RAC(self.playViewFullScreen.fullSreenBtn,selected) = RACObserve(self, isFullScreen);
     RAC(self.playView,selected) = RACObserve(self, isFullScreen);
+    
+    [RACObserve(self, isFullScreen) subscribeNext:^(id x) {
+        self.playViewFullScreen.cancelFullScreenButton.selected = !x;
+        NSLog(@"%d===x%d",self.playViewFullScreen.cancelFullScreenButton.selected,x);
+    }];
+    
 
-    self.playView.isHideTool = YES;
+//    self.playView.isHideTool = YES;
     
     // 亮度view加到window最上层
     ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
@@ -647,7 +654,6 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 
             self.predictedTime = self.player.currentPlaybackTime - self.renderer.time;
             [self.renderer start];
-//            [self.renderer.view setHidden:NO];
             break;
             
         case IJKMPMoviePlaybackStatePaused:
