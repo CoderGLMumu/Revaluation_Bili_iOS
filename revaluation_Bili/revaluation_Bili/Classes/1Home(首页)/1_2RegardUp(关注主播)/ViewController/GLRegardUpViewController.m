@@ -9,7 +9,10 @@
 #import "GLRegardUpViewController.h"
 #import "GLRegardUpCell.h"
 
+#import "GLLiveRoomViewController.h"
+
 #import "GLRegardUpViewModel.h"
+#import "GLRegardUpModel.h"
 
 #import "GLDIYHeader.h"
 
@@ -34,6 +37,10 @@
     
     // 设置标题
     self.title = @"我的关注";
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.estimatedRowHeight = 213;
+    self.tableView.tableHeaderView.glh_height = 10;
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self loadDataSouce];
     
@@ -74,7 +81,27 @@
     
     cell.model = self.viewModel.listModels[indexPath.row];
     
+    /** sb中也设置了cell点击不显示背景 */
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 跳转LiveRoom控制器
+    GLLiveRoomViewController *LiveRoomVC = [GLLiveRoomViewController new];
+    GLRegardUpCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    LiveRoomVC.room_id = cell.model.roomid.stringValue;
+    LiveRoomVC.face = cell.model.face;
+    LiveRoomVC.online = @"拿不到数据";
+    [self.navigationController pushViewController:LiveRoomVC animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
 }
 
 /*

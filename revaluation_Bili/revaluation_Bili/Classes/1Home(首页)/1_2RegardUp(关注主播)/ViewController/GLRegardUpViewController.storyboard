@@ -12,16 +12,21 @@
         <scene sceneID="Z6o-so-qYo">
             <objects>
                 <tableViewController id="Vbd-OA-qs6" customClass="GLRegardUpViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bxn-5K-Kjs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bxn-5K-Kjs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="bq8-es-PyK" userLabel="headerView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegardCell" rowHeight="84" id="a7s-ZU-DFs" customClass="GLRegardUpCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="84"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RegardCell" rowHeight="84" id="a7s-ZU-DFs" customClass="GLRegardUpCell">
+                                <rect key="frame" x="0.0" y="72" width="600" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a7s-ZU-DFs" id="R5z-Yp-AFT">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="83.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sv-rm-8j9" userLabel="info">
@@ -151,6 +156,7 @@
                                     <outlet property="areaNameLabel" destination="QE4-YB-Ljg" id="DvB-mu-Zbe"/>
                                     <outlet property="faceImageView" destination="ggQ-Fb-IdJ" id="QSa-eq-MlP"/>
                                     <outlet property="fansNumLabel" destination="IMY-IL-zQM" id="wHX-iR-Z2p"/>
+                                    <outlet property="infoView" destination="4Sv-rm-8j9" id="5UZ-pQ-oW5"/>
                                     <outlet property="live_statusView" destination="b1R-79-pXE" id="TZU-AX-nfW"/>
                                     <outlet property="nameLabel" destination="eA9-Az-sgf" id="L6n-92-9QQ"/>
                                     <outlet property="tagsHeightConstraint" destination="JNZ-6I-lZw" id="6ss-wj-5al"/>
