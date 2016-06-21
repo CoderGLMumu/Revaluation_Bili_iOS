@@ -24,3 +24,5 @@ pod 'SVProgressHUD'
 pod 'ReactiveCocoa'
 
 pod 'BarrageRenderer'
+
+pod 'MJExtension'

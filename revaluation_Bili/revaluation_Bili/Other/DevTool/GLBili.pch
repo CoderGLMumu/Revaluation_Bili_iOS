@@ -20,6 +20,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <YYModel/YYModel.h>
+#import <MJExtension/MJExtension.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -40,9 +41,9 @@
 
 /*** 日志 | ...:宏里面可变参数 ***/
 #ifdef DEBUG  // 调试
-#define Log(...) NSLog(__VA_ARGS__)
+#define GLLog(...) NSLog(__VA_ARGS__);
 #else   // 发布
-#define Log(...) /* */
+#define GLLog(...) /* */
 #endif
 
 #define GLFunc GLLog(@"%s",__func__)

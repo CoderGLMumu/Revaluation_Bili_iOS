@@ -1,5 +1,5 @@
 //
-//  LBRecommedViewController.h
+//  LBRegardViewController.h
 //  Bili
 //
 //  Created by 林彬 on 16/3/31.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LBRecommedViewController : UITableViewController
+@interface LBRegardViewController : UIViewController
 
 @end

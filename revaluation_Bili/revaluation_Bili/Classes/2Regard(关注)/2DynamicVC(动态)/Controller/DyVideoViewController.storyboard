@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxy-Rh-DXu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dy Video View Controller-->
+        <scene sceneID="XfX-kY-1Ba">
+            <objects>
+                <viewController id="kxy-Rh-DXu" customClass="DyVideoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dok-oz-yi5"/>
+                        <viewControllerLayoutGuide type="bottom" id="psm-FI-GQv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q1o-oU-i94">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQY-dp-Sya">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4z8-em-PXf">
+                                        <rect key="frame" x="20" y="14" width="30" height="30"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.49572417120000001" green="0.98788561919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kQY-dp-Sya" firstAttribute="height" secondItem="q1o-oU-i94" secondAttribute="width" multiplier="9/16" id="HVM-Il-9Wb"/>
+                            <constraint firstItem="kQY-dp-Sya" firstAttribute="top" secondItem="q1o-oU-i94" secondAttribute="topMargin" id="IEj-gf-PAB"/>
+                            <constraint firstItem="kQY-dp-Sya" firstAttribute="leading" secondItem="q1o-oU-i94" secondAttribute="leading" id="VHC-Ce-9YK"/>
+                            <constraint firstItem="kQY-dp-Sya" firstAttribute="top" secondItem="Dok-oz-yi5" secondAttribute="bottom" id="Xhz-op-0ZO"/>
+                            <constraint firstAttribute="trailing" secondItem="kQY-dp-Sya" secondAttribute="trailing" id="cnn-Pc-asx"/>
+                            <constraint firstItem="kQY-dp-Sya" firstAttribute="top" secondItem="Dok-oz-yi5" secondAttribute="bottom" id="r8K-6a-QNV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xhz-op-0ZO"/>
+                                <exclude reference="r8K-6a-QNV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="PlayBackView" destination="kQY-dp-Sya" id="Krx-ea-dwU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9V-X2-SXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="787" y="-40"/>
+        </scene>
+    </scenes>
+</document>

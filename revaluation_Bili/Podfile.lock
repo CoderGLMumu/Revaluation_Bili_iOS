@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - BarrageRenderer (1.8.0)
   - Masonry (1.0.1)
+  - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - AFNetworking
   - BarrageRenderer
   - Masonry
+  - MJExtension
   - MJRefresh
   - ReactiveCocoa
   - SDWebImage
@@ -49,6 +51,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BarrageRenderer: f99b461b58cd34538eef10e547b8ec2f300a0e24
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
@@ -56,6 +59,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: a9fbb90726900717b2123de167591db345070e51
+PODFILE CHECKSUM: 2c423211f3f2d3e19928e37c91b0f0028a69d916
 
 COCOAPODS: 1.0.0

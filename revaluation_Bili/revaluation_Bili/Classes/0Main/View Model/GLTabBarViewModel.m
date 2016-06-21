@@ -8,6 +8,7 @@
 
 #import "GLTabBarViewModel.h"
 #import "GLHomeViewController.h"
+#import "LBRegardViewController.h"
 #import "GLMineViewController.h"
 #import "GLNavigationController.h"
 
@@ -37,7 +38,7 @@
     
 #pragma mark -  高林
     // 关注  (高林修改)
-    UIViewController *regardVC = [[UIViewController alloc] init];
+    LBRegardViewController *regardVC = [[LBRegardViewController alloc] init];
     UINavigationController *regardNAV = [[UINavigationController alloc] initWithRootViewController:regardVC];
     complete(regardNAV);
     
