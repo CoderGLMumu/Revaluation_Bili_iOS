@@ -54,6 +54,11 @@
             [enbutton addTarget:self action:@selector(enbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
             [buttonArr addObject:enbutton];
         }
+        LBEntranceButton *enbutton = [[LBEntranceButton alloc] init];
+        [enbutton setTitle:@"全部直播" forState:UIControlStateNormal];
+        [enbutton setImage:[UIImage imageNamed:@"hd_home_region_icon_11"] forState:UIControlStateNormal];
+        [enbutton addTarget:self action:@selector(enbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [buttonArr addObject:enbutton];
         _buttonArr = buttonArr;
     }
     return _buttonArr;
@@ -97,17 +102,25 @@
     scrollingView.images = self.imageArr;
 //    scrollingView.frame = CGRectMake(0, 0, self.topView.frame.size.width, ScreenW * 200 / 640);
     scrollingView.frame = self.topView.bounds;
-    [self layoutIfNeeded];
-    [self.topView addSubview:scrollingView];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self layoutIfNeeded];
+        [self.topView addSubview:scrollingView];
+    });
+    
 }
 
 #pragma mark -  设置按钮
 - (void)setUpButtons
 {
-    for (LBEntranceButton *button in self.buttonArr) {
-        [self.middleView addSubview:button];
-    }
-    [self layoutIfNeeded];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        for (LBEntranceButton *button in self.buttonArr) {
+            
+                [self.middleView addSubview:button];
+            
+        }
+        [self layoutIfNeeded];
+    });
 }
 
 - (void)enbuttonClick:(LBEntranceButton *)enbutton

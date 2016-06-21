@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIView *tagsView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 
+/** pretag_btn */
+@property (nonatomic, weak) UIButton *pretag_btn;
+
 /** 根据返回的标签数组-数量 动态添加 标签 */
 @property (nonatomic, strong) NSArray *roomTags;
 
@@ -61,7 +64,46 @@
     if (model.roomTags.count == 0) {
         [self.tagsView removeFromSuperview];
     }else{
+        
+        self.pretag_btn = nil;
+        
+        for (UIView *btn in self.tagsView.subviews) {
+            [btn removeFromSuperview];
+        }
         [self addSubview:self.tagsView];
+        
+        CGFloat left;
+        
+        int margin = 10;
+        
+        for (int i = 0; i < model.roomTags.count; ++i) {
+            NSString *tag_str =  model.roomTags[i];
+            UIButton *tag_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [self.tagsView addSubview:tag_btn];
+            [tag_btn setTitle:tag_str forState:UIControlStateNormal];
+            [tag_btn setTitleColor:GLColor(55, 55, 55) forState:UIControlStateNormal];
+            
+            tag_btn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+            
+            [tag_btn setFont:[UIFont systemFontOfSize:13]];
+            [tag_btn sizeToFit];
+            
+            tag_btn.layer.cornerRadius = 8;
+            tag_btn.layer.borderColor = [UIColor darkGrayColor].CGColor;
+            tag_btn.layer.borderWidth = 1;
+            
+            left += self.pretag_btn.glw_width;
+            
+//            CGFloat left = i * tag_btn.glw_width;
+            NSLog(@"leftleft%f===%f",left,self.pretag_btn.glw_width);
+//            tag_btn.backgroundColor = GLColor(0, 255, 255);
+            [tag_btn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.bottom.equalTo(tag_btn.superview);
+                make.left.equalTo(@(left + i * margin));
+                make.width.equalTo(@(tag_btn.glw_width));
+            }];
+            self.pretag_btn = tag_btn;
+        }
     }
 }
 

@@ -77,7 +77,7 @@
     CGFloat buttonH = 40;
     CGFloat buttonW = [UIScreen mainScreen].bounds.size.width - 30;
     footerButton.frame = CGRectMake(15, 0, buttonW, buttonH);
-    footerButton.backgroundColor = [UIColor whiteColor];
+    footerButton.backgroundColor = [UIColor redColor];
     [footerButton setTitle:@"全部直播" forState:UIControlStateNormal];
     [footerButton setTitle:@"全部直播" forState:UIControlStateHighlighted];
     [footerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

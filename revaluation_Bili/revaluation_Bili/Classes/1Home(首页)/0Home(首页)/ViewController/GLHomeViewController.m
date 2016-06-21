@@ -74,7 +74,6 @@
     
     self.homeViewModel = [GLHomeViewModel viewModel];
     
-    
     __weak typeof(self) weakSelf = self;
     /** 设置子控制器 */
     [GLHomeViewModel setUpChildViewController:^(UIViewController *childViewController) {

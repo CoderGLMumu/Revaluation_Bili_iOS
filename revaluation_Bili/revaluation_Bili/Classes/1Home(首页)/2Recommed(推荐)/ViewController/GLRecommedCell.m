@@ -7,7 +7,7 @@
 //
 
 #import "GLRecommedCell.h"
-#import "LBRecommedModel.h"
+
 #import "GLRecommedCellModel.h"
 
 #import "GLRecommedCellViewModel.h"

@@ -11,7 +11,7 @@
 #import "GLPartitionViewController.h"
 //#import "GLRecommedViewController.h"
 #import "LBLiveViewController.h"
-#import "LBRecommedViewController.h"
+//#import "LBRecommedViewController.h"
 
 #import "GLRecommedViewController.h"
 
