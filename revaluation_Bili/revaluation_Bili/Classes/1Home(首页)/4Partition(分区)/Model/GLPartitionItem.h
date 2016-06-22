@@ -1,0 +1,21 @@
+//
+//  PartitionItem.h
+//  Bili
+//
+//  Created by mac on 16/4/23.
+//  Copyright © 2016年 gl. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface GLPartitionItem : NSObject
+
+/** 图片 */
+@property (nonatomic, strong) UIImage *image;
+/** 图片名称 */
+@property (nonatomic, strong) NSString *name_image;
+
+/** Item_index */
+@property (nonatomic, strong) UIViewController* Item_VC;
+
+@end

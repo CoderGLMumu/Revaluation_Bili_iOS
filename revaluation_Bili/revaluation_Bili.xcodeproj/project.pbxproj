@@ -80,7 +80,6 @@
 		0429A8301CFB16D300D28AB2 /* LBScrollingView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0429A7CF1CFB16D200D28AB2 /* LBScrollingView.bundle */; };
 		0429A8311CFB16D300D28AB2 /* LBScrollingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7D11CFB16D200D28AB2 /* LBScrollingView.m */; };
 		0429A8351CFB16D300D28AB2 /* GLRecommedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7DD1CFB16D200D28AB2 /* GLRecommedViewController.m */; };
-		0429A8501CFB16D300D28AB2 /* GLPartitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8121CFB16D300D28AB2 /* GLPartitionViewController.m */; };
 		0429A8531CFB19F600D28AB2 /* GLLiveContentShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8521CFB19F600D28AB2 /* GLLiveContentShowViewController.m */; };
 		0429F9B41CEF46DC005D3D3C /* UIImage+LBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429F9B31CEF46DC005D3D3C /* UIImage+LBImage.m */; };
 		042C3A441CF084B30026D9EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042C3A431CF084B30026D9EA /* Launch Screen.storyboard */; };
@@ -245,6 +244,10 @@
 		04C7C61E1D1A77C700DCBD8E /* LBLUBodayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */; };
 		04C7C61F1D1A77C700DCBD8E /* LBLUBodayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */; };
 		04C7C6201D1A7C6100DCBD8E /* LBDarmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5F71D1A77C700DCBD8E /* LBDarmaViewController.m */; };
+		04C7C62B1D1A876200DCBD8E /* GLPartitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6231D1A876200DCBD8E /* GLPartitionViewController.m */; };
+		04C7C62C1D1A876200DCBD8E /* GLPartitionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6261D1A876200DCBD8E /* GLPartitionItem.m */; };
+		04C7C62D1D1A876200DCBD8E /* GLPartitionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6291D1A876200DCBD8E /* GLPartitionViewCell.m */; };
+		04C7C62E1D1A876200DCBD8E /* GLPartitionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C62A1D1A876200DCBD8E /* GLPartitionViewCell.xib */; };
 		04DF468E1D16D19D002E9F34 /* GLRegardUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */; };
 		04DF46901D16D1AE002E9F34 /* GLRegardUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */; };
 		04DF46931D16FED6002E9F34 /* GLRegardUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF46921D16FED6002E9F34 /* GLRegardUpViewModel.m */; };
@@ -411,8 +414,6 @@
 		0429A7D11CFB16D200D28AB2 /* LBScrollingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBScrollingView.m; sourceTree = "<group>"; };
 		0429A7DC1CFB16D200D28AB2 /* GLRecommedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedViewController.h; sourceTree = "<group>"; };
 		0429A7DD1CFB16D200D28AB2 /* GLRecommedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedViewController.m; sourceTree = "<group>"; };
-		0429A8111CFB16D300D28AB2 /* GLPartitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionViewController.h; sourceTree = "<group>"; };
-		0429A8121CFB16D300D28AB2 /* GLPartitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionViewController.m; sourceTree = "<group>"; };
 		0429A8511CFB19F600D28AB2 /* GLLiveContentShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLiveContentShowViewController.h; sourceTree = "<group>"; };
 		0429A8521CFB19F600D28AB2 /* GLLiveContentShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLiveContentShowViewController.m; sourceTree = "<group>"; };
 		0429F9B21CEF46DC005D3D3C /* UIImage+LBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBImage.h"; sourceTree = "<group>"; };
@@ -672,6 +673,13 @@
 		04C7C60E1D1A77C700DCBD8E /* LBLUBodayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLUBodayView.h; sourceTree = "<group>"; };
 		04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLUBodayView.m; sourceTree = "<group>"; };
 		04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBLUBodayView.xib; sourceTree = "<group>"; };
+		04C7C6221D1A876200DCBD8E /* GLPartitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionViewController.h; sourceTree = "<group>"; };
+		04C7C6231D1A876200DCBD8E /* GLPartitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionViewController.m; sourceTree = "<group>"; };
+		04C7C6251D1A876200DCBD8E /* GLPartitionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionItem.h; sourceTree = "<group>"; };
+		04C7C6261D1A876200DCBD8E /* GLPartitionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionItem.m; sourceTree = "<group>"; };
+		04C7C6281D1A876200DCBD8E /* GLPartitionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionViewCell.h; sourceTree = "<group>"; };
+		04C7C6291D1A876200DCBD8E /* GLPartitionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionViewCell.m; sourceTree = "<group>"; };
+		04C7C62A1D1A876200DCBD8E /* GLPartitionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPartitionViewCell.xib; sourceTree = "<group>"; };
 		04DF468C1D16D19D002E9F34 /* GLRegardUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegardUpViewController.h; sourceTree = "<group>"; };
 		04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegardUpViewController.m; sourceTree = "<group>"; };
 		04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRegardUpViewController.storyboard; sourceTree = "<group>"; };
@@ -1339,34 +1347,11 @@
 		0429A80D1CFB16D300D28AB2 /* 4Partition(分区) */ = {
 			isa = PBXGroup;
 			children = (
-				0429A80E1CFB16D300D28AB2 /* Model */,
-				0429A80F1CFB16D300D28AB2 /* View Model */,
-				0429A8101CFB16D300D28AB2 /* ViewController */,
+				04C7C6211D1A876200DCBD8E /* Controller */,
+				04C7C6241D1A876200DCBD8E /* Model */,
+				04C7C6271D1A876200DCBD8E /* View */,
 			);
 			path = "4Partition(分区)";
-			sourceTree = "<group>";
-		};
-		0429A80E1CFB16D300D28AB2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0429A80F1CFB16D300D28AB2 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
-		0429A8101CFB16D300D28AB2 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0429A8111CFB16D300D28AB2 /* GLPartitionViewController.h */,
-				0429A8121CFB16D300D28AB2 /* GLPartitionViewController.m */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		0429F9771CEF44DE005D3D3C /* Classes */ = {
@@ -1917,6 +1902,34 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04C7C6211D1A876200DCBD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C6221D1A876200DCBD8E /* GLPartitionViewController.h */,
+				04C7C6231D1A876200DCBD8E /* GLPartitionViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04C7C6241D1A876200DCBD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C6251D1A876200DCBD8E /* GLPartitionItem.h */,
+				04C7C6261D1A876200DCBD8E /* GLPartitionItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04C7C6271D1A876200DCBD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C6281D1A876200DCBD8E /* GLPartitionViewCell.h */,
+				04C7C6291D1A876200DCBD8E /* GLPartitionViewCell.m */,
+				04C7C62A1D1A876200DCBD8E /* GLPartitionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04DF46881D16D10A002E9F34 /* 1_2RegardUp(关注主播) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2241,6 +2254,7 @@
 				0429A7771CFB10F500D28AB2 /* WYLPrivateViewController.storyboard in Resources */,
 				0460EE791D03520C0078FCB2 /* player_pause_c@2x.png in Resources */,
 				0460EE701D03520C0078FCB2 /* icnav_back_dark@2x.png in Resources */,
+				04C7C62E1D1A876200DCBD8E /* GLPartitionViewCell.xib in Resources */,
 				04FECD1F1CF1DCF100A4F71D /* pullRefresh_gif_1.png in Resources */,
 				04298CB91CFEA30E00A2DB48 /* empty_list_no_network_4.jpg in Resources */,
 				0460EECF1D0357D70078FCB2 /* IJKMoviePlayerViewController.xib in Resources */,
@@ -2389,6 +2403,7 @@
 				04422A741CEF7F0C0033FD99 /* LBColorScale.m in Sources */,
 				04C7C5AA1D1A449100DCBD8E /* WYLHeaderView.m in Sources */,
 				04C7C5BF1D1A449100DCBD8E /* WYLTeleplayTableViewController.m in Sources */,
+				04C7C62D1D1A876200DCBD8E /* GLPartitionViewCell.m in Sources */,
 				0429A77F1CFB10F500D28AB2 /* WYLSettingViewController.m in Sources */,
 				04C7C6181D1A77C700DCBD8E /* LBEndsCell.m in Sources */,
 				04C7C5371D19453700DCBD8E /* GLMotiveSealCell.m in Sources */,
@@ -2402,7 +2417,6 @@
 				0429A77C1CFB10F500D28AB2 /* WYLBaseSettingController.m in Sources */,
 				04C7C5A71D1A449100DCBD8E /* WYLButtonItem.m in Sources */,
 				04276B8D1D056D3400605FD9 /* GLBodyModel.m in Sources */,
-				0429A8501CFB16D300D28AB2 /* GLPartitionViewController.m in Sources */,
 				04C7C5501D1945DB00DCBD8E /* GLButtonBeautification.m in Sources */,
 				041DE34C1CEAFB51000210E4 /* main.m in Sources */,
 				0429A82C1CFB16D300D28AB2 /* LBLiveViewController.m in Sources */,
@@ -2435,6 +2449,7 @@
 				0429A8291CFB16D300D28AB2 /* LBLiveButton.m in Sources */,
 				04C7C5EE1D1A46AB00DCBD8E /* MyLayoutMeasure.m in Sources */,
 				04C7C5A21D1A449100DCBD8E /* WYLDiscoverViewController.m in Sources */,
+				04C7C62B1D1A876200DCBD8E /* GLPartitionViewController.m in Sources */,
 				0460EECE1D0357D70078FCB2 /* IJKMoviePlayerViewController.m in Sources */,
 				04C7C5B51D1A449100DCBD8E /* WYLDanceTableViewController.m in Sources */,
 				04C7C5441D19453700DCBD8E /* GLDynamicCell.m in Sources */,
@@ -2464,6 +2479,7 @@
 				04C7C5C11D1A449100DCBD8E /* WYLSweetsopCell.m in Sources */,
 				04C7C5F31D1A46AB00DCBD8E /* MyRelativeLayout.m in Sources */,
 				04C7C5C71D1A460400DCBD8E /* QRCodeTool.swift in Sources */,
+				04C7C62C1D1A876200DCBD8E /* GLPartitionItem.m in Sources */,
 				0429A7111CFB10F500D28AB2 /* GLNavigationController.m in Sources */,
 				04C7C53D1D19453700DCBD8E /* HMXFanJuDetailHeaderView.m in Sources */,
 				041DE34A1CEAFB51000210E4 /* AppDelegate.m in Sources */,
