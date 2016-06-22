@@ -9,6 +9,7 @@
 #import "GLTabBarViewModel.h"
 #import "GLHomeViewController.h"
 #import "LBRegardViewController.h"
+#import "WYLDiscoverViewController.h"
 #import "GLMineViewController.h"
 #import "GLNavigationController.h"
 
@@ -42,11 +43,11 @@
     UINavigationController *regardNAV = [[UINavigationController alloc] initWithRootViewController:regardVC];
     complete(regardNAV);
     
-#pragma mark -  王亚龙
+#pragma mark -  王亚龙【sb】WYLDiscoverViewController
     // 发现 (要不要用UINavigationController?)  (王亚龙修改)
-    
-    UIViewController *discoverVc = [[UIViewController alloc] init];
-    UINavigationController *disNav = [[UINavigationController alloc] initWithRootViewController:discoverVc];
+    UIStoryboard *stroryboard_DisVC = [UIStoryboard storyboardWithName:@"WYLDiscoverViewController" bundle:nil];
+    WYLDiscoverViewController *disVC = [stroryboard_DisVC instantiateInitialViewController];
+    UINavigationController *disNav = [[UINavigationController alloc] initWithRootViewController:disVC];
     complete(disNav);
 
     
