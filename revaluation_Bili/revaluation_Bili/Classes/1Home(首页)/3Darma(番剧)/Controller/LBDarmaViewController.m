@@ -9,8 +9,6 @@
 
 // 番剧
 #import "LBDarmaViewController.h"
-#import "LBDarmaViewModel.h"
-//#import "LBHttpTool.h"
 
 #import "LBDarmaBottomModel.h"
 #import "LBDarmaBanaerModel.h"
@@ -81,35 +79,35 @@ static NSString * const Darma = @"LBDarmaCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"LBBottomCell" bundle:nil] forCellReuseIdentifier:Darma];
 }
 
-#warning not finsh Network
+
 -(void)getNetData{
     
-   
+    NSString *btn_url = @"http://bangumi.bilibili.com/api/bangumi_recommend?access_key=bf427204b6ae8b8dfe51e6c99273189b&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3220&cursor=0&device=phone&pagesize=10&platform=ios&sign=184fbd3bc1f60de9f169ef1f31f6dc5b&ts=1463483273";
     
-//    [LBHttpTool getDarmaBottomNetDataSuccess:^(NSDictionary *responseObj) {
-//        _bottomCellArr = [LBDarmaBottomModel mj_objectArrayWithKeyValuesArray:responseObj[@"result"]];
-//        // 刷新数据
-//        [self.tableView reloadData];
-//        
-//    } failure:^(NSError *error) {
-//        NSLog(@"网络响应失败");
-//    }];
-//
-//    
-//    
-//    [LBHttpTool getDarmaOtherNetDataSuccess:^(NSDictionary *responseObj) {
-//        _banners = [LBDarmaBanaerModel mj_objectArrayWithKeyValuesArray:responseObj[@"result"][@"banners"]];
-//        
-//        _ends = [LBDarmaEndsModel mj_objectArrayWithKeyValuesArray:responseObj[@"result"][@"ends"]];
-//        
-//        _latestUpdate = [LBDarmaLatestUpdateModel mj_objectArrayWithKeyValuesArray:responseObj[@"result"][@"latestUpdate"][@"list"]];
-//        
-//        // 刷新数据
-//        [self.tableView reloadData];
-//
-//    } failure:^(NSError *error) {
-//        NSLog(@"网络响应失败");
-//    }];
+    [HttpToolSDK getWithURL:btn_url parameters:nil success:^(id json) {
+        if (json) {
+            _bottomCellArr = [LBDarmaBottomModel mj_objectArrayWithKeyValuesArray:json[@"result"]];
+            // 刷新数据
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        [SVProgressHUD showInfoWithStatus:@"网络不好"];
+    }];
+    
+    NSString *other_url = @"http://bangumi.bilibili.com/api/app_index_page_v2?access_key=bf427204b6ae8b8dfe51e6c99273189b&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3220&device=phone&platform=ios&sign=cbcc9ba78250d034eefb0f088f5faf96&ts=1463483417";
+    
+    [HttpToolSDK getWithURL:other_url parameters:nil success:^(id json) {
+        _banners = [LBDarmaBanaerModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"banners"]];
+        
+        _ends = [LBDarmaEndsModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"ends"]];
+        
+        _latestUpdate = [LBDarmaLatestUpdateModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"latestUpdate"][@"list"]];
+        
+        // 刷新数据
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [SVProgressHUD showInfoWithStatus:@"网络不好"];
+    }];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

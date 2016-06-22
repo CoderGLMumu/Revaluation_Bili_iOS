@@ -7,7 +7,7 @@
 //
 
 #import "GLHomeViewModel.h"
-#import "GLDarmaViewController.h"
+#import "LBDarmaViewController.h"
 #import "GLPartitionViewController.h"
 //#import "GLRecommedViewController.h"
 #import "LBLiveViewController.h"
@@ -43,9 +43,9 @@
     complete(recommedVC);
     
     // 添加番剧子控制器
-    GLDarmaViewController *darmaVC = [[GLDarmaViewController alloc] init];
+    LBDarmaViewController *darmaVC = [[LBDarmaViewController alloc] init];
     darmaVC.title = @"番剧";
-    darmaVC.view.backgroundColor = [UIColor purpleColor];
+//    darmaVC.view.backgroundColor = [UIColor purpleColor];
     complete(darmaVC);
     
     // 添加分区子控制器

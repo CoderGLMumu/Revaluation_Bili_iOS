@@ -80,23 +80,6 @@
 		0429A8301CFB16D300D28AB2 /* LBScrollingView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0429A7CF1CFB16D200D28AB2 /* LBScrollingView.bundle */; };
 		0429A8311CFB16D300D28AB2 /* LBScrollingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7D11CFB16D200D28AB2 /* LBScrollingView.m */; };
 		0429A8351CFB16D300D28AB2 /* GLRecommedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7DD1CFB16D200D28AB2 /* GLRecommedViewController.m */; };
-		0429A83F1CFB16D300D28AB2 /* LBDarmaBanaerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7EF1CFB16D300D28AB2 /* LBDarmaBanaerModel.m */; };
-		0429A8401CFB16D300D28AB2 /* LBDarmaBottomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7F11CFB16D300D28AB2 /* LBDarmaBottomModel.m */; };
-		0429A8411CFB16D300D28AB2 /* LBDarmaEndsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7F31CFB16D300D28AB2 /* LBDarmaEndsModel.m */; };
-		0429A8421CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7F51CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.m */; };
-		0429A8431CFB16D300D28AB2 /* LBDarmaViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7F81CFB16D300D28AB2 /* LBDarmaViewModel.m */; };
-		0429A8441CFB16D300D28AB2 /* GLDarmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7FB1CFB16D300D28AB2 /* GLDarmaViewController.m */; };
-		0429A8451CFB16D300D28AB2 /* LBBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A7FD1CFB16D300D28AB2 /* LBBottomCell.m */; };
-		0429A8461CFB16D300D28AB2 /* LBBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429A7FE1CFB16D300D28AB2 /* LBBottomCell.xib */; };
-		0429A8471CFB16D300D28AB2 /* LBDarmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8001CFB16D300D28AB2 /* LBDarmaViewController.m */; };
-		0429A8481CFB16D300D28AB2 /* LBEndsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8021CFB16D300D28AB2 /* LBEndsCell.m */; };
-		0429A8491CFB16D300D28AB2 /* LBEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429A8031CFB16D300D28AB2 /* LBEndsCell.xib */; };
-		0429A84A1CFB16D300D28AB2 /* LBEndsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8051CFB16D300D28AB2 /* LBEndsCollectionViewCell.m */; };
-		0429A84B1CFB16D300D28AB2 /* LBEndsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429A8061CFB16D300D28AB2 /* LBEndsCollectionViewCell.xib */; };
-		0429A84C1CFB16D300D28AB2 /* LBLatestUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8081CFB16D300D28AB2 /* LBLatestUpdateCell.m */; };
-		0429A84D1CFB16D300D28AB2 /* LBLatestUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429A8091CFB16D300D28AB2 /* LBLatestUpdateCell.xib */; };
-		0429A84E1CFB16D300D28AB2 /* LBLUBodayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A80B1CFB16D300D28AB2 /* LBLUBodayView.m */; };
-		0429A84F1CFB16D300D28AB2 /* LBLUBodayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429A80C1CFB16D300D28AB2 /* LBLUBodayView.xib */; };
 		0429A8501CFB16D300D28AB2 /* GLPartitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8121CFB16D300D28AB2 /* GLPartitionViewController.m */; };
 		0429A8531CFB19F600D28AB2 /* GLLiveContentShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429A8521CFB19F600D28AB2 /* GLLiveContentShowViewController.m */; };
 		0429F9B41CEF46DC005D3D3C /* UIImage+LBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429F9B31CEF46DC005D3D3C /* UIImage+LBImage.m */; };
@@ -247,6 +230,21 @@
 		04C7C5F21D1A46AB00DCBD8E /* MyMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5E31D1A46AB00DCBD8E /* MyMaker.m */; };
 		04C7C5F31D1A46AB00DCBD8E /* MyRelativeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5E51D1A46AB00DCBD8E /* MyRelativeLayout.m */; };
 		04C7C5F41D1A46AB00DCBD8E /* MyTableLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5E71D1A46AB00DCBD8E /* MyTableLayout.m */; };
+		04C7C6121D1A77C700DCBD8E /* LBDarmaBanaerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5FA1D1A77C700DCBD8E /* LBDarmaBanaerModel.m */; };
+		04C7C6131D1A77C700DCBD8E /* LBDarmaBottomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5FC1D1A77C700DCBD8E /* LBDarmaBottomModel.m */; };
+		04C7C6141D1A77C700DCBD8E /* LBDarmaEndsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5FE1D1A77C700DCBD8E /* LBDarmaEndsModel.m */; };
+		04C7C6151D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6001D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.m */; };
+		04C7C6161D1A77C700DCBD8E /* LBBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6031D1A77C700DCBD8E /* LBBottomCell.m */; };
+		04C7C6171D1A77C700DCBD8E /* LBBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C6041D1A77C700DCBD8E /* LBBottomCell.xib */; };
+		04C7C6181D1A77C700DCBD8E /* LBEndsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6061D1A77C700DCBD8E /* LBEndsCell.m */; };
+		04C7C6191D1A77C700DCBD8E /* LBEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C6071D1A77C700DCBD8E /* LBEndsCell.xib */; };
+		04C7C61A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6091D1A77C700DCBD8E /* LBEndsCollectionViewCell.m */; };
+		04C7C61B1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C60A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib */; };
+		04C7C61C1D1A77C700DCBD8E /* LBLatestUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C60C1D1A77C700DCBD8E /* LBLatestUpdateCell.m */; };
+		04C7C61D1D1A77C700DCBD8E /* LBLatestUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C60D1D1A77C700DCBD8E /* LBLatestUpdateCell.xib */; };
+		04C7C61E1D1A77C700DCBD8E /* LBLUBodayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */; };
+		04C7C61F1D1A77C700DCBD8E /* LBLUBodayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */; };
+		04C7C6201D1A7C6100DCBD8E /* LBDarmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C5F71D1A77C700DCBD8E /* LBDarmaViewController.m */; };
 		04DF468E1D16D19D002E9F34 /* GLRegardUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */; };
 		04DF46901D16D1AE002E9F34 /* GLRegardUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */; };
 		04DF46931D16FED6002E9F34 /* GLRegardUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF46921D16FED6002E9F34 /* GLRegardUpViewModel.m */; };
@@ -413,35 +411,6 @@
 		0429A7D11CFB16D200D28AB2 /* LBScrollingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBScrollingView.m; sourceTree = "<group>"; };
 		0429A7DC1CFB16D200D28AB2 /* GLRecommedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedViewController.h; sourceTree = "<group>"; };
 		0429A7DD1CFB16D200D28AB2 /* GLRecommedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedViewController.m; sourceTree = "<group>"; };
-		0429A7EE1CFB16D300D28AB2 /* LBDarmaBanaerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaBanaerModel.h; sourceTree = "<group>"; };
-		0429A7EF1CFB16D300D28AB2 /* LBDarmaBanaerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaBanaerModel.m; sourceTree = "<group>"; };
-		0429A7F01CFB16D300D28AB2 /* LBDarmaBottomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaBottomModel.h; sourceTree = "<group>"; };
-		0429A7F11CFB16D300D28AB2 /* LBDarmaBottomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaBottomModel.m; sourceTree = "<group>"; };
-		0429A7F21CFB16D300D28AB2 /* LBDarmaEndsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaEndsModel.h; sourceTree = "<group>"; };
-		0429A7F31CFB16D300D28AB2 /* LBDarmaEndsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaEndsModel.m; sourceTree = "<group>"; };
-		0429A7F41CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaLatestUpdateModel.h; sourceTree = "<group>"; };
-		0429A7F51CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaLatestUpdateModel.m; sourceTree = "<group>"; };
-		0429A7F71CFB16D300D28AB2 /* LBDarmaViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaViewModel.h; sourceTree = "<group>"; };
-		0429A7F81CFB16D300D28AB2 /* LBDarmaViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaViewModel.m; sourceTree = "<group>"; };
-		0429A7FA1CFB16D300D28AB2 /* GLDarmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDarmaViewController.h; sourceTree = "<group>"; };
-		0429A7FB1CFB16D300D28AB2 /* GLDarmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDarmaViewController.m; sourceTree = "<group>"; };
-		0429A7FC1CFB16D300D28AB2 /* LBBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBottomCell.h; sourceTree = "<group>"; };
-		0429A7FD1CFB16D300D28AB2 /* LBBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBottomCell.m; sourceTree = "<group>"; };
-		0429A7FE1CFB16D300D28AB2 /* LBBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBBottomCell.xib; sourceTree = "<group>"; };
-		0429A7FF1CFB16D300D28AB2 /* LBDarmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaViewController.h; sourceTree = "<group>"; };
-		0429A8001CFB16D300D28AB2 /* LBDarmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaViewController.m; sourceTree = "<group>"; };
-		0429A8011CFB16D300D28AB2 /* LBEndsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEndsCell.h; sourceTree = "<group>"; };
-		0429A8021CFB16D300D28AB2 /* LBEndsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEndsCell.m; sourceTree = "<group>"; };
-		0429A8031CFB16D300D28AB2 /* LBEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBEndsCell.xib; sourceTree = "<group>"; };
-		0429A8041CFB16D300D28AB2 /* LBEndsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEndsCollectionViewCell.h; sourceTree = "<group>"; };
-		0429A8051CFB16D300D28AB2 /* LBEndsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEndsCollectionViewCell.m; sourceTree = "<group>"; };
-		0429A8061CFB16D300D28AB2 /* LBEndsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBEndsCollectionViewCell.xib; sourceTree = "<group>"; };
-		0429A8071CFB16D300D28AB2 /* LBLatestUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLatestUpdateCell.h; sourceTree = "<group>"; };
-		0429A8081CFB16D300D28AB2 /* LBLatestUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLatestUpdateCell.m; sourceTree = "<group>"; };
-		0429A8091CFB16D300D28AB2 /* LBLatestUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBLatestUpdateCell.xib; sourceTree = "<group>"; };
-		0429A80A1CFB16D300D28AB2 /* LBLUBodayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLUBodayView.h; sourceTree = "<group>"; };
-		0429A80B1CFB16D300D28AB2 /* LBLUBodayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLUBodayView.m; sourceTree = "<group>"; };
-		0429A80C1CFB16D300D28AB2 /* LBLUBodayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBLUBodayView.xib; sourceTree = "<group>"; };
 		0429A8111CFB16D300D28AB2 /* GLPartitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionViewController.h; sourceTree = "<group>"; };
 		0429A8121CFB16D300D28AB2 /* GLPartitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionViewController.m; sourceTree = "<group>"; };
 		0429A8511CFB19F600D28AB2 /* GLLiveContentShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLiveContentShowViewController.h; sourceTree = "<group>"; };
@@ -678,6 +647,31 @@
 		04C7C5E51D1A46AB00DCBD8E /* MyRelativeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRelativeLayout.m; sourceTree = "<group>"; };
 		04C7C5E61D1A46AB00DCBD8E /* MyTableLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableLayout.h; sourceTree = "<group>"; };
 		04C7C5E71D1A46AB00DCBD8E /* MyTableLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableLayout.m; sourceTree = "<group>"; };
+		04C7C5F61D1A77C700DCBD8E /* LBDarmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaViewController.h; sourceTree = "<group>"; };
+		04C7C5F71D1A77C700DCBD8E /* LBDarmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaViewController.m; sourceTree = "<group>"; };
+		04C7C5F91D1A77C700DCBD8E /* LBDarmaBanaerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaBanaerModel.h; sourceTree = "<group>"; };
+		04C7C5FA1D1A77C700DCBD8E /* LBDarmaBanaerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaBanaerModel.m; sourceTree = "<group>"; };
+		04C7C5FB1D1A77C700DCBD8E /* LBDarmaBottomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaBottomModel.h; sourceTree = "<group>"; };
+		04C7C5FC1D1A77C700DCBD8E /* LBDarmaBottomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaBottomModel.m; sourceTree = "<group>"; };
+		04C7C5FD1D1A77C700DCBD8E /* LBDarmaEndsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaEndsModel.h; sourceTree = "<group>"; };
+		04C7C5FE1D1A77C700DCBD8E /* LBDarmaEndsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaEndsModel.m; sourceTree = "<group>"; };
+		04C7C5FF1D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDarmaLatestUpdateModel.h; sourceTree = "<group>"; };
+		04C7C6001D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDarmaLatestUpdateModel.m; sourceTree = "<group>"; };
+		04C7C6021D1A77C700DCBD8E /* LBBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBottomCell.h; sourceTree = "<group>"; };
+		04C7C6031D1A77C700DCBD8E /* LBBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBottomCell.m; sourceTree = "<group>"; };
+		04C7C6041D1A77C700DCBD8E /* LBBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBBottomCell.xib; sourceTree = "<group>"; };
+		04C7C6051D1A77C700DCBD8E /* LBEndsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEndsCell.h; sourceTree = "<group>"; };
+		04C7C6061D1A77C700DCBD8E /* LBEndsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEndsCell.m; sourceTree = "<group>"; };
+		04C7C6071D1A77C700DCBD8E /* LBEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBEndsCell.xib; sourceTree = "<group>"; };
+		04C7C6081D1A77C700DCBD8E /* LBEndsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBEndsCollectionViewCell.h; sourceTree = "<group>"; };
+		04C7C6091D1A77C700DCBD8E /* LBEndsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBEndsCollectionViewCell.m; sourceTree = "<group>"; };
+		04C7C60A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBEndsCollectionViewCell.xib; sourceTree = "<group>"; };
+		04C7C60B1D1A77C700DCBD8E /* LBLatestUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLatestUpdateCell.h; sourceTree = "<group>"; };
+		04C7C60C1D1A77C700DCBD8E /* LBLatestUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLatestUpdateCell.m; sourceTree = "<group>"; };
+		04C7C60D1D1A77C700DCBD8E /* LBLatestUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBLatestUpdateCell.xib; sourceTree = "<group>"; };
+		04C7C60E1D1A77C700DCBD8E /* LBLUBodayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLUBodayView.h; sourceTree = "<group>"; };
+		04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLUBodayView.m; sourceTree = "<group>"; };
+		04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBLUBodayView.xib; sourceTree = "<group>"; };
 		04DF468C1D16D19D002E9F34 /* GLRegardUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegardUpViewController.h; sourceTree = "<group>"; };
 		04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegardUpViewController.m; sourceTree = "<group>"; };
 		04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRegardUpViewController.storyboard; sourceTree = "<group>"; };
@@ -1335,61 +1329,11 @@
 		0429A7EC1CFB16D300D28AB2 /* 3Darma(番剧) */ = {
 			isa = PBXGroup;
 			children = (
-				0429A7ED1CFB16D300D28AB2 /* Model */,
-				0429A7F61CFB16D300D28AB2 /* View Model */,
-				0429A7F91CFB16D300D28AB2 /* ViewController */,
+				04C7C5F51D1A77C700DCBD8E /* Controller */,
+				04C7C5F81D1A77C700DCBD8E /* Model */,
+				04C7C6011D1A77C700DCBD8E /* View */,
 			);
 			path = "3Darma(番剧)";
-			sourceTree = "<group>";
-		};
-		0429A7ED1CFB16D300D28AB2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0429A7EE1CFB16D300D28AB2 /* LBDarmaBanaerModel.h */,
-				0429A7EF1CFB16D300D28AB2 /* LBDarmaBanaerModel.m */,
-				0429A7F01CFB16D300D28AB2 /* LBDarmaBottomModel.h */,
-				0429A7F11CFB16D300D28AB2 /* LBDarmaBottomModel.m */,
-				0429A7F21CFB16D300D28AB2 /* LBDarmaEndsModel.h */,
-				0429A7F31CFB16D300D28AB2 /* LBDarmaEndsModel.m */,
-				0429A7F41CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.h */,
-				0429A7F51CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0429A7F61CFB16D300D28AB2 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				0429A7F71CFB16D300D28AB2 /* LBDarmaViewModel.h */,
-				0429A7F81CFB16D300D28AB2 /* LBDarmaViewModel.m */,
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
-		0429A7F91CFB16D300D28AB2 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0429A7FA1CFB16D300D28AB2 /* GLDarmaViewController.h */,
-				0429A7FB1CFB16D300D28AB2 /* GLDarmaViewController.m */,
-				0429A7FC1CFB16D300D28AB2 /* LBBottomCell.h */,
-				0429A7FD1CFB16D300D28AB2 /* LBBottomCell.m */,
-				0429A7FE1CFB16D300D28AB2 /* LBBottomCell.xib */,
-				0429A7FF1CFB16D300D28AB2 /* LBDarmaViewController.h */,
-				0429A8001CFB16D300D28AB2 /* LBDarmaViewController.m */,
-				0429A8011CFB16D300D28AB2 /* LBEndsCell.h */,
-				0429A8021CFB16D300D28AB2 /* LBEndsCell.m */,
-				0429A8031CFB16D300D28AB2 /* LBEndsCell.xib */,
-				0429A8041CFB16D300D28AB2 /* LBEndsCollectionViewCell.h */,
-				0429A8051CFB16D300D28AB2 /* LBEndsCollectionViewCell.m */,
-				0429A8061CFB16D300D28AB2 /* LBEndsCollectionViewCell.xib */,
-				0429A8071CFB16D300D28AB2 /* LBLatestUpdateCell.h */,
-				0429A8081CFB16D300D28AB2 /* LBLatestUpdateCell.m */,
-				0429A8091CFB16D300D28AB2 /* LBLatestUpdateCell.xib */,
-				0429A80A1CFB16D300D28AB2 /* LBLUBodayView.h */,
-				0429A80B1CFB16D300D28AB2 /* LBLUBodayView.m */,
-				0429A80C1CFB16D300D28AB2 /* LBLUBodayView.xib */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		0429A80D1CFB16D300D28AB2 /* 4Partition(分区) */ = {
@@ -1927,6 +1871,52 @@
 			path = MyLayout;
 			sourceTree = "<group>";
 		};
+		04C7C5F51D1A77C700DCBD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C5F61D1A77C700DCBD8E /* LBDarmaViewController.h */,
+				04C7C5F71D1A77C700DCBD8E /* LBDarmaViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04C7C5F81D1A77C700DCBD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C5F91D1A77C700DCBD8E /* LBDarmaBanaerModel.h */,
+				04C7C5FA1D1A77C700DCBD8E /* LBDarmaBanaerModel.m */,
+				04C7C5FB1D1A77C700DCBD8E /* LBDarmaBottomModel.h */,
+				04C7C5FC1D1A77C700DCBD8E /* LBDarmaBottomModel.m */,
+				04C7C5FD1D1A77C700DCBD8E /* LBDarmaEndsModel.h */,
+				04C7C5FE1D1A77C700DCBD8E /* LBDarmaEndsModel.m */,
+				04C7C5FF1D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.h */,
+				04C7C6001D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04C7C6011D1A77C700DCBD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C6021D1A77C700DCBD8E /* LBBottomCell.h */,
+				04C7C6031D1A77C700DCBD8E /* LBBottomCell.m */,
+				04C7C6041D1A77C700DCBD8E /* LBBottomCell.xib */,
+				04C7C6051D1A77C700DCBD8E /* LBEndsCell.h */,
+				04C7C6061D1A77C700DCBD8E /* LBEndsCell.m */,
+				04C7C6071D1A77C700DCBD8E /* LBEndsCell.xib */,
+				04C7C6081D1A77C700DCBD8E /* LBEndsCollectionViewCell.h */,
+				04C7C6091D1A77C700DCBD8E /* LBEndsCollectionViewCell.m */,
+				04C7C60A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib */,
+				04C7C60B1D1A77C700DCBD8E /* LBLatestUpdateCell.h */,
+				04C7C60C1D1A77C700DCBD8E /* LBLatestUpdateCell.m */,
+				04C7C60D1D1A77C700DCBD8E /* LBLatestUpdateCell.xib */,
+				04C7C60E1D1A77C700DCBD8E /* LBLUBodayView.h */,
+				04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */,
+				04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04DF46881D16D10A002E9F34 /* 1_2RegardUp(关注主播) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2173,21 +2163,19 @@
 				04298CB61CFEA30E00A2DB48 /* empty_list_no_network_1.jpg in Resources */,
 				04F750751D06EE2C00527C8F /* GLLiveBodyView.xib in Resources */,
 				0460EE7E1D03520C0078FCB2 /* player_unlock@2x.png in Resources */,
+				04C7C61D1D1A77C700DCBD8E /* LBLatestUpdateCell.xib in Resources */,
 				04F7D4F21CF9DF3E004B046D /* LiveContentShow.plist in Resources */,
 				0460EE4B1D0351DE0078FCB2 /* player_fullScreen_iphone-1@2x.png in Resources */,
-				0429A8491CFB16D300D28AB2 /* LBEndsCell.xib in Resources */,
-				0429A84D1CFB16D300D28AB2 /* LBLatestUpdateCell.xib in Resources */,
-				0429A8461CFB16D300D28AB2 /* LBBottomCell.xib in Resources */,
 				0460EE6B1D03520C0078FCB2 /* hd_icmpv_toggle_danmaku_showed_light@2x.png in Resources */,
 				0429A81D1CFB16D300D28AB2 /* ContentShowViewCell.xib in Resources */,
 				04FECD211CF1DCF100A4F71D /* pullRefresh_gif_3.png in Resources */,
 				0460EE4D1D0351DE0078FCB2 /* player_window@2x.png in Resources */,
 				04C7C5BB1D1A449100DCBD8E /* WYLGlobalViewController.xib in Resources */,
-				0429A84F1CFB16D300D28AB2 /* LBLUBodayView.xib in Resources */,
 				04C7C5C21D1A449100DCBD8E /* WYLSweetsopCell.xib in Resources */,
 				0460EE4A1D0351DE0078FCB2 /* player_fullScreen@2x.png in Resources */,
 				044A30541D05C778007E45B0 /* GLRecommedViewController.storyboard in Resources */,
 				0460EE7C1D03520C0078FCB2 /* player_share@2x.png in Resources */,
+				04C7C61F1D1A77C700DCBD8E /* LBLUBodayView.xib in Resources */,
 				0460EE751D03520C0078FCB2 /* player_lock@2x.png in Resources */,
 				04C7C5451D19453700DCBD8E /* GLDynamicCell.xib in Resources */,
 				0429A8281CFB16D300D28AB2 /* LBHeaderView.xib in Resources */,
@@ -2196,7 +2184,6 @@
 				0460EE4F1D0351DE0078FCB2 /* player_window_iphone@2x.png in Resources */,
 				0429A7741CFB10F500D28AB2 /* GLMineViewController.storyboard in Resources */,
 				0460EE7D1D03520C0078FCB2 /* player_share_icon@2x.png in Resources */,
-				0429A84B1CFB16D300D28AB2 /* LBEndsCollectionViewCell.xib in Resources */,
 				0429A82B1CFB16D300D28AB2 /* LBLiveViewCell.xib in Resources */,
 				0460EE421D0351D00078FCB2 /* icnav_back_light@2x.png in Resources */,
 				04C7C53A1D19453700DCBD8E /* HMXFanJuCollectionViewCell.xib in Resources */,
@@ -2218,6 +2205,7 @@
 				0460EE3D1D0351D00078FCB2 /* ani_loading_1@2x.png in Resources */,
 				04C7C54D1D19453700DCBD8E /* GLTagButtonYellowCell.xib in Resources */,
 				0460EE761D03520C0078FCB2 /* player_lock_commt@2x.png in Resources */,
+				04C7C6191D1A77C700DCBD8E /* LBEndsCell.xib in Resources */,
 				04298CC81CFEA45400A2DB48 /* 最热_白.jpg in Resources */,
 				04298CBC1CFEA30E00A2DB48 /* empty_list_search_2.jpg in Resources */,
 				0460EE741D03520C0078FCB2 /* player_live_timer@2x.png in Resources */,
@@ -2259,12 +2247,14 @@
 				04F7D3901CFBE9F0002CB487 /* GLLiveRoomCell.xib in Resources */,
 				04C7C5AB1D1A449100DCBD8E /* WYLHeaderView.xib in Resources */,
 				04298CCA1CFEA45400A2DB48 /* 最新_白色.jpg in Resources */,
+				04C7C6171D1A77C700DCBD8E /* LBBottomCell.xib in Resources */,
 				04C7C53C1D19453700DCBD8E /* HMXFanjuCommetCell.xib in Resources */,
 				04298CBD1CFEA30E00A2DB48 /* chase_roomplayer_start_icon@2x.png in Resources */,
 				04C7C5471D19453700DCBD8E /* GLTagViewController.xib in Resources */,
 				04C7C5401D19453700DCBD8E /* DyVideoViewController.storyboard in Resources */,
 				04FECD201CF1DCF100A4F71D /* pullRefresh_gif_2.png in Resources */,
 				04DF46901D16D1AE002E9F34 /* GLRegardUpViewController.storyboard in Resources */,
+				04C7C61B1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib in Resources */,
 				0460EE411D0351D00078FCB2 /* ani_loading_5@2x.png in Resources */,
 				0460EE721D03520C0078FCB2 /* player_danmaku_setup@2x.png in Resources */,
 				0460EE731D03520C0078FCB2 /* player_live_sendGiftButton@2x.png in Resources */,
@@ -2328,6 +2318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C7C6201D1A7C6100DCBD8E /* LBDarmaViewController.m in Sources */,
 				0429A8221CFB16D300D28AB2 /* LBLiveBannerItem.m in Sources */,
 				0429A70F1CFB10F500D28AB2 /* GLNavigationViewModel.m in Sources */,
 				0423B0711D1021D9004A056A /* GLDanmuModel.m in Sources */,
@@ -2337,10 +2328,10 @@
 				04F7631E1D0423390047C7BD /* GLRecommedModel.m in Sources */,
 				04C7C5391D19453700DCBD8E /* HMXFanJuCollectionViewCell.m in Sources */,
 				04C7C5461D19453700DCBD8E /* GLTagViewController.m in Sources */,
+				04C7C6151D1A77C700DCBD8E /* LBDarmaLatestUpdateModel.m in Sources */,
 				04C7C5AC1D1A449100DCBD8E /* WYLPopView.m in Sources */,
 				04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */,
 				0429A81B1CFB16D300D28AB2 /* GLLiveListViewModel.m in Sources */,
-				0429A8471CFB16D300D28AB2 /* LBDarmaViewController.m in Sources */,
 				0429A77A1CFB10F500D28AB2 /* WYLSettingRowItem.m in Sources */,
 				04C7C5C31D1A449100DCBD8E /* WYLGameCenterViewController.m in Sources */,
 				04C7C54C1D19453700DCBD8E /* GLTagButtonYellowCell.m in Sources */,
@@ -2355,6 +2346,7 @@
 				04C7C5481D19453700DCBD8E /* GLTagButtonBlueCell.m in Sources */,
 				0460EEC31D03531A0078FCB2 /* GLVideoPlayView.m in Sources */,
 				04C7C5E91D1A46AB00DCBD8E /* MyDimeScale.m in Sources */,
+				04C7C6131D1A77C700DCBD8E /* LBDarmaBottomModel.m in Sources */,
 				04C7C5B01D1A449100DCBD8E /* WYLNewSweetsopViewController.m in Sources */,
 				0429A77E1CFB10F500D28AB2 /* WYLSettingCell.m in Sources */,
 				0460EEC11D03531A0078FCB2 /* GLonlineVideoPlayView.m in Sources */,
@@ -2368,28 +2360,28 @@
 				0429F9B41CEF46DC005D3D3C /* UIImage+LBImage.m in Sources */,
 				04C7C5331D19453700DCBD8E /* GLMotiveSealViewController.m in Sources */,
 				043D6BC31D0A95EC007EC932 /* GLVideoRoomViewModel.m in Sources */,
-				0429A8431CFB16D300D28AB2 /* LBDarmaViewModel.m in Sources */,
 				0429A7761CFB10F500D28AB2 /* WYLPrivateViewController.m in Sources */,
 				04F7631B1D0423240047C7BD /* GLRecommedViewModel.m in Sources */,
-				0429A83F1CFB16D300D28AB2 /* LBDarmaBanaerModel.m in Sources */,
 				0429A8171CFB16D300D28AB2 /* BiLiTwoLevelOwnerItem.m in Sources */,
 				041DE3A11CEB4C71000210E4 /* UIView+GLExtension.m in Sources */,
 				04C7C53F1D19453700DCBD8E /* DyVideoViewController.m in Sources */,
 				04DF46961D170267002E9F34 /* GLRegardUpModel.m in Sources */,
+				04C7C61A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.m in Sources */,
 				04C7C5301D19453700DCBD8E /* GLRegardTitleButton.m in Sources */,
 				04C7C5A91D1A449100DCBD8E /* WYLDiscoverCell.m in Sources */,
 				04C7C5311D19453700DCBD8E /* LBRegardViewController.m in Sources */,
 				0429A8181CFB16D300D28AB2 /* GLLiveListModel.m in Sources */,
 				04C7C5EB1D1A46AB00DCBD8E /* MyFlowLayout.m in Sources */,
 				0429A7101CFB10F500D28AB2 /* GLTabBarViewModel.m in Sources */,
+				04C7C61E1D1A77C700DCBD8E /* LBLUBodayView.m in Sources */,
 				04F750731D06EE1400527C8F /* GLLiveBodyView.m in Sources */,
 				04C7C5F11D1A46AB00DCBD8E /* MyLinearLayout.m in Sources */,
 				04F750691D06BED100527C8F /* GLRecommedCell.m in Sources */,
 				04C7C5BA1D1A449100DCBD8E /* WYLGlobalViewController.m in Sources */,
 				0451B52D1CF4578F004E5AB3 /* IJKHistoryItem.m in Sources */,
+				04C7C6141D1A77C700DCBD8E /* LBDarmaEndsModel.m in Sources */,
 				04F7507D1D06FC7200527C8F /* GLRecommedCellItemViewModel.m in Sources */,
 				0429A8311CFB16D300D28AB2 /* LBScrollingView.m in Sources */,
-				0429A8411CFB16D300D28AB2 /* LBDarmaEndsModel.m in Sources */,
 				04C7C5EF1D1A46AB00DCBD8E /* MyLayoutPos.m in Sources */,
 				04C7C5A41D1A449100DCBD8E /* WYLScanViewController.m in Sources */,
 				0429A8351CFB16D300D28AB2 /* GLRecommedViewController.m in Sources */,
@@ -2398,23 +2390,23 @@
 				04C7C5AA1D1A449100DCBD8E /* WYLHeaderView.m in Sources */,
 				04C7C5BF1D1A449100DCBD8E /* WYLTeleplayTableViewController.m in Sources */,
 				0429A77F1CFB10F500D28AB2 /* WYLSettingViewController.m in Sources */,
+				04C7C6181D1A77C700DCBD8E /* LBEndsCell.m in Sources */,
 				04C7C5371D19453700DCBD8E /* GLMotiveSealCell.m in Sources */,
 				04F750781D06F0CB00527C8F /* GLBangumiBodyView.m in Sources */,
 				0429A81C1CFB16D300D28AB2 /* ContentShowViewCell.m in Sources */,
 				0429A7851CFB11F000D28AB2 /* GLLiveRoomViewController.m in Sources */,
 				0429A8251CFB16D300D28AB2 /* LBLiveViewModel.m in Sources */,
 				0429A8211CFB16D300D28AB2 /* LBEntranceButtonItem.m in Sources */,
-				0429A8441CFB16D300D28AB2 /* GLDarmaViewController.m in Sources */,
 				0460EEC71D0353760078FCB2 /* GLVideoPlaceholderView.m in Sources */,
 				0460EECA1D0355540078FCB2 /* GLPlaceholderView.m in Sources */,
 				0429A77C1CFB10F500D28AB2 /* WYLBaseSettingController.m in Sources */,
-				0429A84E1CFB16D300D28AB2 /* LBLUBodayView.m in Sources */,
 				04C7C5A71D1A449100DCBD8E /* WYLButtonItem.m in Sources */,
 				04276B8D1D056D3400605FD9 /* GLBodyModel.m in Sources */,
 				0429A8501CFB16D300D28AB2 /* GLPartitionViewController.m in Sources */,
 				04C7C5501D1945DB00DCBD8E /* GLButtonBeautification.m in Sources */,
 				041DE34C1CEAFB51000210E4 /* main.m in Sources */,
 				0429A82C1CFB16D300D28AB2 /* LBLiveViewController.m in Sources */,
+				04C7C6121D1A77C700DCBD8E /* LBDarmaBanaerModel.m in Sources */,
 				0429A8191CFB16D300D28AB2 /* GLLiveContentShowViewModel.m in Sources */,
 				04C7C54A1D19453700DCBD8E /* GLTagButtonGreenCell.m in Sources */,
 				04C7C5BC1D1A449100DCBD8E /* WYLMusicTableViewController.m in Sources */,
@@ -2423,7 +2415,6 @@
 				04DF46931D16FED6002E9F34 /* GLRegardUpViewModel.m in Sources */,
 				0429A7781CFB10F500D28AB2 /* WYLSettingArrowItem.m in Sources */,
 				04FECD191CF1D8E100A4F71D /* GLDIYHeader.m in Sources */,
-				0429A84A1CFB16D300D28AB2 /* LBEndsCollectionViewCell.m in Sources */,
 				0429A8201CFB16D300D28AB2 /* GLLiveListViewController.m in Sources */,
 				04C7C5B71D1A449100DCBD8E /* WYLFilmTableViewController.m in Sources */,
 				0429A8131CFB16D300D28AB2 /* GLHomeViewModel.m in Sources */,
@@ -2437,6 +2428,7 @@
 				043D6BC91D0A9649007EC932 /* GLVideoRoomModel.m in Sources */,
 				04C7C5B11D1A449100DCBD8E /* WYLNewtieViewController.m in Sources */,
 				0429A78B1CFB132300D28AB2 /* GLLiveRoomModel.m in Sources */,
+				04C7C61C1D1A77C700DCBD8E /* LBLatestUpdateCell.m in Sources */,
 				04C7C5A61D1A449100DCBD8E /* WYLSearchViewController.m in Sources */,
 				044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */,
 				0429A77B1CFB10F500D28AB2 /* WYLSettingSwitchItem.m in Sources */,
@@ -2453,6 +2445,7 @@
 				0429A7881CFB130300D28AB2 /* GLLiveRoomViewModel.m in Sources */,
 				04C7C5361D19453700DCBD8E /* GLMotiveSealCellItem.m in Sources */,
 				04C7C5AF1D1A449100DCBD8E /* WYLAuthorViewController.m in Sources */,
+				04C7C6161D1A77C700DCBD8E /* LBBottomCell.m in Sources */,
 				0429A82D1CFB16D300D28AB2 /* LBRoomCollectionCell.m in Sources */,
 				04C7C5BD1D1A449100DCBD8E /* WYLScienceTableViewController.m in Sources */,
 				0429A8141CFB16D300D28AB2 /* GLHomeViewController.m in Sources */,
@@ -2462,11 +2455,8 @@
 				04C7C5B81D1A449100DCBD8E /* WYLGameTableViewController.m in Sources */,
 				0429A7731CFB10F500D28AB2 /* GLMineViewController.m in Sources */,
 				04F7506E1D06C3FD00527C8F /* GLRecBodyView.m in Sources */,
-				0429A8421CFB16D300D28AB2 /* LBDarmaLatestUpdateModel.m in Sources */,
 				04C7C5B91D1A449100DCBD8E /* WYLGhostTableViewController.m in Sources */,
 				04C7C5BE1D1A449100DCBD8E /* WYLSweetsopTableViewController.m in Sources */,
-				0429A84C1CFB16D300D28AB2 /* LBLatestUpdateCell.m in Sources */,
-				0429A8401CFB16D300D28AB2 /* LBDarmaBottomModel.m in Sources */,
 				04F763211D04307F0047C7BD /* GLRecommedItemViewModel.m in Sources */,
 				0429A7791CFB10F500D28AB2 /* WYLSettingGroupItem.m in Sources */,
 				0460EEC61D03531A0078FCB2 /* ZFBrightnessView.m in Sources */,
@@ -2478,10 +2468,8 @@
 				04C7C53D1D19453700DCBD8E /* HMXFanJuDetailHeaderView.m in Sources */,
 				041DE34A1CEAFB51000210E4 /* AppDelegate.m in Sources */,
 				0429A8151CFB16D300D28AB2 /* BiLiTwoLevelAllPlayingItem.m in Sources */,
-				0429A8451CFB16D300D28AB2 /* LBBottomCell.m in Sources */,
 				04C7C5E81D1A46AB00DCBD8E /* MyBaseLayout.m in Sources */,
 				04C7C5F01D1A46AB00DCBD8E /* MyLayoutSizeClass.m in Sources */,
-				0429A8481CFB16D300D28AB2 /* LBEndsCell.m in Sources */,
 				0429A8261CFB16D300D28AB2 /* LBEntranceButton.m in Sources */,
 				04C7C5EA1D1A46AB00DCBD8E /* MyFloatLayout.m in Sources */,
 				04C7C53B1D19453700DCBD8E /* HMXFanjuCommetCell.m in Sources */,
