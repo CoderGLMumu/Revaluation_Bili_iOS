@@ -15,6 +15,7 @@
 #import "GLHomeViewController.h"
 #import "LBColorScale.h"
 #import "GLHomeViewModel.h"
+#import "GLPartitionViewController.h"
 
 #define titleH 45
 
@@ -28,10 +29,8 @@
 
 // 标题滚动条
 @property(nonatomic , weak)UIScrollView *titleSCV;
-
 // 内容滚动条
 @property(nonatomic , weak)UIScrollView *mainSCV;
-
 // 上一个选中的按钮
 @property(nonatomic , strong)UIButton *preBtn;
 
@@ -78,6 +77,15 @@
     /** 设置子控制器 */
     [GLHomeViewModel setUpChildViewController:^(UIViewController *childViewController) {
         [weakSelf addChildViewController:childViewController];
+        if ([childViewController isKindOfClass:[GLPartitionViewController class]]) {
+            ((GLPartitionViewController *)childViewController).ClickLiveButton = ^{
+                self.mainSCV.contentOffset = CGPointMake(0, 0);
+                [self.preBtn setTitleColor:[UIColor colorWithRed:213/255.0 green:213/255.0 blue:213/255.0 alpha:1] forState:UIControlStateNormal];
+                _preBtn.transform = CGAffineTransformIdentity;
+                UIButton *first_btn = self.btnArr[0];
+                self.preBtn = first_btn;
+            };
+        }
     }];
     
     
@@ -120,7 +128,6 @@
             [GLHomeViewModel addCurrentChildView:i vc:self.childViewControllers[i] height:self.mainSCV.glh_height complete:^(UIView *view) {
                 
                 [self.mainSCV addSubview:view];
-                
             }];
         }
         

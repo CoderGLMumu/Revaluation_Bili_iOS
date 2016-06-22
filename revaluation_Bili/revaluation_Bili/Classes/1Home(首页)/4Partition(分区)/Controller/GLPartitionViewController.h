@@ -10,4 +10,7 @@
 
 @interface GLPartitionViewController : UICollectionViewController
 
+/** 点击直播按钮的消息 */
+@property (nonatomic, copy) void(^ClickLiveButton)();
+
 @end

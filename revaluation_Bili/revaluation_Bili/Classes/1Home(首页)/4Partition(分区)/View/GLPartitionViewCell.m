@@ -21,10 +21,12 @@
 {
     _item = item;
     
-    UIImage *image = [UIImage originImage:item.image scaleToSize:CGSizeMake(35, 35)];
+    UIImage *image = [UIImage imageNamed:item.pic];
     
-    self.pic_ImageView.image = image;
-    self.name_Label.text = item.name_image;
+    UIImage *pic_image = [UIImage originImage:image scaleToSize:CGSizeMake(35, 35)];
+    
+    self.pic_ImageView.image = pic_image;
+    self.name_Label.text = item.name;
 }
 
 @end

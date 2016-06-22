@@ -248,6 +248,7 @@
 		04C7C62C1D1A876200DCBD8E /* GLPartitionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6261D1A876200DCBD8E /* GLPartitionItem.m */; };
 		04C7C62D1D1A876200DCBD8E /* GLPartitionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C6291D1A876200DCBD8E /* GLPartitionViewCell.m */; };
 		04C7C62E1D1A876200DCBD8E /* GLPartitionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C62A1D1A876200DCBD8E /* GLPartitionViewCell.xib */; };
+		04C7C6321D1A9B7F00DCBD8E /* Partition.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C6311D1A9B7F00DCBD8E /* Partition.plist */; };
 		04DF468E1D16D19D002E9F34 /* GLRegardUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */; };
 		04DF46901D16D1AE002E9F34 /* GLRegardUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */; };
 		04DF46931D16FED6002E9F34 /* GLRegardUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF46921D16FED6002E9F34 /* GLRegardUpViewModel.m */; };
@@ -680,6 +681,7 @@
 		04C7C6281D1A876200DCBD8E /* GLPartitionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPartitionViewCell.h; sourceTree = "<group>"; };
 		04C7C6291D1A876200DCBD8E /* GLPartitionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPartitionViewCell.m; sourceTree = "<group>"; };
 		04C7C62A1D1A876200DCBD8E /* GLPartitionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPartitionViewCell.xib; sourceTree = "<group>"; };
+		04C7C6311D1A9B7F00DCBD8E /* Partition.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Partition.plist; sourceTree = "<group>"; };
 		04DF468C1D16D19D002E9F34 /* GLRegardUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegardUpViewController.h; sourceTree = "<group>"; };
 		04DF468D1D16D19D002E9F34 /* GLRegardUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegardUpViewController.m; sourceTree = "<group>"; };
 		04DF468F1D16D1AE002E9F34 /* GLRegardUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRegardUpViewController.storyboard; sourceTree = "<group>"; };
@@ -1347,6 +1349,7 @@
 		0429A80D1CFB16D300D28AB2 /* 4Partition(分区) */ = {
 			isa = PBXGroup;
 			children = (
+				04C7C6311D1A9B7F00DCBD8E /* Partition.plist */,
 				04C7C6211D1A876200DCBD8E /* Controller */,
 				04C7C6241D1A876200DCBD8E /* Model */,
 				04C7C6271D1A876200DCBD8E /* View */,
@@ -2226,6 +2229,7 @@
 				0460EE6C1D03520C0078FCB2 /* hd_icmpv_volume_light@2x.png in Resources */,
 				0460EE6A1D03520C0078FCB2 /* hd_icmpv_toggle_danmaku_hided_light@2x.png in Resources */,
 				04298CCB1CFEA45400A2DB48 /* 最新_红.jpg in Resources */,
+				04C7C6321D1A9B7F00DCBD8E /* Partition.plist in Resources */,
 				0429A8301CFB16D300D28AB2 /* LBScrollingView.bundle in Resources */,
 				0451B52E1CF4578F004E5AB3 /* Management_Mask@2x.png in Resources */,
 				04C7C5A31D1A449100DCBD8E /* WYLDiscoverViewController.storyboard in Resources */,

@@ -13,9 +13,9 @@
 /** ID */
 @property (nonatomic, strong) NSString *ID;
 /** 图片 */
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString *pic;
 /** 图片名称 */
-@property (nonatomic, strong) NSString *name_image;
+@property (nonatomic, strong) NSString *name;
 
 /** Item_index */
 @property (nonatomic, strong) UIViewController* Item_VC;

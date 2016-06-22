@@ -7,6 +7,7 @@
 //
 
 #import "GLPartitionViewController.h"
+#import "GLHomeViewController.h"
 
 #import "GLPartitionViewCell.h"
 
@@ -16,6 +17,7 @@
 
 /** item */
 @property (nonatomic, strong) NSMutableArray<GLPartitionItem *> *cellItem_arr;
+
 
 @end
 
@@ -68,7 +70,7 @@ static NSInteger cols = 3;
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([GLPartitionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
-    [self setupData];
+    [self loadData];
     
 }
 
@@ -78,6 +80,16 @@ static NSInteger cols = 3;
     self.collectionView.backgroundColor = [UIColor colorWithRed:213 / 255.0 green:213 / 255.0 blue:213 / 255.0 alpha:1];
 }
 
+- (void)loadData
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Partition.plist" ofType:nil];
+    NSDictionary *dataDict = [NSDictionary dictionaryWithContentsOfFile:path];
+    // 字典转模型
+    self.cellItem_arr = (NSMutableArray *)[NSArray yy_modelArrayWithClass:[GLPartitionItem class] json:dataDict[@"data"]];
+    [self.collectionView reloadData];
+}
+
+/*
 - (void)setupData
 {
     
@@ -150,6 +162,7 @@ static NSInteger cols = 3;
     [self.ButtonItem_arr addObjectsFromArray:@[item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13]];
     
 }
+ */
 
 
 #pragma mark <UICollectionViewDataSource>
@@ -172,12 +185,15 @@ static NSInteger cols = 3;
 {
     GLPartitionItem *item = self.cellItem_arr[indexPath.row];
     
-//    [self.navigationController pushViewController:item.Item_VC animated:YES];
+    if ([item.name isEqualToString:@"直播"]) {
+//        NSLog(@"%@",self.parentViewController);
+//        GLHomeViewController *homeVC = (GLHomeViewController *)self.parentViewController;
+//        homeVC.mainSCV.contentOffset = CGPointMake(0, 0);
+        self.ClickLiveButton();
+    }
     
     
-    
-    
-    GLLog(@"跳转控制器%@",item.Item_VC);
+//    GLLog(@"跳转控制器%@",item.Item_VC);
 }
 
 
