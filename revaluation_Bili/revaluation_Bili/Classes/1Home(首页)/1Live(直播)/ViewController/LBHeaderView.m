@@ -13,8 +13,9 @@
 #import "LBScrollingView.h"
 #import "LBLiveViewModel.h"
 
+#import <SDCycleScrollView/SDCycleScrollView.h>
 
-@interface LBHeaderView()
+@interface LBHeaderView() <SDCycleScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *middleView;
 
@@ -98,15 +99,28 @@
 -(void)setUpScrollView
 {
     // 640 * 220
-     LBScrollingView *scrollingView = [[LBScrollingView alloc] init];
-    scrollingView.images = self.imageArr;
-//    scrollingView.frame = CGRectMake(0, 0, self.topView.frame.size.width, ScreenW * 200 / 640);
-    scrollingView.frame = self.topView.bounds;
-    [self layoutIfNeeded];
-    [self.topView addSubview:scrollingView];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-    });
+//     LBScrollingView *scrollingView = [[LBScrollingView alloc] init];
+//    scrollingView.images = self.imageArr;
+////    scrollingView.frame = CGRectMake(0, 0, self.topView.frame.size.width, ScreenW * 200 / 640);
+//    scrollingView.frame = self.topView.bounds;
+//    [self layoutIfNeeded];
+//    [self.topView addSubview:scrollingView];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//    });
+    
+//    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:nil];
+//    cycleScrollView.imageURLStringsGroup = self.imageArr;
+    // 网络加载 --- 创建带标题的图片轮播器
+    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
+    cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+    // 自定义分页控件小圆标颜色
+    [self.topView addSubview:cycleScrollView2];
+    
+    cycleScrollView2.imageURLStringsGroup = self.imageArr;
     
 }
 

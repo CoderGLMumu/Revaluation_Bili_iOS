@@ -30,6 +30,8 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 2.0)
   - Result (2.0.0)
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -43,6 +45,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - ReactiveCocoa
+  - SDCycleScrollView
   - SDWebImage
   - SVProgressHUD
   - YYModel
@@ -55,10 +58,11 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: 2c423211f3f2d3e19928e37c91b0f0028a69d916
+PODFILE CHECKSUM: 5bde03b5354cbafeb504076a92261d9718a53a2d
 
 COCOAPODS: 1.0.0

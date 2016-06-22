@@ -26,3 +26,5 @@ pod 'ReactiveCocoa'
 pod 'BarrageRenderer'
 
 pod 'MJExtension'
+
+pod 'SDCycleScrollView'
