@@ -10,6 +10,8 @@
 
 @interface GLPartitionItem : NSObject
 
+/** ID */
+@property (nonatomic, strong) NSString *ID;
 /** 图片 */
 @property (nonatomic, strong) UIImage *image;
 /** 图片名称 */

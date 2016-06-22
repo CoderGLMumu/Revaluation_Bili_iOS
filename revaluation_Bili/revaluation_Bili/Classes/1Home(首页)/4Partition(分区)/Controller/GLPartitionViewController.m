@@ -82,68 +82,68 @@ static NSInteger cols = 3;
 {
     
     GLPartitionItem *item1 = [[GLPartitionItem alloc]init];
-    
+    item1.ID = @"1";
     item1.image = [UIImage imageNamed:@"hd_home_subregion_live"];
     item1.name_image = @"直播";
 //    item1.Item_VC = ;
     
     GLPartitionItem *item2 = [[GLPartitionItem alloc]init];
-    
+    item2.ID = @"2";
     item2.image = [UIImage imageNamed:@"hd_home_region_icon_13"];
     item2.name_image = @"番剧";
     
     GLPartitionItem *item3 = [[GLPartitionItem alloc]init];
-    
+    item3.ID = @"3";
     item3.image = [UIImage imageNamed:@"hd_home_region_icon_1"];
     item3.name_image = @"动画";
     
     GLPartitionItem *item4 = [[GLPartitionItem alloc]init];
-    
+    item4.ID = @"4";
     item4.image = [UIImage imageNamed:@"hd_home_region_icon_3"];
     item4.name_image = @"音乐";
     
     GLPartitionItem *item5 = [[GLPartitionItem alloc]init];
-    
+    item5.ID = @"5";
     item5.image = [UIImage imageNamed:@"hd_home_region_icon_129"];
     item5.name_image = @"舞蹈";
     
     GLPartitionItem *item6 = [[GLPartitionItem alloc]init];
-    
+    item6.ID = @"6";
     item6.image = [UIImage imageNamed:@"hd_home_region_icon_4"];
     item6.name_image = @"游戏";
     
     GLPartitionItem *item7 = [[GLPartitionItem alloc]init];
-    
+    item7.ID = @"7";
     item7.image = [UIImage imageNamed:@"hd_home_region_icon_36"];
     item7.name_image = @"科技";
     
     GLPartitionItem *item8 = [[GLPartitionItem alloc]init];
-    
+    item8.ID = @"8";
     item8.image = [UIImage imageNamed:@"hd_home_region_icon_5"];
     item8.name_image = @"娱乐";
     
     GLPartitionItem *item9= [[GLPartitionItem alloc]init];
-    
+    item9.ID = @"9";
     item9.image = [UIImage imageNamed:@"hd_home_region_icon_119"];
     item9.name_image = @"鬼畜";
     
     GLPartitionItem *item10 = [[GLPartitionItem alloc]init];
-    
+    item10.ID = @"10";
     item10.image = [UIImage imageNamed:@"hd_home_region_icon_23"];
     item10.name_image = @"电影";
     
     GLPartitionItem *item11 = [[GLPartitionItem alloc]init];
-    
+    item11.ID = @"11";
     item11.image = [UIImage imageNamed:@"hd_home_region_icon_11"];
     item11.name_image = @"电视剧";
     
     GLPartitionItem *item12 = [[GLPartitionItem alloc]init];
-    
+    item12.ID = @"12";
     item12.image = [UIImage imageNamed:@"hd_home_region_icon_155"];
     item12.name_image = @"时尚";
     
     GLPartitionItem *item13 = [[GLPartitionItem alloc]init];
-    
+    item13.ID = @"13";
     item13.image = [UIImage imageNamed:@"hd_home_region_gamecenter"];
     item13.name_image = @"游戏中心";
     
@@ -173,6 +173,9 @@ static NSInteger cols = 3;
     GLPartitionItem *item = self.cellItem_arr[indexPath.row];
     
 //    [self.navigationController pushViewController:item.Item_VC animated:YES];
+    
+    
+    
     
     GLLog(@"跳转控制器%@",item.Item_VC);
 }
