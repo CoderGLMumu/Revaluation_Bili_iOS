@@ -102,9 +102,10 @@
     scrollingView.images = self.imageArr;
 //    scrollingView.frame = CGRectMake(0, 0, self.topView.frame.size.width, ScreenW * 200 / 640);
     scrollingView.frame = self.topView.bounds;
+    [self layoutIfNeeded];
+    [self.topView addSubview:scrollingView];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self layoutIfNeeded];
-        [self.topView addSubview:scrollingView];
+        
     });
     
 }
@@ -112,14 +113,15 @@
 #pragma mark -  设置按钮
 - (void)setUpButtons
 {
+    for (LBEntranceButton *button in self.buttonArr) {
+        
+        [self.middleView addSubview:button];
+        
+    }
+    [self layoutIfNeeded];
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        for (LBEntranceButton *button in self.buttonArr) {
-            
-                [self.middleView addSubview:button];
-            
-        }
-        [self layoutIfNeeded];
+       
     });
 }
 

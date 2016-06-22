@@ -86,12 +86,14 @@ static NSString * const ID = @"LBLiveViewCell";
     [LBLiveViewModel setUpHeaderViewComplete:^(UIView *buttonView) {
         @strongify(self);
         LBHeaderView *headView = [LBHeaderView headerViewFromNib];
+        headView.viewModel = self.lbviewModel;
         
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            headView.viewModel = self.lbviewModel;
-            headView.entranceButtomItems = self.lbviewModel.entranceButtomItems;
-            headView.headerBannerArr = self.lbviewModel.headerBannerArr;
-        });
+        headView.entranceButtomItems = self.lbviewModel.entranceButtomItems;
+        headView.headerBannerArr = self.lbviewModel.headerBannerArr;
+        
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//            
+//        });
         
         
         // 设置headerView的代理
