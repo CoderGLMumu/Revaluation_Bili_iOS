@@ -33,6 +33,8 @@
 
 /** bannerImages */
 @property (nonatomic, strong) NSArray *bannerImages;
+/** bannerLinks */
+@property (nonatomic, strong) NSArray *bannerLinks;
 
 @end
 
@@ -115,12 +117,14 @@ static NSString * const Darma = @"LBDarmaCell";
         
         _latestUpdate = [LBDarmaLatestUpdateModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"latestUpdate"][@"list"]];
         
-        NSMutableArray *arrM = [NSMutableArray array];
-        
+        NSMutableArray *arrM_img = [NSMutableArray array];
+        NSMutableArray *arrM_link = [NSMutableArray array];
         for (LBDarmaBanaerModel *model in self.banners) {
-            [arrM addObject:model.img];
+            [arrM_img addObject:model.img];
+            [arrM_link addObject:model.link];
         }
-        self.bannerImages = arrM;
+        self.bannerImages = arrM_img;
+        self.bannerLinks = arrM_link;
         
         [self setUpheaderView];
         // 刷新数据
@@ -136,10 +140,18 @@ static NSString * const Darma = @"LBDarmaCell";
     self.tableView.tableHeaderView = headerView;
     // 网络加载 --- 创建带标题的图片轮播器
     if (self.bannerImages) {
-        
         headerView.bannerImages = self.bannerImages;
-
     }
+    
+    headerView.ClickBanner = ^(NSInteger currentIndex){
+        NSString *link = self.bannerLinks[currentIndex];
+        if([link hasPrefix:@"http://"]){
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:link]]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:link]];
+            }
+        }
+    };
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

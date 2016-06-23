@@ -95,7 +95,7 @@
             left += self.pretag_btn.glw_width;
             
 //            CGFloat left = i * tag_btn.glw_width;
-            NSLog(@"leftleft%f===%f==%@",left,self.pretag_btn.glw_width,tag_btn.currentTitle);
+//            NSLog(@"leftleft%f===%f==%@",left,self.pretag_btn.glw_width,tag_btn.currentTitle);
 //            tag_btn.backgroundColor = GLColor(0, 255, 255);
             [tag_btn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.bottom.equalTo(tag_btn.superview);

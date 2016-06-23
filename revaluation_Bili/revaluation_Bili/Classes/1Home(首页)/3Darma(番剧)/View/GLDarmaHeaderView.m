@@ -34,10 +34,17 @@
     _bannerImages = bannerImages;
     
     SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.bannerView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    NSLog(@"self.topView.bounds ==%@",NSStringFromCGRect(self.bannerView.bounds));
+//    NSLog(@"self.topView.bounds ==%@",NSStringFromCGRect(self.bannerView.bounds));
     cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
     cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+    
+    cycleScrollView2.clickItemOperationBlock = ^(NSInteger currentIndex){
+        if (self.ClickBanner) {
+            self.ClickBanner(currentIndex);
+        }
+    };
+    
     // 自定义分页控件小圆标颜色
     for (UIView *view in self.bannerView.subviews) {
         [view removeFromSuperview];

@@ -13,6 +13,9 @@
 /** bannerImages */
 @property (nonatomic, strong) NSArray *bannerImages;
 
+/** value */
+@property (nonatomic, copy) void(^ClickBanner)(NSInteger currentIndex);
+
 + (instancetype)darmaHeaderView;
 
 @end
