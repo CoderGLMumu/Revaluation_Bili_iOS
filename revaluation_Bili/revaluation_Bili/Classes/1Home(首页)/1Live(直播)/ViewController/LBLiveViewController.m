@@ -98,15 +98,13 @@ static NSString * const ID = @"LBLiveViewCell";
         // 设置headerView的代理
         headView.delegate = self;
         self.tableView.tableHeaderView = headView;
-        self.tableView.tableFooterView = buttonView;
+//        self.tableView.tableFooterView = buttonView;
         
         headView.ClickRegardUpButton = ^{
             [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"GLRegardUpViewController" bundle:nil]instantiateInitialViewController] animated:YES];
         };
     }];
 }
-
-
 /*
  http://live.bilibili.com/AppIndex/home?actionKey=appkey&appkey=27eb53fc9058f8c3&build=3060&device=phone&platform=ios&scale=2&sign=13f053baf875521b0d1958c812a0f110&ts=1460106665
  */

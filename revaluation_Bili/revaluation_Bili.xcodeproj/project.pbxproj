@@ -266,6 +266,8 @@
 		04ECAB6D1CFDD6B1000F4BFC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */; };
 		04F58C801D1B7F4E00C8A1AF /* GLRecomBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */; };
 		04F58C831D1B80B700C8A1AF /* GLRecomBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */; };
+		04F58C861D1BA9E800C8A1AF /* GLDarmaHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C851D1BA9E800C8A1AF /* GLDarmaHeaderView.m */; };
+		04F58C881D1BA9FE00C8A1AF /* GLDarmaHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F58C871D1BA9FE00C8A1AF /* GLDarmaHeaderView.xib */; };
 		04F6F65D1D13DCBD007DBEBA /* GLConvertNSStringToInt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F65C1D13DCBD007DBEBA /* GLConvertNSStringToInt.m */; };
 		04F750691D06BED100527C8F /* GLRecommedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F750681D06BED100527C8F /* GLRecommedCell.m */; };
 		04F7506E1D06C3FD00527C8F /* GLRecBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7506D1D06C3FD00527C8F /* GLRecBodyView.m */; };
@@ -711,6 +713,9 @@
 		04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecomBannerModel.m; sourceTree = "<group>"; };
 		04F58C811D1B80B700C8A1AF /* GLRecomBannerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecomBannerViewModel.h; sourceTree = "<group>"; };
 		04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecomBannerViewModel.m; sourceTree = "<group>"; };
+		04F58C841D1BA9E800C8A1AF /* GLDarmaHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDarmaHeaderView.h; sourceTree = "<group>"; };
+		04F58C851D1BA9E800C8A1AF /* GLDarmaHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDarmaHeaderView.m; sourceTree = "<group>"; };
+		04F58C871D1BA9FE00C8A1AF /* GLDarmaHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLDarmaHeaderView.xib; sourceTree = "<group>"; };
 		04F6F65B1D13DCBD007DBEBA /* GLConvertNSStringToInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLConvertNSStringToInt.h; sourceTree = "<group>"; };
 		04F6F65C1D13DCBD007DBEBA /* GLConvertNSStringToInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLConvertNSStringToInt.m; sourceTree = "<group>"; };
 		04F750671D06BED100527C8F /* GLRecommedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCell.h; sourceTree = "<group>"; };
@@ -1911,6 +1916,9 @@
 				04C7C60E1D1A77C700DCBD8E /* LBLUBodayView.h */,
 				04C7C60F1D1A77C700DCBD8E /* LBLUBodayView.m */,
 				04C7C6101D1A77C700DCBD8E /* LBLUBodayView.xib */,
+				04F58C841D1BA9E800C8A1AF /* GLDarmaHeaderView.h */,
+				04F58C851D1BA9E800C8A1AF /* GLDarmaHeaderView.m */,
+				04F58C871D1BA9FE00C8A1AF /* GLDarmaHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2235,6 +2243,7 @@
 				04298CC81CFEA45400A2DB48 /* 最热_白.jpg in Resources */,
 				04298CBC1CFEA30E00A2DB48 /* empty_list_search_2.jpg in Resources */,
 				0460EE741D03520C0078FCB2 /* player_live_timer@2x.png in Resources */,
+				04F58C881D1BA9FE00C8A1AF /* GLDarmaHeaderView.xib in Resources */,
 				0460EE401D0351D00078FCB2 /* ani_loading_4@2x.png in Resources */,
 				0460EE6C1D03520C0078FCB2 /* hd_icmpv_volume_light@2x.png in Resources */,
 				0460EE6A1D03520C0078FCB2 /* hd_icmpv_toggle_danmaku_hided_light@2x.png in Resources */,
@@ -2502,6 +2511,7 @@
 				0429A8151CFB16D300D28AB2 /* BiLiTwoLevelAllPlayingItem.m in Sources */,
 				04C7C5E81D1A46AB00DCBD8E /* MyBaseLayout.m in Sources */,
 				04C7C5F01D1A46AB00DCBD8E /* MyLayoutSizeClass.m in Sources */,
+				04F58C861D1BA9E800C8A1AF /* GLDarmaHeaderView.m in Sources */,
 				0429A8261CFB16D300D28AB2 /* LBEntranceButton.m in Sources */,
 				04C7C5EA1D1A46AB00DCBD8E /* MyFloatLayout.m in Sources */,
 				04C7C53B1D19453700DCBD8E /* HMXFanjuCommetCell.m in Sources */,

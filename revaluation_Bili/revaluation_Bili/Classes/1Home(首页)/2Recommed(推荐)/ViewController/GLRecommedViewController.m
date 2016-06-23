@@ -61,7 +61,8 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 
 
 - (void)viewDidLoad {
-    
+    CGFloat imageH = GLScreenW * 200 / 640;
+    self.tableView.tableHeaderView.frame = CGRectMake(0, 0, GLScreenW, imageH);
     
     [super viewDidLoad];
     
@@ -101,6 +102,7 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
         [view removeFromSuperview];
     }
     if (self.bannerviewModel.imageArr) {
+        
         // 网络加载 --- 创建带标题的图片轮播器
         SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.tableView.tableHeaderView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
         

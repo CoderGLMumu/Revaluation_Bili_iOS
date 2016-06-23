@@ -25,6 +25,9 @@
 -(void)setModels:(NSMutableArray *)models{
     _models = models;
     
+    if (models.count == 0) {
+        return;
+    }
     
     // 列
     NSInteger col = 2;
@@ -35,6 +38,7 @@
     
     for (int i = 0; i < 6; i ++) {
         LBLUBodayView *bodyView = [LBLUBodayView BodayViewFromNib];
+        
         bodyView.model = _models[i];
         
         CGFloat bodyW = (GLScreenW - 30) * 0.5;

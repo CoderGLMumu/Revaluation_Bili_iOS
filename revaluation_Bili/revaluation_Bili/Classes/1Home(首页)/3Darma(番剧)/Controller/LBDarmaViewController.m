@@ -15,6 +15,7 @@
 #import "LBDarmaEndsModel.h"
 #import "LBDarmaLatestUpdateModel.h"
 
+#import "GLDarmaHeaderView.h"
 #import "LBLatestUpdateCell.h"
 #import "LBEndsCell.h"
 #import "LBBottomCell.h"
@@ -71,6 +72,7 @@ static NSString * const Darma = @"LBDarmaCell";
     
     // 获取网络数据
     [self getNetData];
+    
     // 去掉Cell的间隔线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -79,6 +81,11 @@ static NSString * const Darma = @"LBDarmaCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"LBBottomCell" bundle:nil] forCellReuseIdentifier:Darma];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+//    [self.tableView reloadData];
+}
 
 -(void)getNetData{
     
@@ -88,6 +95,7 @@ static NSString * const Darma = @"LBDarmaCell";
         if (json) {
             _bottomCellArr = [LBDarmaBottomModel mj_objectArrayWithKeyValuesArray:json[@"result"]];
             // 刷新数据
+            
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -102,12 +110,18 @@ static NSString * const Darma = @"LBDarmaCell";
         _ends = [LBDarmaEndsModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"ends"]];
         
         _latestUpdate = [LBDarmaLatestUpdateModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"latestUpdate"][@"list"]];
-        
+        [self setUpheaderView];
         // 刷新数据
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         [SVProgressHUD showInfoWithStatus:@"网络不好"];
     }];
+}
+
+- (void)setUpheaderView
+{
+    self.tableView.tableHeaderView = [GLDarmaHeaderView darmaHeaderView];
+    [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -141,8 +155,14 @@ static NSString * const Darma = @"LBDarmaCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        if (self.latestUpdate.count == 0) {
+            return 0;
+        }
         return [self.latestUpdate[0] cellHeight];
     }else if (indexPath.row == 1){
+        if (self.ends.count == 0) {
+            return 0;
+        }
         return [self.ends[0] cellHeight];
     }
     else {
@@ -151,7 +171,7 @@ static NSString * const Darma = @"LBDarmaCell";
 }
 
 -(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    return NO;
+    return YES;
 }
 
 @end

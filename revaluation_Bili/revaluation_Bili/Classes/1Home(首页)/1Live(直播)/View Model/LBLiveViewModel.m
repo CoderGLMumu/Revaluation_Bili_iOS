@@ -73,22 +73,22 @@
 
 + (void)setUpHeaderViewComplete:(void(^)(UIView *buttonView))complete
 {
-    UIButton *footerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGFloat buttonH = 40;
-    CGFloat buttonW = [UIScreen mainScreen].bounds.size.width - 30;
-    footerButton.frame = CGRectMake(15, 0, buttonW, buttonH);
-    footerButton.backgroundColor = [UIColor redColor];
-    [footerButton setTitle:@"全部直播" forState:UIControlStateNormal];
-    [footerButton setTitle:@"全部直播" forState:UIControlStateHighlighted];
-    [footerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [footerButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+//    UIButton *footerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    CGFloat buttonH = 40;
+//    CGFloat buttonW = [UIScreen mainScreen].bounds.size.width - 30;
+//    footerButton.frame = CGRectMake(15, 0, buttonW, buttonH);
+//    footerButton.backgroundColor = [UIColor redColor];
+//    [footerButton setTitle:@"全部直播" forState:UIControlStateNormal];
+//    [footerButton setTitle:@"全部直播" forState:UIControlStateHighlighted];
+//    [footerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [footerButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     //    buttonView.layer.cornerRadius = 10;
     //    buttonView.layer.masksToBounds = YES;
     
-    [buttonView addSubview:footerButton];
-    
+//    [buttonView addSubview:footerButton];
+
     complete(buttonView);
 }
 

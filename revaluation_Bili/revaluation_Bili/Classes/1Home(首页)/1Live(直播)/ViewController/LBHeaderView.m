@@ -112,16 +112,21 @@
 //    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:nil];
 //    cycleScrollView.imageURLStringsGroup = self.imageArr;
     // 网络加载 --- 创建带标题的图片轮播器
-    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    
-    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-    cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
-    cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
-    // 自定义分页控件小圆标颜色
-    [self.topView addSubview:cycleScrollView2];
-    
-    cycleScrollView2.imageURLStringsGroup = self.imageArr;
-    
+    if (self.imageArr) {
+        SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        NSLog(@"self.topView.bounds ==%@",NSStringFromCGRect(self.topView.bounds));
+        cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+        cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
+        cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+        // 自定义分页控件小圆标颜色
+        for (UIView *view in self.topView.subviews) {
+            [view removeFromSuperview];
+        }
+        
+        [self.topView addSubview:cycleScrollView2];
+        
+        cycleScrollView2.imageURLStringsGroup = self.imageArr;
+    }
 }
 
 #pragma mark -  设置按钮
