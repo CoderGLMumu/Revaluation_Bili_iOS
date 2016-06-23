@@ -15,6 +15,9 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - BarrageRenderer (1.8.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - Masonry (1.0.1)
   - MJExtension (3.0.10)
   - MJRefresh (3.1.0)
@@ -41,6 +44,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BarrageRenderer
+  - FMDB
   - Masonry
   - MJExtension
   - MJRefresh
@@ -53,6 +57,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BarrageRenderer: f99b461b58cd34538eef10e547b8ec2f300a0e24
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
@@ -63,6 +68,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   YYModel: 63142c2f07c5c8c9d1c261689cf3827ea6ab2886
 
-PODFILE CHECKSUM: 5bde03b5354cbafeb504076a92261d9718a53a2d
+PODFILE CHECKSUM: 1e1b6755c67476e35a9b4ae1365602c055d38e3f
 
 COCOAPODS: 1.0.0

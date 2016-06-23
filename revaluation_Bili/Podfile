@@ -9,6 +9,8 @@ target 'revaluation_Bili' do
 
 end
 
+pod 'FMDB'
+
 pod 'MJRefresh'
 
 pod 'Masonry'
