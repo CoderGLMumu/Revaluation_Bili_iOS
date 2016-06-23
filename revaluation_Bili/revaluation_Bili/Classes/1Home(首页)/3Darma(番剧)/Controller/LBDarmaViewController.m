@@ -20,7 +20,7 @@
 #import "LBEndsCell.h"
 #import "LBBottomCell.h"
 
-@interface LBDarmaViewController ()
+@interface LBDarmaViewController () 
 // 保存底部cell的模型数组
 @property (nonatomic ,strong)NSMutableArray *bottomCellArr;
 
@@ -30,6 +30,10 @@
 @property (nonatomic ,strong)NSMutableArray *ends;
 // row0新番连载的模型数组
 @property (nonatomic ,strong)NSMutableArray *latestUpdate;
+
+/** bannerImages */
+@property (nonatomic, strong) NSArray *bannerImages;
+
 @end
 
 @implementation LBDarmaViewController
@@ -110,6 +114,14 @@ static NSString * const Darma = @"LBDarmaCell";
         _ends = [LBDarmaEndsModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"ends"]];
         
         _latestUpdate = [LBDarmaLatestUpdateModel mj_objectArrayWithKeyValuesArray:json[@"result"][@"latestUpdate"][@"list"]];
+        
+        NSMutableArray *arrM = [NSMutableArray array];
+        
+        for (LBDarmaBanaerModel *model in self.banners) {
+            [arrM addObject:model.img];
+        }
+        self.bannerImages = arrM;
+        
         [self setUpheaderView];
         // 刷新数据
         [self.tableView reloadData];
@@ -120,8 +132,14 @@ static NSString * const Darma = @"LBDarmaCell";
 
 - (void)setUpheaderView
 {
-    self.tableView.tableHeaderView = [GLDarmaHeaderView darmaHeaderView];
-    [self.tableView reloadData];
+    GLDarmaHeaderView *headerView = [GLDarmaHeaderView darmaHeaderView];
+    self.tableView.tableHeaderView = headerView;
+    // 网络加载 --- 创建带标题的图片轮播器
+    if (self.bannerImages) {
+        
+        headerView.bannerImages = self.bannerImages;
+
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

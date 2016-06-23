@@ -10,6 +10,9 @@
 
 @interface GLDarmaHeaderView : UIView
 
+/** bannerImages */
+@property (nonatomic, strong) NSArray *bannerImages;
+
 + (instancetype)darmaHeaderView;
 
 @end

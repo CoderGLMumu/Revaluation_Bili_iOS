@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GLDarmaHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="77"/>
+            <rect key="frame" x="0.0" y="0.0" width="374" height="236"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sv0-25-Tpn" userLabel="banner">
@@ -165,7 +165,7 @@
                             </variation>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="rS0-4T-q6x" firstAttribute="height" secondItem="7dW-Sm-4jK" secondAttribute="height" id="368-Ui-YK6"/>
                         <constraint firstItem="vVY-Hk-TOu" firstAttribute="leading" secondItem="YTi-9e-1pO" secondAttribute="trailing" constant="10" id="3Fv-6m-3PE"/>
@@ -229,7 +229,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="LiW-aD-IOr" secondAttribute="trailing" id="8aB-xu-slm"/>
                 <constraint firstItem="LiW-aD-IOr" firstAttribute="top" secondItem="e1S-xZ-0IK" secondAttribute="bottom" id="Irn-uv-dZK"/>
@@ -250,7 +250,7 @@
                 <outlet property="button_3" destination="LiW-aD-IOr" id="UNF-yR-fjY"/>
                 <outlet property="button_4" destination="e1S-xZ-0IK" id="9QT-fX-330"/>
             </connections>
-            <point key="canvasLocation" x="256" y="140.5"/>
+            <point key="canvasLocation" x="256" y="220"/>
         </view>
     </objects>
     <resources>

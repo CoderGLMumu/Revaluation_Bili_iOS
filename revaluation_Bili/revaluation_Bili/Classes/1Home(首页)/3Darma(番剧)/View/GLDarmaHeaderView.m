@@ -7,8 +7,9 @@
 //
 
 #import "GLDarmaHeaderView.h"
+#import <SDCycleScrollView/SDCycleScrollView.h>
 
-@interface GLDarmaHeaderView ()
+@interface GLDarmaHeaderView () <SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
 @property (weak, nonatomic) IBOutlet UIView *button_4;
 @property (weak, nonatomic) IBOutlet UIView *button_3;
@@ -23,8 +24,29 @@
     GLDarmaHeaderView *headerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil][0];
     CGFloat imageH = GLScreenW * 200 / 640;
     headerView.bannerConstraintH.constant = imageH;
-    headerView.frame = CGRectMake(0, 0, GLScreenW, imageH + headerView.button_4.glh_height + headerView.button_3.glh_height + (5 * 5));
+    [headerView layoutIfNeeded];
+    headerView.frame = CGRectMake(0, 0, GLScreenW, imageH + headerView.button_4.glh_height + headerView.button_3.glh_height + 10);
     return headerView;
+}
+
+- (void)setBannerImages:(NSArray *)bannerImages
+{
+    _bannerImages = bannerImages;
+    
+    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.bannerView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    NSLog(@"self.topView.bounds ==%@",NSStringFromCGRect(self.bannerView.bounds));
+    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
+    cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+    // 自定义分页控件小圆标颜色
+    for (UIView *view in self.bannerView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    [self.bannerView addSubview:cycleScrollView2];
+    
+    cycleScrollView2.imageURLStringsGroup = self.bannerImages;
+    
 }
 
 -(void)layoutSubviews
