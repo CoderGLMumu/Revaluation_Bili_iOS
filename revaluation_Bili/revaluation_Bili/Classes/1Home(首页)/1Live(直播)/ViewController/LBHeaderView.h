@@ -29,6 +29,8 @@
 
 @property(nonatomic, strong) void(^ClickRegardUpButton)();
 
+@property(nonatomic, strong) void(^ClickBanner)(NSString *link);
+
 @property (nonatomic ,weak)id <LBHeaderViewDelegate> delegate;
 
 +(instancetype)headerViewFromNib;

@@ -109,6 +109,16 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
         cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
         cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
         cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+        
+        cycleScrollView2.clickItemOperationBlock = ^(NSInteger currentIndex){
+            NSString *value_str = self.bannerviewModel.imageValueArr[currentIndex];
+            if([value_str hasPrefix:@"http://"]){
+                if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:value_str]]) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:value_str]];
+                }
+            }
+        };
+        
         // 自定义分页控件小圆标颜色
         [self.tableView.tableHeaderView addSubview:cycleScrollView2];
         cycleScrollView2.imageURLStringsGroup = self.bannerviewModel.imageArr;

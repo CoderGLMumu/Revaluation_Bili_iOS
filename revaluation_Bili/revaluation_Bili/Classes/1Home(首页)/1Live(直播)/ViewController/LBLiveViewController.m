@@ -101,6 +101,12 @@ static NSString * const ID = @"LBLiveViewCell";
         headView.ClickRegardUpButton = ^{
             [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"GLRegardUpViewController" bundle:nil]instantiateInitialViewController] animated:YES];
         };
+        headView.ClickBanner = ^(NSString *link){
+            GLLiveRoomViewController *liveRoomVC = [GLLiveRoomViewController new];
+            liveRoomVC.room_id = link;
+            
+            [self.navigationController pushViewController:liveRoomVC animated:YES];
+        };
     }];
 }
 /*

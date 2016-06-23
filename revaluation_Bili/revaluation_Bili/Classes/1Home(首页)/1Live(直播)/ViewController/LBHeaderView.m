@@ -127,8 +127,9 @@
                 if ([app canOpenURL:[NSURL URLWithString:item.link]]) {
                     [app openURL:[NSURL URLWithString:item.link]];
                 }
-            }else{
-                // 进入房间...
+            }else if ([item.link hasPrefix:@"bilibili://live/"]){
+                NSString *link = [item.link substringFromIndex:@"bilibili://live/".length];
+                self.ClickBanner(link);
             }
         };
         

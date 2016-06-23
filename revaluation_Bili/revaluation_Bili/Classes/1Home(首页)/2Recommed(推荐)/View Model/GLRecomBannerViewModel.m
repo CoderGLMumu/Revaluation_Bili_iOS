@@ -76,15 +76,17 @@
 {
     [self loadRecomDataSuccess:^(id json) {
         
-        NSMutableArray *arrM = [NSMutableArray array];
+        NSMutableArray *arrM_images = [NSMutableArray array];
+        NSMutableArray *arrM_values = [NSMutableArray array];
         
         NSArray *test = [NSArray yy_modelArrayWithClass:[GLRecomBannerModel class] json:json[@"data"]];
         
         for (GLRecomBannerModel *model in test) {
-            [arrM addObject:model.image];
+            [arrM_images addObject:model.image];
+            [arrM_values addObject:model.value];
         }
-        self.imageArr = arrM;
-        
+        self.imageArr = arrM_images;
+        self.imageValueArr = arrM_values;
     } failure:^(NSError *error) {
         
     }];

@@ -9,14 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface GLRecomBannerViewModel : NSObject
-/** 【值	可以是http://链接】 【可以是番剧aid号码】 */
+/** 【装有图片链接的数组】 */
 @property (nonatomic, copy) NSArray *imageArr;
-///** 【值	可以是http://链接】 【可以是番剧aid号码】 */
-//@property (nonatomic, copy) NSString *value;
-///** 【轮播图片】 */
-//@property (nonatomic, copy) NSString *image;
-///** 【类型	2是打开网页,3是番剧】 */
-//@property (nonatomic, copy) NSNumber *type;
+/** 【装有图片跳转链接的数组】 */
+@property (nonatomic, copy) NSArray *imageValueArr;
 
 + (instancetype)viewModel;
 
