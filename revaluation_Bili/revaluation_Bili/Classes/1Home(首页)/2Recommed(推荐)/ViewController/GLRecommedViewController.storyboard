@@ -15,9 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="aHs-H5-Cyq" userLabel="topView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.09641611253" green="1" blue="0.082390135160000003" alpha="0.65378435280000002" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="36k-8l-Ha1"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recommendCell" rowHeight="327" id="wpP-LU-Aiu" userLabel="热门推荐-recommend" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="128" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wpP-LU-Aiu" id="V04-Wa-rPu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -155,7 +163,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weblinkCell" rowHeight="327" id="qVy-03-DPZ" userLabel="weblink" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="355" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="455" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qVy-03-DPZ" id="oYW-p3-XAr">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -187,7 +195,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="liveCell" rowHeight="327" id="jVA-oa-bVu" userLabel="正在直播-live" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="682" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="782" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jVA-oa-bVu" id="Ocj-5F-aOW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -324,7 +332,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="regionCell" rowHeight="327" id="EKg-0O-RBU" userLabel="分区-region" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="1009" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="1109" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EKg-0O-RBU" id="aJr-Ox-K82">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -466,7 +474,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_2Cell" rowHeight="327" id="U8q-lo-HL1" userLabel="番剧推荐-bangumi_2" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="1336" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="1436" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U8q-lo-HL1" id="kcr-PR-NBz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -631,7 +639,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zhoukanCell" rowHeight="327" id="pXF-Is-E7i" userLabel="周刊-nil" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="1663" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="1763" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pXF-Is-E7i" id="G62-zp-UAN">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>
@@ -663,7 +671,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bangumi_3Cell" rowHeight="327" id="5JQ-hs-UO6" userLabel="电视剧更新-bangumi_3" customClass="GLRecommedCell">
-                                <rect key="frame" x="0.0" y="1990" width="600" height="327"/>
+                                <rect key="frame" x="0.0" y="2090" width="600" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5JQ-hs-UO6" id="hEy-cj-uXH">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="326.5"/>

@@ -264,6 +264,8 @@
 		04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */; };
 		04E354E11D08568C00EAA424 /* GLVideoRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */; };
 		04ECAB6D1CFDD6B1000F4BFC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */; };
+		04F58C801D1B7F4E00C8A1AF /* GLRecomBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */; };
+		04F58C831D1B80B700C8A1AF /* GLRecomBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */; };
 		04F6F65D1D13DCBD007DBEBA /* GLConvertNSStringToInt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F65C1D13DCBD007DBEBA /* GLConvertNSStringToInt.m */; };
 		04F750691D06BED100527C8F /* GLRecommedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F750681D06BED100527C8F /* GLRecommedCell.m */; };
 		04F7506E1D06C3FD00527C8F /* GLRecBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7506D1D06C3FD00527C8F /* GLRecBodyView.m */; };
@@ -705,6 +707,10 @@
 		04ECAB641CFDD559000F4BFC /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = revaluation_Bili/Other/VideoSDK/ijkplayer/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04ECAB6E1CFDD73E000F4BFC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		04F58C7E1D1B7F4D00C8A1AF /* GLRecomBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecomBannerModel.h; sourceTree = "<group>"; };
+		04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecomBannerModel.m; sourceTree = "<group>"; };
+		04F58C811D1B80B700C8A1AF /* GLRecomBannerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecomBannerViewModel.h; sourceTree = "<group>"; };
+		04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecomBannerViewModel.m; sourceTree = "<group>"; };
 		04F6F65B1D13DCBD007DBEBA /* GLConvertNSStringToInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLConvertNSStringToInt.h; sourceTree = "<group>"; };
 		04F6F65C1D13DCBD007DBEBA /* GLConvertNSStringToInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLConvertNSStringToInt.m; sourceTree = "<group>"; };
 		04F750671D06BED100527C8F /* GLRecommedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCell.h; sourceTree = "<group>"; };
@@ -1296,6 +1302,8 @@
 				04F7631D1D0423390047C7BD /* GLRecommedModel.m */,
 				044A30581D05ED7E007E45B0 /* GLRecommedCellModel.h */,
 				044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */,
+				04F58C7E1D1B7F4D00C8A1AF /* GLRecomBannerModel.h */,
+				04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1311,6 +1319,8 @@
 				044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */,
 				04F7507B1D06FC7200527C8F /* GLRecommedCellItemViewModel.h */,
 				04F7507C1D06FC7200527C8F /* GLRecommedCellItemViewModel.m */,
+				04F58C811D1B80B700C8A1AF /* GLRecomBannerViewModel.h */,
+				04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -2389,6 +2399,7 @@
 				04C7C5A91D1A449100DCBD8E /* WYLDiscoverCell.m in Sources */,
 				04C7C5311D19453700DCBD8E /* LBRegardViewController.m in Sources */,
 				0429A8181CFB16D300D28AB2 /* GLLiveListModel.m in Sources */,
+				04F58C831D1B80B700C8A1AF /* GLRecomBannerViewModel.m in Sources */,
 				04C7C5EB1D1A46AB00DCBD8E /* MyFlowLayout.m in Sources */,
 				0429A7101CFB10F500D28AB2 /* GLTabBarViewModel.m in Sources */,
 				04C7C61E1D1A77C700DCBD8E /* LBLUBodayView.m in Sources */,
@@ -2399,6 +2410,7 @@
 				0451B52D1CF4578F004E5AB3 /* IJKHistoryItem.m in Sources */,
 				04C7C6141D1A77C700DCBD8E /* LBDarmaEndsModel.m in Sources */,
 				04F7507D1D06FC7200527C8F /* GLRecommedCellItemViewModel.m in Sources */,
+				04F58C801D1B7F4E00C8A1AF /* GLRecomBannerModel.m in Sources */,
 				0429A8311CFB16D300D28AB2 /* LBScrollingView.m in Sources */,
 				04C7C5EF1D1A46AB00DCBD8E /* MyLayoutPos.m in Sources */,
 				04C7C5A41D1A449100DCBD8E /* WYLScanViewController.m in Sources */,

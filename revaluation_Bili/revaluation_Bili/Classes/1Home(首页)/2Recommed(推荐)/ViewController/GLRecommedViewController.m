@@ -11,6 +11,7 @@
 #import "GLVideoRoomViewModel.h"
 #import "GLLiveRoomViewController.h"
 #import "GLLiveRoomViewModel.h"
+#import "GLRecomBannerViewModel.h"
 
 #import "GLRecommedViewModel.h"
 #import "GLRecommedItemViewModel.h"
@@ -22,9 +23,13 @@
 
 #import "GLDIYHeader.h"
 
-@interface GLRecommedViewController ()
+#import <SDCycleScrollView/SDCycleScrollView.h>
+
+@interface GLRecommedViewController () <SDCycleScrollViewDelegate>
 
 @property (strong, nonatomic) GLRecommedViewModel * viewModel;
+
+@property (strong, nonatomic) GLRecomBannerViewModel * bannerviewModel;
 
 @end
 
@@ -46,10 +51,21 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     return _viewModel;
 }
 
+- (GLRecomBannerViewModel *)bannerviewModel
+{
+    if (_bannerviewModel == nil) {
+        _bannerviewModel = [[GLRecomBannerViewModel alloc] init];
+    }
+    return _bannerviewModel;
+}
+
+
 - (void)viewDidLoad {
     
     
     [super viewDidLoad];
+    
+    [self bannerviewModel];
     
     [self viewModel];
     
@@ -57,6 +73,10 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     
     [RACObserve(self.viewModel, cellItemViewModels) subscribeNext:^(id x) {
         [self updateView];
+    }];
+    
+    [RACObserve(self.bannerviewModel, imageArr) subscribeNext:^(id x) {
+        [self setupHeaderView];
     }];
     
 }
@@ -71,7 +91,26 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     /** 设置头部刷新 */
     self.tableView.mj_header = [GLDIYHeader headerWithRefreshingBlock:^{
         [self.viewModel first];
+        [self.bannerviewModel handleRecomData];
     }];
+}
+
+- (void)setupHeaderView
+{
+    for (UIView *view in self.tableView.tableHeaderView.subviews) {
+        [view removeFromSuperview];
+    }
+    if (self.bannerviewModel.imageArr) {
+        // 网络加载 --- 创建带标题的图片轮播器
+        SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.tableView.tableHeaderView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        
+        cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+        cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
+        cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+        // 自定义分页控件小圆标颜色
+        [self.tableView.tableHeaderView addSubview:cycleScrollView2];
+        cycleScrollView2.imageURLStringsGroup = self.bannerviewModel.imageArr;
+    }
 }
 
 /**
@@ -219,6 +258,11 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
 //    
 //    };
     
+}
+/** 设置头部视图和cell的间距 */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
 }
 
 @end
