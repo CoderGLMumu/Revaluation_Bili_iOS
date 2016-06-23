@@ -114,10 +114,24 @@
     // 网络加载 --- 创建带标题的图片轮播器
     if (self.imageArr) {
         SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:self.topView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-        NSLog(@"self.topView.bounds ==%@",NSStringFromCGRect(self.topView.bounds));
         cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
         cycleScrollView2.currentPageDotColor = GLColor(255, 30, 175);
         cycleScrollView2.pageDotColor = GLColor(255, 255, 255);
+        
+        cycleScrollView2.clickItemOperationBlock = ^(NSInteger currentIndex){
+            // 模型数组 取出对应数据,跳转需求
+            LBLiveBannerItem *item = self.headerBannerArr[currentIndex];
+            if ([item.link hasPrefix:@"http://"]) {
+                UIApplication *app = [UIApplication sharedApplication];
+//                NSLog(@"link=%@",);
+                if ([app canOpenURL:[NSURL URLWithString:item.link]]) {
+                    [app openURL:[NSURL URLWithString:item.link]];
+                }
+            }else{
+                // 进入房间...
+            }
+        };
+        
         // 自定义分页控件小圆标颜色
         for (UIView *view in self.topView.subviews) {
             [view removeFromSuperview];
