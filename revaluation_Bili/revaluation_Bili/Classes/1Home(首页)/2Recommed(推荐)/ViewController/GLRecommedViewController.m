@@ -66,10 +66,18 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
     
     [super viewDidLoad];
     
+    /** 先读取缓存 */
+    
+    [self.bannerviewModel loadPhoneDataSourceToComplete:^{
+        [self setupHeaderView];
+    }];
+    
+    /** 网络请求 */
     [self bannerviewModel];
     
     [self viewModel];
     
+    /** 设置头部 */
     [self setupTableView];
     
     [RACObserve(self.viewModel, cellItemViewModels) subscribeNext:^(id x) {

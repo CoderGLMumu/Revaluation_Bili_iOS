@@ -10,10 +10,15 @@
 
 #import "GLRecomBannerModel.h"
 
+#import "GLFMDBToolSDK.h"
+
 @interface GLRecomBannerViewModel ()
 
 /** 轮播图模型 */
 @property (nonatomic, strong) GLRecomBannerModel *model;
+
+/** FMDBTool */
+@property (nonatomic, strong) GLFMDBToolSDK *FMDBTool;
 
 @end
 
@@ -25,6 +30,14 @@
         _model = [[GLRecomBannerModel alloc] init];
     }
     return _model;
+}
+
+- (GLFMDBToolSDK *)FMDBTool
+{
+    if (_FMDBTool == nil) {
+        _FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+    }
+    return _FMDBTool;
 }
 
 + (instancetype)viewModel
@@ -79,17 +92,63 @@
         NSMutableArray *arrM_images = [NSMutableArray array];
         NSMutableArray *arrM_values = [NSMutableArray array];
         
-        NSArray *test = [NSArray yy_modelArrayWithClass:[GLRecomBannerModel class] json:json[@"data"]];
+        NSArray *GLRecomBannerModels = [NSArray yy_modelArrayWithClass:[GLRecomBannerModel class] json:json[@"data"]];
         
-        for (GLRecomBannerModel *model in test) {
-            [arrM_images addObject:model.image];
-            [arrM_values addObject:model.value];
+//        /** FMDB缓存 */
+//        // 调用方法传递模型-数组
+//        if (self.headerBannerArr.count) {
+//            NSString *delete_sql = @"delete from t_LBLiveBannerItem";
+//            [self.FMDBTool deleteWithSql:delete_sql];
+//            self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+//            for (LBLiveBannerItem *BannerItem in self.headerBannerArr) {
+//                
+//                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveBannerItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
+//                [self.FMDBTool insertWithSql:insert_sql, nil];
+//            }
+//        }
+        if (GLRecomBannerModels.count) {
+            NSString *delete_sql = @"delete from t_GLRecomBannerModel";
+            [self.FMDBTool deleteWithSql:delete_sql];
+            for (GLRecomBannerModel *model in GLRecomBannerModels) {
+                [arrM_images addObject:model.image];
+                [arrM_values addObject:model.value];
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_GLRecomBannerModel (image,value) values('%@','%@');",model.image,model.value];
+                [self.FMDBTool insertWithSql:insert_sql, nil];
+            }
+            self.imageArr = arrM_images;
+            self.imageValueArr = arrM_values;
         }
-        self.imageArr = arrM_images;
-        self.imageValueArr = arrM_values;
     } failure:^(NSError *error) {
         
     }];
+}
+
+#pragma mark - 处理数据库缓存- -【查询】
+- (void)loadPhoneDataSourceToComplete:(void (^)())complete
+{
+    // 传入DDL 创建表打开数据库[banner][entranceIcons][partitions]
+    self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+    
+    // 查询数据【banner】
+    NSString *query_sql = @"select * from t_GLRecomBannerModel";
+    
+    FMResultSet *result = [self.FMDBTool queryWithSql:query_sql];
+    
+    NSMutableArray *arrM_images = [NSMutableArray array];
+    NSMutableArray *arrM_values = [NSMutableArray array];
+    
+    while ([result next]) { // next方法返回yes代表有数据可取
+        GLRecomBannerModel *model = [GLRecomBannerModel new];
+        model.image = [result stringForColumn:@"image"];
+        model.value = [result stringForColumn:@"value"];
+        [arrM_images addObject:model.image];
+        [arrM_values addObject:model.value];
+    }
+    self.imageArr = arrM_images;
+    self.imageValueArr = arrM_values;
+    if (self.imageArr.count && self.imageValueArr.count) {
+        complete();
+    }
 }
 
 @end

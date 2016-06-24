@@ -41,6 +41,7 @@
     [GLFMDBToolSDK shareToolsWithCreateDDL:@"create table if not exists t_LBLiveBannerItem (img text,link TEXT,title TEXT,remark TEXT,bannerHeight integer);"];
     [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_LBLiveItem (lives blob, partition blob);"];
     [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_LBEntranceButtonItem ( entrance_icon blob, name text, ID blob );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_GLRecomBannerModel ( image TEXT, value TEXT );"];
 
 }
 

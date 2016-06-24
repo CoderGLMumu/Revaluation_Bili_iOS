@@ -18,4 +18,6 @@
 
 - (void)handleRecomData;
 
+- (void)loadPhoneDataSourceToComplete:(void (^)())complete;
+
 @end
