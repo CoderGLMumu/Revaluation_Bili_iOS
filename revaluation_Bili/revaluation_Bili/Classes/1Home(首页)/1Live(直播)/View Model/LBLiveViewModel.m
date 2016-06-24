@@ -11,13 +11,24 @@
 #import "LBLiveItem.h"
 #import "LBEntranceButtonItem.h"
 #import "LBHeaderView.h"
+#import "GLFMDBToolSDK.h"
 
 @interface LBLiveViewModel ()
+
+/** FMDBTool */
+@property (nonatomic, strong) GLFMDBToolSDK *FMDBTool;
 
 @end
 
 @implementation LBLiveViewModel
 
+- (GLFMDBToolSDK *)FMDBTool
+{
+    if (_FMDBTool == nil) {
+        _FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+    }
+    return _FMDBTool;
+}
 
 #pragma mark - 网络请求数据
 - (void)loadLiveViewDataSuccess:(void (^)(id json))success failure:(void (^)(NSError *error))failure
@@ -65,6 +76,45 @@
         NSArray *banners = json[@"data"][@"banner"];
         
         self.headerBannerArr = [NSArray yy_modelArrayWithClass:[LBLiveBannerItem class] json:banners];
+        
+        
+        /** FMDB缓存 */
+        // 调用方法传递模型-数组
+        self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+        for (LBLiveBannerItem *BannerItem in self.headerBannerArr) {
+            
+            NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveBannerItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
+            
+            NSString *delete_sql = @"delete from t_LBLiveBannerItem";
+            
+            [self.FMDBTool deleteWithSql:delete_sql];
+            [self.FMDBTool insertWithSql:insert_sql];
+        }
+//        
+//        for (LBEntranceButtonItem *BannerItem in self.entranceButtomItems) {
+//            
+//            NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBEntranceButtonItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
+//            
+//            NSString *delete_sql = @"delete from t_LBLiveBannerItem";
+//            
+//            [self.FMDBTool deleteWithSql:delete_sql];
+//            [self.FMDBTool insertWithSql:insert_sql];
+//        }
+        
+        
+        if(self.cellItemArr.count){
+            NSString *delete_sql = @"delete from t_LBLiveItem";
+            [self.FMDBTool deleteWithSql:delete_sql];
+            for (LBLiveItem *LiveItem in self.cellItemArr) {
+                
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveItem (lives,partition) values('%@','%@');",LiveItem.lives,LiveItem.partition];
+                
+                [self.FMDBTool insertWithSql:insert_sql];
+            }
+        }
+        
+        
+        
         success();
     } failure:^(NSError *error) {
         failure();
@@ -90,6 +140,42 @@
 //    [buttonView addSubview:footerButton];
 
     complete(buttonView);
+}
+
+#pragma mark - 处理数据库缓存
+- (void)loadPhoneDataSourceToComplete:(void (^)())complete
+{
+    // 传入DDL 创建表打开数据库[banner][entranceIcons][partitions]
+    self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+    
+    // 查询数据
+    
+    NSString *query_sql = @"select * from t_LBLiveBannerItem";
+    FMResultSet *result = [self.FMDBTool queryWithSql:query_sql];
+    
+    LBLiveBannerItem *BannerItem = [LBLiveBannerItem new];
+    
+    NSMutableArray *BannerItems = [NSMutableArray array];
+    
+    while ([result next]) { // next方法返回yes代表有数据可取
+        int ID = [result intForColumnIndex:0];
+        //        NSString *name = [set stringForColumnIndex:1];
+        NSString *name = [result stringForColumn:@"name"]; // 根据字段名称取出对应的值
+        double score = [result doubleForColumnIndex:2];
+        NSLog(@"%d %@ %.1f", ID, name, score);
+        
+        BannerItem.img = [result stringForColumn:@"img"];
+        BannerItem.link = [result stringForColumn:@"link"];
+        BannerItem.title = [result stringForColumn:@"title"];
+        BannerItem.remark = [result stringForColumn:@"remark"];
+        BannerItem.bannerHeight = [result intForColumn:@"bannerHeight"];
+        [BannerItems addObject:BannerItem];
+    }
+    self.headerBannerArr = BannerItems;
+    
+    if (self.headerBannerArr.count) {
+        complete();
+    }
 }
 
 //类方法，viewModel

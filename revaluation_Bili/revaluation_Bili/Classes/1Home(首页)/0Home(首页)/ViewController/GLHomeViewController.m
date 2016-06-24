@@ -55,7 +55,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"11111");
+//    NSLog(@"GLHomeViewController===dealloc");
 }
 
 - (void)viewDidLoad {

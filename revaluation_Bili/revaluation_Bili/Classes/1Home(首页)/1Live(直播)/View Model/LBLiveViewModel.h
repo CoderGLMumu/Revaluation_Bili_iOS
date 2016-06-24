@@ -19,6 +19,8 @@
 // headerView的banner模型数组
 @property(nonatomic ,strong)NSArray *headerBannerArr;
 
+- (void)loadPhoneDataSourceToComplete:(void (^)())complete;
+
 + (void)setUpHeaderViewComplete:(void(^)(UIView *buttonView))complete;
 
 - (void)handleLiveViewDataSuccess:(void (^)())success Failure:(void (^)())failure;

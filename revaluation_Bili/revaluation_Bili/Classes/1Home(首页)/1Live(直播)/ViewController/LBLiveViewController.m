@@ -49,6 +49,8 @@ static NSString * const ID = @"LBLiveViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadPhoneDataSouce];
+    
     // 去掉Cell的间隔线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -109,6 +111,17 @@ static NSString * const ID = @"LBLiveViewCell";
         };
     }];
 }
+
+#pragma mark -  获取缓存数据
+- (void)loadPhoneDataSouce
+{
+    // 从FMDB中取数据
+    [self.lbviewModel loadPhoneDataSourceToComplete:^{
+        [self setUpHeaderView];
+        [self.tableView reloadData];
+    }];
+}
+
 /*
  http://live.bilibili.com/AppIndex/home?actionKey=appkey&appkey=27eb53fc9058f8c3&build=3060&device=phone&platform=ios&scale=2&sign=13f053baf875521b0d1958c812a0f110&ts=1460106665
  */
@@ -126,7 +139,6 @@ static NSString * const ID = @"LBLiveViewCell";
         [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
-
 
 #pragma mark -  实现headerView的代理方法
 // 处理headerView的按钮点击事件

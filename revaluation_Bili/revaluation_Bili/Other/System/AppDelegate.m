@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "GLTabBarController.h"
 
+#import "GLFMDBToolSDK.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self setUpFMDB];
     
     // 新建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -30,6 +34,13 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)setUpFMDB
+{
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"create table if not exists t_LBLiveBannerItem (img text,link TEXT,title TEXT,remark TEXT,bannerHeight integer);"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_LBLiveItem (lives blob, partition blob);"];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

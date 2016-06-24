@@ -27,7 +27,6 @@
 /** 包含了每个cell外部数据的字典 */
 @property(nonatomic ,strong)NSDictionary *partition;
 
-
 // 怎么求?
 @property(nonatomic , assign)CGFloat cellHeight;
 
