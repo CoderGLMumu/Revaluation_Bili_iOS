@@ -60,6 +60,7 @@
 - (void)setButtonItem:(LBEntranceButtonItem *)buttonItem
 {
     _buttonItem = buttonItem;
+    
     [self setTitle:buttonItem.name forState:UIControlStateNormal];
     NSURL *imageUrl = [NSURL URLWithString:buttonItem.entrance_icon[@"src"]];
     [self sd_setImageWithURL:imageUrl forState:UIControlStateNormal];

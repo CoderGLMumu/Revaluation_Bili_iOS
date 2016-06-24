@@ -71,7 +71,9 @@
         NSMutableArray *imageArr = [[NSMutableArray alloc] init];
         for (LBLiveBannerItem *item in self.headerBannerArr) {
             NSURL *url = [NSURL URLWithString:item.img];
-            [imageArr addObject:url];
+            if (url) {
+                [imageArr addObject:url];
+            }
         }
         _imageArr = imageArr;
     }

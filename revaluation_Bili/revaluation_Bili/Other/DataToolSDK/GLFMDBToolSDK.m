@@ -16,16 +16,37 @@
 
 @implementation GLFMDBToolSDK
 
-- (void)insertWithSql:(NSString *)DML_sql
+- (void)insertWithSql:(NSString *)DML_sql, ...NS_REQUIRES_NIL_TERMINATION
 {
     /*
      // FMDB中可以用?当作占位符, 但是需要注意: 如果使用问号占位符, 以后只能给占位符传递对象
      */
+    NSMutableArray *argsArray = [[NSMutableArray alloc] init];
+    va_list params; //定义一个指向个数可变的参数列表指针;
+    va_start(params,DML_sql);//va_start 得到第一个可变参数地址,
+    id arg;
+    if (DML_sql) {
+        //将第一个参数添加到array
+//        id prev = DML_sql;
+//        [argsArray addObject:prev];
+        //va_arg 指向下一个参数地址
+        //这里是问题的所在 网上的例子，没有保存第一个参数地址，后边循环，指针将不会在指向第一个参数
+        while( (arg = va_arg(params,id)) )
+        {
+            if ( arg ){
+                [argsArray addObject:arg];  
+            }  
+        }  
+        //置空  
+        va_end(params);
+    }
     
     [self.queue inDatabase:^(FMDatabase *db) {
+        
 //        let sql = "insert into t_stu(name, age, score) values ('zhangsan', 18, 99)"
 //        @"INSERT INTO t_student(score, name) VALUES (?, ?);", @(20), @"jackson"
-        BOOL success = [db executeUpdate:DML_sql];
+        BOOL success = [db executeUpdate:DML_sql withArgumentsInArray:argsArray];
+        
         if (success) {
             NSLog(@"插入成功");
         }else

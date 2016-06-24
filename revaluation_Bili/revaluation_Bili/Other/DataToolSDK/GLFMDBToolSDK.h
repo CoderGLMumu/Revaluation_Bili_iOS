@@ -18,7 +18,7 @@
 
 + (instancetype)shareToolsWithCreateDDL:(NSString *)DDL;
 
-- (void)insertWithSql:(NSString *)DML_sql;
+- (void)insertWithSql:(NSString *)DML_sql, ...NS_REQUIRES_NIL_TERMINATION;
 
 - (void)deleteWithSql:(NSString *)DML_sql;
 

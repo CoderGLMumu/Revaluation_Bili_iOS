@@ -80,41 +80,40 @@
         
         /** FMDB缓存 */
         // 调用方法传递模型-数组
-        self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
-        for (LBLiveBannerItem *BannerItem in self.headerBannerArr) {
-            
-            NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveBannerItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
-            
+        if (self.headerBannerArr.count) {
             NSString *delete_sql = @"delete from t_LBLiveBannerItem";
-            
             [self.FMDBTool deleteWithSql:delete_sql];
-            [self.FMDBTool insertWithSql:insert_sql];
+            self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
+            for (LBLiveBannerItem *BannerItem in self.headerBannerArr) {
+                
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveBannerItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
+                [self.FMDBTool insertWithSql:insert_sql, nil];
+            }
         }
-//        
-//        for (LBEntranceButtonItem *BannerItem in self.entranceButtomItems) {
-//            
-//            NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBEntranceButtonItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
-//            
-//            NSString *delete_sql = @"delete from t_LBLiveBannerItem";
-//            
-//            [self.FMDBTool deleteWithSql:delete_sql];
-//            [self.FMDBTool insertWithSql:insert_sql];
-//        }
         
+        if (self.entranceButtomItems.count) {
+            NSString *delete_sql = @"delete from t_LBEntranceButtonItem";
+            [self.FMDBTool deleteWithSql:delete_sql];
+            for (LBEntranceButtonItem *ButtonItem in self.entranceButtomItems) {
+                
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBEntranceButtonItem (entrance_icon,name,ID) values(?,'%@',?);",ButtonItem.name];
+                [self.FMDBTool insertWithSql:insert_sql,[NSKeyedArchiver archivedDataWithRootObject:ButtonItem.entrance_icon],[NSKeyedArchiver archivedDataWithRootObject:ButtonItem.ID], nil];
+            }
+        }
         
         if(self.cellItemArr.count){
             NSString *delete_sql = @"delete from t_LBLiveItem";
             [self.FMDBTool deleteWithSql:delete_sql];
             for (LBLiveItem *LiveItem in self.cellItemArr) {
-                
-                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveItem (lives,partition) values('%@','%@');",LiveItem.lives,LiveItem.partition];
-                
-                [self.FMDBTool insertWithSql:insert_sql];
+//                NSLog(@"==============%@",LiveItem.partition);
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveItem (lives,partition) values('?','?');"];
+                if ([NSKeyedArchiver archivedDataWithRootObject:LiveItem.lives] && [NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition]) {
+                    [self.FMDBTool insertWithSql:insert_sql,[NSKeyedArchiver archivedDataWithRootObject:LiveItem.lives],[NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition], nil];
+                }
+                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition];
+                NSLog(@"????%@",[NSKeyedUnarchiver unarchiveObjectWithData:data]);
             }
         }
-        
-        
-        
         success();
     } failure:^(NSError *error) {
         failure();
@@ -142,28 +141,21 @@
     complete(buttonView);
 }
 
-#pragma mark - 处理数据库缓存
+#pragma mark - 处理数据库缓存- -【查询】
 - (void)loadPhoneDataSourceToComplete:(void (^)())complete
 {
     // 传入DDL 创建表打开数据库[banner][entranceIcons][partitions]
     self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
     
-    // 查询数据
-    
+    // 查询数据【banner】
     NSString *query_sql = @"select * from t_LBLiveBannerItem";
-    FMResultSet *result = [self.FMDBTool queryWithSql:query_sql];
     
-    LBLiveBannerItem *BannerItem = [LBLiveBannerItem new];
+    FMResultSet *result = [self.FMDBTool queryWithSql:query_sql];
     
     NSMutableArray *BannerItems = [NSMutableArray array];
     
     while ([result next]) { // next方法返回yes代表有数据可取
-        int ID = [result intForColumnIndex:0];
-        //        NSString *name = [set stringForColumnIndex:1];
-        NSString *name = [result stringForColumn:@"name"]; // 根据字段名称取出对应的值
-        double score = [result doubleForColumnIndex:2];
-        NSLog(@"%d %@ %.1f", ID, name, score);
-        
+        LBLiveBannerItem *BannerItem = [LBLiveBannerItem new];
         BannerItem.img = [result stringForColumn:@"img"];
         BannerItem.link = [result stringForColumn:@"link"];
         BannerItem.title = [result stringForColumn:@"title"];
@@ -173,7 +165,40 @@
     }
     self.headerBannerArr = BannerItems;
     
-    if (self.headerBannerArr.count) {
+    // 【Button】
+    query_sql = @"select * from t_LBEntranceButtonItem";
+    
+    result = [self.FMDBTool queryWithSql:query_sql];
+    
+    NSMutableArray *ButtonItems = [NSMutableArray array];
+    
+    while ([result next]) { // next方法返回yes代表有数据可取
+        LBEntranceButtonItem *ButtonItem = [LBEntranceButtonItem new];
+        ButtonItem.entrance_icon = [NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"entrance_icon"]];
+        ButtonItem.name = [result stringForColumn:@"name"];
+        
+        ButtonItem.ID = [NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"ID"]];
+        [ButtonItems addObject:ButtonItem];
+    }
+    self.entranceButtomItems = ButtonItems;
+    
+    // 【LiveItem】
+    query_sql = @"select * from t_LBLiveItem";
+    
+    result = [self.FMDBTool queryWithSql:query_sql];
+    
+    NSMutableArray *LiveItems = [NSMutableArray array];
+    
+    while ([result next]) { // next方法返回yes代表有数据可取
+        LBLiveItem *LiveItem = [LBLiveItem new];
+        LiveItem.partition = [NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"partition"]];
+        NSLog(@"%@====",[NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"partition"]]);
+        [LiveItems addObject:LiveItem];
+    }
+    self.cellItemArr = LiveItems;
+//    LBLiveItem *tsetttt = LiveItems[1];
+//    NSLog(@"%@",tsetttt.partition);
+    if (self.headerBannerArr.count && self.entranceButtomItems.count && self.cellItemArr.count) {
         complete();
     }
 }
