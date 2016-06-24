@@ -49,6 +49,7 @@
         
         if (success) {
             NSLog(@"插入成功");
+//            NSLog(@"%@===?????====%@",DML_sql,argsArray);
         }else
         {
             NSLog(@"插入失败");

@@ -106,12 +106,10 @@
             [self.FMDBTool deleteWithSql:delete_sql];
             for (LBLiveItem *LiveItem in self.cellItemArr) {
 //                NSLog(@"==============%@",LiveItem.partition);
-                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveItem (lives,partition) values('?','?');"];
+                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveItem (lives,partition) values(?,?);"];
                 if ([NSKeyedArchiver archivedDataWithRootObject:LiveItem.lives] && [NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition]) {
                     [self.FMDBTool insertWithSql:insert_sql,[NSKeyedArchiver archivedDataWithRootObject:LiveItem.lives],[NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition], nil];
                 }
-                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:LiveItem.partition];
-                NSLog(@"????%@",[NSKeyedUnarchiver unarchiveObjectWithData:data]);
             }
         }
         success();
@@ -192,7 +190,8 @@
     while ([result next]) { // next方法返回yes代表有数据可取
         LBLiveItem *LiveItem = [LBLiveItem new];
         LiveItem.partition = [NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"partition"]];
-        NSLog(@"%@====",[NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"partition"]]);
+        LiveItem.lives = [NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"lives"]];
+//        NSLog(@"%@====%@====%@",[NSKeyedUnarchiver unarchiveObjectWithData:[result dataNoCopyForColumn:@"partition"]],[result dataForColumnIndex:0],[result dataForColumnIndex:1]);
         [LiveItems addObject:LiveItem];
     }
     self.cellItemArr = LiveItems;
