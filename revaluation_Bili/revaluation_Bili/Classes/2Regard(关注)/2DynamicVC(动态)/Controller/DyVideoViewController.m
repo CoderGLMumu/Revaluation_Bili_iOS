@@ -11,7 +11,7 @@
 #import "GLVideoPlayView.h"
 //#import <SVProgressHUD.h>
 
-@interface DyVideoViewController () <UIViewControllerTransitionCoordinatorContext>
+@interface DyVideoViewController ()
 @property (weak, nonatomic) IBOutlet UIView *PlayBackView;
 
 /** cid */

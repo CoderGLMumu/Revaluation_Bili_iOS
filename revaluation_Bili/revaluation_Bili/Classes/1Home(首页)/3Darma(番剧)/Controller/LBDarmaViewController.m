@@ -163,13 +163,13 @@ static NSString * const Darma = @"LBDarmaCell";
     while ([result next]) { // next方法返回yes代表有数据可取
         LBDarmaEndsModel *model = [LBDarmaEndsModel new];
         model.cover = [result stringForColumn:@"cover"];
-        model.last_time = [result stringForColumn:@"desc"];
-        model.newest_ep_id = [result stringForColumn:@"link"];
-        model.newest_ep_index = [result stringForColumn:@"cover"];
-        model.season_id = [result stringForColumn:@"desc"];
-        model.title = [result stringForColumn:@"link"];
-        model.total_count = [result stringForColumn:@"cover"];
-        model.watchingCount = [result stringForColumn:@"desc"];
+        model.last_time = [result stringForColumn:@"last_time"];
+        model.newest_ep_id = [result stringForColumn:@"newest_ep_id"];
+        model.newest_ep_index = [result stringForColumn:@"newest_ep_index"];
+        model.season_id = [result stringForColumn:@"season_id"];
+        model.title = [result stringForColumn:@"title"];
+        model.total_count = [result stringForColumn:@"total_count"];
+        model.watchingCount = [result stringForColumn:@"watchingCount"];
         [LBDarmaEndsModels addObject:model];
     }
     self.ends = LBDarmaEndsModels;
@@ -183,24 +183,18 @@ static NSString * const Darma = @"LBDarmaCell";
     while ([result next]) { // next方法返回yes代表有数据可取
         LBDarmaLatestUpdateModel *model = [LBDarmaLatestUpdateModel new];
         model.cover = [result stringForColumn:@"cover"];
-        model.last_time = [result stringForColumn:@"desc"];
-        model.newest_ep_id = [result stringForColumn:@"link"];
-        model.newest_ep_index = [result stringForColumn:@"cover"];
-        model.season_id = [result stringForColumn:@"desc"];
-        model.title = [result stringForColumn:@"link"];
-        model.total_count = [result stringForColumn:@"cover"];
-        model.watchingCount = [result stringForColumn:@"desc"];
+        model.last_time = [result stringForColumn:@"last_time"];
+        model.newest_ep_id = [result stringForColumn:@"newest_ep_id"];
+        model.newest_ep_index = [result stringForColumn:@"newest_ep_index"];
+        model.season_id = [result stringForColumn:@"season_id"];
+        model.title = [result stringForColumn:@"title"];
+        model.total_count = [result stringForColumn:@"total_count"];
+        model.watchingCount = [result stringForColumn:@"watchingCount"];
         [LBDarmaLatestUpdateModels addObject:model];
     }
     self.latestUpdate = LBDarmaLatestUpdateModels;
     
-    
-    // 查询数据【LBDarmaLatestUpdateModel】
-    query_sql = @"select * from t_LBDarmaLatestUpdateModel";
-    
-    result = [self.FMDBTool queryWithSql:query_sql];
-    
-    if (self.bottomCellArr.count) {
+    if (self.bottomCellArr.count && self.banners.count && self.ends.count && self.latestUpdate.count) {
         complete();
     }
 }
@@ -249,7 +243,7 @@ static NSString * const Darma = @"LBDarmaCell";
         
         /** FMDB缓存 */
         if (self.ends.count) {
-            NSString *delete_sql = @"delete from t_LBDarmaBottomModel";
+            NSString *delete_sql = @"delete from t_LBDarmaEndsModel";
             [self.FMDBTool deleteWithSql:delete_sql];
 
             for (LBDarmaEndsModel *model in self.ends) {
