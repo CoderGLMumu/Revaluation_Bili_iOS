@@ -11,6 +11,8 @@
 #import "GLVideoRoomItemViewModel.h"
 #import "IJKMoviePlayerViewController.h"
 
+#import "GLVideoDownloadCover.h"
+
 @interface GLVideoRoomViewController () <UIGestureRecognizerDelegate>
 
 /** PVC */
@@ -36,12 +38,25 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *videoView;
 
+/** dwCoverView */
+@property (nonatomic, weak) GLVideoDownloadCover *dwCoverView;
+
 /** isFullScreen */
 @property (nonatomic, assign) BOOL isFullScreen;
 
 @end
 
 @implementation GLVideoRoomViewController
+
+
+-  (GLVideoDownloadCover *)dwCoverView
+{
+    if (_dwCoverView == nil) {
+        GLVideoDownloadCover *dwCoverView = [[NSBundle mainBundle]loadNibNamed:@"GLVideoDownloadCover" owner:nil options:nil][0];
+        _dwCoverView = dwCoverView;
+    }
+    return _dwCoverView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,6 +130,18 @@
     [RACObserve(self.navigationController.navigationBar, alpha) subscribeNext:^(NSNumber *alpha) {
         [self.navigationController.navigationBar setHidden:YES];
     }];
+}
+
+- (IBAction)localVideo:(UIButton *)sender {
+    
+    if (!self.dwCoverView.superview) {
+        [self.view addSubview:self.dwCoverView];
+        [self.dwCoverView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.dwCoverView.superview);
+        }];
+    }else{
+        self.dwCoverView.hidden = NO;
+    }
 }
 
 

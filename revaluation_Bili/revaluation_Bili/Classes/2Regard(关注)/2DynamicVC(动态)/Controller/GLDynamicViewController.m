@@ -12,8 +12,11 @@
 
 #import "GLDynamicCellItem.h"
 
-#import "DyVideoViewController.h"
+//#import "DyVideoViewController.h"
 #import "GLDIYHeader.h"
+
+#import "GLVideoRoomViewController.h"
+#import "GLVideoRoomViewModel.h"
 
 @interface GLDynamicViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableV;
@@ -142,11 +145,16 @@
     GLLog(@"第%zd组被点击了,传递信息给下一个控制器",indexPath.section);
     GLDynamicCellItem *cellItem = self.DynamicCellItem_arr[indexPath.section];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DyVideoViewController" bundle:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DyVideoViewController" bundle:nil];
+//    
+//    DyVideoViewController *dyVideo = [storyboard instantiateInitialViewController];
+//    dyVideo.aid = cellItem.aid;
+//    [self.navigationController pushViewController:dyVideo animated:YES];
+    GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
+    GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:cellItem.aid];
+    videoVC.viewModel = VM;
     
-    DyVideoViewController *dyVideo = [storyboard instantiateInitialViewController];
-    dyVideo.aid = cellItem.aid;
-    [self.navigationController pushViewController:dyVideo animated:YES];
+    [self.navigationController pushViewController:videoVC animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

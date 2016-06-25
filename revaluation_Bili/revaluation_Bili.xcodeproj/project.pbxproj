@@ -87,6 +87,8 @@
 		043D6BC61D0A9624007EC932 /* GLVideoRoomItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D6BC51D0A9624007EC932 /* GLVideoRoomItemViewModel.m */; };
 		043D6BC91D0A9649007EC932 /* GLVideoRoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */; };
 		04422A741CEF7F0C0033FD99 /* LBColorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 04422A731CEF7F0C0033FD99 /* LBColorScale.m */; };
+		0446C7001D1EBFB10049F601 /* GLVideoDownloadCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446C6FF1D1EBFB10049F601 /* GLVideoDownloadCover.m */; };
+		0446C7021D1EBFBB0049F601 /* GLVideoDownloadCover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446C7011D1EBFBB0049F601 /* GLVideoDownloadCover.xib */; };
 		044A30541D05C778007E45B0 /* GLRecommedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */; };
 		044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */; };
 		044A305D1D05F055007E45B0 /* GLRecommedCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */; };
@@ -433,6 +435,9 @@
 		043D6BC81D0A9649007EC932 /* GLVideoRoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomModel.m; sourceTree = "<group>"; };
 		04422A721CEF7F0C0033FD99 /* LBColorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBColorScale.h; sourceTree = "<group>"; };
 		04422A731CEF7F0C0033FD99 /* LBColorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBColorScale.m; sourceTree = "<group>"; };
+		0446C6FE1D1EBFB10049F601 /* GLVideoDownloadCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoDownloadCover.h; sourceTree = "<group>"; };
+		0446C6FF1D1EBFB10049F601 /* GLVideoDownloadCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoDownloadCover.m; sourceTree = "<group>"; };
+		0446C7011D1EBFBB0049F601 /* GLVideoDownloadCover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoDownloadCover.xib; sourceTree = "<group>"; };
 		044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLRecommedViewController.storyboard; sourceTree = "<group>"; };
 		044A30581D05ED7E007E45B0 /* GLRecommedCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCellModel.h; sourceTree = "<group>"; };
 		044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedCellModel.m; sourceTree = "<group>"; };
@@ -2046,6 +2051,9 @@
 				04E354DD1D08567800EAA424 /* GLVideoRoomViewController.h */,
 				04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */,
 				04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */,
+				0446C6FE1D1EBFB10049F601 /* GLVideoDownloadCover.h */,
+				0446C6FF1D1EBFB10049F601 /* GLVideoDownloadCover.m */,
+				0446C7011D1EBFBB0049F601 /* GLVideoDownloadCover.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2285,6 +2293,7 @@
 				0451B5311CF4578F004E5AB3 /* scale_while.png in Resources */,
 				0460EE4C1D0351DE0078FCB2 /* player_fullScreen_iphone@2x.png in Resources */,
 				0460EE691D03520C0078FCB2 /* hd_icmpv_add_danmaku_light@2x.png in Resources */,
+				0446C7021D1EBFBB0049F601 /* GLVideoDownloadCover.xib in Resources */,
 				0429A82E1CFB16D300D28AB2 /* LBRoomCollectionCell.xib in Resources */,
 				0460EE781D03520C0078FCB2 /* player_pause_bottom_window@2x.png in Resources */,
 				0429A7771CFB10F500D28AB2 /* WYLPrivateViewController.storyboard in Resources */,
@@ -2418,6 +2427,7 @@
 				04C7C53F1D19453700DCBD8E /* DyVideoViewController.m in Sources */,
 				04DF46961D170267002E9F34 /* GLRegardUpModel.m in Sources */,
 				04C7C61A1D1A77C700DCBD8E /* LBEndsCollectionViewCell.m in Sources */,
+				0446C7001D1EBFB10049F601 /* GLVideoDownloadCover.m in Sources */,
 				04C7C5301D19453700DCBD8E /* GLRegardTitleButton.m in Sources */,
 				04C7C5A91D1A449100DCBD8E /* WYLDiscoverCell.m in Sources */,
 				04C7C5311D19453700DCBD8E /* LBRegardViewController.m in Sources */,
