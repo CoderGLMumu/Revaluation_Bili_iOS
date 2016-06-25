@@ -56,6 +56,10 @@
             [buttonArr addObject:enbutton];
         }
         LBEntranceButton *enbutton = [[LBEntranceButton alloc] init];
+        
+        /** 跳转页面没写先不用按钮 */
+        enbutton.enabled = NO;
+        
         [enbutton setTitle:@"全部直播" forState:UIControlStateNormal];
         [enbutton setImage:[UIImage imageNamed:@"hd_home_region_icon_11"] forState:UIControlStateNormal];
         [enbutton addTarget:self action:@selector(enbuttonClick:) forControlEvents:UIControlEventTouchUpInside];

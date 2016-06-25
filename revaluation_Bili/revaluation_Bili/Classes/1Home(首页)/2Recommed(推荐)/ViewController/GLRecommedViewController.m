@@ -72,6 +72,10 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
         [self setupHeaderView];
     }];
     
+    [self.viewModel loadPhoneDataSourceToComplete:^{
+//        [self setupHeaderView];
+    }];
+    
     /** 网络请求 */
     [self bannerviewModel];
     

@@ -19,7 +19,7 @@
 @property(nonatomic , strong)NSString *type;
 
 /** 当前多少人在直播 */
-@property(nonatomic , assign) NSString *count;
+//@property(nonatomic , assign) NSString *count;
 
 /** cell的高度 */
 @property(nonatomic , assign) CGFloat cellHeight;

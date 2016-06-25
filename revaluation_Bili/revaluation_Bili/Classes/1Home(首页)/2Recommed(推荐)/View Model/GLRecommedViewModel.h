@@ -16,6 +16,8 @@
 
 //- (instancetype)initWithRecommedModel:(GLRecommedModel *)modal;
 
+- (void)loadPhoneDataSourceToComplete:(void (^)())complete;
+
 /** 上拉刷新 */
 - (void)first;
 

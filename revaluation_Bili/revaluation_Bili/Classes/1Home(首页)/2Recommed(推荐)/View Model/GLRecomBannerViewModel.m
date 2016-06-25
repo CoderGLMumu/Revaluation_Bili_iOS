@@ -94,18 +94,7 @@
         
         NSArray *GLRecomBannerModels = [NSArray yy_modelArrayWithClass:[GLRecomBannerModel class] json:json[@"data"]];
         
-//        /** FMDB缓存 */
-//        // 调用方法传递模型-数组
-//        if (self.headerBannerArr.count) {
-//            NSString *delete_sql = @"delete from t_LBLiveBannerItem";
-//            [self.FMDBTool deleteWithSql:delete_sql];
-//            self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
-//            for (LBLiveBannerItem *BannerItem in self.headerBannerArr) {
-//                
-//                NSString *insert_sql = [NSString stringWithFormat:@"insert into t_LBLiveBannerItem (img,link,title,remark,bannerHeight) values('%@','%@','%@','%@',%f);",BannerItem.img,BannerItem.link,BannerItem.title,BannerItem.remark,BannerItem.bannerHeight];
-//                [self.FMDBTool insertWithSql:insert_sql, nil];
-//            }
-//        }
+        /** FMDB缓存 */
         if (GLRecomBannerModels.count) {
             NSString *delete_sql = @"delete from t_GLRecomBannerModel";
             [self.FMDBTool deleteWithSql:delete_sql];
@@ -126,7 +115,7 @@
 #pragma mark - 处理数据库缓存- -【查询】
 - (void)loadPhoneDataSourceToComplete:(void (^)())complete
 {
-    // 传入DDL 创建表打开数据库[banner][entranceIcons][partitions]
+    // 传入DDL 创建表打开数据库
     self.FMDBTool = [GLFMDBToolSDK shareToolsWithCreateDDL:nil];
     
     // 查询数据【banner】
