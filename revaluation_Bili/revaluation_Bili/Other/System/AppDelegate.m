@@ -39,10 +39,14 @@
 - (void)setUpFMDB
 {
     [GLFMDBToolSDK shareToolsWithCreateDDL:@"create table if not exists t_LBLiveBannerItem (img text,link TEXT,title TEXT,remark TEXT,bannerHeight integer);"];
-    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_LBLiveItem (lives blob, partition blob);"];
-    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_LBEntranceButtonItem ( entrance_icon blob, name text, ID blob );"];
-    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_GLRecomBannerModel ( image TEXT, value TEXT );"];
-    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE t_GLRecommedModel ( head blob, body blob, type TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBLiveItem (lives blob, partition blob);"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBEntranceButtonItem ( entrance_icon blob, name text, ID blob );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_GLRecomBannerModel ( image TEXT, value TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_GLRecommedModel ( head blob, body blob, type TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBDarmaBottomModel ( cover TEXT, desc TEXT, link TEXT ,title TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBDarmaBanaerModel ( img TEXT, link TEXT, title TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBDarmaEndsModel ( cover TEXT, last_time TEXT, newest_ep_id TEXT ,newest_ep_index TEXT, season_id TEXT, title TEXT,total_count TEXT ,watchingCount TEXT );"];
+    [GLFMDBToolSDK shareToolsWithCreateDDL:@"CREATE TABLE if not exists t_LBDarmaLatestUpdateModel ( cover TEXT, last_time TEXT, newest_ep_id TEXT ,newest_ep_index TEXT, season_id TEXT, title TEXT,total_count TEXT ,watchingCount TEXT );"];
 
 }
 
