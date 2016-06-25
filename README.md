@@ -4,7 +4,7 @@
 
 【**PS**没有啥特别规范,学习用,若有啥问题欢迎联系作者】
 
-【目前已经实现直播功能，视频播放功能，部分缓存功能、以及大部分界面】
+【目前已经实现直播功能，视频播放功能、弹幕功能，部分缓存功能、以及大部分界面】
 
  ![image](https://github.com/CoderGLMumu/Revaluation_Bili_iOS/blob/master/revaluation_Bili/revaluation_Bili/Resource/screenshots/bili1.png)
  
