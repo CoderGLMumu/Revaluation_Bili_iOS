@@ -39,6 +39,9 @@
                                     <state key="normal" title="关闭">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="hidePanel:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mjo-BS-Q1d"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击集数下载" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWh-P1-Q2d">
                                     <rect key="frame" x="5" y="38" width="84" height="17"/>
@@ -90,7 +93,7 @@
                                     <rect key="frame" x="244" y="5" width="60" height="30"/>
                                     <state key="normal" title="管理缓存"/>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db8-lp-7mf">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db8-lp-7mf" userLabel="缓存数量">
                                     <rect key="frame" x="309" y="5" width="30" height="30"/>
                                     <color key="backgroundColor" red="0.94620550530000003" green="0.1737689442" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -118,7 +121,7 @@
                                 </mask>
                             </variation>
                         </view>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YuL-Ex-y6R">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YuL-Ex-y6R" userLabel="mid_Scroll View">
                             <rect key="frame" x="5" y="65" width="355" height="251"/>
                         </scrollView>
                     </subviews>
@@ -147,6 +150,12 @@
                 <constraint firstItem="uCr-pp-WUO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="qPE-Gd-L1k"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <connections>
+                <outlet property="SystemFreeSizeLabel" destination="7at-wv-HKO" id="O6Y-zQ-Y5C"/>
+                <outlet property="mid_ScrollView" destination="YuL-Ex-y6R" id="vJk-Qw-3cY"/>
+                <outlet property="numLabel" destination="db8-lp-7mf" id="Yx6-zE-Yfy"/>
+                <outlet property="panelView" destination="uCr-pp-WUO" id="Q0Y-uv-iDd"/>
+            </connections>
             <point key="canvasLocation" x="355.5" y="270.5"/>
         </view>
     </objects>

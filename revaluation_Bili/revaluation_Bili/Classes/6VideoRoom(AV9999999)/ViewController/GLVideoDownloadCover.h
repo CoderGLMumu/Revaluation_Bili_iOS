@@ -10,4 +10,6 @@
 
 @interface GLVideoDownloadCover : UIView
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mid_ScrollView;
+
 @end

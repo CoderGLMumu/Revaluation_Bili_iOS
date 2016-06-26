@@ -132,6 +132,7 @@
     }];
 }
 
+/** 点击缓存按钮 */
 - (IBAction)localVideo:(UIButton *)sender {
     
     if (!self.dwCoverView.superview) {
@@ -142,6 +143,10 @@
     }else{
         self.dwCoverView.hidden = NO;
     }
+    
+    // 根据 集数 添加scrollView内容
+    
+    
 }
 
 
