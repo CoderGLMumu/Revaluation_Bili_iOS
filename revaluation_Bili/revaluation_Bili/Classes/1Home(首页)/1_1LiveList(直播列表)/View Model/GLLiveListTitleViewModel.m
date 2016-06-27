@@ -18,5 +18,9 @@
     return [[self alloc]init];
 }
 
+-(void)dealloc
+{
+    NSLog(@"titleVMdeinit");
+}
 
 @end

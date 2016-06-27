@@ -176,4 +176,9 @@
     return [[self alloc]init];
 }
 
+-(void)dealloc
+{
+    NSLog(@"contentVMdeinit");
+}
+
 @end

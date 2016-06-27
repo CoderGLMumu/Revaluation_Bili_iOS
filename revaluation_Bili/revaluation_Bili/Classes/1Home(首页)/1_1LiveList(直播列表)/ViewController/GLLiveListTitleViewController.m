@@ -514,7 +514,7 @@ static CGFloat margin = 20;
                 //        选中按钮
                 [self selectBtn:clickBtn];
                 
-                NSInteger i = clickBtn.tag;
+//                NSInteger i = clickBtn.tag;
                 //    将对应子控制器的view添加上去
                 [self setupOneChildViewController:clickBtn];
                 

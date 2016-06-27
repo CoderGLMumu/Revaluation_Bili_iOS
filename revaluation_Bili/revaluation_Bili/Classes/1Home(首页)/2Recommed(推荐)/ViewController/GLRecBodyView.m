@@ -28,7 +28,7 @@
 {
     _body = body;
     
-    NSNumber *onlineText =body[@"online"];
+//    NSNumber *onlineText = body[@"online"];
     
     [self.danmakuButton setTitle:body[@"danmaku"] forState:UIControlStateNormal];
     [self.playButton setTitle:body[@"play"] forState:UIControlStateNormal];

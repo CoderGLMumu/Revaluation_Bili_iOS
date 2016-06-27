@@ -44,6 +44,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     [QRCodeTool shareInstance].isGetQR = false;
     [[QRCodeTool shareInstance] scanQRCode_stop];
 }

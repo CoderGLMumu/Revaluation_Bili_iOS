@@ -60,9 +60,35 @@ static CGFloat const margin = 10;
     [self.titleButton setImage:newIcon forState:UIControlStateHighlighted];
     
     // 获得cell里每个房间的数据
-    [self setUpRoomData];
+    
+    //1.创建队列
+    NSOperationQueue *queue =[[NSOperationQueue alloc]init];
+    
+    //2.封装操作
+    NSBlockOperation *download1 = [NSBlockOperation blockOperationWithBlock:^{
+        [self setUpRoomData];
+     }];
+    
+    NSBlockOperation *download2 = [NSBlockOperation blockOperationWithBlock:^{
+        
     [self setUpMiddleView];
-    [self.collectionV reloadData];
+    }];
+    
+    NSBlockOperation *download3 = [NSBlockOperation blockOperationWithBlock:^{
+        
+        [self.collectionV reloadData];
+    }];
+    
+    //5.设置依赖关系
+    [download1 addDependency:download2];
+    [download2 addDependency:download3];
+    
+    //6.添加操作到队列
+    [queue addOperation:download3];
+    [queue addOperation:download1];
+    [queue addOperation:download2];
+    
+ 
 }
 
 
@@ -85,12 +111,13 @@ static CGFloat const margin = 10;
 
 //    [LBRoomItem mj_objectArrayWithKeyValuesArray:self.cellItem.lives];
    
-    [self.collectionV reloadData];
+//    [self.collectionV reloadData];
     
 }
 
 - (void)setUpMiddleView
 {
+    
     // 新建流水布局
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc] init];
    
@@ -123,14 +150,14 @@ static CGFloat const margin = 10;
     
     // 注册cell
     [collectionV registerNib:[UINib nibWithNibName:@"LBRoomCollectionCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
     if (self.middleView.subviews) {
         for (UIView *view in self.middleView.subviews) {
             [view removeFromSuperview];
         }
     }
-    [self.middleView addSubview:collectionV];;
-    
+        [self.middleView addSubview:collectionV];
+    });
 }
 
 // 多少个item
@@ -144,7 +171,9 @@ static CGFloat const margin = 10;
 {
     LBRoomCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     
-    cell.roomItem = self.roomItemArr[indexPath.row];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.roomItem = self.roomItemArr[indexPath.row];
+    });
     
     return cell;
 }

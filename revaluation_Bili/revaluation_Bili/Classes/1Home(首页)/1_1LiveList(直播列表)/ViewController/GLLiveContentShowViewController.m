@@ -203,7 +203,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)dealloc
 {
-    NSLog(@"333333333333");
+    NSLog(@"contentdeinit");
 }
 
 

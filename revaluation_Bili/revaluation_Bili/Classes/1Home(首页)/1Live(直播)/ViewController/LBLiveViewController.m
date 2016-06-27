@@ -56,6 +56,8 @@ static NSString * const ID = @"LBLiveViewCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
 //    self.view.backgroundColor = LBGlobeColor;
     
+    self.tableView.estimatedRowHeight = 300;
+    
     [self loadDataSouce];
     
     self.tableView.mj_header = [GLDIYHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDataSouce)];
@@ -69,12 +71,14 @@ static NSString * const ID = @"LBLiveViewCell";
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     [LBLiveViewModel cancelloadLiveViewDataAtComplete:^{
         
     }];
@@ -187,6 +191,7 @@ static NSString * const ID = @"LBLiveViewCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return [self.lbviewModel.cellItemArr[indexPath.row] cellHeight];
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

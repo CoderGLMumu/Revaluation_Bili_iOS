@@ -37,7 +37,6 @@
    
     CGFloat itemH = [self.roomArr[0] collectionCellHeight];
     
-    
     CGFloat middleH = ( itemH + 10 ) *2;
     CGFloat bottomH = 60;
    

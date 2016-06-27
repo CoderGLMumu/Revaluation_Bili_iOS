@@ -24,6 +24,8 @@
 
 - (void)viewDidLoad {
     
+    [super viewDidLoad];
+    
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"设置";
     

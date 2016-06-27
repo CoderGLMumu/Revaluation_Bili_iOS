@@ -348,7 +348,7 @@
     
 //    GLLiveRoomCell *cell2 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathWithIndex:0]];
     
-    GLLiveRoomCell *cell3 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    GLLiveRoomCell *cell3 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
 //    [self.tableView.tableFooterView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.right.equalTo(self.view);

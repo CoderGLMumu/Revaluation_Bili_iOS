@@ -95,6 +95,10 @@
     return [[self alloc]init];
 }
 
+-(void)dealloc
+{
+    NSLog(@"listVMdeinit");
+}
 
 
 @end
