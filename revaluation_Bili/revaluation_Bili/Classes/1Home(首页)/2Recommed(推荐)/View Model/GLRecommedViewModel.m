@@ -96,7 +96,6 @@
             for (GLRecommedModel *model in self.cellArr) {
                 //head blob, body blob, type TEXT
                 NSString *insert_sql = [NSString stringWithFormat:@"insert into t_GLRecommedModel (head,body,type) values(?,?,'%@');",model.type];
-                NSLog(@"test???????????????");
                 [self.FMDBTool insertWithSql:insert_sql,[NSKeyedArchiver archivedDataWithRootObject:model.head],[NSKeyedArchiver archivedDataWithRootObject:model.body], nil];
             }
         }

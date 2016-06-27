@@ -48,11 +48,11 @@
         BOOL success = [db executeUpdate:DML_sql withArgumentsInArray:argsArray];
         
         if (success) {
-            NSLog(@"插入成功");
+//            NSLog(@"插入成功");
 //            NSLog(@"%@===?????====%@",DML_sql,argsArray);
         }else
         {
-            NSLog(@"插入失败");
+//            NSLog(@"插入失败");
         }
         
     }];
@@ -64,10 +64,10 @@
     NSString *sql = DML_sql;
     [self.queue inDatabase:^(FMDatabase *db) {
         if ([db executeUpdate:sql]) {
-            NSLog(@"删除数据成功");
+//            NSLog(@"删除数据成功");
         }else
         {
-            NSLog(@"删除数据失败");
+//            NSLog(@"删除数据失败");
         }
     }];
 }
@@ -176,10 +176,10 @@ static GLFMDBToolSDK *_instance;
         BOOL success = [db executeUpdate:DDL];
         
         if (success) {
-            NSLog(@"创建表成功");
+//            NSLog(@"创建表成功");
         }else
         {
-            NSLog(@"创建表失败");
+//            NSLog(@"创建表失败");
         }
         
     }];

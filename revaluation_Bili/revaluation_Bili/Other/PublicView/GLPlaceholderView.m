@@ -27,6 +27,10 @@
     self = [super init];
     if (self) {
         
+        for (UIView *view in self.subviews) {
+            [view removeFromSuperview];
+        }
+        
         self.backgroundColor = GLColor(245, 246, 247);
         
         UIImageView *placeholderView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"empty_list_search_1"]];

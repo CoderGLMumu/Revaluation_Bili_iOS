@@ -111,7 +111,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //
 }
 //sort  area_id
-#pragma mark - 加载最新数据 （留给子类去实现）
+#pragma mark - 加载最新数据 
 - (void)loadData
 {
     @weakify(self);
