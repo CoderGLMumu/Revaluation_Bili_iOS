@@ -130,10 +130,8 @@
                 [self.mainSCV addSubview:view];
             }];
         }
-        
         _isInital = YES;
     }
-    
 }
 
 #pragma mark -  设置标题按钮
@@ -169,9 +167,8 @@
         [self.btnArr addObject:btn];
         
         // 默认按钮选中 "直播"
-        if (i == 0) {
+        if (i == 1) {
             [self btnClick:btn];
-            
         }
     }
     
@@ -212,14 +209,10 @@
     [UIView animateWithDuration:0.25 animations:^{
         // 按钮点击的时候,下划线位移
         // 做下划线的滑动动画
-        self.underLineView.glw_width = currentButton.titleLabel.glw_width + 10;
-        //        self.underLineView.centerX = currentButton.centerX;
+
         // 点击按钮,切换对应角标的子控制器的view
         [self changeChildVCInMainSCV:index];
         // 让内容滚动条滚动对应位置,就是"直播"出现在第一个位置
-        CGFloat x = index * GLScreenW;
-        // 获得偏移量
-        self.mainSCV.contentOffset = CGPointMake(x, 0);
         
     } completion:^(BOOL finished) {
         // 动画结束的时候,加载控制器(方便实现懒加载)
@@ -234,7 +227,8 @@
     // 让内容滚动条滚动对应位置,就是"直播"出现在第一个位置
     CGFloat x = i * GLScreenW;
     // 获得偏移量
-    self.mainSCV.contentOffset = CGPointMake(x, 0);
+    [self.mainSCV setContentOffset:CGPointMake(x, 0) animated:NO];
+//    self.mainSCV.contentOffset = CGPointMake(x, 0);
 }
 
 #pragma mark -  添加所有子控制器的View到内容滚动区域
@@ -244,13 +238,13 @@
 - (void)setUpUnderLine
 {
     // 获取第一个按钮.因为一开始就是选中的第一个按钮.要的是这个按钮的颜色,文字宽度
-    UIButton *firstButton = self.btnArr.firstObject;
+    UIButton *secButton = self.btnArr[1];
     
     UIView *underLineView = [[UIView alloc] init];
     CGFloat underLineH = 2;
     CGFloat underLineY = self.titleSCV.glh_height - underLineH;
-    underLineView.frame = CGRectMake(0, underLineY, 0, underLineH);
-    underLineView.backgroundColor = [firstButton titleColorForState:UIControlStateNormal];
+    underLineView.frame = CGRectMake(0, underLineY, GLScreenW / 4, underLineH);
+    underLineView.backgroundColor = [secButton titleColorForState:UIControlStateNormal];
     [self.titleSCV addSubview:underLineView];
     self.underLineView = underLineView;
     
@@ -259,9 +253,8 @@
     //    self.preButton = firstButton;
     
     // 下划线
-    [firstButton.titleLabel sizeToFit];
-    self.underLineView.glw_width = firstButton.titleLabel.glw_width + 10;
-    self.underLineView.glcx_centerX = firstButton.glcx_centerX;
+    
+    self.underLineView.glcx_centerX = secButton.glcx_centerX;
     
 }
 
@@ -294,12 +287,9 @@
     // 左滑: 0到1;
     // 右滑: 0到-1;
     
-    CGFloat offset = scrollView.contentOffset.x / GLScreenW;
+    CGFloat offset = scrollView.contentOffset.x / GLScreenW - 1;
     
-    
-    UIButton *btn = self.btnArr.firstObject;
-    
-    self.underLineView.transform = CGAffineTransformMakeTranslation(offset * btn.glw_width, 0);
+    self.underLineView.transform = CGAffineTransformMakeTranslation(offset * GLScreenW / 4, 0);
 }
 
 

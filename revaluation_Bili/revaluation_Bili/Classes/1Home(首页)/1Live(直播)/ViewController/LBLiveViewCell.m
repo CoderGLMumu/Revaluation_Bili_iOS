@@ -61,33 +61,8 @@ static CGFloat const margin = 10;
     
     // 获得cell里每个房间的数据
     
-    //1.创建队列
-    NSOperationQueue *queue =[[NSOperationQueue alloc]init];
-    
-    //2.封装操作
-    NSBlockOperation *download1 = [NSBlockOperation blockOperationWithBlock:^{
-        [self setUpRoomData];
-     }];
-    
-    NSBlockOperation *download2 = [NSBlockOperation blockOperationWithBlock:^{
-        
+    [self setUpRoomData];
     [self setUpMiddleView];
-    }];
-    
-    NSBlockOperation *download3 = [NSBlockOperation blockOperationWithBlock:^{
-        
-        [self.collectionV reloadData];
-    }];
-    
-    //5.设置依赖关系
-    [download1 addDependency:download2];
-    [download2 addDependency:download3];
-    
-    //6.添加操作到队列
-    [queue addOperation:download3];
-    [queue addOperation:download1];
-    [queue addOperation:download2];
-    
  
 }
 
@@ -150,14 +125,14 @@ static CGFloat const margin = 10;
     
     // 注册cell
     [collectionV registerNib:[UINib nibWithNibName:@"LBRoomCollectionCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
     if (self.middleView.subviews) {
         for (UIView *view in self.middleView.subviews) {
             [view removeFromSuperview];
         }
     }
         [self.middleView addSubview:collectionV];
-    });
+
 }
 
 // 多少个item

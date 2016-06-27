@@ -96,9 +96,6 @@ static NSString * const ID = @"LBLiveViewCell";
         headView.entranceButtomItems = self.lbviewModel.entranceButtomItems;
         headView.headerBannerArr = self.lbviewModel.headerBannerArr;
         
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//            
-//        });
         // 设置headerView的代理
         headView.delegate = self;
         self.tableView.tableHeaderView = headView;
