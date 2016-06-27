@@ -169,6 +169,7 @@
         // 默认按钮选中 "直播"
         if (i == 1) {
             [self btnClick:btn];
+            self.mainSCV.contentOffset = CGPointMake(GLScreenW, 0);
         }
     }
     
@@ -207,11 +208,11 @@
     NSInteger index = currentButton.tag;
     
     [UIView animateWithDuration:0.25 animations:^{
-        // 按钮点击的时候,下划线位移
-        // 做下划线的滑动动画
 
         // 点击按钮,切换对应角标的子控制器的view
-        [self changeChildVCInMainSCV:index];
+        if(_isInital){
+            [self changeChildVCInMainSCV:index];
+        }
         // 让内容滚动条滚动对应位置,就是"直播"出现在第一个位置
         
     } completion:^(BOOL finished) {
@@ -227,8 +228,7 @@
     // 让内容滚动条滚动对应位置,就是"直播"出现在第一个位置
     CGFloat x = i * GLScreenW;
     // 获得偏移量
-    [self.mainSCV setContentOffset:CGPointMake(x, 0) animated:NO];
-//    self.mainSCV.contentOffset = CGPointMake(x, 0);
+    self.mainSCV.contentOffset = CGPointMake(x, 0);
 }
 
 #pragma mark -  添加所有子控制器的View到内容滚动区域
