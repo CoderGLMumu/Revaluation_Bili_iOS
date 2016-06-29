@@ -25,9 +25,12 @@
 - (void)setBody:(NSDictionary *)body
 {
     _body = body;
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:body[@"cover"]] placeholderImage:[UIImage imageNamed:@"placeholderImage1"]];
-    self.titleLabel.text = body[@"title"];
-    self.desc1Label.text = body[@"desc1"];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:body[@"cover"]] placeholderImage:[UIImage imageNamed:@"placeholderImage1"]];
+        self.titleLabel.text = body[@"title"];
+        self.desc1Label.text = body[@"desc1"];
+    
+    });
 }
 
 @end

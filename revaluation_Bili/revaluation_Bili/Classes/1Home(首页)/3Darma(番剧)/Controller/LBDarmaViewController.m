@@ -97,7 +97,10 @@ static NSString * const Darma = @"LBDarmaCell";
     }];
     
     // 获取网络数据
-    [self getNetData];
+    if (!self.banners) {
+        [self getNetData];
+    }
+    
     
     // 去掉Cell的间隔线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

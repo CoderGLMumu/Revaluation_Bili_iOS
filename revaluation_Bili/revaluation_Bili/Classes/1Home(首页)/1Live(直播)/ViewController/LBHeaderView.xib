@@ -71,7 +71,6 @@
                 <constraint firstAttribute="trailing" secondItem="jdR-hR-B8e" secondAttribute="trailing" id="GGp-Yt-kZn"/>
                 <constraint firstItem="LYY-5f-hGl" firstAttribute="leading" secondItem="dU2-nz-kpm" secondAttribute="leading" id="LlL-f0-Rb6"/>
                 <constraint firstItem="jdR-hR-B8e" firstAttribute="leading" secondItem="dU2-nz-kpm" secondAttribute="leading" id="Pim-Ct-V3F"/>
-                <constraint firstAttribute="bottom" secondItem="LYY-5f-hGl" secondAttribute="bottom" constant="10" id="Xog-0u-hs4"/>
                 <constraint firstItem="LYY-5f-hGl" firstAttribute="top" secondItem="jdR-hR-B8e" secondAttribute="bottom" constant="10" id="eZ5-xN-Lfd"/>
                 <constraint firstAttribute="trailing" secondItem="dA7-rD-FVf" secondAttribute="trailing" id="g8c-qf-oc0"/>
                 <constraint firstItem="dA7-rD-FVf" firstAttribute="top" secondItem="dU2-nz-kpm" secondAttribute="top" id="hqa-uN-wls"/>
@@ -80,11 +79,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="Xog-0u-hs4"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="bottomView" destination="LYY-5f-hGl" id="9o3-09-3Rb"/>
                 <outlet property="middleView" destination="jdR-hR-B8e" id="Rtr-Rn-41A"/>

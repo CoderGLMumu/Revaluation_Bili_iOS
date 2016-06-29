@@ -48,15 +48,9 @@
     return self;
 }
 
-- (void)setData:(GLRecommedCellModel *)model
+- (void)setCellBodyData
 {
-
-}
-
-- (void)setBody:(NSArray *)body
-{
-    _body = body;
-    NSArray *cellModel = [NSArray yy_modelArrayWithClass:[GLRecommedCellModel class] json:body];
+    NSArray *cellModel = [NSArray yy_modelArrayWithClass:[GLRecommedCellModel class] json:self.body];
     
     NSMutableArray * cellbodyItemViewModels = [NSMutableArray array];
     
@@ -72,7 +66,14 @@
     
     self.cellbodyItemViewModels = cellbodyItemViewModels;
     
-//    [self setData: cellModel];
+    //    [self setData: cellModel];
 }
+
+- (void)setBody:(NSArray *)body
+{
+    _body = body;
+}
+
+
 
 @end

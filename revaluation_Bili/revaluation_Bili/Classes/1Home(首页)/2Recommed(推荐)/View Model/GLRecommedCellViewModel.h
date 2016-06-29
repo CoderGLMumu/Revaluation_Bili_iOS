@@ -38,4 +38,6 @@
 
 - (instancetype)initWithModel:(GLRecommedCellModel *)model;
 
+- (void)setCellBodyData;
+
 @end

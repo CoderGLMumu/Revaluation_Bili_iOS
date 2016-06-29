@@ -49,6 +49,7 @@ static int margin = 10;
 - (void)setViewModel:(GLRecommedCellViewModel *)viewModel
 {
     _viewModel = viewModel;
+    
     [RACObserve(self.viewModel, middleVH) subscribeNext:^(NSNumber *middleVH) {
         self.middleVH = middleVH.floatValue;
     }];
@@ -57,9 +58,6 @@ static int margin = 10;
         [self setupView];
     }];
     
-//    NSLog(@"wtewte%@",self.viewModel.body);
-    
-//    [self.viewModel gaolintest];
 }
 
 - (void)setupView
@@ -78,8 +76,6 @@ static int margin = 10;
         }
     }
     
-//    NSLog(@"%@---",self.viewModel.type);
-//    NSLog(@"%@-2--",self.viewModel.style);
     if ([self.viewModel.type isEqual: @"recommend"] || [self.viewModel.type isEqual: @"live"] || [self.viewModel.type isEqual: @"bangumi_2"] || [self.viewModel.type isEqual: @"region"]) {
     // 设置热门推荐的middleView和bottomView
     // 列
@@ -114,18 +110,21 @@ static int margin = 10;
 //        GLLiveBodyView
 //        bodyView.bodyItem = _bodyArr[i];
         
-        CGFloat bodyW = (GLScreenW - 30) * 0.5;
-        CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
-        
         // 动态计算中间view的高度
-        CGFloat middleVH = rowSpace * 2 + bodyH * 2;
-        self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
         
-        self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
-
-        CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
-        CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
-        self.bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
+            CGFloat bodyW = (GLScreenW - 30) * 0.5;
+            CGFloat bodyH = ((GLScreenW - 30) * 0.5) * 128/ 234 + 35 + 17;
+            
+            CGFloat middleVH = rowSpace * 2 + bodyH * 2;
+            self.middleView.frame = CGRectMake(0, 40, GLScreenW, middleVH);
+            
+            self.bottomView.gly_y = CGRectGetMaxY(self.middleView.frame) + 10;
+            
+            CGFloat bodyX = i % col * bodyW + (i % col + 1) * colSpace;
+            CGFloat bodyY = i / col * bodyH + (i / col + 1) * rowSpace;
+            self.bodyView.frame = CGRectMake(bodyX, bodyY, bodyW, bodyH);
+        
+        
         [self.middleView addSubview:self.bodyView];
         
         [[self.bodyView rac_signalForControlEvents:UIControlEventTouchUpInside ]subscribeNext:^(id x) {

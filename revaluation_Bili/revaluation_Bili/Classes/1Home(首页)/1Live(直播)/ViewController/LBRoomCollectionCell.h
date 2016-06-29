@@ -10,4 +10,7 @@
 @class LBRoomItem;
 @interface LBRoomCollectionCell : UICollectionViewCell
 @property(nonatomic , strong)LBRoomItem *roomItem;
+
+- (void)setData;
+
 @end

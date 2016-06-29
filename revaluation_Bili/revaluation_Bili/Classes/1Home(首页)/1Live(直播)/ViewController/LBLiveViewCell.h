@@ -13,6 +13,16 @@
 //@property(nonatomic , strong)LBRoomItem *roomItem;
 @property(nonatomic , strong)LBLiveItem *cellItem;
 
+// 创建模型数组
+@property(nonatomic , strong)NSArray <LBRoomItem *>*roomItemArr;
+
+@property (nonatomic, assign) CGFloat itemW;
+@property (nonatomic, assign) CGFloat itemH;
+
+- (void)setUpCellData;
+
+//@property (nonatomic, assign) CGFloat middleViewheight;
+
 /** 首页点击了直播房间 */
 @property (nonatomic, strong) void(^didSelectLiveRoom)(LBRoomItem *roomItem);
 

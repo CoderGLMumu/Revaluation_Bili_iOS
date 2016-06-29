@@ -26,6 +26,9 @@
 /** lbviewModel */
 @property (nonatomic, strong) LBLiveViewModel *lbviewModel;
 
+@property (nonatomic, assign) CGFloat itemW;
+@property (nonatomic, assign) CGFloat itemH;
+
 @end
 
 @implementation LBLiveViewController
@@ -58,7 +61,9 @@ static NSString * const ID = @"LBLiveViewCell";
     
     self.tableView.estimatedRowHeight = 300;
     
-    [self loadDataSouce];
+    if(!self.lbviewModel.headerBannerArr){
+        [self loadDataSouce];
+    }
     
     self.tableView.mj_header = [GLDIYHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDataSouce)];
     
@@ -66,7 +71,7 @@ static NSString * const ID = @"LBLiveViewCell";
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"LBLiveViewCell" bundle:nil] forCellReuseIdentifier:ID];
-   
+    [self calCellItem];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -159,6 +164,15 @@ static NSString * const ID = @"LBLiveViewCell";
 //    }];
 }
 
+- (void)calCellItem
+{
+    LBLiveItem *live_item = self.lbviewModel.cellItemArr[0];
+    LBRoomItem *item = [LBRoomItem yy_modelWithJSON:live_item.lives[0]];
+    self.itemW = item.collectionCellWidth;
+    self.itemH = item.collectionCellHeight;
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.lbviewModel.cellItemArr.count;
@@ -168,8 +182,14 @@ static NSString * const ID = @"LBLiveViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LBLiveViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    cell.itemH = self.itemH;
+    cell.itemW = self.itemW;
     cell.cellItem = self.lbviewModel.cellItemArr[indexPath.row];
-    
+    cell.roomItemArr = [NSArray yy_modelArrayWithClass:[LBRoomItem class] json:cell.cellItem.lives];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [cell setUpCellData];
+    });
+
     @weakify(self);
     cell.didSelectLiveRoom = ^(LBRoomItem *roomItem){
         @strongify(self);

@@ -10,4 +10,6 @@
 
 @interface LBRoomCollectionView : UICollectionView
 
+- (instancetype)initWithItem:(CGFloat)itemW :(CGFloat)itemH;
+
 @end

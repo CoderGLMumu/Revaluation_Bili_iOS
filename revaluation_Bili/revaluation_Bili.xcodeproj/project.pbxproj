@@ -265,6 +265,8 @@
 		04E354D81D07E7D100EAA424 /* bili6.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E354D21D07E7D100EAA424 /* bili6.png */; };
 		04E354DF1D08567800EAA424 /* GLVideoRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */; };
 		04E354E11D08568C00EAA424 /* GLVideoRoomViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */; };
+		04EA9FE91D227EC2005F0C7C /* GLCellMidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EA9FE81D227EC2005F0C7C /* GLCellMidView.m */; };
+		04EA9FEB1D227ECE005F0C7C /* GLCellMidView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EA9FEA1D227ECE005F0C7C /* GLCellMidView.xib */; };
 		04ECAB6D1CFDD6B1000F4BFC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */; };
 		04F58C801D1B7F4E00C8A1AF /* GLRecomBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C7F1D1B7F4D00C8A1AF /* GLRecomBannerModel.m */; };
 		04F58C831D1B80B700C8A1AF /* GLRecomBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F58C821D1B80B700C8A1AF /* GLRecomBannerViewModel.m */; };
@@ -712,6 +714,9 @@
 		04E354DD1D08567800EAA424 /* GLVideoRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoRoomViewController.h; sourceTree = "<group>"; };
 		04E354DE1D08567800EAA424 /* GLVideoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoRoomViewController.m; sourceTree = "<group>"; };
 		04E354E01D08568C00EAA424 /* GLVideoRoomViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLVideoRoomViewController.storyboard; sourceTree = "<group>"; };
+		04EA9FE71D227EC2005F0C7C /* GLCellMidView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCellMidView.h; sourceTree = "<group>"; };
+		04EA9FE81D227EC2005F0C7C /* GLCellMidView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCellMidView.m; sourceTree = "<group>"; };
+		04EA9FEA1D227ECE005F0C7C /* GLCellMidView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCellMidView.xib; sourceTree = "<group>"; };
 		04ECAB641CFDD559000F4BFC /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = revaluation_Bili/Other/VideoSDK/ijkplayer/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		04ECAB6C1CFDD6B1000F4BFC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04ECAB6E1CFDD73E000F4BFC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -1293,6 +1298,9 @@
 				0429A7CF1CFB16D200D28AB2 /* LBScrollingView.bundle */,
 				0429A7D01CFB16D200D28AB2 /* LBScrollingView.h */,
 				0429A7D11CFB16D200D28AB2 /* LBScrollingView.m */,
+				04EA9FE71D227EC2005F0C7C /* GLCellMidView.h */,
+				04EA9FE81D227EC2005F0C7C /* GLCellMidView.m */,
+				04EA9FEA1D227ECE005F0C7C /* GLCellMidView.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2272,6 +2280,7 @@
 				04C7C6321D1A9B7F00DCBD8E /* Partition.plist in Resources */,
 				0429A8301CFB16D300D28AB2 /* LBScrollingView.bundle in Resources */,
 				0451B52E1CF4578F004E5AB3 /* Management_Mask@2x.png in Resources */,
+				04EA9FEB1D227ECE005F0C7C /* GLCellMidView.xib in Resources */,
 				04C7C5A31D1A449100DCBD8E /* WYLDiscoverViewController.storyboard in Resources */,
 				0460EE3F1D0351D00078FCB2 /* ani_loading_3@2x.png in Resources */,
 				04C7C5AD1D1A449100DCBD8E /* WYLPopView.xib in Resources */,
@@ -2511,6 +2520,7 @@
 				04C7C5AF1D1A449100DCBD8E /* WYLAuthorViewController.m in Sources */,
 				04C7C6161D1A77C700DCBD8E /* LBBottomCell.m in Sources */,
 				0429A82D1CFB16D300D28AB2 /* LBRoomCollectionCell.m in Sources */,
+				04EA9FE91D227EC2005F0C7C /* GLCellMidView.m in Sources */,
 				04C7C5BD1D1A449100DCBD8E /* WYLScienceTableViewController.m in Sources */,
 				0429A8141CFB16D300D28AB2 /* GLHomeViewController.m in Sources */,
 				04C7C5F21D1A46AB00DCBD8E /* MyMaker.m in Sources */,
