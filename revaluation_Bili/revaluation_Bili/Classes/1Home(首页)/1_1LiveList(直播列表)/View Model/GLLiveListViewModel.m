@@ -60,31 +60,36 @@
 #pragma mark - 处理网络请求数据
 - (void)handleLiveViewDataWithListID:(int)listID success:(void (^)(NSArray *btn_titles))success Failure:(void (^)(NSArray *btn_titles))failure
 {
-    [self loadLiveViewDataSuccess:^(id json) {
-        
-        if (json) {
-            NSDictionary *dictM = json[@"data"];
-            NSArray *arrM = dictM.allKeys;
+    if (listID == 8) {
+        [self.btn_titles insertObject:@"全部" atIndex:0];
+        success(self.btn_titles);
+    }else{
+        [self loadLiveViewDataSuccess:^(id json) {
             
-            for (id key in arrM) {
-                NSString *keyValue = (NSString *)key;
-                if (keyValue.integerValue == listID) {
+            if (json) {
+                NSDictionary *dictM = json[@"data"];
+                NSArray *arrM = dictM.allKeys;
+                
+                for (id key in arrM) {
+                    NSString *keyValue = (NSString *)key;
+                    if (keyValue.integerValue == listID) {
                         [self.btn_titles removeAllObjects];
                         
                         [self.btn_titles addObjectsFromArray:dictM[key]];
                         
                         [self.btn_titles insertObject:@"全部" atIndex:0];
-                    success(self.btn_titles);
+                        success(self.btn_titles);
+                    }
                 }
             }
-        }
-        
-    } failure:^(NSError *error) {
-        if (self.btn_titles.count == 0) {
-            [self.btn_titles insertObject:@"全部" atIndex:0];
-        }
-        failure(self.btn_titles);
-    }];
+            
+        } failure:^(NSError *error) {
+            if (self.btn_titles.count == 0) {
+                [self.btn_titles insertObject:@"全部" atIndex:0];
+            }
+            failure(self.btn_titles);
+        }];
+    }
 }
 
 //类方法，返回viewModel
