@@ -95,6 +95,7 @@
     
 //    NSLog(@"%d",[self.childViewControllers isKindOfClass:[IJKMoviePlayerViewController class]]);
 }
+// 更新下目标,下个问题解决直播列表的内存管理
 
 
 @end
