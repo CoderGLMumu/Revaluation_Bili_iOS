@@ -700,6 +700,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="VideoAidLabel" destination="qC4-Tg-FGt" id="oUg-kO-3GC"/>
+                        <outlet property="VideoPagesLabel" destination="Y9t-NQ-t8v" id="K65-VH-keM"/>
+                        <outlet property="VideoPagesSView" destination="tAc-ZV-xR8" id="42L-aE-Vaf"/>
                         <outlet property="VideoPicView" destination="73G-Yy-0xD" id="wMz-zH-0j2"/>
                         <outlet property="coinLabel" destination="z3g-2P-y2H" id="Xl2-1T-YxK"/>
                         <outlet property="countLabel" destination="R38-CY-IP6" id="W5u-xm-o6m"/>

@@ -33,6 +33,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *pubdateLabel;//视频发布时间戳
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;//总充电
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;//本月充电
+
+@property (weak, nonatomic) IBOutlet UIScrollView *VideoPagesSView;
+@property (weak, nonatomic) IBOutlet UILabel *VideoPagesLabel;
+
+
 /** tags按钮 数组 */
 @property (nonatomic, strong) NSArray *tags_Btn;
 
@@ -74,6 +79,9 @@
  */
 - (void)updateView
 {
+    // 没有分集隐藏 VideoPagesSView 和 VideoPagesLabel
+    
+    
 //    [self.viewModel hand]
     [self.VideoPicView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.pic] placeholderImage:[UIImage imageNamed:@"placeholderImageX"]];
     self.VideoAidLabel.text = self.viewModel.aid_str;
