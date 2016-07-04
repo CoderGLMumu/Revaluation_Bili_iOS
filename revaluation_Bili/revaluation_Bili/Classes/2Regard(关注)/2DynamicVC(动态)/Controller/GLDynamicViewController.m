@@ -14,6 +14,7 @@
 
 //#import "DyVideoViewController.h"
 #import "GLDIYHeader.h"
+#import <MJRefresh/MJRefresh.h>
 
 #import "GLVideoRoomViewController.h"
 #import "GLVideoRoomViewModel.h"
@@ -23,6 +24,9 @@
 
 /** DynamicCellItem_arr */
 @property (nonatomic, strong) NSMutableArray *DynamicCellItem_arr;
+
+/** 请求页面pn */
+@property (nonatomic, assign) int page;
 
 @end
 
@@ -38,7 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.page = 1;
     self.view.backgroundColor = GLRandomColor;
 
     self.tableV.delegate = self;
@@ -51,7 +55,9 @@
     
 //    self.tableV.bounds.size.width = 
     
-    [self pullRefresh];
+    [self pullBotRefresh];
+    
+    [self pullTopRefresh];
     
     [self loadData];
 }
@@ -60,7 +66,9 @@
 - (void)loadData
 {
     
-        AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    
+    NSString *pn = [NSString stringWithFormat:@"%zd",self.page];
         
     NSDictionary *parameters = @{
  @"access_key":@"ae900d5c7c80481faf01a3e81fc8355e",
@@ -69,7 +77,7 @@
                                @"build":@"3060",
                                @"device":@"pad",
                                @"platform":@"ios",
-                               @"pn":@"1",
+                               @"pn":pn,
                                @"ps":@"30",
                         @"sign":@"b68899662ee13ab87c3f4554ed78f6e4",
                                @"ts":@"1459964587",
@@ -83,15 +91,19 @@
             NSMutableDictionary *dictM = [NSMutableDictionary dictionaryWithDictionary:responseObject[@"data"]];
             
             NSArray *arr_m = dictM[@"feeds"];
-            
+            if ([pn isEqualToString:@"1"]) {
+                [self.DynamicCellItem_arr removeAllObjects];
+            }
             for (NSDictionary *dict_test in arr_m) {
                 
                 GLDynamicCellItem *item_1 = [GLDynamicCellItem mj_objectWithKeyValues:dict_test[@"addition"]];
                 GLDynamicCellItem *item_2 = [GLDynamicCellItem mj_objectWithKeyValues:dict_test[@"source"]];
                 
                 item_1.avatar = item_2.avatar;
+                
             
                 [self.DynamicCellItem_arr addObject:item_1];
+                NSLog(@"%lu====%d",self.DynamicCellItem_arr.count,self.page);
                 [self.tableV reloadData];
                 [self endRefreshing];
             }
@@ -193,20 +205,38 @@
 */
 
 #pragma mark UITableView + 下拉刷新 动画图片
-- (void)pullRefresh
+- (void)pullBotRefresh
 {
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-    
     self.tableV.mj_header = [GLDIYHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    
     
     // 马上进入刷新状态
     [self.tableV.mj_header beginRefreshing];
 }
 
+- (void)pullTopRefresh
+{
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    self.tableV.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    // 设置了底部inset
+    self.tableV.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
+    // 忽略掉底部inset
+    self.tableV.mj_footer.ignoredScrollViewContentInsetBottom = 20;
+    // 马上进入刷新状态
+//    [self.tableV.mj_header beginRefreshing];
+}
+
+- (void)loadMoreData
+{
+    self.page +=1;
+    [self loadData];
+    NSLog(@"loadMoreData");
+}
+
 #pragma mark 下拉刷新数据
 - (void)loadNewData
 {
+    self.page = 1;
     // 刷新表格
     [self loadData];
 }
@@ -214,6 +244,7 @@
 - (void)endRefreshing
 {
     // 拿到当前的下拉刷新控件，结束刷新状态
+    [self.tableV.mj_footer endRefreshing];
     [self.tableV.mj_header endRefreshing];
 }
 

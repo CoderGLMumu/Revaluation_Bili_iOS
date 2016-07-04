@@ -91,7 +91,7 @@
         if(navVCs.count == num){
             dispatch_semaphore_signal(semaphore);
         }
-        NSLog(@"===%@",navVC.topViewController.childViewControllers.firstObject);
+//        NSLog(@"===%@",navVC.topViewController.childViewControllers.firstObject);
     }];
     //等待执行，不会占用资源
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
