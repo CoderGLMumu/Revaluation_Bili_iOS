@@ -79,15 +79,20 @@
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
+    __block int num = 0;
+    
     NSArray *navVCs = self.childViewControllers;
     [navVCs.rac_sequence.signal subscribeNext:^(UINavigationController *navVC) {
         if ([navVC.topViewController.childViewControllers.firstObject isKindOfClass:[IJKMoviePlayerViewController class]]) {
             isPlayerView = YES;
         }
+        num++;
         //发出已完成的信号
-        dispatch_semaphore_signal(semaphore);
+        if(navVCs.count == num){
+            dispatch_semaphore_signal(semaphore);
+        }
+        NSLog(@"===%@",navVC.topViewController.childViewControllers.firstObject);
     }];
-    
     //等待执行，不会占用资源
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     

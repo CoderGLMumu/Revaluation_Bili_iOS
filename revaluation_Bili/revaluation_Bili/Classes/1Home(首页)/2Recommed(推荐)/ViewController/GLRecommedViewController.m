@@ -227,7 +227,7 @@ static NSString * const bangumi_3CellID = @"bangumi_3Cell";
                     GLVideoRoomViewController *videoVC = [[UIStoryboard storyboardWithName:@"GLVideoRoomViewController" bundle:nil]instantiateInitialViewController];
                     GLVideoRoomViewModel *VM = [[GLVideoRoomViewModel alloc]initWithAid:CellModel.param];
                     videoVC.viewModel = VM;
-                     NSLog(@"======%@",CellModel.param);
+//                     NSLog(@"======%@",CellModel.param);
                     [self.navigationController pushViewController:videoVC animated:YES];
                 }else if ([cell.viewModel.type isEqualToString:@"live"]) {
                     GLLiveRoomViewController *liveRoomVC = [[GLLiveRoomViewController alloc]init];
