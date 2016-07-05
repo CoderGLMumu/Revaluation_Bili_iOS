@@ -92,6 +92,8 @@
 		044A30541D05C778007E45B0 /* GLRecommedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044A30531D05C778007E45B0 /* GLRecommedViewController.storyboard */; };
 		044A305A1D05ED7E007E45B0 /* GLRecommedCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */; };
 		044A305D1D05F055007E45B0 /* GLRecommedCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */; };
+		044C8C7D1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C8C7C1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.m */; };
+		044C8C7F1D2C0F240063D1AD /* GLVideoDownloadMViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044C8C7E1D2C0F240063D1AD /* GLVideoDownloadMViewController.storyboard */; };
 		0451B52D1CF4578F004E5AB3 /* IJKHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0451B5221CF4578F004E5AB3 /* IJKHistoryItem.m */; };
 		0451B52E1CF4578F004E5AB3 /* Management_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0451B5241CF4578F004E5AB3 /* Management_Mask@2x.png */; };
 		0451B5311CF4578F004E5AB3 /* scale_while.png in Resources */ = {isa = PBXBuildFile; fileRef = 0451B5271CF4578F004E5AB3 /* scale_while.png */; };
@@ -445,6 +447,9 @@
 		044A30591D05ED7E007E45B0 /* GLRecommedCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedCellModel.m; sourceTree = "<group>"; };
 		044A305B1D05F055007E45B0 /* GLRecommedCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommedCellViewModel.h; sourceTree = "<group>"; };
 		044A305C1D05F055007E45B0 /* GLRecommedCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommedCellViewModel.m; sourceTree = "<group>"; };
+		044C8C7B1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoDownloadMViewController.h; sourceTree = "<group>"; };
+		044C8C7C1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoDownloadMViewController.m; sourceTree = "<group>"; };
+		044C8C7E1D2C0F240063D1AD /* GLVideoDownloadMViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLVideoDownloadMViewController.storyboard; sourceTree = "<group>"; };
 		0451B5211CF4578F004E5AB3 /* IJKHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKHistoryItem.h; sourceTree = "<group>"; };
 		0451B5221CF4578F004E5AB3 /* IJKHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKHistoryItem.m; sourceTree = "<group>"; };
 		0451B5241CF4578F004E5AB3 /* Management_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Management_Mask@2x.png"; sourceTree = "<group>"; };
@@ -2062,6 +2067,9 @@
 				0446C6FE1D1EBFB10049F601 /* GLVideoDownloadCover.h */,
 				0446C6FF1D1EBFB10049F601 /* GLVideoDownloadCover.m */,
 				0446C7011D1EBFBB0049F601 /* GLVideoDownloadCover.xib */,
+				044C8C7B1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.h */,
+				044C8C7C1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.m */,
+				044C8C7E1D2C0F240063D1AD /* GLVideoDownloadMViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2321,6 +2329,7 @@
 				04C7C5471D19453700DCBD8E /* GLTagViewController.xib in Resources */,
 				04C7C5401D19453700DCBD8E /* DyVideoViewController.storyboard in Resources */,
 				04FECD201CF1DCF100A4F71D /* pullRefresh_gif_2.png in Resources */,
+				044C8C7F1D2C0F240063D1AD /* GLVideoDownloadMViewController.storyboard in Resources */,
 				04DF46901D16D1AE002E9F34 /* GLRegardUpViewController.storyboard in Resources */,
 				04C7C61B1D1A77C700DCBD8E /* LBEndsCollectionViewCell.xib in Resources */,
 				0460EE411D0351D00078FCB2 /* ani_loading_5@2x.png in Resources */,
@@ -2508,6 +2517,7 @@
 				04C7C5EE1D1A46AB00DCBD8E /* MyLayoutMeasure.m in Sources */,
 				04C7C5A21D1A449100DCBD8E /* WYLDiscoverViewController.m in Sources */,
 				04C7C62B1D1A876200DCBD8E /* GLPartitionViewController.m in Sources */,
+				044C8C7D1D2C0F0F0063D1AD /* GLVideoDownloadMViewController.m in Sources */,
 				0460EECE1D0357D70078FCB2 /* IJKMoviePlayerViewController.m in Sources */,
 				04C7C5B51D1A449100DCBD8E /* WYLDanceTableViewController.m in Sources */,
 				04C7C5441D19453700DCBD8E /* GLDynamicCell.m in Sources */,
