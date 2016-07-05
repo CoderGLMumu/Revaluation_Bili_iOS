@@ -10,6 +10,7 @@
 #import "GLVideoRoomViewModel.h"
 #import "GLVideoRoomItemViewModel.h"
 #import "IJKMoviePlayerViewController.h"
+#import "GLVideoDownloadMViewController.h"
 
 #import "GLVideoDownloadCover.h"
 
@@ -58,6 +59,13 @@
 {
     if (_dwCoverView == nil) {
         GLVideoDownloadCover *dwCoverView = [[NSBundle mainBundle]loadNibNamed:@"GLVideoDownloadCover" owner:nil options:nil][0];
+        dwCoverView.DownMClick = ^{
+            
+            GLVideoDownloadMViewController *downMVC = [[UIStoryboard storyboardWithName:@"GLVideoDownloadMViewController" bundle:nil] instantiateInitialViewController];
+            
+            [self.navigationController pushViewController:downMVC animated:YES];
+        
+        };
         _dwCoverView = dwCoverView;
     }
     return _dwCoverView;

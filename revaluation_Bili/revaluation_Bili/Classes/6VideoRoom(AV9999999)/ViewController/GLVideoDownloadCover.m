@@ -55,6 +55,9 @@
 
 }
 
+- (IBAction)DownMClick:(UIButton *)sender {
+    self.DownMClick();
+}
 
 
 

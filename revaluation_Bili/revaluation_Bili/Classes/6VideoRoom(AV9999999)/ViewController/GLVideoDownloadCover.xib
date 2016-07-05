@@ -92,6 +92,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5P-Jn-aIg">
                                     <rect key="frame" x="244" y="5" width="60" height="30"/>
                                     <state key="normal" title="管理缓存"/>
+                                    <connections>
+                                        <action selector="DownMClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="ixB-2O-zze"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db8-lp-7mf" userLabel="缓存数量">
                                     <rect key="frame" x="309" y="5" width="30" height="30"/>

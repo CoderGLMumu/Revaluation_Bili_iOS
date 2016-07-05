@@ -12,4 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mid_ScrollView;
 
+/** DownMClick */
+@property (nonatomic, strong) void(^DownMClick)() ;
+
 @end
