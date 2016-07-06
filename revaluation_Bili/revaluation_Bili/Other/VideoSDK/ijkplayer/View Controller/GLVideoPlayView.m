@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (void)dealloc
 {
-    NSLog(@"GLvideo被销毁了");
+//    NSLog(@"GLvideo被销毁了");
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
-    NSLog(@"awakeFromNib%@",self);
+//    NSLog(@"awakeFromNib%@",self);
 
 }
 

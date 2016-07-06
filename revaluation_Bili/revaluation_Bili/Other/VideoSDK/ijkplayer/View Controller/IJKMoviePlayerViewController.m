@@ -78,6 +78,12 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 + (instancetype)InitVideoViewFromViewController:(UIViewController *)viewController withTitle:(NSString *)title URL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isOnlineVideo:(BOOL)isOnlineVideo isFullScreen:(BOOL)isFullScreen completion:(void (^)())completion {
     IJKHistoryItem *historyItem = [[IJKHistoryItem alloc] init];
     
+    if (!url)
+    {
+        [SVProgressHUD showInfoWithStatus:@"播放url为空"];
+        return nil;
+    }
+    
     historyItem.title = title;
     historyItem.url = url;
     historyItem.isLiveVideo = isLiveVideo;
@@ -96,6 +102,11 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 #pragma mark - 初始化-弹出播放器控制器
 + (instancetype)presentFromViewController:(UIViewController *)viewController withTitle:(NSString *)title URL:(NSURL *)url isLiveVideo:(BOOL)isLiveVideo isOnlineVideo:(BOOL)isOnlineVideo isFullScreen:(BOOL)isFullScreen completion:(void (^)())completion {
     IJKHistoryItem *historyItem = [[IJKHistoryItem alloc] init];
+    if (!url)
+    {
+        [SVProgressHUD showInfoWithStatus:@"播放url为空"];
+        return nil;
+    }
     
     historyItem.title = title;
     historyItem.url = url;
@@ -526,19 +537,21 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 #pragma Selector func- -代理监听相关
 
 - (void)loadStateDidChange:(NSNotification*)notification {
-//    IJKMPMovieLoadState loadState = _player.loadState;
-//    
-//    if ((loadState & IJKMPMovieLoadStatePlaythroughOK) != 0) {
-//        NSLog(@"LoadStateDidChange: IJKMovieLoadStatePlayThroughOK: %d\n",(int)loadState);
-//    }else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
-//        NSLog(@"loadStateDidChange: IJKMPMovieLoadStateStalled: %d\n", (int)loadState);
-//    } else {
-//        NSLog(@"loadStateDidChange: ???: %d\n", (int)loadState);
-//    }
+    IJKMPMovieLoadState loadState = _player.loadState;
+    NSLog(@"bufferingProgressbufferingProgress%lu",_player.bufferingProgress);
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"%lu",_player.bufferingProgress]];
+    
+    if ((loadState & IJKMPMovieLoadStatePlaythroughOK) != 0) {
+        NSLog(@"LoadStateDidChange: IJKMovieLoadStatePlayThroughOK: %d\n",(int)loadState);
+    }else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
+        NSLog(@"loadStateDidChange: IJKMPMovieLoadStateStalled: %d\n", (int)loadState);
+    } else {
+        NSLog(@"loadStateDidChange: ???: %d\n", (int)loadState);
+    }
 }
 
 - (void)moviePlayBackFinish:(NSNotification*)notification {
-    NSLog(@"moviePlayBackFinish");
+//    NSLog(@"moviePlayBackFinish");
 //    int reason =[[[notification userInfo] valueForKey:IJKMPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
 //    switch (reason) {
 //        case IJKMPMovieFinishReasonPlaybackEnded:
@@ -617,7 +630,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     
     [RACObserve(self, isFullScreen) subscribeNext:^(id x) {
         self.playViewFullScreen.cancelFullScreenButton.selected = !x;
-        NSLog(@"%d===x%d",self.playViewFullScreen.cancelFullScreenButton.selected,x);
+        NSLog(@"%d===x%@",self.playViewFullScreen.cancelFullScreenButton.selected,x);
     }];
     
 
@@ -626,6 +639,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
     // 亮度view加到window最上层
     ZFBrightnessView *brightnessView = [ZFBrightnessView sharedBrightnessView];
     [self.view addSubview:brightnessView];
+    
 }
 
 - (void)toolsShowOrHidden
@@ -645,6 +659,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
 //    NSLog(@"111111===%f",self.renderer.time);
 //    NSLog(@"222222===%f",_predictedTime);
 //    NSLog(@"333333===%f==%f==%ld",self.player.currentPlaybackTime,self.player.playableDuration,(long)self.player.bufferingProgress);
+
     switch (_player.playbackState) {
         case IJKMPMoviePlaybackStateStopped:
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
@@ -652,7 +667,7 @@ typedef NS_ENUM(NSUInteger, GLBarrageFloatDirection) {
             
         case IJKMPMoviePlaybackStatePlaying:
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
-
+            [SVProgressHUD dismiss];
             self.predictedTime = self.player.currentPlaybackTime - self.renderer.time;
             [self.renderer start];
             break;

@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
-    NSLog(@"awakeFromNib%@",self);
+//    NSLog(@"awakeFromNib%@",self);
     
 }
 

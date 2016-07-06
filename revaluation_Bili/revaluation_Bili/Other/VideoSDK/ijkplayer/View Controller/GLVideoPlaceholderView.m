@@ -18,7 +18,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"GLvideo被销毁了");
+//    NSLog(@"GLvideo被销毁了");
 }
 
 - (id)initWithFrame:(CGRect)frame

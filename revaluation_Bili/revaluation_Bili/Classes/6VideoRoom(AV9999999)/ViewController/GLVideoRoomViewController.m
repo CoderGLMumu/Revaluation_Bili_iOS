@@ -57,6 +57,7 @@
 
 -  (GLVideoDownloadCover *)dwCoverView
 {
+    
     if (_dwCoverView == nil) {
         GLVideoDownloadCover *dwCoverView = [[NSBundle mainBundle]loadNibNamed:@"GLVideoDownloadCover" owner:nil options:nil][0];
         dwCoverView.DownMClick = ^{

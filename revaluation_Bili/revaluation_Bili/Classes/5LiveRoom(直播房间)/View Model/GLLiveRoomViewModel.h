@@ -18,7 +18,7 @@
 
 + (void)setUpFooterView:(UIView *)footerView complete:(void(^)())complete;
 
-+ (instancetype)viewModel;
+//+ (instancetype)viewModel;
 
 - (void)handleVCToVMDataonline:(NSString *)online face:(NSString *)face;
 

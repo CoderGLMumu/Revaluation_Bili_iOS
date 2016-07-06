@@ -35,7 +35,8 @@
 - (GLLiveRoomViewModel *)glLiveRoomViewModel
 {
     if (_glLiveRoomViewModel == nil) {
-        _glLiveRoomViewModel = [GLLiveRoomViewModel viewModel];
+        _glLiveRoomViewModel = [[GLLiveRoomViewModel alloc]init];
+//        NSLog(@"linlinlin");
     }
     return _glLiveRoomViewModel;
 }
@@ -231,9 +232,6 @@
     __weak typeof(self)weakSelf = self;
     [self.glLiveRoomViewModel handleLiveViewDataWithRoom_id:self.room_id Success:^() {
 //        liveRoomDataModel.face
-        [self setupVideo:^(UIImageView *coverView) {
-            [coverView sd_setImageWithURL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.COVER] placeholderImage:nil];
-        }];
         
         [self.glLiveRoomViewModel handleVCToVMDataonline:weakSelf.online face:weakSelf.face];
         
@@ -246,8 +244,11 @@
         up_onLineNumLabel.text = self.glLiveRoomViewModel.liveRoomDataModel.online;
         
         [footerViewWebView loadHTMLString:self.glLiveRoomViewModel.liveRoomDataModel.des baseURL:nil];
-        
+        NSLog(@"??????self.glLiveRoomViewModel.liveRoomDataModel.URL %@==%@==%@",self.glLiveRoomViewModel.liveRoomDataModel.URL,self.glLiveRoomViewModel,self.glLiveRoomViewModel.liveRoomDataModel);
         /** 刷新talbeView显示tag */
+        [self setupVideo:^(UIImageView *coverView) {
+            [coverView sd_setImageWithURL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.COVER] placeholderImage:nil];
+        }];
         [self.tableView reloadData];
         
     } Failure:^{
@@ -272,8 +273,10 @@
         //弹出视频播放控制器
 //        NSLog(@"弹出视频播放控制器URL---self.glLiveRoomViewModel.liveRoomDataModel- %@",self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE);
         
-        IJKMoviePlayerViewController *test = [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isOnlineVideo:YES isFullScreen:YES completion:nil];
-        test.view.frame = CGRectMake(0, 0, 100, 100);
+        NSLog(@"??????self.glLiveRoomViewModel.liveRoomDataModel.URL %@==%@==%@",self.glLiveRoomViewModel.liveRoomDataModel.URL,self.glLiveRoomViewModel,self.glLiveRoomViewModel.liveRoomDataModel);
+        
+        IJKMoviePlayerViewController *ijkPlayerVC = [IJKMoviePlayerViewController presentFromViewController:self withTitle:self.glLiveRoomViewModel.liveRoomDataModel.ROOMTITLE URL:[NSURL URLWithString:self.glLiveRoomViewModel.liveRoomDataModel.URL] isLiveVideo:YES isOnlineVideo:YES isFullScreen:YES completion:nil];
+        ijkPlayerVC.view.frame = CGRectMake(0, 0, 100, 100);
     }];
     
     
@@ -383,7 +386,7 @@
 - (void)dealloc
 {
     NSLog(@"RoomVC,-dealloc");
-    }
+}
 
 /*
 // Override to support conditional editing of the table view.

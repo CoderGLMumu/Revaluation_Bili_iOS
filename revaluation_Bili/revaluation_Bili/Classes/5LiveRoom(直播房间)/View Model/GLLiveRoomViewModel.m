@@ -16,6 +16,7 @@ static GLLiveRoomViewModel *_instance;
 {
     if (_liveRoomDataModel == nil) {
         _liveRoomDataModel = [[GLLiveRoomModel alloc] init];
+        NSLog(@"gaolingaolin");
     }
     return _liveRoomDataModel;
 }
@@ -89,7 +90,7 @@ static GLLiveRoomViewModel *_instance;
 }
 
 #pragma mark - 网络请求html数据
-- (void)loadLiveViewPlayerURLWithRoom_id:(NSString *)room_id Success:(void (^)(id json))success failure:(void (^)(NSError *error))failure
+- (void)loadLiveViewPlayerURLWithRoom_id:(NSString *)room_id SuccessURL:(void (^)(id json))SuccessURL failure:(void (^)(NSError *error))failure
 {
     
     // 使用请求参数 发送网络请求
@@ -98,9 +99,9 @@ static GLLiveRoomViewModel *_instance;
     // 调用网络请求工具类
     [HttpToolSDK getHTMLDataWithURL:url parameters:nil success:^(id string) {
 //        NSLog(@"success - - %@",success);
-        if (success) {
+        if (SuccessURL) {
 //            NSLog(@"testsuccessstring");
-            success(string);
+            SuccessURL(string);
         }
     } failure:^(NSError *error) {
         if (failure) {
@@ -152,12 +153,12 @@ static GLLiveRoomViewModel *_instance;
         
         weakSelf.liveRoomDataModel.des = newStr;
 //        NSLog(@"weakSelf.liveRoomDataModel.des - %@",weakSelf.liveRoomDataModel.des);
-        success();
+        
     } failure:^(NSError *error) {
         failure();
     }];
     
-    [weakSelf loadLiveViewPlayerURLWithRoom_id:room_id Success:^(id json) {
+    [weakSelf loadLiveViewPlayerURLWithRoom_id:room_id SuccessURL:^(id json) {
 //        NSLog(@"json-%@",json);
         
         /** 截取直播视频的URL */
@@ -168,7 +169,12 @@ static GLLiveRoomViewModel *_instance;
         NSRange range = NSMakeRange(location, length);
         NSString *URL_str = [json substringWithRange:range];
         weakSelf.liveRoomDataModel.URL = URL_str;
-//         NSLog(@"URL==-%@",weakSelf.liveRoomDataModel.URL);
+         NSLog(@"URL==-%@",weakSelf.liveRoomDataModel);
+        if (URL_str) {
+            success();
+        }else{
+            [SVProgressHUD showInfoWithStatus:@"没有返回数据怪我咯"];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -183,15 +189,7 @@ static GLLiveRoomViewModel *_instance;
 
 - (void)dealloc
 {
-//    NSLog(@"RommVMdealooc");
-}
-
-//类方法
-+ (instancetype)viewModel
-{
-    //注意：这里建议使用self
-    
-    return [[self alloc]init];
+    NSLog(@"RommVMdealooc");
 }
 
 @end
